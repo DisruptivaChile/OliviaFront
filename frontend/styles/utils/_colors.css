@@ -1,0 +1,29 @@
+/* ========================================
+   SISTEMA DE COLORES DE ACENTO
+   REGLA: Usar UN SOLO color por sección/colección
+   ======================================== */
+
+/* Clases de Acento - Morado */
+.accent-morado { color: var(--accent-morado); }
+.bg-accent-morado { background-color: var(--accent-morado); color: var(--white); }
+.border-accent-morado { border-color: var(--accent-morado); }
+
+/* Clases de Acento - Verde */
+.accent-verde { color: var(--accent-verde); }
+.bg-accent-verde { background-color: var(--accent-verde); color: var(--white); }
+.border-accent-verde { border-color: var(--accent-verde); }
+
+/* Clases de Acento - Rosado */
+.accent-rosado { color: var(--accent-rosado); }
+.bg-accent-rosado { background-color: var(--accent-rosado); color: var(--white); }
+.border-accent-rosado { border-color: var(--accent-rosado); }
+
+/* Clases de Acento - Naranja */
+.accent-naranja { color: var(--accent-naranja); }
+.bg-accent-naranja { background-color: var(--accent-naranja); color: var(--white); }
+.border-accent-naranja { border-color: var(--accent-naranja); }
+
+/* Clases de Acento - Beige */
+.accent-beige { color: var(--accent-beige); }
+.bg-accent-beige { background-color: var(--accent-beige); color: var(--text-main); }
+.border-accent-beige { border-color: var(--accent-beige); }

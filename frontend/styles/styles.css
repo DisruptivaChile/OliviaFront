@@ -341,7 +341,7 @@ body {
     background: transparent;
     border-bottom: 1px solid transparent;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 1.5rem 0 2.5rem 0;
+    padding: 1rem 0 3rem 0;
 }
 
 /* Estado inicial - Overlay transparente */
@@ -363,7 +363,7 @@ body {
     justify-self: center;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: 1rem;
+    margin-top: 2.5rem;
 }
 
 /* Actions - Derecha */
@@ -417,7 +417,6 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 0.75rem 0;
 }
-
 .header.scrolled .header-content {
     align-items: center;
 }
@@ -425,6 +424,7 @@ body {
 .header.scrolled .logo {
     margin-top: 0;
 }
+
 
 /* Header blanco permanente para páginas internas */
 .header.header-white {

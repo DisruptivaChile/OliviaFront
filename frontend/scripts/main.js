@@ -33,19 +33,90 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========================================
+// CONFIGURATION
+// ========================================
+
+// URL de la API - Cambiar según tu configuración
+const API_URL = 'http://localhost:3000/api';
+const USE_API = true; // Cambiar a false para usar products.json
+
+// ========================================
 // LOAD PRODUCTS
 // ========================================
 
 async function loadProducts() {
     try {
-        const response = await fetch('data/products.json');
-        products = await response.json();
-        filteredProducts = products.products;
+        let productsData;
+        
+        if (USE_API) {
+            // Cargar desde la API
+            const response = await fetch(`${API_URL}/products`);
+            const data = await response.json();
+            
+            if (data.success) {
+                productsData = transformApiProducts(data.products);
+            } else {
+                throw new Error('Error en la respuesta de la API');
+            }
+        } else {
+            // Fallback: Cargar desde JSON local
+            const response = await fetch('data/products.json');
+            const data = await response.json();
+            productsData = data.products;
+        }
+        
+        products = { products: productsData };
+        filteredProducts = productsData;
         displayProducts(filteredProducts);
+        
     } catch (error) {
         console.error('Error loading products:', error);
+        
+        // Si falla la API, intentar con el JSON local
+        if (USE_API) {
+            console.log('Intentando cargar desde JSON local...');
+            try {
+                const response = await fetch('data/products.json');
+                const data = await response.json();
+                products = data;
+                filteredProducts = data.products;
+                displayProducts(filteredProducts);
+                return;
+            } catch (fallbackError) {
+                console.error('Error en fallback:', fallbackError);
+            }
+        }
+        
         productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">Error al cargar los productos. Por favor, recarga la página.</p>';
     }
+}
+
+// Transformar productos de la API al formato del frontend
+function transformApiProducts(apiProducts) {
+    return apiProducts.map(product => {
+        // Obtener la imagen principal o la primera disponible
+        const mainImage = product.imagenes.find(img => img.es_principal) || product.imagenes[0];
+        const imageUrl = mainImage ? mainImage.url : 'assets/images/products/default.jpg';
+        
+        // Transformar tallas al formato esperado
+        const sizes = product.tallas
+            .filter(t => t.stock > 0)
+            .map(t => t.talla);
+        
+        return {
+            id: product.id,
+            name: product.nombre,
+            category: product.tipo,
+            price: parseFloat(product.precio),
+            image: imageUrl,
+            description: product.descripcion,
+            sizes: sizes,
+            colors: ['default'], // Puedes expandir esto si agregas colores
+            inStock: sizes.length > 0 || product.a_pedido,
+            isNew: false, // Puedes agregar lógica basada en fecha de creación
+            discount: 0 // Puedes agregar campo de descuento a la BD
+        };
+    });
 }
 
 // ========================================
@@ -62,7 +133,7 @@ function displayProducts(productsToShow) {
         <div class="product-card" data-id="${product.id}">
             <div class="product-image">
                 <i class="fas fa-shoe-prints"></i>
-                ${product.new ? '<span class="product-badge">NUEVO</span>' : ''}
+                ${product.new ? `<span class="product-badge">${typeof t === 'function' ? t('producto_nuevo') : 'NUEVO'}</span>` : ''}
             </div>
             <div class="product-info">
                 <span class="product-category">${product.category} - ${product.type}</span>
@@ -73,7 +144,7 @@ function displayProducts(productsToShow) {
                     ${product.sizes.length > 5 ? '<span class="size-option">...</span>' : ''}
                 </div>
                 <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
-                    <i class="fas fa-shopping-cart"></i> Añadir al Carrito
+                    <i class="fas fa-shopping-cart"></i> ${typeof t === 'function' ? t('carrito_añadir') : 'Añadir al Carrito'}
                 </button>
             </div>
         </div>
@@ -238,21 +309,23 @@ function closeCartModal() {
 
 function setupEventListeners() {
     // Cart modal
-    cartBtn.addEventListener('click', openCart);
-    closeCart.addEventListener('click', closeCartModal);
+    if (cartBtn) cartBtn.addEventListener('click', openCart);
+    if (closeCart) closeCart.addEventListener('click', closeCartModal);
     
-    cartModal.addEventListener('click', (e) => {
-        if (e.target === cartModal) {
-            closeCartModal();
-        }
-    });
+    if (cartModal) {
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                closeCartModal();
+            }
+        });
+    }
 
     // Filters
-    searchInput.addEventListener('input', debounce(applyFilters, 300));
-    categoryFilter.addEventListener('change', applyFilters);
-    typeFilter.addEventListener('change', applyFilters);
-    priceFilter.addEventListener('change', applyFilters);
-    clearFilters.addEventListener('click', resetFilters);
+    if (searchInput) searchInput.addEventListener('input', debounce(applyFilters, 300));
+    if (categoryFilter) categoryFilter.addEventListener('change', applyFilters);
+    if (typeFilter) typeFilter.addEventListener('change', applyFilters);
+    if (priceFilter) priceFilter.addEventListener('change', applyFilters);
+    if (clearFilters) clearFilters.addEventListener('click', resetFilters);
 
     // Category cards and scroll slides
     document.querySelectorAll('.category-card, .editorial-panel, .scroll-card, .scroll-slide').forEach(card => {

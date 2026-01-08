@@ -1,16 +1,34 @@
 # OLIVIA MERINO - Tienda de Zapatos Premium
 
-Una tienda de zapatos online moderna y elegante, con funcionalidades completas de e-commerce y diseño responsive.
+Una tienda de zapatos online moderna y elegante, con funcionalidades completas de e-commerce, backend Node.js, diseño responsive y **manual de marca implementado**.
+
+## 🎨 Manual de Marca
+
+Este proyecto implementa el **Manual de Identidad Visual de Olivia Merino**:
+
+- ✅ **Paleta de colores oficial**: Marfil cálido (#F5F5F0), negro suave (#2A2A2A)
+- ✅ **Sistema tipográfico**: Adelia + Poppins según jerarquías
+- ✅ **Colores de acento**: Morado, verde, rosado, naranja, beige
+- ✅ **Diseño editorial**: Grid basado en composición ordenada
+- ✅ **Productos protagonistas**: Espacios limpios que realzan texturas
+
+📘 **Documentación:**
+- [MANUAL-MARCA.md](MANUAL-MARCA.md) - Guía completa de implementación
+- [GUIA-RAPIDA.md](GUIA-RAPIDA.md) - Referencia rápida de colores y clases
+- [ejemplos-marca.html](ejemplos-marca.html) - Ejemplos visuales de uso
+- [css/brand-patterns.css](css/brand-patterns.css) - Patrones reutilizables
 
 ## 🚀 Características
 
-- **Catálogo de Productos**: 20 productos variados de zapatos para mujer, hombre y niños
+- **Catálogo de Productos**: Sistema completo con base de datos PostgreSQL
+- **Backend Node.js + Express**: API REST profesional
 - **Sistema de Filtros**: Por categoría, tipo y precio
 - **Búsqueda en tiempo real**: Encuentra productos fácilmente
 - **Carrito de Compras**: Persistente con LocalStorage
 - **Diseño Responsive**: Funciona perfectamente en móviles, tablets y desktop
 - **Animaciones Suaves**: Experiencia de usuario moderna
-- **Preparado para BD**: Estructura escalable para migrar a base de datos
+- **Base de Datos Real**: PostgreSQL con gestión completa de inventario
+- **🎨 Manual de Marca**: Identidad visual profesional implementada
 
 ## 📁 Estructura del Proyecto
 
@@ -18,36 +36,99 @@ Una tienda de zapatos online moderna y elegante, con funcionalidades completas d
 Olivia/
 │
 ├── index.html              # Página principal
+├── productos.html          # Página de productos
+├── ejemplos-marca.html     # 🎨 Ejemplos del manual de marca
+├── MANUAL-MARCA.md         # 📘 Documentación completa
+├── GUIA-RAPIDA.md          # ⚡ Referencia rápida
 ├── css/
-│   └── styles.css         # Todos los estilos
+│   ├── styles.css         # Estilos principales (con manual de marca)
+│   ├── brand-patterns.css # 🎨 Patrones del manual
+│   └── main.css           # Sistema modular
 ├── js/
-│   └── app.js             # Lógica de la aplicación
-└── data/
-    └── products.json      # Base de datos simulada (JSON)
+│   └── app.js             # Lógica del frontend
+├── data/
+│   └── products.json      # Fallback (si no hay API)
+├── assets/
+│   └── images/            # Imágenes de productos
+└── backend/               # ⭐ Backend Node.js
+    ├── server.js          # Servidor Express
+    ├── config/
+    │   └── database.js    # Conexión PostgreSQL
+    ├── models/
+    │   └── Product.js     # Modelo de productos
+    ├── routes/
+    │   └── products.js    # Rutas de la API
+    ├── database/
+    │   ├── schema.sql     # Estructura de BD
+    │   └── seed.sql       # Datos de prueba
+    └── .env               # Variables de entorno
 ```
 
 ## 🛠️ Tecnologías Utilizadas
 
+### Frontend
 - **HTML5**: Estructura semántica
 - **CSS3**: Grid, Flexbox, Animaciones
-- **JavaScript ES6+**: Async/await, LocalStorage, Módulos
+- **Manual de Marca**: Sistema de diseño Olivia Merino
+- **JavaScript ES6+**: Async/await, LocalStorage, Fetch API
 - **Font Awesome**: Iconos
 
-## 🚦 Cómo Usar
+### Backend
+- **Node.js**: Runtime de JavaScript
+- **Express**: Framework web
+- **PostgreSQL**: Base de datos relacional
+- **pg**: Cliente PostgreSQL para Node.js
+- **CORS**: Manejo de peticiones cross-origin
+- **Helmet**: Seguridad HTTP
 
-### Opción 1: Servidor Local Simple
+## 🚦 Instalación y Uso
 
-Abre una terminal en la carpeta del proyecto y ejecuta:
+### Opción 1: Solo Frontend (Sin Base de Datos)
 
 ```bash
-# Si tienes Python 3
-python -m http.server 8000
+# Usar Live Server en VS Code
+# O abrir index.html directamente en el navegador
+```
 
-# O si tienes Node.js
+### Opción 2: Frontend + Backend (RECOMENDADO)
+
+#### Paso 1: Configurar Backend
+
+```bash
+# 1. Instalar dependencias
+cd backend
+npm install
+
+# 2. Configurar base de datos
+# - Crear base de datos en PostgreSQL (pgAdmin)
+# - Ejecutar: backend/database/schema.sql
+# - (Opcional) Ejecutar: backend/database/seed.sql
+
+# 3. Configurar variables de entorno
+# - El archivo .env ya está configurado
+# - Ajustar si tus credenciales son diferentes
+
+# 4. Iniciar servidor
+npm run dev
+```
+
+**El servidor estará en:** `http://localhost:3000`
+
+#### Paso 2: Abrir Frontend
+
+```bash
+# Desde la raíz del proyecto
+# Usar Live Server en VS Code
+# O servir con:
 npx serve
 ```
 
-Luego abre tu navegador en `http://localhost:8000`
+**El frontend estará en:** `http://localhost:5500` o similar
+
+### 📖 Documentación Adicional
+
+- [Backend README](backend/README.md) - Documentación completa de la API
+- [Guía de Migración](backend/MIGRATION.md) - Cómo migrar desde el proyecto PHP
 
 ### Opción 2: Abrir directamente
 

@@ -1,0 +1,67 @@
+/* ========================================
+   OLIVIA MERINO - VARIABLES CSS
+   Sistema de Diseño basado en Manual de Marca
+   ======================================== */
+
+:root {
+    /* ========================================
+       COLORES DE MARCA
+       ======================================== */
+    
+    /* Colores Base - High-End Interface */
+    --bg-main: #F5F5F0;              /* Fondo Principal - Marfil cálido */
+    --text-main: #2A2A2A;            /* Texto Principal - Negro suave */
+    --logo-base: #1F1F1F;            /* Logo Base - Negro cálido */
+    --logo-alt: #F5F5F0;             /* Logo Alternativo - Blanco hueso */
+    --resources-gray: #D6D2CC;       /* Recursos Gráficos - Gris cálido */
+    
+    /* Colores de Acento - Inspirados en Zapatos */
+    /* NOTA: Aplicar UN SOLO color de acento a la vez por sección/colección */
+    --accent-morado: #6B2D5C;        /* Morado identidad */
+    --accent-verde: #3F6D5A;         /* Verde cuero */
+    --accent-rosado: #D16C8A;        /* Rosado acento */
+    --accent-naranja: #C6A51E;       /* Naranja cuero */
+    --accent-beige: #E2D6C3;         /* Beige cuero claro */
+    
+    /* Colores Funcionales */
+    --white: #ffffff;
+    --border-color: #D6D2CC;
+    --text-light: #666666;
+    --text-muted: #999999;
+    
+    /* ========================================
+       SOMBRAS
+       ======================================== */
+    --shadow-sm: 0 2px 8px rgba(42, 42, 42, 0.04);
+    --shadow-md: 0 4px 16px rgba(42, 42, 42, 0.06);
+    --shadow-lg: 0 8px 24px rgba(42, 42, 42, 0.08);
+    
+    /* ========================================
+       TRANSICIONES
+       ======================================== */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* ========================================
+       ESPACIADO - Grid Editorial 8px base
+       ======================================== */
+    --space-1: 0.5rem;   /* 8px */
+    --space-2: 1rem;     /* 16px */
+    --space-3: 1.5rem;   /* 24px */
+    --space-4: 2rem;     /* 32px */
+    --space-5: 3rem;     /* 48px */
+    --space-6: 4rem;     /* 64px */
+    --space-7: 6rem;     /* 96px */
+    --space-8: 8rem;     /* 128px */
+    
+    /* Compatibilidad */
+    --spacing-xs: var(--space-1);
+    --spacing-sm: var(--space-2);
+    --spacing-md: var(--space-4);
+    --spacing-lg: var(--space-6);
+    --spacing-xl: var(--space-7);
+    --primary-color: var(--logo-base);
+    --secondary-color: var(--accent-morado);
+    --bg-light: var(--bg-main);
+}

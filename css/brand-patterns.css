@@ -1,0 +1,474 @@
+/* ========================================
+   OLIVIA MERINO - PATRONES DE USO
+   Ejemplos prácticos del Manual de Marca
+   ======================================== */
+
+/* ========================================
+   1. SECCIONES CON COLOR DE ACENTO
+   Recuerda: UN SOLO acento por sección
+   ======================================== */
+
+/* Colección Morado - Identidad */
+.collection-morado {
+    background: var(--bg-main);
+}
+
+.collection-morado .section-title {
+    color: var(--accent-morado);
+}
+
+.collection-morado .product-badge {
+    background: var(--accent-morado);
+}
+
+.collection-morado .btn-primary {
+    background: var(--accent-morado);
+    border-color: var(--accent-morado);
+}
+
+/* Colección Verde - Cuero Natural */
+.collection-verde {
+    background: var(--bg-main);
+}
+
+.collection-verde .section-title {
+    color: var(--accent-verde);
+}
+
+.collection-verde .product-badge {
+    background: var(--accent-verde);
+}
+
+.collection-verde .btn-primary {
+    background: var(--accent-verde);
+    border-color: var(--accent-verde);
+}
+
+/* Colección Rosado - Ofertas/Femenino */
+.collection-rosado {
+    background: var(--bg-main);
+}
+
+.collection-rosado .section-title {
+    color: var(--accent-rosado);
+}
+
+.collection-rosado .product-badge {
+    background: var(--accent-rosado);
+}
+
+.collection-rosado .btn-primary {
+    background: var(--accent-rosado);
+    border-color: var(--accent-rosado);
+}
+
+/* ========================================
+   2. LAYOUT EDITORIAL 50/50
+   Grid balanceado para producto + info
+   ======================================== */
+
+.editorial-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    align-items: center;
+    padding: var(--space-7) 0;
+}
+
+.editorial-split__image {
+    width: 100%;
+    height: 600px;
+    background: var(--bg-main);
+    overflow: hidden;
+}
+
+.editorial-split__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.editorial-split__content {
+    padding: var(--space-5);
+}
+
+.editorial-split__label {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+}
+
+.editorial-split__title {
+    font-family: 'Adelia', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--text-main);
+    margin-bottom: var(--space-4);
+    line-height: 1.2;
+}
+
+.editorial-split__description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    margin-bottom: var(--space-5);
+}
+
+/* ========================================
+   3. HERO CON TIPOGRAFÍA DE MARCA
+   ======================================== */
+
+.hero-brand {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--bg-main);
+}
+
+.hero-brand__content {
+    z-index: 2;
+    max-width: 800px;
+    padding: var(--space-5);
+}
+
+.hero-brand__label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+}
+
+.hero-brand__title {
+    font-family: 'Adelia', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--text-main);
+    line-height: 1.1;
+    margin-bottom: var(--space-4);
+}
+
+.hero-brand__subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    font-weight: 400;
+    color: var(--text-main);
+    margin-bottom: var(--space-6);
+    line-height: 1.5;
+}
+
+/* ========================================
+   4. GRID DE PRODUCTOS EDITORIAL
+   3 columnas con espaciado amplio
+   ======================================== */
+
+.products-editorial {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    padding: var(--space-7) 0;
+}
+
+.products-editorial .product-card {
+    background: var(--white);
+}
+
+.products-editorial .product-image {
+    height: 500px;
+    background: var(--bg-main);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .products-editorial {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+    }
+}
+
+@media (max-width: 768px) {
+    .products-editorial {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+}
+
+/* ========================================
+   5. CATEGORÍAS CON ACENTOS
+   ======================================== */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin: var(--space-7) 0;
+}
+
+.category-card {
+    position: relative;
+    height: 400px;
+    background: var(--bg-main);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.category-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.category-card:hover .category-card__image {
+    transform: scale(1.05);
+}
+
+.category-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-4);
+    background: linear-gradient(to top, rgba(31, 31, 31, 0.9), transparent);
+}
+
+.category-card__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: var(--space-1);
+}
+
+.category-card__count {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Acentos por categoría */
+.category-card--morado .category-card__overlay {
+    background: linear-gradient(to top, rgba(107, 45, 92, 0.95), transparent);
+}
+
+.category-card--verde .category-card__overlay {
+    background: linear-gradient(to top, rgba(63, 109, 90, 0.95), transparent);
+}
+
+.category-card--rosado .category-card__overlay {
+    background: linear-gradient(to top, rgba(209, 108, 138, 0.95), transparent);
+}
+
+/* ========================================
+   6. NEWSLETTER CON MARCA
+   ======================================== */
+
+.newsletter-section {
+    background: var(--bg-main);
+    padding: var(--space-7) 0;
+    text-align: center;
+}
+
+.newsletter-section__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: var(--space-3);
+}
+
+.newsletter-section__description {
+    font-size: 1.125rem;
+    color: var(--text-main);
+    margin-bottom: var(--space-5);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: var(--space-2);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: var(--space-3);
+    border: 1px solid var(--resources-gray);
+    background: var(--white);
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.newsletter-form input::placeholder {
+    color: var(--text-muted);
+}
+
+.newsletter-form button {
+    padding: var(--space-3) var(--space-5);
+    background: var(--logo-base);
+    color: var(--white);
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.newsletter-form button:hover {
+    background: var(--accent-morado);
+}
+
+/* ========================================
+   7. TESTIMONIOS / REVIEWS
+   ======================================== */
+
+.testimonials {
+    padding: var(--space-7) 0;
+    background: var(--white);
+}
+
+.testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+}
+
+.testimonial-card {
+    padding: var(--space-5);
+    background: var(--bg-main);
+    border-left: 3px solid var(--accent-morado);
+}
+
+.testimonial-card__text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    margin-bottom: var(--space-4);
+}
+
+.testimonial-card__author {
+    font-weight: 500;
+    color: var(--logo-base);
+}
+
+.testimonial-card__role {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* ========================================
+   8. BREADCRUMBS CON MARCA
+   ======================================== */
+
+.breadcrumbs {
+    display: flex;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+    font-size: 0.875rem;
+}
+
+.breadcrumbs a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.breadcrumbs a:hover {
+    color: var(--accent-morado);
+}
+
+.breadcrumbs span {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   9. FILTROS DE PRODUCTOS
+   ======================================== */
+
+.filters {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+}
+
+.filter-btn {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--resources-gray);
+    background: var(--white);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-btn:hover {
+    border-color: var(--logo-base);
+}
+
+.filter-btn.active {
+    background: var(--logo-base);
+    color: var(--white);
+    border-color: var(--logo-base);
+}
+
+/* ========================================
+   10. FOOTER CON MARCA
+   ======================================== */
+
+.footer-brand {
+    background: var(--logo-base);
+    color: var(--logo-alt);
+    padding: var(--space-7) 0 var(--space-4);
+}
+
+.footer-brand a {
+    color: var(--logo-alt);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.footer-brand a:hover {
+    color: var(--white);
+}
+
+.footer-brand__logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .editorial-split {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonials__grid {
+        grid-template-columns: 1fr;
+    }
+}
