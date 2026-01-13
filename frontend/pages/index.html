@@ -340,6 +340,14 @@
         .register-link:hover {
             opacity: 0.7;
         }
+        .editorial-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         @media (max-width: 768px) {
             .login-modal-content {
                 width: 100%;
@@ -356,10 +364,9 @@
                 <!-- Navigation Left -->
                 <nav class="nav" id="mainNav">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
+                        <li><a href="/" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="/productos" class="nav-link" data-i18n="nav_productos">Productos</a></li>
                         <li><a href="/mujer" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="#" class="nav-link" data-i18n="nav_hombre">Hombre</a></li>
                         <li><a href="#" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </nav>
@@ -403,24 +410,24 @@
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('/assets/images/hero/slide1.png'); background-size: cover; background-position: center;">
+                <div class="hero-bg" style="background-image: url('/assets/images/hero/newMainImg.jpg'); background-size: cover; background-position: center;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
                     <span class="hero-label" data-i18n="hero_nueva_coleccion">Nueva Colección</span>
                     <h2 class="hero-title" data-i18n="hero_primavera_verano">Primavera/Verano</h2>
-                    <a href="#products" class="btn btn-hero" data-i18n="hero_btn_explorar">Explorar Colección</a>
+                    <a href="/productos" class="btn btn-hero" data-i18n="hero_btn_explorar">Explorar Colección</a>
                 </div>
             </div>
             
             <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('/assets/images/hero/slide2.png'); background-size: cover; background-position: center;">
+                <div class="hero-bg" style="background-image: url('/assets/images/hero/slide1.png'); background-size: cover; background-position: center;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
                     <span class="hero-label" data-i18n="hero_edicion_limitada">Edición Limitada</span>
                     <h2 class="hero-title" data-i18n="hero_diseno_exclusivo">Diseño Exclusivo</h2>
-                    <a href="#products" class="btn btn-hero" data-i18n="hero_btn_ver">Ver Ahora</a>
+                    <a href="/productos" class="btn btn-hero" data-i18n="hero_btn_ver">Ver Ahora</a>
                 </div>
             </div>
         </div>
@@ -428,21 +435,31 @@
 
     <!-- Editorial Split Section -->
     <section class="editorial-split">
-        <a href="#" class="editorial-panel" data-category="hombre">
-            <div class="editorial-image" style="background-image: url('/assets/images/editorial/hombre.jpeg'); background-size: cover; background-position: center;">
+        <a href="/productos" class="editorial-panel" data-category="productos">
+            <div class="editorial-media">
+                <video
+                    class="editorial-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                >
+                    <source src="/assets/images/editorial/productosVideo.mp4" type="video/mp4">
+                </video>
                 <div class="editorial-overlay"></div>
             </div>
+
             <div class="editorial-content">
-                <h2 data-i18n="slide_hombre">Hombre</h2>
+                <h2 data-i18n="slide_productos">Productos</h2>
             </div>
         </a>
         
-        <a href="#" class="editorial-panel" data-category="mujer">
-            <div class="editorial-image" style="background-image: url('/assets/images/editorial/mujer.jpeg'); background-size: cover; background-position: center;">
+        <a href="#" class="editorial-panel" data-category="ofertas">
+            <div class="editorial-image" style="background-image: url('/assets/images/editorial/ofertasMain.png'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content">
-                <h2 data-i18n="slide_mujer">Mujer</h2>
+                <h2 data-i18n="slide_ofertas">Ofertas</h2>
             </div>
         </a>
     </section>
@@ -450,27 +467,15 @@
     <!-- Editorial Horizontal Scroll -->
     <section class="editorial-scroll">
         <div class="scroll-wrapper">
-            <a href="#products" class="scroll-slide" data-category="mujer">
+            <a href="/mujer" class="scroll-slide" data-category="mujer">
                 <div class="slide-image">
-                    <div class="slide-bg" style="background-image: url('/assets/images/editorial/slide-mujer.png'); background-size: cover; background-position: center;"></div>
+                    <div class="slide-bg" style="background-image: url('/assets/images/editorial/mujerMain.png'); background-size: cover; background-position: center;"></div>
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
                     <span class="slide-label" data-i18n="slide_coleccion">Colección</span>
                     <h2 data-i18n="slide_mujer">Mujer</h2>
-                    <p data-i18n="slide_elegancia_mujer">Eleganacia atemporal para cada ocasión</p>
-                </div>
-            </a>
-            
-            <a href="#products" class="scroll-slide" data-category="hombre">
-                <div class="slide-image">
-                    <div class="slide-bg" style="background-image: url('/assets/images/editorial/slide-hombre.png'); background-size: cover; background-position: center;"></div>
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide-content">
-                    <span class="slide-label" data-i18n="slide_coleccion">Colección</span>
-                    <h2 data-i18n="slide_hombre">Hombre</h2>
-                    <p data-i18n="slide_estilo_hombre">Estilo refinado y sofisticado</p>
+                    <p data-i18n="slide_elegancia_mujer">Elegancia atemporal para cada ocasión</p>
                 </div>
             </a>
         </div>
@@ -479,18 +484,26 @@
     <!-- Social Media Section -->
     <section class="editorial-scroll social-scroll">
         <div class="scroll-wrapper">
-            <a href="https://instagram.com" target="_blank" class="scroll-slide social-slide">
-                <div class="slide-image">
-                    <div class="slide-bg" style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);"></div>
-                    <div class="slide-overlay"></div>
+            <div class="scroll-slide social-slide" style="position: relative; min-width: 100vw;">
+                
+                <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" style="display: block; width: 100%; height: 100%; text-decoration: none;">
+                    <div class="slide-image">
+                        <div class="slide-bg" style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);"></div>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <i class="fab fa-instagram" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                        <span class="slide-label">Síguenos en</span>
+                        <h2>Instagram</h2>
+                        <p>Descubre nuestro mundo de estilo y tendencias</p>
+                    </div>
+                </a>
+
+                <div class="instagram-overlay-widget">
+                    <script src="https://elfsightcdn.com/platform.js" async></script>
+                    <div class="elfsight-app-37586f5e-b588-4398-9f70-5dab3bb190fe" data-elfsight-app-lazy></div>
                 </div>
-                <div class="slide-content">
-                    <i class="fab fa-instagram" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <span class="slide-label">Síguenos en</span>
-                    <h2>Instagram</h2>
-                    <p>Descubre nuestro mundo de estilo y tendencias</p>
-                </div>
-            </a>
+            </div>
             
             <a href="https://facebook.com" target="_blank" class="scroll-slide social-slide">
                 <div class="slide-image">
@@ -580,8 +593,6 @@
                     <h4>Comprar</h4>
                     <ul>
                         <li><a href="#" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="#" data-i18n="nav_hombre">Hombre</a></li>
-                        <li><a href="#">Niños</a></li>
                         <li><a href="#" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>

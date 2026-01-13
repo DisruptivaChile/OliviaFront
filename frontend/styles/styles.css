@@ -863,6 +863,41 @@ body {
     scrollbar-width: none;
 }
 
+/* Widget instagram fijo */
+/* Este es el contenedor que flota sobre tu diseño */
+.instagram-overlay-widget {
+    position: absolute;
+    /* Posicionamiento */
+    top: 50%;
+    right: 10px; /* Separación fija desde el borde derecho */
+    transform: translateY(-50%); /* Centrado vertical exacto */
+    
+    /* Dimensiones */
+    width: 40%; 
+    height: auto; /* Deja que el contenido defina el alto */
+    max-height: 100%; /* Evita que choque con los bordes de la pantalla */
+    
+    /* Capas y Estilo */
+    z-index: 10;
+    border-radius: 20px;
+    padding: 10px;
+    
+    /* Scroll interno por si hay muchas fotos */
+    overflow-y: auto;
+    display: flex;
+    align-items: center; /* Centra el contenido del widget internamente */
+}
+
+/* Ocultar scrollbar del widget para que se vea limpio */
+.instagram-overlay-widget::-webkit-scrollbar {
+    display: none;
+}
+.instagram-overlay-widget {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
 /* Slides - Tamaño completo tipo hero */
 .scroll-slide {
     flex: 0 0 100vw;

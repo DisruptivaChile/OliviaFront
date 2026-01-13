@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server-frontend.js"
   },
-  "keywords": ["frontend", "static"],
+  "keywords": [
+    "frontend",
+    "static"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
