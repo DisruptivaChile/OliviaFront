@@ -3,7 +3,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // Middleware
 app.use(cors());
@@ -32,6 +32,10 @@ app.get('/mujer', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend/pages/mujer.html'));
 });
 
+app.get('/ofertas', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/pages/ofertas.html'));
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
     console.log('==========================================');
@@ -41,6 +45,7 @@ app.listen(PORT, () => {
     console.log(`✓ Inicio: http://localhost:${PORT}/`);
     console.log(`✓ Productos: http://localhost:${PORT}/productos`);
     console.log(`✓ Mujer: http://localhost:${PORT}/mujer`);
+    console.log(`✓ Ofertas: http://localhost:${PORT}/ofertas`);
     console.log(`✓ Manual de Marca: http://localhost:${PORT}/ejemplos-marca`);
     console.log('==========================================');
     console.log('📁 Estructura modular activada');

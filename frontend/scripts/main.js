@@ -131,8 +131,7 @@ function displayProducts(productsToShow) {
 
     productsGrid.innerHTML = productsToShow.map(product => `
         <div class="product-card" data-id="${product.id}">
-            <div class="product-image">
-                <i class="fas fa-shoe-prints"></i>
+            <div class="product-image" style="background-image: url('/assets/images/hero/image.png'); background-size: cover; background-position: center;">
                 ${product.new ? `<span class="product-badge">${typeof t === 'function' ? t('producto_nuevo') : 'NUEVO'}</span>` : ''}
             </div>
             <div class="product-info">
@@ -555,4 +554,86 @@ if ('IntersectionObserver' in window) {
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     });
+}
+
+// ========================================
+// HERO SLIDER AUTO-PLAY
+// ========================================
+
+function initHeroSlider() {
+    const heroSlider = document.querySelector('.hero-slider');
+    if (!heroSlider) return;
+    
+    const slides = heroSlider.querySelectorAll('.hero-slide');
+    if (slides.length <= 1) return;
+    
+    let currentSlide = 0;
+    const slideInterval = 5000; // 5 segundos por slide
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        const slideWidth = heroSlider.clientWidth;
+        heroSlider.scrollTo({
+            left: slideWidth * currentSlide,
+            behavior: 'smooth'
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        goToSlide(currentSlide);
+    }
+    
+    // Auto-play
+    let autoplayInterval = setInterval(nextSlide, slideInterval);
+    
+    // Pausar auto-play cuando el usuario interactúa
+    heroSlider.addEventListener('scroll', () => {
+        clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(nextSlide, slideInterval);
+    }, { passive: true });
+    
+    // Pausar en hover
+    heroSlider.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+    
+    heroSlider.addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(nextSlide, slideInterval);
+    });
+}
+
+// Inicializar slider cuando se carga la página
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlider);
+} else {
+    initHeroSlider();
+}
+
+// ========================================
+// INSTAGRAM BACKGROUND SLIDESHOW
+// ========================================
+
+function initInstagramSlideshow() {
+    const slides = document.querySelectorAll('.instagram-bg-slide');
+    if (slides.length <= 1) return;
+    
+    let currentSlide = 0;
+    const slideInterval = 4000; // 4 segundos
+    
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    // Iniciar rotación automática
+    setInterval(nextSlide, slideInterval);
+}
+
+// Inicializar slideshow de Instagram
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInstagramSlideshow);
+} else {
+    initInstagramSlideshow();
 }

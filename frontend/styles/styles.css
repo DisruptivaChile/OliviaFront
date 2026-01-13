@@ -619,10 +619,18 @@ body {
 
 .hero-content {
     position: relative;
-    margin-left: 8%;
+    margin-right: 8%;
+    margin-left: auto;
     z-index: 2;
     max-width: 600px;
     color: var(--white);
+    text-align: right;
+}
+
+.hero-content-left {
+    margin-left: 8%;
+    margin-right: auto;
+    text-align: left;
 }
 
 .hero-label {
@@ -863,38 +871,99 @@ body {
     scrollbar-width: none;
 }
 
-/* Widget instagram fijo */
-/* Este es el contenedor que flota sobre tu diseño */
-.instagram-overlay-widget {
-    position: absolute;
-    /* Posicionamiento */
-    top: 50%;
-    right: 10px; /* Separación fija desde el borde derecho */
-    transform: translateY(-50%); /* Centrado vertical exacto */
-    
-    /* Dimensiones */
-    width: 40%; 
-    height: auto; /* Deja que el contenido defina el alto */
-    max-height: 100%; /* Evita que choque con los bordes de la pantalla */
-    
-    /* Capas y Estilo */
-    z-index: 10;
-    border-radius: 20px;
-    padding: 10px;
-    
-    /* Scroll interno por si hay muchas fotos */
-    overflow-y: auto;
+/* Instagram Slide Minimalista */
+.instagram-slide {
     display: flex;
-    align-items: center; /* Centra el contenido del widget internamente */
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Ocultar scrollbar del widget para que se vea limpio */
-.instagram-overlay-widget::-webkit-scrollbar {
-    display: none;
+.instagram-bg-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
-.instagram-overlay-widget {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+
+.instagram-bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.instagram-bg-slide.active {
+    opacity: 1;
+}
+
+.instagram-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(44, 44, 44, 0.5) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 2;
+}
+
+.instagram-slide:hover {
+    transform: scale(1.02);
+}
+
+.instagram-content {
+    text-align: center;
+    z-index: 3;
+    position: relative;
+}
+
+.instagram-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    border-radius: 30px;
+    transition: all 0.4s ease;
+}
+
+.instagram-slide:hover .instagram-icon {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: 0 20px 40px rgba(131, 58, 180, 0.3);
+}
+
+.instagram-icon i {
+    font-size: 4rem;
+    color: white;
+}
+
+.instagram-cta {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 2px solid #E2D6C3;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.instagram-cta:hover {
+    background: #E2D6C3;
+}
+
+.instagram-cta:hover span {
+    color: #6B2D5C !important;
 }
 
 

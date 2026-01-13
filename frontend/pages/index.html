@@ -367,7 +367,7 @@
                         <li><a href="/" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="/productos" class="nav-link" data-i18n="nav_productos">Productos</a></li>
                         <li><a href="/mujer" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="#" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="/ofertas" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </nav>
 
@@ -421,7 +421,7 @@
             </div>
             
             <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('/assets/images/hero/slide1.png'); background-size: cover; background-position: center;">
+                <div class="hero-bg" style="background-image: url('/assets/images/hero/slide1.png'); background-size: 120%; background-position: center 60%;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
@@ -454,7 +454,7 @@
             </div>
         </a>
         
-        <a href="#" class="editorial-panel" data-category="ofertas">
+        <a href="/ofertas" class="editorial-panel" data-category="ofertas">
             <div class="editorial-image" style="background-image: url('/assets/images/editorial/ofertasMain.png'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
@@ -469,7 +469,7 @@
         <div class="scroll-wrapper">
             <a href="/mujer" class="scroll-slide" data-category="mujer">
                 <div class="slide-image">
-                    <div class="slide-bg" style="background-image: url('/assets/images/editorial/mujerMain.png'); background-size: cover; background-position: center;"></div>
+                    <div class="slide-bg" style="background-image: url('/assets/images/editorial/MujerIndex.png'); background-size: cover; background-position: center;"></div>
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
@@ -484,26 +484,23 @@
     <!-- Social Media Section -->
     <section class="editorial-scroll social-scroll">
         <div class="scroll-wrapper">
-            <div class="scroll-slide social-slide" style="position: relative; min-width: 100vw;">
-                
-                <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" style="display: block; width: 100%; height: 100%; text-decoration: none;">
-                    <div class="slide-image">
-                        <div class="slide-bg" style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);"></div>
-                        <div class="slide-overlay"></div>
-                    </div>
-                    <div class="slide-content">
-                        <i class="fab fa-instagram" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                        <span class="slide-label">Síguenos en</span>
-                        <h2>Instagram</h2>
-                        <p>Descubre nuestro mundo de estilo y tendencias</p>
-                    </div>
-                </a>
-
-                <div class="instagram-overlay-widget">
-                    <script src="https://elfsightcdn.com/platform.js" async></script>
-                    <div class="elfsight-app-37586f5e-b588-4398-9f70-5dab3bb190fe" data-elfsight-app-lazy></div>
+            <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="scroll-slide social-slide instagram-slide">
+                <div class="instagram-bg-slideshow">
+                    <div class="instagram-bg-slide active" style="background-image: url('/assets/images/editorial/mujerMain.png');"></div>
+                    <div class="instagram-bg-slide" style="background-image: url('/assets/images/editorial/mujerHero.jpg');"></div>
+                    <div class="instagram-bg-overlay"></div>
                 </div>
-            </div>
+                <div class="instagram-content">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">@olivia_merino_</h2>
+                    <p style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Descubre nuestra colección y estilo de vida</p>
+                    <div class="instagram-cta">
+                        <span style="font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: #E2D6C3; font-weight: 500;">Síguenos en Instagram</span>
+                    </div>
+                </div>
+            </a>
             
             <a href="https://facebook.com" target="_blank" class="scroll-slide social-slide">
                 <div class="slide-image">
@@ -592,8 +589,8 @@
                 <div class="footer-section">
                     <h4>Comprar</h4>
                     <ul>
-                        <li><a href="#" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="#" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="/mujer" data-i18n="nav_mujer">Mujer</a></li>
+                        <li><a href="/ofertas" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>
 

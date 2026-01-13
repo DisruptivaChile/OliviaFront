@@ -23,6 +23,8 @@ const translations = {
         slide_coleccion: "Colección",
         slide_mujer: "Mujer",
         slide_hombre: "Hombre",
+        slide_productos: "Productos",
+        slide_ofertas: "Ofertas",
         slide_elegancia_mujer: "Eleganacia atemporal para cada ocasión",
         slide_estilo_hombre: "Estilo refinado y sofisticado",
         
@@ -112,6 +114,8 @@ const translations = {
         slide_coleccion: "Collection",
         slide_mujer: "Women",
         slide_hombre: "Men",
+        slide_productos: "Products",
+        slide_ofertas: "Deals",
         slide_elegancia_mujer: "Timeless elegance for every occasion",
         slide_estilo_hombre: "Refined and sophisticated style",
         
