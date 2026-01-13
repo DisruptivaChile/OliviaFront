@@ -23,6 +23,10 @@
         .logo {
             margin-top: 2.5rem !important;
         }
+        .logo a {
+            text-decoration: none !important; /* Elimina la línea */
+            color: inherit !important;           /* Mantiene el color original del texto */
+        }
         .header.scrolled {
             padding: 0.75rem 0 !important;
         }
@@ -31,6 +35,35 @@
         }
         .header.scrolled .logo {
             margin-top: 0 !important;
+        }
+        .icon-btn {
+            transition: var(--transition-fast);
+        }
+        /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
+        .icon-btn:hover,
+        .icon-btn:hover i {
+            color: #3F6D5A !important;
+            text-shadow: none !important;
+        }
+
+        /* Regla específica para cuando el header tiene la clase 'scrolled' */
+        .header.scrolled .icon-btn i {
+            color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .icon-btn:hover i {
+            color: #3F6D5A !important;
+        }
+        .cart-count {
+            background-color: #3F6D5A !important; /* Fondo siempre verde */
+            color: white !important;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        /* Si el contador del carrito también deja de verse bien, añade esto: */
+        .header.scrolled .cart-count {
+            background: #3F6D5A;
+            color: white;
         }
         .promo-banner {
             display: none !important;
@@ -42,6 +75,9 @@
         .header.scrolled .nav-link:hover,
         .header.scrolled .nav-link.active {
             color: #3F6D5A !important;
+        }
+        .header:not(.scrolled) .logo h1 {
+            font-size: 3.125rem !important;
         }
         .hero-label,
         .hero-title,
@@ -66,6 +102,18 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 4px;
+            color: white !important;
+        }
+         /* Color cuando se hace scroll */
+        .header.scrolled .lang-btn {
+            color: #2a2a2a !important; /* Color oscuro/negro */
+        }
+
+        /* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
+        .header.scrolled .lang-btn:hover,
+        .header.scrolled .lang-btn.active {
+            border-color: #3F6D5A !important;
+            color: #3F6D5A !important;
         }
         .lang-btn:hover {
             border-color: #3F6D5A;
@@ -101,9 +149,7 @@
 
                 <!-- Logo Center -->
                 <div class="logo">
-                    <a href="/">
-                        <h1>OLIVIA MERINO</h1>
-                    </a>
+                    <h1>OLIVIA MERINO</h1>
                 </div>
 
                 <!-- Actions Right -->
@@ -114,21 +160,18 @@
                             <span class="flag-icon">🇪🇸</span>
                         </button>
                         <button class="lang-btn" data-lang="en">
-                            <span class="flag-icon">US</span>
+                            <span class="flag-icon">🇺🇸</span>
                         </button>
                     </div>
 
-                    <button class="icon-btn" id="searchBtn">
-                        <i class="fas fa-search"></i>
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
                     </button>
                     <button class="icon-btn" id="userBtn">
                         <i class="fas fa-user"></i>
                     </button>
-                    <button class="icon-btn cart-btn" id="cartBtn">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-badge" id="cartCount">0</span>
-                    </button>
-                    <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>

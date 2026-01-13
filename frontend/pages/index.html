@@ -32,6 +32,26 @@
         .header.scrolled .logo {
             margin-top: 0 !important;
         }
+        /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
+        .icon-btn:hover i {
+            color: #6B2D5C !important;
+        }
+
+        /* Regla específica para cuando el header tiene la clase 'scrolled' */
+        .header.scrolled .icon-btn i {
+            color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .icon-btn:hover i {
+            color: #6B2D5C !important;
+        }
+
+        /* Si el contador del carrito también deja de verse bien, añade esto: */
+        .header.scrolled .cart-count {
+            background: #6B2D5C;
+            color: white;
+        }
         .promo-banner {
             display: none !important;
         }
@@ -84,6 +104,18 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 4px;
+            color: white !important;
+        }
+        /* Color cuando se hace scroll */
+        .header.scrolled .lang-btn {
+            color: #2a2a2a !important; /* Color oscuro/negro */
+        }
+
+        /* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
+        .header.scrolled .lang-btn:hover,
+        .header.scrolled .lang-btn.active {
+            border-color: #6B2D5C !important;
+            color: #6B2D5C !important;
         }
         .lang-btn:hover {
             border-color: #6B2D5C;
@@ -421,7 +453,7 @@
             </div>
             
             <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('/assets/images/hero/slide1.png'); background-size: 120%; background-position: center 60%;">
+                <div class="hero-bg" style="background-image: url('/assets/images/editorial/mujerMain.png'); background-size: 140%; background-position: center 60%;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">

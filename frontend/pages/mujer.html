@@ -50,6 +50,26 @@
             background: rgba(245, 245, 240, 0.98) !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
         }
+        /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
+        .icon-btn:hover i {
+            color: #D16C8A !important;
+        }
+
+        /* Regla específica para cuando el header tiene la clase 'scrolled' */
+        .header.scrolled .icon-btn i {
+            color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .icon-btn:hover i {
+            color: #D16C8A !important;
+        }
+
+        /* Si el contador del carrito también deja de verse bien, añade esto: */
+        .header.scrolled .cart-count {
+            background: #D16C8A;
+            color: white;
+        }
         .logo h1 {
             font-size: 3.125rem !important;
             color: white !important;
@@ -124,30 +144,32 @@
         }
         .lang-btn {
             background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 2px solid transparent !important;
             padding: 0.25rem 0.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 4px;
+            color: white !important;
         }
-        .lang-btn:hover {
-            border-color: rgba(255, 255, 255, 1);
-            background: rgba(255, 255, 255, 0.1);
+        /* 3. Hover: Borde tenue para indicar que se puede hacer clic */
+        .lang-btn:hover:not(.active) {
+            border-color: rgba(211, 108, 138, 0.4) !important;
         }
         .lang-btn.active {
-            border-color: rgba(255, 255, 255, 1);
-            background: rgba(255, 255, 255, 0.15);
+            border-color: #D16C8A !important;
+            background: rgba(209, 108, 138, 0.1) !important;
         }
+        /* Color cuando se hace scroll */
         .header.scrolled .lang-btn {
-            border-color: rgba(209, 108, 138, 0.3);
+            color: #2a2a2a !important; /* Color oscuro/negro */
         }
-        .header.scrolled .lang-btn:hover {
-            border-color: #D16C8A;
-            background: rgba(209, 108, 138, 0.1);
-        }
+
+        /* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
+        .header.scrolled .lang-btn:hover,
         .header.scrolled .lang-btn.active {
-            border-color: #D16C8A;
-            background: rgba(209, 108, 138, 0.15);
+            border-color: #D16C8A !important;
+            color: #D16C8A !important;
+            background: rgba(209, 108, 138, 0.05) !important;
         }
         .flag-icon {
             font-size: 1.5rem;
@@ -549,7 +571,7 @@
 
                 <!-- Slide 3: Botines -->
                 <div class="category-slide">
-                    <div class="category-slide-image" style="background-image: url('/assets/images/editorial/mujer.jpeg'); background-size: cover; background-position: center;">
+                    <div class="category-slide-image" style="background-image: url('/assets/images/editorial/mujerBotines.png'); background-size: cover; background-position: center;">
                         <div class="category-overlay"></div>
                         <div class="category-slide-content">
                             <h3 class="category-slide-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_botines">Botines</h3>
@@ -607,7 +629,6 @@
                     <h4>Comprar</h4>
                     <ul>
                         <li><a href="/mujer" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="#">Niños</a></li>
                         <li><a href="/ofertas" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>

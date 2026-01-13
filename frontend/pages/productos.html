@@ -17,6 +17,26 @@
         .header {
             padding: 0.5rem 0 !important;
         }
+        /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
+        .icon-btn:hover i {
+            color: #6B2D5C !important;
+        }
+
+        /* Regla específica para cuando el header tiene la clase 'scrolled' */
+        .header.scrolled .icon-btn i {
+            color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .icon-btn:hover i {
+            color: #6B2D5C !important;
+        }
+
+        /* Si el contador del carrito también deja de verse bien, añade esto: */
+        .header.scrolled .cart-count {
+            background: #6B2D5C;
+            color: white;
+        }
         .logo h1 {
             font-size: 1.5rem !important;
         }
@@ -49,6 +69,17 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 4px;
+        }
+        /* Color cuando se hace scroll */
+        .header.scrolled .lang-btn {
+            color: #2a2a2a !important; /* Color oscuro/negro */
+        }
+
+        /* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
+        .header.scrolled .lang-btn:hover,
+        .header.scrolled .lang-btn.active {
+            border-color: #6B2D5C !important;
+            color: #6B2D5C !important;
         }
         .lang-btn:hover {
             border-color: #6B2D5C;
@@ -373,7 +404,6 @@
                     <select id="categoryFilter" class="filter-select">
                         <option value="all" data-i18n="filtro_todas">Todos</option>
                         <option value="mujer" data-i18n="nav_mujer">Mujer</option>
-                        <option value="niños">Niños</option>
                     </select>
                 </div>
 
@@ -381,10 +411,9 @@
                     <label for="typeFilter" data-i18n="filtro_tipo">Tipo:</label>
                     <select id="typeFilter" class="filter-select">
                         <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="deportivo">Deportivo</option>
-                        <option value="casual">Casual</option>
-                        <option value="formal">Formal</option>
-                        <option value="botas">Botas</option>
+                        <option value="botines">Botines</option>
+                        <option value="zapatos">Zapatos</option>
+                        <option value="sandalias">Sandalias</option>
                     </select>
                 </div>
 
@@ -428,7 +457,6 @@
                     <h4>Comprar</h4>
                     <ul>
                         <li><a href="/mujer" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="#">Niños</a></li>
                         <li><a href="/ofertas" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>
