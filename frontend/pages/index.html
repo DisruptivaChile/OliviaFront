@@ -78,6 +78,83 @@
             font-weight: 500 !important;
             color: #E2D6C3 !important;
         }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 100vh; /* Ajusta según necesites */
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Estilos de las flechas */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .slider-arrow:hover {
+            background: #6B2D5C;
+            color: white;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .hero-slide .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .hero-slide.active .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s; /* Espera un poco a que la imagen cargue */
+        }
+
+        /* Animación individual para elementos internos para un efecto escalonado */
+        .hero-slide.active .hero-label {
+            transition-delay: 0.4s;
+        }
+        .hero-slide.active .hero-title {
+            transition-delay: 0.6s;
+        }
+
         .slide-content .slide-label,
         .slide-content h2 {
             font-family: 'Cormorant Garamond', serif !important;
@@ -91,6 +168,7 @@
         .footer-section p {
             color: white !important;
         }
+
         /* Language Selector */
         .language-selector {
             display: flex;
@@ -441,8 +519,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
-            <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('/assets/images/hero/newMainImg.jpg'); background-size: cover; background-position: center;">
+            <div class="hero-slide active"> <div class="hero-bg" style="background-image: url('/assets/images/hero/newMainImg.jpg'); background-size: cover; background-position: center;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
@@ -463,6 +540,9 @@
                 </div>
             </div>
         </div>
+
+        <button class="slider-arrow prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
     </section>
 
     <!-- Editorial Split Section -->
@@ -542,8 +622,8 @@
                 <div class="slide-content">
                     <i class="fab fa-facebook-f" style="font-size: 4rem; margin-bottom: 1rem;"></i>
                     <span class="slide-label">Únete a</span>
-                    <h2>Facebook</h2>
-                    <p>Conecta con nuestra comunidad</p>
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">Facebook</h2>
+                    <p  style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Conecta con nuestra comunidad</p>
                 </div>
             </a>
         </div>
@@ -752,6 +832,56 @@
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/main.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slide');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Quitar clase activa de todos
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Ajustar índice circular
+                currentSlide = (index + slides.length) % slides.length;
+                
+                // Activar slide actual
+                slides[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // Eventos de flechas
+            if(nextBtn) nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
+            });
+
+            if(prevBtn) prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+
+            // Auto-reproducción (5 segundos)
+            function startTimer() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetTimer() {
+                clearInterval(slideInterval);
+                startTimer();
+            }
+
+            startTimer();
+        });
+
         // Login Modal
         const loginModal = document.getElementById('loginModal');
         const userBtn = document.getElementById('userBtn');

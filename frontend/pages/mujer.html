@@ -70,6 +70,9 @@
             background: #D16C8A;
             color: white;
         }
+        .header.scrolled .nav-link.active {
+            color: #D16C8A !important;
+        }
         .logo h1 {
             font-size: 3.125rem !important;
             color: white !important;
@@ -117,8 +120,8 @@
         /* Botones con acento rosado */
         .btn-hero:hover,
         .btn-primary {
-            background-color: #D16C8A !important;
-            border-color: #D16C8A !important;
+            background-color: white !important;
+            border-color: white !important;
         }
         
         /* Cards con hover rosado */
@@ -477,6 +480,91 @@
                 max-width: 100%;
             }
         }
+
+        /*Config slider*/
+        /* Contenedor principal */
+        .category-slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estructura de los Slides */
+        .cat-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 0.8s ease-in-out;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cat-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .cat-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .cat-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Ajusta la oscuridad aquí */
+        }
+
+        /* Animación de Contenido (Subida suave) */
+        .cat-content {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+            z-index: 10;
+        }
+
+        .cat-slide.active .cat-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        /* Botón Ghost (Letra blanca, borde blanco -> Fondo blanco, letra negra) */
+        .btn-cat {
+            background-color: transparent !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff !important;
+            padding: 12px 35px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-cat:hover {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        /* Flechas */
+        .cat-arrow {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            color: white; border: none;
+            width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; z-index: 20;
+            transition: all 0.3s;
+        }
+        .cat-arrow:hover { background: #D16C8A; color: black; }
+        .prev { left: 30px; }
+        .next { right: 30px; }
+
     </style>
 </head>
 <body>
@@ -542,46 +630,45 @@
     </section>
 
     <!-- Categorías Mujer -->
-    <section class="categories-section" style="padding: 0; background: var(--bg-light); position: relative; overflow: hidden; margin: 0;">
-        <div class="category-slider" id="categorySlider">
-            <div class="category-slider-wrapper">
-                <!-- Slide 1: Zapatos -->
-                <div class="category-slide">
-                    <div class="category-slide-image" style="background-image: url('/assets/images/editorial/collage.png'); background-size: cover; background-position: center;">
-                        <div class="category-overlay"></div>
-                        <div class="category-slide-content">
-                            <h3 class="category-slide-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_zapatos">Zapatos</h3>
-                            <p class="category-slide-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem; margin-top: 1rem;">Elegancia en cada paso</p>
-                            <a href="#productos-mujer" class="btn btn-hero" style="margin-top: 2rem;">Ver Colección</a>
-                        </div>
-                    </div>
+    <section class="categories-section" style="padding: 0; background: var(--bg-light); position: relative; overflow: hidden; height: 80vh; margin: 0;">
+        <div class="category-slider-container" id="categorySlider">
+            
+            <div class="cat-slide active">
+                <div class="cat-bg" style="background-image: url('/assets/images/editorial/collage.png'); background-size: cover; background-position: center;">
+                    <div class="cat-overlay"></div>
                 </div>
-
-                <!-- Slide 2: Sandalias -->
-                <div class="category-slide">
-                    <div class="category-slide-image" style="background-image: url('/assets/images/editorial/sandalias.png'); background-size: cover; background-position: center 75%;">
-                        <div class="category-overlay"></div>
-                        <div class="category-slide-content">
-                            <h3 class="category-slide-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_sandalias">Sandalias</h3>
-                            <p class="category-slide-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem; margin-top: 1rem;">Frescura y sofisticación</p>
-                            <a href="#productos-mujer" class="btn btn-hero" style="margin-top: 2rem;">Ver Colección</a>
-                        </div>
-                    </div>
+                <div class="cat-content">
+                    <h3 class="cat-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_zapatos">Zapatos</h3>
+                    <p class="cat-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem;">Elegancia en cada paso</p>
+                    <a href="#productos-mujer" class="btn btn-cat">Ver Colección</a>
                 </div>
+            </div>
 
-                <!-- Slide 3: Botines -->
-                <div class="category-slide">
-                    <div class="category-slide-image" style="background-image: url('/assets/images/editorial/mujerBotines.png'); background-size: cover; background-position: center;">
-                        <div class="category-overlay"></div>
-                        <div class="category-slide-content">
-                            <h3 class="category-slide-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_botines">Botines</h3>
-                            <p class="category-slide-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem; margin-top: 1rem;">Estilo y versatilidad</p>
-                            <a href="#productos-mujer" class="btn btn-hero" style="margin-top: 2rem;">Ver Colección</a>
-                        </div>
-                    </div>
+            <div class="cat-slide">
+                <div class="cat-bg" style="background-image: url('/assets/images/editorial/sandalias.png'); background-size: cover; background-position: center 75%;">
+                    <div class="cat-overlay"></div>
+                </div>
+                <div class="cat-content">
+                    <h3 class="cat-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_sandalias">Sandalias</h3>
+                    <p class="cat-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem;">Frescura y sofisticación</p>
+                    <a href="#productos-mujer" class="btn btn-cat">Ver Colección</a>
+                </div>
+            </div>
+
+            <div class="cat-slide">
+                <div class="cat-bg" style="background-image: url('/assets/images/editorial/mujerBotines.png'); background-size: cover; background-position: center;">
+                    <div class="cat-overlay"></div>
+                </div>
+                <div class="cat-content">
+                    <h3 class="cat-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="mujer_botines">Botines</h3>
+                    <p class="cat-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem;">Estilo y versatilidad</p>
+                    <a href="#productos-mujer" class="btn btn-cat">Ver Colección</a>
                 </div>
             </div>
         </div>
+
+        <button class="cat-arrow prev" id="prevCat"><i class="fas fa-chevron-left"></i></button>
+        <button class="cat-arrow next" id="nextCat"><i class="fas fa-chevron-right"></i></button>
     </section>
 
     <!-- Productos Destacados -->
@@ -759,6 +846,103 @@
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/main.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryContainer = document.querySelector('#categorySlider');
+            const catSlides = categoryContainer.querySelectorAll('.cat-slide');
+            const prevCatBtn = document.getElementById('prevCat');
+            const nextCatBtn = document.getElementById('nextCat');
+            
+            let currentCatIndex = 0;
+            let catInterval;
+
+            function showCatSlide(index) {
+                catSlides.forEach(slide => slide.classList.remove('active'));
+                currentCatIndex = (index + catSlides.length) % catSlides.length;
+                catSlides[currentCatIndex].classList.add('active');
+            }
+
+            function nextCatSlide() {
+                showCatSlide(currentCatIndex + 1);
+            }
+
+            function prevCatSlide() {
+                showCatSlide(currentCatIndex - 1);
+            }
+
+            // Eventos
+            nextCatBtn.addEventListener('click', () => {
+                nextCatSlide();
+                resetCatTimer();
+            });
+
+            prevCatBtn.addEventListener('click', () => {
+                prevCatSlide();
+                resetCatTimer();
+            });
+
+            // Auto-reproducción
+            function startCatTimer() {
+                catInterval = setInterval(nextCatSlide, 5000);
+            }
+
+            function resetCatTimer() {
+                clearInterval(catInterval);
+                startCatTimer();
+            }
+
+            startCatTimer();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slide');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Quitar clase activa de todos
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Ajustar índice circular
+                currentSlide = (index + slides.length) % slides.length;
+                
+                // Activar slide actual
+                slides[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // Eventos de flechas
+            if(nextBtn) nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
+            });
+
+            if(prevBtn) prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+
+            // Auto-reproducción (5 segundos)
+            function startTimer() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetTimer() {
+                clearInterval(slideInterval);
+                startTimer();
+            }
+
+            startTimer();
+        });
+
         // Login Modal
         const loginModal = document.getElementById('loginModal');
         const userBtn = document.getElementById('userBtn');
