@@ -310,7 +310,7 @@
             margin-top: 0.5rem;
         }
         .login-submit:hover {
-            background: #5a2450 !important;
+            background: #3F6D5A !important;
         }
         .login-divider {
             position: relative;
@@ -439,10 +439,10 @@
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content hero-content-left">
-                    <span class="hero-label">DESCUENTOS ESPECIALES</span>
-                    <h2 class="hero-title">Mundo Olivia</h2>
-                    <p class="hero-subtitle">Encuentra las mejores ofertas en nuestra colección premium</p>
-                    <a href="#ofertas-especiales" class="btn btn-hero">Ver Ofertas</a>
+                    <span class="hero-label" data-i18n="hero_ofertas_label">DESCUENTOS ESPECIALES</span>
+                    <h2 class="hero-title" data-i18n="hero_ofertas_title">Mundo Olivia</h2>
+                    <p class="hero-subtitle" data-i18n="hero_ofertas_subtitle">Encuentra las mejores ofertas en nuestra colección premium</p>
+                    <a href="#ofertas-especiales" class="btn btn-hero" data-i18n="hero_ofertas_btn">Ver Ofertas</a>
                 </div>
             </div>
         </div>
@@ -452,8 +452,8 @@
     <section class="products-section" id="ofertas-especiales">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Ofertas Especiales</h2>
-                <p class="section-subtitle">Descuentos exclusivos en productos seleccionados</p>
+                <h2 class="section-title" data-i18n="ofertas_titulo">Ofertas Especiales</h2>
+                <p class="section-subtitle" data-i18n="section_subtitle_desc">Descuentos exclusivos en productos seleccionados</p>
             </div>
 
             <!-- Filtros -->
@@ -470,23 +470,23 @@
                     <label for="typeFilter" data-i18n="filtro_tipo">Tipo:</label>
                     <select id="typeFilter" class="filter-select">
                         <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="botines">Botines</option>
-                        <option value="zapatos">Zapatos</option>
-                        <option value="sandalias">Sandalias</option>
+                        <option value="botines" data-i18n="botines">Botines</option>
+                        <option value="zapatos" data-i18n="zapatos">Zapatos</option>
+                        <option value="sandalias" data-i18n="sandalias">Sandalias</option>
                     </select>
                 </div>
 
                 <div class="filter-group">
-                    <label for="discountFilter">Descuento:</label>
+                    <label for="discountFilter" data-i18n="filtro_descuento">Descuento:</label>
                     <select id="discountFilter" class="filter-select">
-                        <option value="all">Todos</option>
-                        <option value="20">20% o más</option>
-                        <option value="30">30% o más</option>
-                        <option value="50">50% o más</option>
+                        <option value="all" data-i18n="filtro_todos">Todos</option>
+                        <option value="20" data-i18n="filtro_20">20% o más</option>
+                        <option value="30" data-i18n="filtro_30">30% o más</option>
+                        <option value="50" data-i18n="filtro_50">50% o más</option>
                     </select>
                 </div>
 
-                <button class="btn btn-secondary" id="clearFilters">Limpiar Filtros</button>
+                <button class="btn btn-secondary" id="clearFilters" data-i18n="filtro_limpiar">Limpiar Filtros</button>
             </div>
 
             <!-- Products Grid -->
@@ -499,10 +499,18 @@
     <!-- Brand Statement -->
     <section class="brand-statement">
         <div class="container">
-            <p class="statement-text">
-                Aprovecha nuestras ofertas exclusivas sin comprometer<br>
-                <strong>la calidad y elegancia que nos caracteriza.</strong><br>
-                Cada producto en oferta mantiene nuestro estándar de excelencia.
+            <p class="statement-text">  
+                <span data-i18n="oferta_descripcion">
+                    Aprovecha nuestras ofertas exclusivas sin comprometer
+                </span>
+                <br>
+                <strong data-i18n="oferta_resaltado">
+                    la calidad y elegancia que nos caracteriza.
+                </strong>
+                <br>
+                <span data-i18n="oferta_garantia">
+                    Cada producto en oferta mantiene nuestro estándar de excelencia.
+                </span>
             </p>
         </div>
     </section>
@@ -523,7 +531,7 @@
                 </div>
 
                 <div class="footer-section">
-                    <h4>Comprar</h4>
+                    <h4 data-i18n="comprar_footer">Comprar</h4>
                     <ul>
                         <li><a href="/mujer" data-i18n="nav_mujer">Mujer</a></li>
                         <li><a href="/ofertas" data-i18n="nav_ofertas">Ofertas</a></li>
@@ -535,17 +543,17 @@
                     <ul>
                         <li><a href="#" data-i18n="footer_envios">Envíos</a></li>
                         <li><a href="#" data-i18n="footer_devoluciones">Devoluciones</a></li>
-                        <li><a href="#">Guía de Tallas</a></li>
+                        <li><a href="#" data-i18n="footer_guia">Guía de Tallas</a></li>
                         <li><a href="#" data-i18n="footer_contacto">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Newsletter</h4>
-                    <p>Suscríbete para recibir ofertas exclusivas</p>
+                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary">Suscribirse</button>
+                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
                     </div>
                 </div>
             </div>
@@ -585,14 +593,14 @@
             </button>
             
             <div class="login-header">
-                <h2 style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
-                <p style="color: var(--text-light); font-size: 0.95rem;">Inicia sesión para continuar</p>
+                <h2 data-i18n="login_header" style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
+                <p style="color: var(--text-light); font-size: 0.95rem;" data-i18n="login_header_p">Inicia sesión para continuar</p>
             </div>
 
             <div class="login-tabs">
                 <button class="login-tab active" data-tab="user">
                     <i class="fas fa-user"></i>
-                    <span>Usuario</span>
+                    <span data-i18n="login_usuario">Usuario</span>
                 </button>
                 <button class="login-tab" data-tab="admin">
                     <i class="fas fa-crown"></i>
@@ -602,7 +610,7 @@
 
             <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">
+                    <label for="loginEmail" data-i18n="login_email">
                         <i class="fas fa-envelope"></i>
                         Email
                     </label>
@@ -610,7 +618,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="loginPassword">
+                    <label for="loginPassword" data-i18n="login_password">
                         <i class="fas fa-lock"></i>
                         Contraseña
                     </label>
@@ -620,12 +628,12 @@
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="rememberMe">
-                        <span>Recordarme</span>
+                        <span data-i18n="login_recordarme">Recordarme</span>
                     </label>
-                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                    <a href="#" class="forgot-link" data-i18n="login_olvidaste">¿Olvidaste tu contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block login-submit">
+                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="login_iniciar">
                     Iniciar Sesión
                 </button>
 
@@ -645,7 +653,10 @@
                 </div>
 
                 <p class="login-footer">
-                    ¿No tienes cuenta? <a href="#" class="register-link">Regístrate aquí</a>
+                    <span data-i18n="login_footer">
+                        ¿No tienes cuenta?
+                    </span>
+                    <a href="#" class="register-link" data-i18n="login_footer_registro"> Regístrate aquí</a>
                 </p>
             </form>
         </div>

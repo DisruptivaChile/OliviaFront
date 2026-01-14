@@ -411,9 +411,9 @@
                     <label for="typeFilter" data-i18n="filtro_tipo">Tipo:</label>
                     <select id="typeFilter" class="filter-select">
                         <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="botines">Botines</option>
-                        <option value="zapatos">Zapatos</option>
-                        <option value="sandalias">Sandalias</option>
+                        <option value="botines" data-i18n="botines">Botines</option>
+                        <option value="zapatos" data-i18n="zapatos">Zapatos</option>
+                        <option value="sandalias" data-i18n="sandalias">Sandalias</option>
                     </select>
                 </div>
 
@@ -454,7 +454,7 @@
                 </div>
 
                 <div class="footer-section">
-                    <h4>Comprar</h4>
+                    <h4 data-i18n="comprar_footer">Comprar</h4>
                     <ul>
                         <li><a href="/mujer" data-i18n="nav_mujer">Mujer</a></li>
                         <li><a href="/ofertas" data-i18n="nav_ofertas">Ofertas</a></li>
@@ -466,17 +466,17 @@
                     <ul>
                         <li><a href="#" data-i18n="footer_envios">Envíos</a></li>
                         <li><a href="#" data-i18n="footer_devoluciones">Devoluciones</a></li>
-                        <li><a href="#">Guía de Tallas</a></li>
+                        <li><a href="#" data-i18n="footer_guia">Guía de Tallas</a></li>
                         <li><a href="#" data-i18n="footer_contacto">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Newsletter</h4>
-                    <p>Suscríbete para recibir ofertas exclusivas</p>
+                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary">Suscribirse</button>
+                        <button data-i18n="footer_subscribe" class="btn btn-primary">Suscribirse</button>
                     </div>
                 </div>
             </div>
@@ -491,7 +491,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Carrito de Compras</h2>
+                <h2 data-i18n="carrito_titulo">Carrito de Compras</h2>
                 <button class="close-btn" id="closeCart">
                     <i class="fas fa-times"></i>
                 </button>
@@ -504,7 +504,7 @@
                     <span>Total:</span>
                     <span class="total-amount" id="totalAmount">€0.00</span>
                 </div>
-                <button class="btn btn-primary btn-block">Proceder al Pago</button>
+                <button class="btn btn-primary btn-block" data-i18n="carrito_finalizar">Proceder al Pago</button>
             </div>
         </div>
     </div>
@@ -518,14 +518,14 @@
             </button>
             
             <div class="login-header">
-                <h2 style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
-                <p style="color: var(--text-light); font-size: 0.95rem;">Inicia sesión para continuar</p>
+                <h2 data-i18n="login_header" style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
+                <p style="color: var(--text-light); font-size: 0.95rem;" data-i18n="login_header_p">Inicia sesión para continuar</p>
             </div>
 
             <div class="login-tabs">
                 <button class="login-tab active" data-tab="user">
                     <i class="fas fa-user"></i>
-                    <span>Usuario</span>
+                    <span data-i18n="login_usuario">Usuario</span>
                 </button>
                 <button class="login-tab" data-tab="admin">
                     <i class="fas fa-crown"></i>
@@ -535,7 +535,7 @@
 
             <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">
+                    <label for="loginEmail" data-i18n="login_email">
                         <i class="fas fa-envelope"></i>
                         Email
                     </label>
@@ -543,7 +543,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="loginPassword">
+                    <label for="loginPassword" data-i18n="login_password">
                         <i class="fas fa-lock"></i>
                         Contraseña
                     </label>
@@ -553,12 +553,12 @@
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="rememberMe">
-                        <span>Recordarme</span>
+                        <span data-i18n="login_recordarme">Recordarme</span>
                     </label>
-                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                    <a href="#" class="forgot-link" data-i18n="login_olvidaste">¿Olvidaste tu contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block login-submit">
+                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="login_iniciar">
                     Iniciar Sesión
                 </button>
 
@@ -578,7 +578,10 @@
                 </div>
 
                 <p class="login-footer">
-                    ¿No tienes cuenta? <a href="#" class="register-link">Regístrate aquí</a>
+                    <span data-i18n="login_footer">
+                        ¿No tienes cuenta?
+                    </span>
+                    <a href="#" class="register-link" data-i18n="login_footer_registro"> Regístrate aquí</a>
                 </p>
             </form>
         </div>
