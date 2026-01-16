@@ -107,7 +107,33 @@
             z-index: 1;
         }
 
+        /* Estilos de las flechas */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
 
+        .slider-arrow:hover {
+            background: #6B2D5C;
+            color: white;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
 
         .hero-slide .hero-content {
             opacity: 0;
@@ -515,7 +541,8 @@
             </div>
         </div>
 
-
+        <button class="slider-arrow prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
     </section>
 
     <!-- Editorial Split Section -->
@@ -816,11 +843,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('.hero-slide');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
             let currentSlide = 0;
+            let slideInterval;
 
             function showSlide(index) {
+                // Quitar clase activa de todos
                 slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Ajustar índice circular
                 currentSlide = (index + slides.length) % slides.length;
+                
+                // Activar slide actual
                 slides[currentSlide].classList.add('active');
             }
 
@@ -828,8 +863,32 @@
                 showSlide(currentSlide + 1);
             }
 
-            // Auto-deslizamiento cada 5 segundos
-            setInterval(nextSlide, 5000);
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // Eventos de flechas
+            if(nextBtn) nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
+            });
+
+            if(prevBtn) prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+
+            // Auto-reproducción (5 segundos)
+            function startTimer() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetTimer() {
+                clearInterval(slideInterval);
+                startTimer();
+            }
+
+            startTimer();
         });
 
         // Login Modal
