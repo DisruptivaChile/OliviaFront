@@ -550,19 +550,7 @@
             color: #000000 !important;
         }
 
-        /* Flechas */
-        .cat-arrow {
-            position: absolute;
-            top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.1);
-            color: white; border: none;
-            width: 50px; height: 50px; border-radius: 50%;
-            cursor: pointer; z-index: 20;
-            transition: all 0.3s;
-        }
-        .cat-arrow:hover { background: #D16C8A; color: black; }
-        .prev { left: 30px; }
-        .next { right: 30px; }
+
 
     </style>
 </head>
@@ -629,7 +617,7 @@
     </section>
 
     <!-- Categorías Mujer -->
-    <section class="categories-section" style="padding: 0; background: var(--bg-light); position: relative; overflow: hidden; height: 80vh; margin: 0;">
+    <section class="categories-section" style="padding: 0; background: var(--bg-light); position: relative; overflow: visible; height: 80vh; margin: 0;">
         <div class="category-slider-container" id="categorySlider">
             
             <div class="cat-slide active">
@@ -666,8 +654,7 @@
             </div>
         </div>
 
-        <button class="cat-arrow prev" id="prevCat"><i class="fas fa-chevron-left"></i></button>
-        <button class="cat-arrow next" id="nextCat"><i class="fas fa-chevron-right"></i></button>
+
     </section>
 
     <!-- Productos Destacados -->
@@ -851,48 +838,92 @@
         document.addEventListener('DOMContentLoaded', () => {
             const categoryContainer = document.querySelector('#categorySlider');
             const catSlides = categoryContainer.querySelectorAll('.cat-slide');
-            const prevCatBtn = document.getElementById('prevCat');
-            const nextCatBtn = document.getElementById('nextCat');
             
             let currentCatIndex = 0;
-            let catInterval;
+            let isTransitioning = false;
+            let autoPlayInterval;
+            const AUTO_PLAY_TIME = 5000; // 5 segundos entre cada cambio
 
+            // --- FUNCIÓN NÚCLEO ---
             function showCatSlide(index) {
                 catSlides.forEach(slide => slide.classList.remove('active'));
                 currentCatIndex = (index + catSlides.length) % catSlides.length;
                 catSlides[currentCatIndex].classList.add('active');
             }
 
-            function nextCatSlide() {
-                showCatSlide(currentCatIndex + 1);
+            // --- LÓGICA DE TIEMPO (AUTO-PLAY) ---
+            function startAutoPlay() {
+                stopAutoPlay(); // Limpiamos cualquier intervalo previo
+                autoPlayInterval = setInterval(() => {
+                    showCatSlide(currentCatIndex + 1);
+                }, AUTO_PLAY_TIME);
             }
 
-            function prevCatSlide() {
-                showCatSlide(currentCatIndex - 1);
+            function stopAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
             }
 
-            // Eventos
-            nextCatBtn.addEventListener('click', () => {
-                nextCatSlide();
-                resetCatTimer();
-            });
-
-            prevCatBtn.addEventListener('click', () => {
-                prevCatSlide();
-                resetCatTimer();
-            });
-
-            // Auto-reproducción
-            function startCatTimer() {
-                catInterval = setInterval(nextCatSlide, 5000);
+            // Reinicia el contador cuando el usuario interactúa
+            function resetTimer() {
+                stopAutoPlay();
+                startAutoPlay();
             }
 
-            function resetCatTimer() {
-                clearInterval(catInterval);
-                startCatTimer();
+            // --- GESTIÓN DE RATÓN / TRACKPAD (Wheel) ---
+            categoryContainer.addEventListener('wheel', (e) => {
+                // Si el scroll es vertical (deltaY mayor a deltaX), NO hacer nada.
+                // Esto permite que el usuario baje la página normalmente.
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    return; 
+                }
+
+                // Si el scroll es horizontal, controlamos el slider
+                e.preventDefault();
+                
+                if (isTransitioning) return;
+                
+                if (Math.abs(e.deltaX) > 30) {
+                    if (e.deltaX > 0) showCatSlide(currentCatIndex + 1);
+                    else showCatSlide(currentCatIndex - 1);
+                    
+                    resetTimer(); // El usuario tomó el control, reiniciamos tiempo
+                    triggerCooldown();
+                }
+            }, { passive: false });
+
+            function triggerCooldown() {
+                isTransitioning = true;
+                setTimeout(() => { isTransitioning = false; }, 800);
             }
 
-            startCatTimer();
+            // --- TOUCH EVENTS (Móviles) ---
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            categoryContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+                stopAutoPlay(); // Pausamos mientras el usuario toca
+            }, { passive: true });
+
+            categoryContainer.addEventListener('touchend', (e) => {
+                let touchEndX = e.changedTouches[0].screenX;
+                let touchEndY = e.changedTouches[0].screenY;
+                
+                const diffX = touchStartX - touchEndX;
+                const diffY = touchStartY - touchEndY;
+
+                // Solo si el movimiento fue predominantemente horizontal
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                    if (diffX > 0) showCatSlide(currentCatIndex + 1);
+                    else showCatSlide(currentCatIndex - 1);
+                }
+                
+                startAutoPlay(); // Reanudamos el ciclo automático
+            }, { passive: true });
+
+            // --- INICIO INICIAL ---
+            startAutoPlay();
         });
 
         document.addEventListener('DOMContentLoaded', () => {

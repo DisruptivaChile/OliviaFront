@@ -17,7 +17,7 @@ app.use('/data', express.static(path.join(__dirname, 'data')));
 
 // Rutas específicas
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend/pages/index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/productos', (req, res) => {
