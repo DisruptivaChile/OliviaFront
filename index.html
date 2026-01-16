@@ -5,13 +5,440 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olivia Merino - Tienda de Zapatos Premium</title>
     
-    <!-- Fuentes de Marca: Adelia + Poppins -->
+    <!-- Fuentes de Marca: Adelia + Poppins + Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="/styles/styles.css?v=7">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ESTILOS CRÍTICOS NAVBAR - APLICACIÓN INMEDIATA */
+        .header {
+            padding: 1rem 0 3rem 0 !important;
+        }
+        .header-content {
+            align-items: start !important;
+        }
+        .logo {
+            margin-top: 2.5rem !important;
+        }
+        .header.scrolled {
+            padding: 0.75rem 0 !important;
+        }
+        .header.scrolled .header-content {
+            align-items: center !important;
+        }
+        .header.scrolled .logo {
+            margin-top: 0 !important;
+        }
+        /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
+        .icon-btn:hover i {
+            color: #6B2D5C !important;
+        }
+
+        /* Regla específica para cuando el header tiene la clase 'scrolled' */
+        .header.scrolled .icon-btn i {
+            color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .icon-btn:hover i {
+            color: #6B2D5C !important;
+        }
+
+        /* Si el contador del carrito también deja de verse bien, añade esto: */
+        .header.scrolled .cart-count {
+            background: #6B2D5C;
+            color: white;
+        }
+        .promo-banner {
+            display: none !important;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: #6B2D5C !important;
+        }
+        .header.scrolled .nav-link:hover,
+        .header.scrolled .nav-link.active {
+            color: #6B2D5C !important;
+        }
+        /* Hero - Logo más grande y textos beige */
+        .header:not(.scrolled) .logo h1 {
+            font-size: 3.125rem !important;
+        }
+        .hero-label,
+        .hero-title,
+        .hero-subtitle {
+            color: #E2D6C3 !important;
+        }
+        .hero-title,
+        .editorial-content h2 {
+            font-family: 'Cormorant Garamond', serif !important;
+            font-weight: 500 !important;
+            color: #E2D6C3 !important;
+        }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 100vh; /* Ajusta según necesites */
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+
+
+        .hero-slide .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .hero-slide.active .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s; /* Espera un poco a que la imagen cargue */
+        }
+
+        /* Animación individual para elementos internos para un efecto escalonado */
+        .hero-slide.active .hero-label {
+            transition-delay: 0.4s;
+        }
+        .hero-slide.active .hero-title {
+            transition-delay: 0.6s;
+        }
+
+        .slide-content .slide-label,
+        .slide-content h2 {
+            font-family: 'Cormorant Garamond', serif !important;
+            color: #E2D6C3 !important;
+        }
+        .slide-content p {
+            font-family: 'Poppins', sans-serif !important;
+            color: #E2D6C3 !important;
+        }
+        .footer-section h3,
+        .footer-section p {
+            color: white !important;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-right: 1rem;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 2px solid transparent;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            color: white !important;
+        }
+        /* Color cuando se hace scroll */
+        .header.scrolled .lang-btn {
+            color: #2a2a2a !important; /* Color oscuro/negro */
+        }
+
+        /* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
+        .header.scrolled .lang-btn:hover,
+        .header.scrolled .lang-btn.active {
+            border-color: #6B2D5C !important;
+            color: #6B2D5C !important;
+        }
+        .lang-btn:hover {
+            border-color: #6B2D5C;
+        }
+        .lang-btn.active {
+            border-color: #6B2D5C;
+            background: rgba(107, 45, 92, 0.1);
+        }
+        .flag-icon {
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        /* Login Modal */
+        .login-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10000;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .login-modal.active {
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .login-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .login-modal.active .login-modal-overlay {
+            opacity: 1;
+        }
+        .login-modal-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 450px;
+            height: 100vh;
+            background: var(--bg-light);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            padding: 3rem 2.5rem;
+        }
+        .login-modal.active .login-modal-content {
+            transform: translateX(0);
+        }
+        .login-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+        .login-close-btn:hover {
+            color: #6B2D5C;
+        }
+        .login-header {
+            margin-bottom: 2rem;
+        }
+        .login-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(42, 42, 42, 0.05);
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+        .login-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .login-tab:hover {
+            background: rgba(107, 45, 92, 0.1);
+            color: var(--text-main);
+        }
+        .login-tab.active {
+            background: white;
+            color: #6B2D5C;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .login-tab i {
+            font-size: 1.1rem;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+        .form-group label i {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid rgba(42, 42, 42, 0.1);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #6B2D5C;
+            background: white;
+        }
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #6B2D5C;
+        }
+        .forgot-link {
+            color: #6B2D5C;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        .forgot-link:hover {
+            opacity: 0.7;
+        }
+        .login-submit {
+            background: #6B2D5C !important;
+            border: none !important;
+            padding: 1rem !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            margin-top: 0.5rem;
+        }
+        .login-submit:hover {
+            background: #5a2450 !important;
+        }
+        .login-divider {
+            position: relative;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .login-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(42, 42, 42, 0.1);
+        }
+        .login-divider span {
+            position: relative;
+            display: inline-block;
+            padding: 0 1rem;
+            background: var(--bg-light);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(42, 42, 42, 0.1);
+            border-radius: 8px;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-social:hover {
+            border-color: rgba(42, 42, 42, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn-google i {
+            color: #DB4437;
+        }
+        .btn-facebook i {
+            color: #1877F2;
+        }
+        .login-footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-top: 1rem;
+        }
+        .register-link {
+            color: #6B2D5C;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        .register-link:hover {
+            opacity: 0.7;
+        }
+        .editorial-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .login-modal-content {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -21,11 +448,10 @@
                 <!-- Navigation Left -->
                 <nav class="nav" id="mainNav">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link active">Inicio</a></li>
-                        <li><a href="productos.html" class="nav-link">Productos</a></li>
-                        <li><a href="#" class="nav-link">Mujer</a></li>
-                        <li><a href="#" class="nav-link">Hombre</a></li>
-                        <li><a href="#" class="nav-link">Ofertas</a></li>
+                        <li><a href="/" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
+                        <li><a href="/productos" class="nav-link" data-i18n="nav_productos">Productos</a></li>
+                        <li><a href="/mujer" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
+                        <li><a href="/ofertas" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </nav>
 
@@ -36,14 +462,19 @@
                 
                 <!-- Header Actions Right -->
                 <div class="header-actions">
-                    <button class="icon-btn search-btn" id="searchBtn">
-                        <i class="fas fa-search"></i>
-                    </button>
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="es" title="Español">
+                            <span class="flag-icon">🇪🇸</span>
+                        </button>
+                        <button class="lang-btn" data-lang="en" title="English">
+                            <span class="flag-icon">🇺🇸</span>
+                        </button>
+                    </div>
                     <button class="icon-btn" id="cartBtn">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count" id="cartCount">0</span>
                     </button>
-                    <button class="icon-btn">
+                    <button class="icon-btn" id="userBtn">
                         <i class="fas fa-user"></i>
                     </button>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -62,49 +493,58 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
-            <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('assets/images/hero/slide1.png'); background-size: cover; background-position: center;">
+            <div class="hero-slide active"> <div class="hero-bg" style="background-image: url('/assets/images/hero/newMainImg.jpg'); background-size: cover; background-position: center;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
-                    <span class="hero-label">Nueva Colección</span>
-                    <h2 class="hero-title">Primavera/Verano 2025</h2>
-                    <p class="hero-subtitle">Descubre el estilo que define tu paso</p>
-                    <a href="#products" class="btn btn-hero">Explorar Colección</a>
+                    <span class="hero-label" data-i18n="hero_nueva_coleccion">Nueva Colección</span>
+                    <h2 class="hero-title" data-i18n="hero_primavera_verano">Primavera/Verano</h2>
+                    <a href="/productos" class="btn btn-hero" data-i18n="hero_btn_explorar">Explorar Colección</a>
                 </div>
             </div>
             
             <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('assets/images/hero/slide2.png'); background-size: cover; background-position: center;">
+                <div class="hero-bg" style="background-image: url('/assets/images/editorial/mujerMain.png'); background-size: 140%; background-position: center 60%;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
-                    <span class="hero-label">Edición Limitada</span>
-                    <h2 class="hero-title">Diseño Exclusivo</h2>
-                    <p class="hero-subtitle">Calidad premium en cada detalle</p>
-                    <a href="#products" class="btn btn-hero">Ver Ahora</a>
+                    <span class="hero-label" data-i18n="hero_edicion_limitada">Edición Limitada</span>
+                    <h2 class="hero-title" data-i18n="hero_diseno_exclusivo">Diseño Exclusivo</h2>
+                    <a href="/productos" class="btn btn-hero" data-i18n="hero_btn_ver">Ver Ahora</a>
                 </div>
             </div>
         </div>
+
+
     </section>
 
     <!-- Editorial Split Section -->
     <section class="editorial-split">
-        <a href="#" class="editorial-panel" data-category="hombre">
-            <div class="editorial-image" style="background-image: url('assets/images/editorial/hombre.jpeg'); background-size: cover; background-position: center;">
+        <a href="/productos" class="editorial-panel" data-category="productos">
+            <div class="editorial-media">
+                <video
+                    class="editorial-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                >
+                    <source src="/assets/images/editorial/productosVideo.mp4" type="video/mp4">
+                </video>
                 <div class="editorial-overlay"></div>
             </div>
+
             <div class="editorial-content">
-                <h2>Hombre</h2>
+                <h2 data-i18n="slide_productos">Productos</h2>
             </div>
         </a>
         
-        <a href="#" class="editorial-panel" data-category="mujer">
-            <div class="editorial-image" style="background-image: url('assets/images/editorial/mujer.jpeg'); background-size: cover; background-position: center;">
+        <a href="/ofertas" class="editorial-panel" data-category="ofertas">
+            <div class="editorial-image" style="background-image: url('/assets/images/editorial/ofertasMain.png'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content">
-                <h2>Mujer</h2>
+                <h2 data-i18n="slide_ofertas">Ofertas</h2>
             </div>
         </a>
     </section>
@@ -112,27 +552,15 @@
     <!-- Editorial Horizontal Scroll -->
     <section class="editorial-scroll">
         <div class="scroll-wrapper">
-            <a href="#products" class="scroll-slide" data-category="mujer">
+            <a href="/mujer" class="scroll-slide" data-category="mujer">
                 <div class="slide-image">
-                    <div class="slide-bg" style="background-image: url('assets/images/editorial/slide-mujer.png'); background-size: cover; background-position: center;"></div>
+                    <div class="slide-bg" style="background-image: url('/assets/images/editorial/MujerIndex.png'); background-size: cover; background-position: center;"></div>
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
-                    <span class="slide-label">Colección</span>
-                    <h2>Mujer</h2>
-                    <p>Elegancia atemporal para cada ocasión</p>
-                </div>
-            </a>
-            
-            <a href="#products" class="scroll-slide" data-category="hombre">
-                <div class="slide-image">
-                    <div class="slide-bg" style="background-image: url('assets/images/editorial/slide-hombre.png'); background-size: cover; background-position: center;"></div>
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide-content">
-                    <span class="slide-label">Colección</span>
-                    <h2>Hombre</h2>
-                    <p>Estilo refinado y sofisticado</p>
+                    <span class="slide-label" data-i18n="slide_coleccion">Colección</span>
+                    <h2 data-i18n="slide_mujer">Mujer</h2>
+                    <p data-i18n="slide_elegancia_mujer">Elegancia atemporal para cada ocasión</p>
                 </div>
             </a>
         </div>
@@ -141,16 +569,21 @@
     <!-- Social Media Section -->
     <section class="editorial-scroll social-scroll">
         <div class="scroll-wrapper">
-            <a href="https://instagram.com" target="_blank" class="scroll-slide social-slide">
-                <div class="slide-image">
-                    <div class="slide-bg" style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);"></div>
-                    <div class="slide-overlay"></div>
+            <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="scroll-slide social-slide instagram-slide">
+                <div class="instagram-bg-slideshow">
+                    <div class="instagram-bg-slide active" style="background-image: url('/assets/images/editorial/mujerMain.png');"></div>
+                    <div class="instagram-bg-slide" style="background-image: url('/assets/images/editorial/mujerHero.jpg');"></div>
+                    <div class="instagram-bg-overlay"></div>
                 </div>
-                <div class="slide-content">
-                    <i class="fab fa-instagram" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <span class="slide-label">Síguenos en</span>
-                    <h2>Instagram</h2>
-                    <p>Descubre nuestro mundo de estilo y tendencias</p>
+                <div class="instagram-content">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">@olivia_merino_</h2>
+                    <p data-i18n="slide_instagram_descubre" style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Descubre nuestra colección y estilo de vida</p>
+                    <div class="instagram-cta">
+                        <span data-i18n="slide_instagram_siguenos" style="font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: #E2D6C3; font-weight: 500;">Siguenos en Instagram</span>
+                    </div>
                 </div>
             </a>
             
@@ -161,9 +594,9 @@
                 </div>
                 <div class="slide-content">
                     <i class="fab fa-facebook-f" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <span class="slide-label">Únete a</span>
-                    <h2>Facebook</h2>
-                    <p>Conecta con nuestra comunidad</p>
+                    <span data-i18n="facebook_une" class="slide-label">Únete a</span>
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">Facebook</h2>
+                    <p data-i18n="facebook_comunidad" style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Conecta con nuestra comunidad</p>
                 </div>
             </a>
         </div>
@@ -172,39 +605,39 @@
     <!-- Our Services Section -->
     <section class="services-section">
         <div class="container">
-            <h2 class="services-title">NUESTRA HISTORIA</h2>
+            <h2 class="services-title" data-i18n="historia_titulo">NUESTRA HISTORIA</h2>
             
             <div class="services-grid">
                 <article class="service-card">
                     <div class="service-image">
-                        <div class="service-image-bg" style="background-image: url('assets/images/services/ideas.jpeg'); background-size: cover; background-position: center;"></div>
+                        <div class="service-image-bg" style="background-image: url('/assets/images/services/ideas.jpeg'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-name">EL ORIGEN DE LAS IDEAS</h3>
-                        <p class="service-description">Cada diseño nace de la inspiración cotidiana, viajes y momentos que capturan la esencia de la elegancia atemporal.</p>
-                        <a href="#" class="service-link">CONOCE MÁS</a>
+                        <h3 class="service-name" data-i18n="historia_origen">EL ORIGEN DE LAS IDEAS</h3>
+                        <p class="service-description" data-i18n="historia_origen_desc">Cada diseño nace de la inspiración cotidiana, viajes y momentos que capturan la esencia de la elegancia atemporal.</p>
+                        <a href="#" class="service-link" data-i18n="historia_conoce">CONOCE MÁS</a>
                     </div>
                 </article>
                 
                 <article class="service-card">
                     <div class="service-image">
-                        <div class="service-image-bg" style="background-image: url('assets/images/services/historia.png'); background-size: cover; background-position: center;"></div>
+                        <div class="service-image-bg" style="background-image: url('/assets/images/services/historia.png'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-name">UNA CANCIÓN, UNA HISTORIA</h3>
-                        <p class="service-description">Detrás de cada zapato hay una melodía que inspiró su creación, convirtiendo cada par en una obra de arte única.</p>
-                        <a href="#" class="service-link">CONOCE MÁS</a>
+                        <h3 class="service-name" data-i18n="historia_cancion">UNA CANCIÓN, UNA HISTORIA</h3>
+                        <p class="service-description" data-i18n="historia_cancion_desc">Detrás de cada zapato hay una melodía que inspiró su creación, convirtiendo cada par en una obra de arte única.</p>
+                        <a href="#" class="service-link" data-i18n="historia_conoce">CONOCE MÁS</a>
                     </div>
                 </article>
                 
                 <article class="service-card">
                     <div class="service-image">
-                        <div class="service-image-bg" style="background-image: url('assets/images/services/marca.png'); background-size: cover; background-position: center;"></div>
+                        <div class="service-image-bg" style="background-image: url('/assets/images/services/marca.png'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-name">NACE OLIVIA MERINO</h3>
-                        <p class="service-description">La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.</p>
-                        <a href="#" class="service-link">CONOCE MÁS</a>
+                        <h3 class="service-name" data-i18n="historia_nace">NACE OLIVIA MERINO</h3>
+                        <p class="service-description" data-i18n="historia_nace_desc">La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.</p>
+                        <a href="#" class="service-link" data-i18n="historia_conoce">CONOCE MÁS</a>
                     </div>
                 </article>
             </div>
@@ -215,10 +648,16 @@
     <section class="brand-statement">
         <div class="container">
             <p class="statement-text">
-                Olivia Merino representa calidad, elegancia y estilo único<br>
-                en cada producto. <strong>Cada pieza es cuidadosamente diseñada<br>
-                para reflejar la pasión por la perfección y el detalle,</strong><br>
-                creando experiencias que trascienden el tiempo.
+                <span data-i18n="marca_descripcion">
+                    Olivia Merino representa calidad, elegancia y estilo único en cada producto.
+                </span>
+                <br>
+                <strong data-i18n="marca_diseno">
+                    Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle,
+                </strong>
+                <span data-i18n="marca_experiencia">
+                    creando experiencias que trascienden el tiempo.
+                </span>
             </p>
         </div>
     </section>
@@ -228,8 +667,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>OLIVIA MERINO</h3>
-                    <p>Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
+                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -239,37 +678,35 @@
                 </div>
 
                 <div class="footer-section">
-                    <h4>Comprar</h4>
+                    <h4 data-i18n="comprar_footer">Comprar</h4>
                     <ul>
-                        <li><a href="#">Mujer</a></li>
-                        <li><a href="#">Hombre</a></li>
-                        <li><a href="#">Niños</a></li>
-                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="/mujer" data-i18n="nav_mujer">Mujer</a></li>
+                        <li><a href="/ofertas" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Ayuda</h4>
+                    <h4 data-i18n="footer_ayuda">Ayuda</h4>
                     <ul>
-                        <li><a href="#">Envíos</a></li>
-                        <li><a href="#">Devoluciones</a></li>
-                        <li><a href="#">Guía de Tallas</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#" data-i18n="footer_envios">Envíos</a></li>
+                        <li><a href="#" data-i18n="footer_devoluciones">Devoluciones</a></li>
+                        <li><a href="#" data-i18n="footer_guia">Guía de Tallas</a></li>
+                        <li><a href="#" data-i18n="footer_contacto">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Newsletter</h4>
-                    <p>Suscríbete para recibir ofertas exclusivas</p>
+                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary">Suscribirse</button>
+                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+                <p data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -278,7 +715,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Carrito de Compras</h2>
+                <h2 data-i18n="carrito_titulo">Carrito de Compras</h2>
                 <button class="close-btn" id="closeCart">
                     <i class="fas fa-times"></i>
                 </button>
@@ -291,11 +728,173 @@
                     <span>Total:</span>
                     <span class="total-amount" id="totalAmount">€0.00</span>
                 </div>
-                <button class="btn btn-primary btn-block">Proceder al Pago</button>
+                <button class="btn btn-primary btn-block" data-i18n="carrito_finalizar">Proceder al Pago</button>
             </div>
         </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <!-- Login Modal Slide -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-modal-overlay" id="loginModalOverlay"></div>
+        <div class="login-modal-content">
+            <button class="login-close-btn" id="closeLogin">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="login-header">
+                <h2 data-i18n="login_header" style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
+                <p style="color: var(--text-light); font-size: 0.95rem;" data-i18n="login_header_p">Inicia sesión para continuar</p>
+            </div>
+
+            <div class="login-tabs">
+                <button class="login-tab active" data-tab="user">
+                    <i class="fas fa-user"></i>
+                    <span data-i18n="login_usuario">Usuario</span>
+                </button>
+                <button class="login-tab" data-tab="admin">
+                    <i class="fas fa-crown"></i>
+                    <span>Admin</span>
+                </button>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" data-i18n="login_email">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="tu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword" data-i18n="login_password">
+                        <i class="fas fa-lock"></i>
+                        Contraseña
+                    </label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span data-i18n="login_recordarme">Recordarme</span>
+                    </label>
+                    <a href="#" class="forgot-link" data-i18n="login_olvidaste">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="login_iniciar">
+                    Iniciar Sesión
+                </button>
+
+                <div class="login-divider">
+                    <span>o</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="btn-social btn-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+
+                <p class="login-footer">
+                    <span data-i18n="login_footer">
+                        ¿No tienes cuenta?
+                    </span>
+                    <a href="#" class="register-link" data-i18n="login_footer_registro"> Regístrate aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="/scripts/translations.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                currentSlide = (index + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            // Auto-deslizamiento cada 5 segundos
+            setInterval(nextSlide, 5000);
+        });
+
+        // Login Modal
+        const loginModal = document.getElementById('loginModal');
+        const userBtn = document.getElementById('userBtn');
+        const closeLogin = document.getElementById('closeLogin');
+        const loginModalOverlay = document.getElementById('loginModalOverlay');
+        const loginTabs = document.querySelectorAll('.login-tab');
+        const loginForm = document.getElementById('loginForm');
+
+        // Abrir modal
+        if (userBtn) {
+            userBtn.addEventListener('click', () => {
+                loginModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // Cerrar modal
+        function closeLoginModal() {
+            loginModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (closeLogin) closeLogin.addEventListener('click', closeLoginModal);
+        if (loginModalOverlay) loginModalOverlay.addEventListener('click', closeLoginModal);
+
+        // Cambiar tabs
+        loginTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                loginTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const tabType = tab.dataset.tab;
+                if (tabType === 'admin') {
+                    document.getElementById('loginEmail').placeholder = 'admin@olivia.com';
+                } else {
+                    document.getElementById('loginEmail').placeholder = 'tu@email.com';
+                }
+            });
+        });
+
+        // Submit form
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                const activeTab = document.querySelector('.login-tab.active').dataset.tab;
+                
+                if (activeTab === 'admin') {
+                    if (email === 'admin@olivia.com' || email === 'olivia') {
+                        alert('Bienvenido Admin');
+                        closeLoginModal();
+                    } else {
+                        alert('Credenciales de admin incorrectas');
+                    }
+                } else {
+                    alert(`Login usuario: ${email}`);
+                    closeLoginModal();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
+
