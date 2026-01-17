@@ -64,6 +64,10 @@
             transition: color 0.3s ease;
         }
 
+        .header.scrolled .mobile-menu-btn {
+            color: #2a2a2a !important; /* Color oscuro/negro */
+        }
+
         .header.scrolled .icon-btn:hover i {
             color: #D16C8A !important;
         }
@@ -553,7 +557,138 @@
             color: #000000 !important;
         }
 
+        @media (max-width: 992px) {
+            /* Ajuste de Logo y Header */
+            .header:not(.scrolled) .logo h1 {
+                font-size: 2rem !important;
+            }
+            
+            .header-content {
+                padding: 0 1rem;
+            }
 
+            /* 3. Editorial Split: De 2 columnas a 1 columna */
+            .editorial-split {
+                display: flex;
+                flex-direction: column;
+                height: auto !important; /* Permitir que crezca verticalmente */
+                flex-direction: column;
+                height: auto;
+            }
+
+            .editorial-panel {
+                height: 50vh; /* Cada panel ocupa media pantalla */
+                width: 100% !important;
+            }
+
+            /* Forzamos que el contenido sea visible siempre */
+            .editorial-content {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            /* Oscurecemos un poco el fondo para que el texto blanco/beige se lea bien */
+            .editorial-overlay {
+                opacity: 0.5 !important;
+                background: rgba(0, 0, 0, 0.4); /* Capa oscura constante en móvil */
+            }
+
+            /* Ajuste de tamaño para móvil */
+            .editorial-content h2 {
+                font-size: 2.2rem !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .close-menu-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Escondido */
+                width: 100%;
+                height: 100vh;
+                background-color: white !important;
+                z-index: 99999; /* Por debajo del modal de login pero sobre todo lo demás */
+                transition: 0.4s ease-in-out;
+                display: flex !important; /* Forzamos flex para alinear contenido */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+            }
+
+            .nav.active {
+                right: 0; /* Se muestra */
+                visibility: visible;
+            }
+
+            /* 3. Mostrar la X SOLO cuando el menú es responsivo */
+            .close-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: #2a2a2a;
+                cursor: pointer;
+                z-index: 100000;
+            }
+
+            .nav-list {
+                flex-direction: column !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+
+            .nav-link {
+                color: #2a2a2a !important;
+                font-size: 1.8rem !important;
+                font-family: 'Cormorant Garamond', serif !important;
+            }
+
+            /* 4. LA CLAVE: La X solo se muestra SI el padre (.nav) tiene la clase .active */
+            .nav.active .close-menu-btn {
+                display: block !important;
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: #2a2a2a;
+                cursor: pointer;
+            }
+
+            /* Ajuste adicional para que el logo no se tape en móvil */
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .header-actions {
+                display: flex;
+                align-items: center;
+                gap: 15px; /* Da espacio entre los iconos para evitar el amontonamiento de la foto */
+            }
+
+            .mobile-menu-btn {
+                background: none;
+                border: none;
+                color: white; /* O el color de tus otros iconos */
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
 
     </style>
 </head>
@@ -564,6 +699,9 @@
             <div class="header-content">
                 <!-- Navigation Left -->
                 <nav class="nav" id="mainNav">
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
                     <ul class="nav-list">
                         <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="productos.html" class="nav-link" data-i18n="nav_productos">Productos</a></li>
@@ -839,94 +977,152 @@
     <script src="../scripts/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const categoryContainer = document.querySelector('#categorySlider');
-            const catSlides = categoryContainer.querySelectorAll('.cat-slide');
+            // ==========================================
+            // 1. SELECTORES GLOBALES
+            // ==========================================
+            const mainNav = document.getElementById('mainNav');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
             
-            let currentCatIndex = 0;
-            let isTransitioning = false;
-            let autoPlayInterval;
-            const AUTO_PLAY_TIME = 5000; // 5 segundos entre cada cambio
+            const loginModal = document.getElementById('loginModal');
+            const userBtn = document.getElementById('userBtn');
+            const closeLogin = document.getElementById('closeLogin');
+            const loginModalOverlay = document.getElementById('loginModalOverlay');
+            const loginTabs = document.querySelectorAll('.login-tab');
 
-            // --- FUNCIÓN NÚCLEO ---
-            function showCatSlide(index) {
-                catSlides.forEach(slide => slide.classList.remove('active'));
-                currentCatIndex = (index + catSlides.length) % catSlides.length;
-                catSlides[currentCatIndex].classList.add('active');
+            const categoryContainer = document.querySelector('#categorySlider');
+
+            // ==========================================
+            // 2. LÓGICA DEL MENÚ NAVEGACIÓN
+            // ==========================================
+            if (mobileMenuBtn && mainNav && closeMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                closeMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
             }
 
-            // --- LÓGICA DE TIEMPO (AUTO-PLAY) ---
-            function startAutoPlay() {
-                stopAutoPlay(); // Limpiamos cualquier intervalo previo
-                autoPlayInterval = setInterval(() => {
-                    showCatSlide(currentCatIndex + 1);
-                }, AUTO_PLAY_TIME);
+            // ==========================================
+            // 3. LÓGICA DEL LOGIN MODAL
+            // ==========================================
+            if (userBtn && loginModal) {
+                userBtn.addEventListener('click', () => {
+                    loginModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    if (mainNav) mainNav.classList.remove('active');
+                });
             }
 
-            function stopAutoPlay() {
-                if (autoPlayInterval) clearInterval(autoPlayInterval);
-            }
+            const closeLoginModal = () => {
+                if (loginModal) {
+                    loginModal.classList.remove('active');
+                    if (mainNav && !mainNav.classList.contains('active')) {
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            };
 
-            // Reinicia el contador cuando el usuario interactúa
-            function resetTimer() {
-                stopAutoPlay();
+            if (closeLogin) closeLogin.addEventListener('click', closeLoginModal);
+            if (loginModalOverlay) loginModalOverlay.addEventListener('click', closeLoginModal);
+
+            loginTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    loginTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const tabType = tab.dataset.tab;
+                    const emailInput = document.getElementById('loginEmail');
+                    if (emailInput) {
+                        emailInput.placeholder = (tabType === 'admin') ? 'admin@olivia.com' : 'tu@email.com';
+                    }
+                });
+            });
+
+            // ==========================================
+            // 4. LÓGICA DEL SLIDER DE CATEGORÍAS
+            // ==========================================
+            if (categoryContainer) {
+                const catSlides = categoryContainer.querySelectorAll('.cat-slide');
+                let currentCatIndex = 0;
+                let isTransitioning = false;
+                let autoPlayInterval;
+                const AUTO_PLAY_TIME = 5000;
+
+                function showCatSlide(index) {
+                    catSlides.forEach(slide => slide.classList.remove('active'));
+                    currentCatIndex = (index + catSlides.length) % catSlides.length;
+                    catSlides[currentCatIndex].classList.add('active');
+                }
+
+                function startAutoPlay() {
+                    stopAutoPlay();
+                    autoPlayInterval = setInterval(() => {
+                        showCatSlide(currentCatIndex + 1);
+                    }, AUTO_PLAY_TIME);
+                }
+
+                function stopAutoPlay() {
+                    if (autoPlayInterval) clearInterval(autoPlayInterval);
+                }
+
+                function resetTimer() {
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+
+                function triggerCooldown() {
+                    isTransitioning = true;
+                    setTimeout(() => { isTransitioning = false; }, 800);
+                }
+
+                // Gestión de Wheel (Rueda/Trackpad)
+                categoryContainer.addEventListener('wheel', (e) => {
+                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) return; 
+
+                    e.preventDefault();
+                    if (isTransitioning) return;
+                    
+                    if (Math.abs(e.deltaX) > 30) {
+                        if (e.deltaX > 0) showCatSlide(currentCatIndex + 1);
+                        else showCatSlide(currentCatIndex - 1);
+                        
+                        resetTimer();
+                        triggerCooldown();
+                    }
+                }, { passive: false });
+
+                // Touch Events (Móviles)
+                let touchStartX = 0;
+                let touchStartY = 0;
+
+                categoryContainer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                    stopAutoPlay();
+                }, { passive: true });
+
+                categoryContainer.addEventListener('touchend', (e) => {
+                    let touchEndX = e.changedTouches[0].screenX;
+                    let touchEndY = e.changedTouches[0].screenY;
+                    
+                    const diffX = touchStartX - touchEndX;
+                    const diffY = touchStartY - touchEndY;
+
+                    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                        if (diffX > 0) showCatSlide(currentCatIndex + 1);
+                        else showCatSlide(currentCatIndex - 1);
+                    }
+                    startAutoPlay();
+                }, { passive: true });
+
+                // Inicio inicial del slider
                 startAutoPlay();
             }
-
-            // --- GESTIÓN DE RATÓN / TRACKPAD (Wheel) ---
-            categoryContainer.addEventListener('wheel', (e) => {
-                // Si el scroll es vertical (deltaY mayor a deltaX), NO hacer nada.
-                // Esto permite que el usuario baje la página normalmente.
-                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                    return; 
-                }
-
-                // Si el scroll es horizontal, controlamos el slider
-                e.preventDefault();
-                
-                if (isTransitioning) return;
-                
-                if (Math.abs(e.deltaX) > 30) {
-                    if (e.deltaX > 0) showCatSlide(currentCatIndex + 1);
-                    else showCatSlide(currentCatIndex - 1);
-                    
-                    resetTimer(); // El usuario tomó el control, reiniciamos tiempo
-                    triggerCooldown();
-                }
-            }, { passive: false });
-
-            function triggerCooldown() {
-                isTransitioning = true;
-                setTimeout(() => { isTransitioning = false; }, 800);
-            }
-
-            // --- TOUCH EVENTS (Móviles) ---
-            let touchStartX = 0;
-            let touchStartY = 0;
-
-            categoryContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-                touchStartY = e.changedTouches[0].screenY;
-                stopAutoPlay(); // Pausamos mientras el usuario toca
-            }, { passive: true });
-
-            categoryContainer.addEventListener('touchend', (e) => {
-                let touchEndX = e.changedTouches[0].screenX;
-                let touchEndY = e.changedTouches[0].screenY;
-                
-                const diffX = touchStartX - touchEndX;
-                const diffY = touchStartY - touchEndY;
-
-                // Solo si el movimiento fue predominantemente horizontal
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-                    if (diffX > 0) showCatSlide(currentCatIndex + 1);
-                    else showCatSlide(currentCatIndex - 1);
-                }
-                
-                startAutoPlay(); // Reanudamos el ciclo automático
-            }, { passive: true });
-
-            // --- INICIO INICIAL ---
-            startAutoPlay();
         });
 
         document.addEventListener('DOMContentLoaded', () => {
