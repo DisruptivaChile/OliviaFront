@@ -17,6 +17,9 @@
         .header {
             padding: 1rem 0 3rem 0 !important;
         }
+        .footer-bottom-text {
+            color: white !important;
+        }
         .header-content {
             align-items: start !important;
         }
@@ -87,6 +90,13 @@
         .hero-slider {
             position: relative;
             height: 100%;
+            width: 100%;
+        }
+        .hero-bg {
+                /* Asegura que la imagen cubra todo el espacio sin deformarse */
+                background-size: cover !important; 
+                background-position: center !important;
+                width: 100vw !important; /* Fuerza el ancho total de la ventana */
         }
 
         .hero-slide {
@@ -438,6 +448,107 @@
                 max-width: 100%;
             }
         }
+
+        /*Diseño responsivo*/
+        @media (max-width: 992px) {
+            /* Ajuste de Logo y Header */
+            .header:not(.scrolled) .logo h1 {
+                font-size: 2rem !important;
+            }
+            
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            /* 3. Editorial Split: De 2 columnas a 1 columna */
+            .editorial-split {
+                display: flex;
+                flex-direction: column;
+                height: auto !important; /* Permitir que crezca verticalmente */
+                flex-direction: column;
+                height: auto;
+            }
+
+            .editorial-panel {
+                height: 50vh; /* Cada panel ocupa media pantalla */
+                width: 100% !important;
+            }
+
+            /* Forzamos que el contenido sea visible siempre */
+            .editorial-content {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            /* Oscurecemos un poco el fondo para que el texto blanco/beige se lea bien */
+            .editorial-overlay {
+                opacity: 0.5 !important;
+                background: rgba(0, 0, 0, 0.4); /* Capa oscura constante en móvil */
+            }
+
+            /* Ajuste de tamaño para móvil */
+            .editorial-content h2 {
+                font-size: 2.2rem !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* 1. Navbar: Ocultar menú tradicional para usar el botón hamburguesa */
+            .nav {
+                display: none; /* Deberías implementar un menú lateral con JS para el botón .mobile-menu-btn */
+            }
+
+            /* 2. Hero Section: Ajustar textos para que no se corten */
+            .hero-title {
+                font-size: 2.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .hero-content {
+                padding: 0 20px;
+                text-align: center;
+            }
+
+            /* 4. Servicios/Historia: De 3 columnas a 1 */
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem;
+            }
+
+            /* 6. Social/Instagram: Ajustar tamaños de fuente */
+            .instagram-content h2, 
+            .social-slide h2 {
+                font-size: 2rem !important;
+            }
+            
+            /* 7. Selector de idioma: reducir margen */
+            .language-selector {
+                margin-right: 0.5rem;
+            }
+            
+            .flag-icon {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Ajustes para móviles muy pequeños */
+        @media (max-width: 480px) {
+            .header:not(.scrolled) .logo h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            .hero-label {
+                font-size: 0.8rem;
+            }
+            
+            .btn-hero {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -706,7 +817,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+                <p class="footer-bottom-text" data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
