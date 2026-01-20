@@ -17,6 +17,9 @@
         .header {
             padding: 0.5rem 0 !important;
         }
+        .footer-bottom-text {
+            color: white !important;
+        }
         /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
         .icon-btn:hover i {
             color: #6B2D5C !important;
@@ -30,6 +33,10 @@
 
         .header.scrolled .icon-btn:hover i {
             color: #6B2D5C !important;
+        }
+
+        .header.scrolled .mobile-menu-btn {
+            color: #2a2a2a !important; /* Color oscuro/negro */
         }
 
         /* Si el contador del carrito también deja de verse bien, añade esto: */
@@ -342,6 +349,96 @@
                 max-width: 100%;
             }
         }
+
+        @media (min-width: 769px) {
+            .close-menu-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Escondido */
+                width: 100%;
+                height: 100vh;
+                background-color: white !important;
+                z-index: 99999; /* Por debajo del modal de login pero sobre todo lo demás */
+                transition: 0.4s ease-in-out;
+                display: flex !important; /* Forzamos flex para alinear contenido */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+            }
+
+            .nav.active {
+                right: 0; /* Se muestra */
+                visibility: visible;
+            }
+
+            /* 3. Mostrar la X SOLO cuando el menú es responsivo */
+            .close-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: #2a2a2a;
+                cursor: pointer;
+                z-index: 100000;
+            }
+
+            .nav-list {
+                flex-direction: column !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+
+            .nav-link {
+                color: #2a2a2a !important;
+                font-size: 1.8rem !important;
+                font-family: 'Cormorant Garamond', serif !important;
+            }
+
+            /* 4. LA CLAVE: La X solo se muestra SI el padre (.nav) tiene la clase .active */
+            .nav.active .close-menu-btn {
+                display: block !important;
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: #2a2a2a;
+                cursor: pointer;
+            }
+
+            /* Ajuste adicional para que el logo no se tape en móvil */
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .header-actions {
+                display: flex;
+                align-items: center;
+                gap: 15px; /* Da espacio entre los iconos para evitar el amontonamiento de la foto */
+            }
+
+            .mobile-menu-btn {
+                background: none;
+                border: none;
+                color: #2a2a2a; /* O el color de tus otros iconos */
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -351,6 +448,9 @@
             <div class="header-content">
                 <!-- Navigation Left -->
                 <nav class="nav" id="mainNav">
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
                     <ul class="nav-list">
                         <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="productos.html" class="nav-link active" data-i18n="nav_productos">Productos</a></li>
@@ -482,7 +582,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+                <p class="footer-bottom-text" data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -590,43 +690,77 @@
     <script src="../scripts/translations.js"></script>
     <script src="../scripts/main.js"></script>
     <script>
-        // Login Modal
-        const loginModal = document.getElementById('loginModal');
-        const userBtn = document.getElementById('userBtn');
-        const closeLogin = document.getElementById('closeLogin');
-        const loginModalOverlay = document.getElementById('loginModalOverlay');
-        const loginTabs = document.querySelectorAll('.login-tab');
-        const loginForm = document.getElementById('loginForm');
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- LÓGICA DEL MENÚ NAVEGACIÓN ---
+            const mainNav = document.getElementById('mainNav');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-        // Abrir modal
-        if (userBtn) {
-            userBtn.addEventListener('click', () => {
-                loginModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        }
+            if (mobileMenuBtn && mainNav && closeMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
 
-        // Cerrar modal
-        function closeLoginModal() {
-            loginModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+                closeMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
 
-        if (closeLogin) closeLogin.addEventListener('click', closeLoginModal);
-        if (loginModalOverlay) loginModalOverlay.addEventListener('click', closeLoginModal);
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
 
-        // Cambiar tabs
-        loginTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                loginTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                const tabType = tab.dataset.tab;
-                if (tabType === 'admin') {
-                    document.getElementById('loginEmail').placeholder = 'admin@olivia.com';
-                } else {
-                    document.getElementById('loginEmail').placeholder = 'tu@email.com';
+            if (closeMenuBtn && mainNav) {
+                closeMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            // --- LÓGICA DEL LOGIN MODAL (Tu código corregido) ---
+            const loginModal = document.getElementById('loginModal');
+            const userBtn = document.getElementById('userBtn');
+            const closeLogin = document.getElementById('closeLogin');
+            const loginModalOverlay = document.getElementById('loginModalOverlay');
+            const loginTabs = document.querySelectorAll('.login-tab');
+
+            if (userBtn && loginModal) {
+                userBtn.addEventListener('click', () => {
+                    loginModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    // Cerramos el menú de navegación si estuviera abierto al abrir login
+                    if(mainNav) mainNav.classList.remove('active');
+                });
+            }
+
+            function closeLoginModal() {
+                loginModal.classList.remove('active');
+                // Solo devolvemos el scroll si el menú de navegación tampoco está activo
+                if (!mainNav.classList.contains('active')) {
+                    document.body.style.overflow = 'auto';
                 }
+            }
+
+            if (closeLogin) closeLogin.addEventListener('click', closeLoginModal);
+            if (loginModalOverlay) loginModalOverlay.addEventListener('click', closeLoginModal);
+
+            // Cambio de Tabs
+            loginTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    loginTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const tabType = tab.dataset.tab;
+                    const emailInput = document.getElementById('loginEmail');
+                    if (emailInput) {
+                        emailInput.placeholder = (tabType === 'admin') ? 'admin@olivia.com' : 'tu@email.com';
+                    }
+                });
             });
         });
 

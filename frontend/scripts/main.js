@@ -60,7 +60,7 @@ async function loadProducts() {
             }
         } else {
             // Fallback: Cargar desde JSON local
-            const response = await fetch('data/products.json');
+            const response = await fetch('../../data/products.json');
             const data = await response.json();
             productsData = data.products;
         }
@@ -76,7 +76,7 @@ async function loadProducts() {
         if (USE_API) {
             console.log('Intentando cargar desde JSON local...');
             try {
-                const response = await fetch('data/products.json');
+                const response = await fetch('../../data/products.json');
                 const data = await response.json();
                 products = data;
                 filteredProducts = data.products;
@@ -96,7 +96,7 @@ function transformApiProducts(apiProducts) {
     return apiProducts.map(product => {
         // Obtener la imagen principal o la primera disponible
         const mainImage = product.imagenes.find(img => img.es_principal) || product.imagenes[0];
-        const imageUrl = mainImage ? mainImage.url : 'assets/images/products/default.jpg';
+        const imageUrl = mainImage ? mainImage.url : '../assets/images/products/default.jpg';
         
         // Transformar tallas al formato esperado
         const sizes = product.tallas
@@ -131,7 +131,7 @@ function displayProducts(productsToShow) {
 
     productsGrid.innerHTML = productsToShow.map(product => `
         <div class="product-card" data-id="${product.id}">
-            <div class="product-image" style="background-image: url('/assets/images/hero/image.png'); background-size: cover; background-position: center;">
+            <div class="product-image" style="background-image: url('../assets/images/hero/image.png'); background-size: cover; background-position: center;">
                 ${product.new ? `<span class="product-badge">${typeof t === 'function' ? t('producto_nuevo') : 'NUEVO'}</span>` : ''}
             </div>
             <div class="product-info">
