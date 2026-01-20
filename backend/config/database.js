@@ -2,16 +2,22 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 // Configuración del pool de conexiones a PostgreSQL
-const pool = new Pool({
+if (!process.env.DB_PASSWORD) {
+    console.warn('⚠️  Cuidado: DB_PASSWORD no está definida en el archivo .env');
+}
+
+const poolConfig = {
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 5432,
   database: process.env.DB_NAME || 'olivia_zapatos_db',
   user: process.env.DB_USER || 'olivia_user',
-  password: process.env.DB_PASSWORD,
-  max: 20, // Máximo de conexiones en el pool
+  password: String(process.env.DB_PASSWORD || ''), // Forzamos que sea un string
+  max: 20, 
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-});
+  connectionTimeoutMillis: 5000,
+};
+
+const pool = new Pool(poolConfig);
 
 // Evento cuando se conecta exitosamente
 pool.on('connect', () => {
@@ -20,8 +26,7 @@ pool.on('connect', () => {
 
 // Evento de error
 pool.on('error', (err) => {
-  console.error('❌ Error inesperado en PostgreSQL:', err);
-  process.exit(-1);
+  console.error('❌ Error inesperado en PostgreSQL:', err.message);
 });
 
 // Función helper para ejecutar queries

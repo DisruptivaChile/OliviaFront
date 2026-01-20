@@ -149,7 +149,7 @@ const translations = {
         nav_productos: "Products",
         nav_mujer: "Women",
         nav_hombre: "Men",
-        nav_ofertas: "Discounts",
+        nav_ofertas: "Offers",
         comprar_footer: "Shop",
         
         // Hero Section
@@ -165,7 +165,7 @@ const translations = {
         slide_mujer: "Women",
         slide_hombre: "Men",
         slide_productos: "Products",
-        slide_ofertas: "Discounts",
+        slide_ofertas: "Offers",
         slide_elegancia_mujer: "Timeless elegance for every occasion",
         slide_estilo_hombre: "Refined and sophisticated style",
 
@@ -234,8 +234,8 @@ const translations = {
 
         // Discounts
         ofertas_titulo: "Special Offers",
-        section_subtitle_desc: "Exclusive discounts on selected products",
-        hero_ofertas_label: "SPECIAL DISCOUNTS",
+        section_subtitle_desc: "Exclusive offers on selected products",
+        hero_ofertas_label: "SPECIAL OFFERS",
         hero_ofertas_title: "Olivia's World",
         hero_ofertas_subtitle: "Find the best offers in our premium collection",
         hero_ofertas_btn: "View Offers",

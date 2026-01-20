@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
-
+const bcrypt = require('bcrypt');
 const db = require('./config/database');
 const productsRoutes = require('./routes/products');
 
@@ -67,6 +67,44 @@ app.get('/health', async (req, res) => {
       database: 'Disconnected',
       error: error.message
     });
+  }
+});
+
+// ========================================
+// RUTA DE LOGIN (ADMIN)
+// ========================================
+
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    console.log("Intentando login con:", email, "Contraseña:", password);
+    // 1. Buscar al usuario en la tabla usuarios_admin
+    const result = await db.query('SELECT * FROM usuarios_admin WHERE email = $1', [email]);
+
+    if (result.rows.length === 0) {
+      return res.status(401).json({ success: false, message: 'Usuario no encontrado' });
+    }
+
+    const user = result.rows[0];
+
+    // 2. Comparar la contraseña ingresada con el hash de la BD
+    const match = await bcrypt.compare(password, user.password_hash);
+
+    if (match) {
+      // Login exitoso
+      res.json({
+        success: true,
+        message: '¡Bienvenido, ' + user.nombre + '!',
+        user: { id: user.id, nombre: user.nombre, email: user.email }
+      });
+    } else {
+      // Contraseña incorrecta
+      res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+    }
+  } catch (error) {
+    console.error('Error en el login:', error);
+    res.status(500).json({ success: false, message: 'Error interno del servidor' });
   }
 });
 

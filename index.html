@@ -1033,7 +1033,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- LÓGICA DEL MENÚ NAVEGACIÓN ---
+            // --- LÓGICA DEL MENÚ NAVEGACIÓN (Sin cambios) ---
             const mainNav = document.getElementById('mainNav');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -1050,40 +1050,25 @@
                 });
             }
 
-            if (mobileMenuBtn && mainNav) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mainNav.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-
-            if (closeMenuBtn && mainNav) {
-                closeMenuBtn.addEventListener('click', () => {
-                    mainNav.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            }
-
-            // --- LÓGICA DEL LOGIN MODAL (Tu código corregido) ---
+            // --- LÓGICA DEL LOGIN MODAL ---
             const loginModal = document.getElementById('loginModal');
             const userBtn = document.getElementById('userBtn');
             const closeLogin = document.getElementById('closeLogin');
             const loginModalOverlay = document.getElementById('loginModalOverlay');
             const loginTabs = document.querySelectorAll('.login-tab');
+            const loginForm = document.getElementById('loginForm'); // Asegúrate de tener este ID en tu HTML
 
             if (userBtn && loginModal) {
                 userBtn.addEventListener('click', () => {
                     loginModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
-                    // Cerramos el menú de navegación si estuviera abierto al abrir login
                     if(mainNav) mainNav.classList.remove('active');
                 });
             }
 
             function closeLoginModal() {
                 loginModal.classList.remove('active');
-                // Solo devolvemos el scroll si el menú de navegación tampoco está activo
-                if (!mainNav.classList.contains('active')) {
+                if (mainNav && !mainNav.classList.contains('active')) {
                     document.body.style.overflow = 'auto';
                 }
             }
@@ -1091,7 +1076,7 @@
             if (closeLogin) closeLogin.addEventListener('click', closeLoginModal);
             if (loginModalOverlay) loginModalOverlay.addEventListener('click', closeLoginModal);
 
-            // Cambio de Tabs
+            // Cambio de Tabs (Sin cambios)
             loginTabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     loginTabs.forEach(t => t.classList.remove('active'));
@@ -1104,8 +1089,47 @@
                     }
                 });
             });
-        });
 
+            // --- NUEVA LÓGICA DE CONEXIÓN AL BACKEND ---
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault(); // Evita que la página se recargue
+
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    const activeTab = document.querySelector('.login-tab.active').dataset.tab;
+
+                    // Solo procedemos si es la pestaña de Admin, según tu flujo actual
+                    if (activeTab === 'admin') {
+                        try {
+                            const response = await fetch('http://localhost:3000/api/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ email, password })
+                            });
+
+                            const data = await response.json();
+
+                            if (data.success) {
+                                alert(data.message);
+                                // Aquí puedes redirigir al panel de admin o guardar el estado
+                                // window.location.href = '/admin.html'; 
+                                closeLoginModal();
+                            } else {
+                                alert(data.message); // "Contraseña incorrecta", etc.
+                            }
+                        } catch (error) {
+                            console.error('Error en la conexión:', error);
+                            alert('Error: No se pudo conectar con el servidor backend');
+                        }
+                    } else {
+                        alert('La lógica para usuarios normales aún no está conectada.');
+                    }
+                });
+            }
+        });
         // Submit form
         if (loginForm) {
             loginForm.addEventListener('submit', (e) => {
