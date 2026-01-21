@@ -16,6 +16,31 @@ const PORT = process.env.PORT || 3000;
 // Seguridad
 app.use(helmet());
 
+// RUTA PARA CREAR UN NUEVO ZAPATO
+app.post('/api/zapatos', async (req, res) => {
+  const { nombre, tipo, precio, a_pedido, descripcion, publicado } = req.body;
+
+  try {
+    const query = `
+      INSERT INTO zapatos (nombre, tipo, precio, a_pedido, descripcion, publicado)
+      VALUES ($1, $2, $3, $4, $5, $6)
+      RETURNING id;
+    `;
+    const values = [nombre, tipo, precio, a_pedido, descripcion, publicado];
+        
+    const result = await db.query(query, values);
+        
+    res.status(201).json({
+      success: true,
+      message: 'Zapato creado exitosamente',
+      zapatoId: result.rows[0].id
+    });
+  } catch (error) {
+      console.error('Error al guardar zapato:', error);
+      res.status(500).json({ success: false, message: 'Error al guardar en la base de datos' });
+  }
+});
+
 // CORS - Permitir peticiones desde el frontend
 app.use(cors({
   origin: process.env.FRONTEND_URL || '*',

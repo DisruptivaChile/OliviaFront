@@ -989,11 +989,48 @@
             const closeLogin = document.getElementById('closeLogin');
             const loginModalOverlay = document.getElementById('loginModalOverlay');
             const loginTabs = document.querySelectorAll('.login-tab');
+            const loginForm = document.getElementById('loginForm');
 
             const categoryContainer = document.querySelector('#categorySlider');
 
             // ==========================================
-            // 2. LÓGICA DEL MENÚ NAVEGACIÓN
+            // 2. SEGURIDAD E INACTIVIDAD (Código Importante)
+            // ==========================================
+            const TIMEOUT_INACTIVITY = 3 * 60 * 1000; // 3 minutos
+
+            function logout() {
+                if (sessionStorage.getItem('adminToken')) {
+                    sessionStorage.clear();
+                    alert("Sesión cerrada por inactividad o cierre de pestaña.");
+                    window.location.href = 'index.html'; 
+                }
+            }
+
+            function checkInactivity() {
+                const lastActivity = sessionStorage.getItem('lastActivity');
+                const token = sessionStorage.getItem('adminToken');
+
+                if (token && lastActivity) {
+                    if (Date.now() - lastActivity > TIMEOUT_INACTIVITY) {
+                        logout();
+                    }
+                }
+            }
+
+            function resetActivityTimer() {
+                if (sessionStorage.getItem('adminToken')) {
+                    sessionStorage.setItem('lastActivity', Date.now());
+                }
+            }
+
+            // Monitoreo constante
+            setInterval(checkInactivity, 10000); 
+            window.addEventListener('mousemove', resetActivityTimer);
+            window.addEventListener('keypress', resetActivityTimer);
+            window.addEventListener('click', resetActivityTimer);
+
+            // ==========================================
+            // 3. LÓGICA DEL MENÚ NAVEGACIÓN
             // ==========================================
             if (mobileMenuBtn && mainNav && closeMenuBtn) {
                 mobileMenuBtn.addEventListener('click', () => {
@@ -1008,7 +1045,7 @@
             }
 
             // ==========================================
-            // 3. LÓGICA DEL LOGIN MODAL
+            // 4. LÓGICA DEL LOGIN MODAL & BACKEND
             // ==========================================
             if (userBtn && loginModal) {
                 userBtn.addEventListener('click', () => {
@@ -1043,8 +1080,45 @@
                 });
             });
 
+            // Envío del formulario al Backend (Código Importante)
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    const activeTab = document.querySelector('.login-tab.active').dataset.tab;
+
+                    if (activeTab === 'admin') {
+                        try {
+                            const response = await fetch('http://localhost:3000/api/login', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ email, password })
+                            });
+                            const data = await response.json();
+
+                            if (data.success) {
+                                sessionStorage.setItem('adminToken', 'active');
+                                sessionStorage.setItem('adminName', data.user.nombre);
+                                sessionStorage.setItem('lastActivity', Date.now());
+                                alert(data.message);
+                                window.location.href = 'admin-panel.html';
+                                closeLoginModal();
+                            } else {
+                                alert(data.message);
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('Error: No se pudo conectar con el servidor');
+                        }
+                    } else {
+                        alert('La lógica para usuarios normales aún no está conectada.');
+                    }
+                });
+            }
+
             // ==========================================
-            // 4. LÓGICA DEL SLIDER DE CATEGORÍAS
+            // 5. LÓGICA DEL SLIDER DE CATEGORÍAS
             // ==========================================
             if (categoryContainer) {
                 const catSlides = categoryContainer.querySelectorAll('.cat-slide');
@@ -1080,23 +1154,19 @@
                     setTimeout(() => { isTransitioning = false; }, 800);
                 }
 
-                // Gestión de Wheel (Rueda/Trackpad)
                 categoryContainer.addEventListener('wheel', (e) => {
                     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) return; 
-
                     e.preventDefault();
                     if (isTransitioning) return;
                     
                     if (Math.abs(e.deltaX) > 30) {
                         if (e.deltaX > 0) showCatSlide(currentCatIndex + 1);
                         else showCatSlide(currentCatIndex - 1);
-                        
                         resetTimer();
                         triggerCooldown();
                     }
                 }, { passive: false });
 
-                // Touch Events (Móviles)
                 let touchStartX = 0;
                 let touchStartY = 0;
 
@@ -1109,7 +1179,6 @@
                 categoryContainer.addEventListener('touchend', (e) => {
                     let touchEndX = e.changedTouches[0].screenX;
                     let touchEndY = e.changedTouches[0].screenY;
-                    
                     const diffX = touchStartX - touchEndX;
                     const diffY = touchStartY - touchEndY;
 
@@ -1120,7 +1189,6 @@
                     startAutoPlay();
                 }, { passive: true });
 
-                // Inicio inicial del slider
                 startAutoPlay();
             }
         });
@@ -1229,7 +1297,7 @@
                         alert('Bienvenido Admin');
                         closeLoginModal();
                     } else {
-                        alert('Credenciales de admin incorrectas');
+                        alert('Esperando conexión con el backend para validación de admin...');
                     }
                 } else {
                     alert(`Login usuario: ${email}`);
