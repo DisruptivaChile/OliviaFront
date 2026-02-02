@@ -13,6 +13,21 @@
     color: #2a2a2a !important;
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Centrado horizontal */
+    width:100%;
+    padding: 0 80px;
+}
+
+.logo {
+    margin-top: 1rem !important;
+}
+
+.header.scrolled .logo {
+    margin-top: 0 !important;
+}
+
 /* Regla específica para cuando el header tiene la clase 'scrolled' */
 .header.scrolled .icon-btn i {
     color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
@@ -32,6 +47,7 @@
     background: #2a2a2a;
     color: white;
 }
+
 .logo h1 {
     font-size: 1.5rem !important;
 }
