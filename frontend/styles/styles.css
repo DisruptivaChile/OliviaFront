@@ -795,8 +795,9 @@ body {
 }
 
 .btn-primary:hover {
-    background: transparent;
-    color: var(--primary-color);
+    background: var(--white);
+    color: var(--text-main);
+    border-color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -2166,8 +2167,13 @@ body {
     padding-top: var(--spacing-sm);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 0.6;
-    font-size: 0.8125rem;
+    font-size: 0.65rem;
     color: white !important;
+}
+
+.footer-bottom p {
+    font-size: 0.65rem !important;
+    margin: 0;
 }
 
 /* ========================================

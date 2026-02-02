@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ofertas - Olivia Merino</title>
+    <title>Mujer - Olivia Merino</title>
     
-    <!-- Fuentes de Marca: Adelia + Poppins + Cormorant Garamond -->
+    <!-- Fuentes de Marca: Poppins + Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../styles/styles.css?v=7">
-    <link rel="stylesheet" href="../styles/ofertas.css?v=3">
+    <link rel="stylesheet" href="../styles/mujer.css?v=3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -43,7 +43,8 @@
                     <ul class="nav-list">
                         <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="ofertas.html" class="nav-link active" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="mujer.html" class="nav-link active" data-i18n="nav_mujer">Mujer</a></li>
+                        <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
                     </ul>
                 </nav>
 
@@ -51,9 +52,17 @@
                 <div class="logo">
                     <h1>OLIVIA MERINO</h1>
                 </div>
-
-                <!-- Actions Right -->
+                
+                <!-- Header Actions Right -->
                 <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="es" title="Español">
+                            <span class="flag-icon">🇪🇸</span>
+                        </button>
+                        <button class="lang-btn" data-lang="en" title="English">
+                            <span class="flag-icon">🇺🇸</span>
+                        </button>
+                    </div>
                     <button class="icon-btn" id="cartBtn">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count" id="cartCount">0</span>
@@ -61,17 +70,6 @@
                     <button class="icon-btn" id="userBtn">
                         <i class="fas fa-user"></i>
                     </button>
-                    <div class="language-selector">
-                        <div class="lang-current" id="currentLangDisplay">
-                            <img src="" id="currentFlagImg" alt="Idioma">
-                        </div>
-                        <div class="lang-dropdown">
-                            <button class="lang-option" id="langOptionBtn">
-                                <img src="" id="optionFlagImg" alt="Option">
-                                <span id="optionText"></span>
-                            </button>
-                        </div>
-                    </div>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -84,82 +82,85 @@
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide">
-                <div class="hero-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770062017/panel-ofertas_yj2akk.png'); background-size: cover; background-position: center 60%;">
+                <div class="hero-bg" style="background-image: url('../assets/images/categorias/mujer/hero-mujer.jpg'); background-size: cover; background-position: center;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content hero-content-left">
-                    <span class="hero-label" data-i18n="hero_ofertas_label">DESCUENTOS ESPECIALES</span>
-                    <h2 class="hero-title" data-i18n="hero_ofertas_title">Mundo Olivia</h2>
-                    <p class="hero-subtitle" data-i18n="hero_ofertas_subtitle">Encuentra las mejores ofertas en nuestra colección premium</p>
-                    <a href="#ofertas-especiales" class="btn btn-hero" data-i18n="hero_ofertas_btn">Ver Ofertas</a>
+                    <span class="hero-label" data-i18n="mujer_coleccion">Colección</span>
+                    <h2 class="hero-title" data-i18n="slide_mujer">Mujer</h2>
+                    <p class="hero-subtitle" style="color: #E2D6C3; font-family: 'Poppins', sans-serif;" data-i18n="slide_elegancia_mujer">Elegancia atemporal para cada ocasión</p>
+                    <a href="#productos-mujer" class="btn btn-hero" data-i18n="mujer_explorar">Explorar Colección</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Ofertas Destacadas -->
-    <section class="products-section" id="ofertas-especiales">
+    <!-- Separator -->
+    <div class="section-separator"></div>
+
+    <!-- Categorías Mujer -->
+    <section class="categories-section" style="padding: 0; background: var(--bg-light); position: relative; overflow: visible; height: 80vh; margin: 0;">
+        <div class="category-slider-container" id="categorySlider">
+            
+            <div class="cat-slide active">
+                <div class="cat-bg" style="background-image: url('../assets/images/contenido/collage.png'); background-size: cover; background-position: center;">
+                    <div class="cat-overlay"></div>
+                </div>
+                <div class="cat-content">
+                    <h3 class="cat-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="zapatos">Zapatos</h3>
+                    <p class="cat-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem;" data-i18n="mujer_elegancia">Elegancia en cada paso</p>
+                    <a href="#productos-mujer" class="btn btn-cat" data-i18n="see_collection">Ver Colección</a>
+                </div>
+            </div>
+
+            <div class="cat-slide">
+                <div class="cat-bg" style="background-image: url('../assets/images/categorias/mujer/mujer-sandalias.png'); background-size: cover; background-position: center 75%;">
+                    <div class="cat-overlay"></div>
+                </div>
+                <div class="cat-content">
+                    <h3 class="cat-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="sandalias">Sandalias</h3>
+                    <p class="cat-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem;" data-i18n="frescura">Frescura y sofisticación</p>
+                    <a href="#productos-mujer" class="btn btn-cat" data-i18n="see_collection">Ver Colección</a>
+                </div>
+            </div>
+
+            <div class="cat-slide">
+                <div class="cat-bg" style="background-image: url('../assets/images/categorias/mujer/mujer-botines.png'); background-size: cover; background-position: center;">
+                    <div class="cat-overlay"></div>
+                </div>
+                <div class="cat-content">
+                    <h3 class="cat-title" style="font-family: 'Cormorant Garamond', serif; color: #E2D6C3; font-size: 4rem; font-weight: 500;" data-i18n="botines">Botines</h3>
+                    <p class="cat-desc" style="font-family: 'Poppins', sans-serif; color: #E2D6C3; font-size: 1.2rem;" data-i18n="estilo">Estilo y versatilidad</p>
+                    <a href="#productos-mujer" class="btn btn-cat" data-i18n="see_collection">Ver Colección</a>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="products-section" id="productos-mujer" style="padding: var(--spacing-xl) 0; background: var(--bg-light);">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="ofertas_titulo">Ofertas Especiales</h2>
-                <p class="section-subtitle" data-i18n="section_subtitle_desc">Descuentos exclusivos en productos seleccionados</p>
+            <div class="section-header" style="text-align: center; margin-bottom: var(--spacing-lg);">
+                <h2 class="section-title" style="font-family: 'Cormorant Garamond', serif;" data-i18n="mujer_destacados">Productos Destacados</h2>
+                <p class="section-subtitle" data-i18n="mujer_destacados_desc">Lo mejor de nuestra colección femenina</p>
             </div>
 
-            <!-- Filtros -->
-            <div class="filters">
-                <div class="filter-group">
-                    <label for="categoryFilter" data-i18n="filtro_categoria">Categoría:</label>
-                    <select id="categoryFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="mujer" data-i18n="nav_mujer">Mujer</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="typeFilter" data-i18n="filtro_tipo">Tipo:</label>
-                    <select id="typeFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="botines" data-i18n="botines">Botines</option>
-                        <option value="zapatos" data-i18n="zapatos">Zapatos</option>
-                        <option value="sandalias" data-i18n="sandalias">Sandalias</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="discountFilter" data-i18n="filtro_descuento">Descuento:</label>
-                    <select id="discountFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="20" data-i18n="filtro_20">20% o más</option>
-                        <option value="30" data-i18n="filtro_30">30% o más</option>
-                        <option value="50" data-i18n="filtro_50">50% o más</option>
-                    </select>
-                </div>
-
-                <button class="btn btn-secondary" id="clearFilters" data-i18n="filtro_limpiar">Limpiar Filtros</button>
-            </div>
-
-            <!-- Products Grid -->
             <div class="products-grid" id="productsGrid">
                 <!-- Products will be loaded here by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Brand Statement -->
+    <!-- Estilo y Elegancia Statement -->
     <section class="brand-statement">
         <div class="container">
-            <p class="statement-text">  
-                <span data-i18n="oferta_descripcion">
-                    Aprovecha nuestras ofertas exclusivas sin comprometer
-                </span>
-                <br>
-                <strong data-i18n="oferta_resaltado">
-                    la calidad y elegancia que nos caracteriza.
-                </strong>
-                <br>
-                <span data-i18n="oferta_garantia">
-                    Cada producto en oferta mantiene nuestro estándar de excelencia.
-                </span>
+            <p class="statement-text" style="font-family: 'Poppins', sans-serif;">
+                <span style="color: #D16C8A; font-family: 'Cormorant Garamond', serif; font-size: 1.2em;" data-i18n="mujer_statement_titulo">Elegancia redefinida</span><br>
+                <span data-i18n="mujer_statement_desc">Cada zapato de nuestra colección femenina está diseñado para realzar tu estilo único,<br>
+                combinando comodidad excepcional con diseños sofisticados que te acompañan<br>
+                en cada momento especial de tu vida.</span>
             </p>
         </div>
     </section>
@@ -181,12 +182,8 @@
                 <div class="footer-section">
                     <h4 data-i18n="comprar_footer">Comprar</h4>
                     <ul>
-<<<<<<< HEAD
-                        <li><a href="#" data-i18n="nav_mujer">Mujer</a></li>
-=======
                         <li><a href="productos.html" data-i18n="nav_productos">Catálogo</a></li>
->>>>>>> f3a0f7aff54bcc22b1cb5d7bdaf9dd5a53ace7ce
-                        <li><a href="ofertas.html" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="ofertas.html" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
                     </ul>
                 </div>
 
@@ -205,7 +202,7 @@
                     <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
+                        <button data-i18n="footer_subscribe" class="btn btn-primary">Suscribirse</button>
                     </div>
                 </div>
             </div>
@@ -225,13 +222,15 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="cart-items" id="cartItems"></div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+            </div>
             <div class="cart-footer">
                 <div class="cart-total">
                     <span data-i18n="carrito_total">Total:</span>
-                    <span class="total-amount" id="totalAmount">€0.00</span>
+                    <span id="totalAmount">€0.00</span>
                 </div>
-                <button class="btn btn-primary btn-block" data-i18n="carrito_finalizar">Proceder al Pago</button>
+                <button class="btn btn-primary btn-block" data-i18n="carrito_finalizar">Finalizar Compra</button>
             </div>
         </div>
     </div>
@@ -445,7 +444,7 @@
 
     <script src="../scripts/translations.js"></script>
     <script src="../scripts/main.js"></script>
-    <script src="../scripts/ofertas.js"></script>
+    <script src="../scripts/mujer.js"></script>
     <script src="../scripts/feedback.js"></script>
 </body>
 </html>
