@@ -528,6 +528,7 @@
     .nav.active {
         right: 0; /* Se muestra */
         visibility: visible;
+        z-index: 99999;
     }
 
     /* 3. Mostrar la X SOLO cuando el menú es responsivo */
@@ -574,6 +575,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0 15px;
+        position: relative;
     }
 
     .header-actions {
@@ -582,7 +585,30 @@
         gap: 15px; /* Da espacio entre los iconos para evitar el amontonamiento de la foto */
     }
 
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0 !important; /* Quitamos el margen excesivo en móvil */
+        text-align: center;
+        width: max-content;
+    }
+
+    .logo h1 {
+        display: flex;
+        flex-direction: column; /* Alinea las palabras una debajo de otra */
+        align-items: center;    /* Centra las palabras entre sí */
+        line-height: 1.1;       /* Reduce el espacio vertical entre las palabras */
+        font-size: 1rem;      /* Ajuste opcional para que quepa mejor */
+    }
+
+    .logo span {
+        display: block;         /* Asegura que ocupen toda la línea */
+    }
+
     .mobile-menu-btn {
+        display: block !important;
+        z-index: 10;
         background: none;
         border: none;
         color: white; /* O el color de tus otros iconos */

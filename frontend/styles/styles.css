@@ -2731,7 +2731,7 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .contact-float-btn:hover {
@@ -2766,7 +2766,7 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .whatsapp-float-btn:hover {
@@ -2801,7 +2801,7 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .gift-float-btn:hover {
