@@ -17,12 +17,28 @@
 <body>
     <!-- Header con Logo de Marca -->
     <header class="header header-white" id="mainHeader">
+        <!-- Promotional Banner Slider -->
+        <div class="promo-banner-slider">
+            <div class="promo-slide active">
+                <p><strong>30% de descuento</strong> en colección seleccionada · <strong>Envío gratis</strong> desde €50</p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Nueva Colección</strong> Primavera/Verano 2026 · <strong>Ya disponible</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Envío gratis</strong> en compras superiores a <strong>€50</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>2x1</strong> en zapatos seleccionados · <strong>Promoción limitada</strong></p>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="header-content">
                 <nav class="nav">
                     <ul class="nav-list">
                         <li><a href="index.html" class="nav-link">Inicio</a></li>
-                        <li><a href="productos.html" class="nav-link">Productos</a></li>
+                        <li><a href="productos.html" class="nav-link">Catálogo</a></li>
                         <li><a href="ejemplos-marca.html" class="nav-link active">Manual de Marca</a></li>
                     </ul>
                 </nav>
@@ -43,11 +59,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Promotional Banner -->
-    <div class="promo-banner">
-        <p><strong>30% DCTO</strong> en colección seleccionada · Envío gratis desde €50</p>
-    </div>
 
     <!-- Espaciado para header fijo -->
     <div style="height: 80px;"></div>
@@ -209,7 +220,7 @@
                     <img src="/assets/images/categories/mujer.jpg" alt="Mujer" class="category-card__image">
                     <div class="category-card__overlay">
                         <h3 class="category-card__title">Mujer</h3>
-                        <p class="category-card__count">48 productos</p>
+                        <p class="category-card__count">48 artículos</p>
                     </div>
                 </div>
 
@@ -217,7 +228,7 @@
                     <img src="/assets/images/categories/hombre.jpg" alt="Hombre" class="category-card__image">
                     <div class="category-card__overlay">
                         <h3 class="category-card__title">Hombre</h3>
-                        <p class="category-card__count">32 productos</p>
+                        <p class="category-card__count">32 artículos</p>
                     </div>
                 </div>
 
@@ -225,7 +236,7 @@
                     <img src="/assets/images/categories/ofertas.jpg" alt="Ofertas" class="category-card__image">
                     <div class="category-card__overlay">
                         <h3 class="category-card__title">Ofertas</h3>
-                        <p class="category-card__count">12 productos</p>
+                        <p class="category-card__count">12 artículos</p>
                     </div>
                 </div>
 
@@ -233,7 +244,7 @@
                     <img src="/assets/images/categories/accesorios.jpg" alt="Accesorios" class="category-card__image">
                     <div class="category-card__overlay">
                         <h3 class="category-card__title">Accesorios</h3>
-                        <p class="category-card__count">24 productos</p>
+                        <p class="category-card__count">24 artículos</p>
                     </div>
                 </div>
             </div>
@@ -269,7 +280,7 @@
 
                     <div class="testimonial-card">
                         <p class="testimonial-card__text">
-                            "Servicio al cliente impecable y productos de primera calidad. 
+                            "Servicio al cliente impecable y artículos de primera calidad. 
                             Totalmente recomendado."
                         </p>
                         <p class="testimonial-card__author">Ana López</p>
@@ -326,6 +337,137 @@
             }
         });
     </script>
+
+    <!-- Botón Flotante de Contacto -->
+    <button class="contact-float-btn" id="contactFloatBtn">
+        <i class="fas fa-comments"></i>
+        <span>Contáctanos</span>
+    </button>
+
+    <!-- Botón Flotante de Regalo -->
+    <a href="ofertas.html" class="gift-float-btn" id="giftFloatBtn">
+        <i class="fas fa-gift"></i>
+        <span class="notification-badge"></span>
+    </a>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float-btn" id="whatsappFloatBtn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal de Feedback -->
+    <div class="feedback-modal" id="feedbackModal">
+        <div class="feedback-modal-content">
+            <button class="feedback-close-btn" id="feedbackCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="feedback-logo">
+                <h1>OLIVIA MERINO</h1>
+            </div>
+            
+            <h3 class="feedback-title">Cuéntanos más detalles acerca de tu experiencia.</h3>
+            
+            <div class="feedback-question">
+                <span class="required-mark">*</span>
+                <p>¿Qué tan probable es que recomiendes a Olivia Merino de acuerdo a la experiencia que viviste en nuestra tienda online?</p>
+            </div>
+            
+            <div class="rating-scale">
+                <div class="rating-buttons">
+                    <button class="rating-btn" data-value="0">0</button>
+                    <button class="rating-btn" data-value="1">1</button>
+                    <button class="rating-btn" data-value="2">2</button>
+                    <button class="rating-btn" data-value="3">3</button>
+                    <button class="rating-btn" data-value="4">4</button>
+                    <button class="rating-btn" data-value="5">5</button>
+                    <button class="rating-btn" data-value="6">6</button>
+                    <button class="rating-btn" data-value="7">7</button>
+                    <button class="rating-btn" data-value="8">8</button>
+                    <button class="rating-btn" data-value="9">9</button>
+                    <button class="rating-btn" data-value="10">10</button>
+                </div>
+                <div class="rating-labels">
+                    <span>Definitivamente no</span>
+                    <span>Definitivamente sí</span>
+                </div>
+            </div>
+            
+            <div class="feedback-specifications">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Claridad en especificaciones del catálogo</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="claras">
+                        <span>Las especificaciones del catálogo fueron claras (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-claras">
+                        <span>No fueron claras las especificaciones del catálogo (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-sabia">
+                        <span>No sabía cómo ver las especificaciones del catálogo</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-store-info">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Facilidad para encontrar información de las tiendas de Olivia Merino</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="facil">
+                        <span>Encontré fácilmente información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="dificil">
+                        <span>Fue muy difícil encontrar información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-encontre">
+                        <span>No encontré información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-email-container">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Correo eléctronico</p>
+                </div>
+                <input type="email" class="feedback-email" placeholder="Por favor escriba su respuesta" required>
+            </div>
+            
+            <div class="feedback-textarea-container">
+                <textarea class="feedback-textarea" placeholder="Déjanos tus comentarios adicionales..."></textarea>
+            </div>
+            
+            <button class="btn btn-primary feedback-submit-btn">Enviar Feedback</button>
+        </div>
+    </div>
+
+    <script src="../scripts/feedback.js"></script>
 </body>
 </html>
 

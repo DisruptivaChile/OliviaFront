@@ -1,5 +1,8 @@
-/* Navbar compacto en productos */
+/* Navbar compacto en catálogo */
 .header {
+    padding: 0 !important;
+}
+.header .container {
     padding: 0.5rem 0 !important;
 }
 .footer-bottom-text {
