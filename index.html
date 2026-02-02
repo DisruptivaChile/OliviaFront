@@ -115,7 +115,7 @@
     <!-- Editorial Split Section - 4 Paneles -->
     <section class="editorial-split editorial-split-four">
         <div class="editorial-panel" data-category="primavera">
-            <div class="editorial-image" style="background-image: url('frontend/assets/images/categorias/mujer/mujer-sandalias.png'); background-size: cover; background-position: center;">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/categorias/mujer/mujer-botines.png'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content editorial-content-stacked">
@@ -125,32 +125,32 @@
         </div>
 
         <div class="editorial-panel" data-category="a-pedido">
-            <div class="editorial-image" style="background-image: url('frontend/assets/images/contenido/collage.png'); background-size: cover; background-position: center;">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/inicio/paneles/panel-ofertas.png'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content editorial-content-stacked">
-                <h3 class="panel-title">A PEDIDO <span class="arrow-icon">→</span></h3>
+                <h3 class="panel-title">CALZADO <span class="arrow-icon">→</span></h3>
                 <a href="frontend/pages/productos.html" class="btn btn-hero">VER COLECCIÓN</a>
             </div>
         </div>
 
         <div class="editorial-panel" data-category="marfil-negro">
-            <div class="editorial-image" style="background-image: url('frontend/assets/images/categorias/mujer/mujer-botines.png'); background-size: cover; background-position: center;">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/inicio/slides/Ofertas.jpeg'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content editorial-content-stacked">
-                <h3 class="panel-title">MARFIL NEGRO <span class="arrow-icon">→</span></h3>
+                <h3 class="panel-title">OFERTAS <span class="arrow-icon">→</span></h3>
                 <a href="frontend/pages/productos.html" class="btn btn-hero">VER COLECCIÓN</a>
             </div>
         </div>
 
         <div class="editorial-panel" data-category="procesos">
-            <div class="editorial-image" style="background-image: url('frontend/assets/images/contenido/historia.png'); background-size: cover; background-position: center;">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/inicio/slides/calzado.png'); background-size: cover; background-position: center;">
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content editorial-content-stacked">
-                <h3 class="panel-title">PROCESOS <span class="arrow-icon">→</span></h3>
-                <a href="frontend/pages/ejemplos-marca.html" class="btn btn-hero">CONOCE MÁS</a>
+                <h3 class="panel-title">CONOCE TU TALLA <span class="arrow-icon">→</span></h3>
+                <a href="frontend/assets/images/inicio/slides/calzado.png" class="btn btn-hero">CONOCE MÁS</a>
             </div>
         </div>
     </section>
@@ -164,11 +164,13 @@
             <h2 class="section-title-center">NUEVA TEMPORADA</h2>
             
             <div class="nueva-temporada-carousel">
-                <button class="carousel-btn carousel-btn-prev" id="nuevaTemporadaPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
                 <div class="carousel-wrapper">
+                    <button class="carousel-nav-btn carousel-nav-prev" id="nuevaTemporadaPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-nav-btn carousel-nav-next" id="nuevaTemporadaNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                     <div class="carousel-track" id="nuevaTemporadaTrack">
                         <!-- Panel 1 -->
                         <div class="product-panel-wrapper">
@@ -265,52 +267,12 @@
                         </div>
                     </div>
                 </div>
-                
-                <button class="carousel-btn carousel-btn-next" id="nuevaTemporadaNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </section>
 
     <!-- Separator -->
     <div class="section-separator"></div>
-
-    <!-- Social Media Section -->
-    <section class="editorial-scroll social-scroll">
-        <div class="scroll-wrapper">
-            <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="scroll-slide social-slide instagram-slide">
-                <div class="instagram-bg-slideshow">
-                    <div class="instagram-bg-slide active" style="background-image: url('frontend/assets/images/inicio/hero/hero-mujer.png');"></div>
-                    <div class="instagram-bg-slide" style="background-image: url('frontend/assets/images/categorias/mujer/hero-mujer.jpg');"></div>
-                    <div class="instagram-bg-overlay"></div>
-                </div>
-                <div class="instagram-content">
-                    <div class="instagram-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">@olivia_merino_</h2>
-                    <p data-i18n="slide_instagram_descubre" style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Descubre nuestra colección y estilo de vida</p>
-                    <div class="instagram-cta">
-                        <span data-i18n="slide_instagram_siguenos" style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #E2D6C3; font-weight: 400;">Siguenos en Instagram</span>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="https://facebook.com" target="_blank" class="scroll-slide social-slide">
-                <div class="slide-image">
-                    <div class="slide-bg" style="background: linear-gradient(135deg, #1877f2 0%, #0d5ebd 100%);"></div>
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide-content">
-                    <i class="fab fa-facebook-f" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <span data-i18n="facebook_une" class="slide-label">Únete a</span>
-                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">Facebook</h2>
-                    <p data-i18n="facebook_comunidad" style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Conecta con nuestra comunidad</p>
-                </div>
-            </a>
-        </div>
-    </section>
 
     <!-- Our Services Section -->
     <section class="services-section">
@@ -354,21 +316,75 @@
         </div>
     </section>
 
-    <!-- Brand Statement -->
-    <section class="brand-statement">
+    <!-- Comunidad Olivia Section -->
+    <section class="comunidad-section">
         <div class="container">
-            <p class="statement-text">
-                <span data-i18n="marca_descripcion">
-                    Olivia Merino representa calidad, elegancia y estilo único en cada artículo del catálogo.
-                </span>
-                <br>
-                <strong data-i18n="marca_diseno">
-                    Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle,
-                </strong>
-                <span data-i18n="marca_experiencia">
-                    creando experiencias que trascienden el tiempo.
-                </span>
-            </p>
+            <h2 class="comunidad-title">#ComunidadOlivia</h2>
+            
+            <div class="testimonios-grid">
+                <article class="testimonio-card">
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">M</div>
+                        <div class="testimonio-user">
+                            <span class="testimonio-name">María González</span>
+                            <span class="testimonio-handle">@mariagonzalez</span>
+                        </div>
+                    </div>
+                    <p class="testimonio-text">Los zapatos de Olivia Merino son increíbles. La calidad es excepcional y el diseño es único. ¡Me encantan todos mis pares!</p>
+                    <div class="testimonio-footer">
+                        <span class="testimonio-date">15 ene 2026</span>
+                    </div>
+                </article>
+
+                <article class="testimonio-card">
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">A</div>
+                        <div class="testimonio-user">
+                            <span class="testimonio-name">Ana Rodríguez</span>
+                            <span class="testimonio-handle">@anarodriguez</span>
+                        </div>
+                    </div>
+                    <p class="testimonio-text">Compré mis primeros botines en Olivia y quedé fascinada. La comodidad y elegancia se combinan perfectamente. Definitivamente volveré por más.</p>
+                    <div class="testimonio-footer">
+                        <span class="testimonio-date">12 ene 2026</span>
+                    </div>
+                </article>
+
+                <article class="testimonio-card">
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">C</div>
+                        <div class="testimonio-user">
+                            <span class="testimonio-name">Carolina Moreno</span>
+                            <span class="testimonio-handle">@carolinamoreno</span>
+                        </div>
+                    </div>
+                    <p class="testimonio-text">Olivia Merino es mi marca favorita de calzado. Cada pieza refleja atención al detalle y un estilo impecable. ¡Son una obra de arte!</p>
+                    <div class="testimonio-footer">
+                        <span class="testimonio-date">8 ene 2026</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mundo Olivia Section -->
+    <section class="mundo-olivia-section">
+        <div class="container">
+            <h2 class="mundo-olivia-title">mundo olivia</h2>
+            <p class="mundo-olivia-text">Olivia Merino representa calidad, elegancia y estilo único en cada artículo del catálogo. Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle, creando experiencias que trascienden el tiempo.</p>
+            <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="btn btn-hero mundo-olivia-btn">CONÓCENOS</a>
+            
+            <div class="mundo-olivia-social">
+                <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/1234567890" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -528,16 +544,63 @@
     </button>
 
     <!-- Botón Flotante de Regalo -->
-    <a href="frontend/pages/ofertas.html" class="gift-float-btn" id="giftFloatBtn">
+    <button class="gift-float-btn" id="giftFloatBtn">
         <i class="fas fa-gift"></i>
         <span class="notification-badge"></span>
-    </a>
+    </button>
 
     <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float-btn" id="whatsappFloatBtn">
         <i class="fab fa-whatsapp"></i>
     </a>
-
+    <!-- Modal de Suscripción -->
+    <div class="subscription-modal" id="subscriptionModal">
+        <div class="subscription-modal-overlay" id="subscriptionModalOverlay"></div>
+        <div class="subscription-modal-content">
+            <button class="subscription-close-btn" id="closeSubscriptionBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="subscription-layout">
+                <!-- Imagen Izquierda -->
+                <div class="subscription-image" style="background-image: url('frontend/assets/images/categorias/mujer/hero-mujer.jpg');"></div>
+                
+                <!-- Formulario Derecha -->
+                <div class="subscription-form-container">
+                    <div class="subscription-header">
+                        <p class="subscription-subtitle">suscríbete y recibe</p>
+                        <h2 class="subscription-title">15% DE DESCUENTO</h2>
+                        <p class="subscription-text">en tu primera compra</p>
+                    </div>
+                    
+                    <form class="subscription-form" id="subscriptionForm">
+                        <div class="subscription-form-row">
+                            <input type="text" class="subscription-input" placeholder="Nombres" required>
+                            <input type="text" class="subscription-input" placeholder="Apellidos" required>
+                        </div>
+                        
+                        <input type="email" class="subscription-input subscription-input-full" placeholder="Correo electrónico" required>
+                        
+                        <select class="subscription-select" required>
+                            <option value="" disabled selected>Sexo</option>
+                            <option value="mujer">Mujer</option>
+                            <option value="hombre">Hombre</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        
+                        <label class="subscription-checkbox">
+                            <input type="checkbox" required>
+                            <span>Acepto las políticas de privacidad y tratamiento de datos personales del sitio y del Programa de Fidelización QUIERO. <a href="#" class="subscription-link">Conoce más aquí</a>.</span>
+                        </label>
+                        
+                        <button type="submit" class="subscription-submit-btn">ENVIAR</button>
+                        
+                        <a href="#" class="subscription-terms">VER TÉRMINOS Y CONDICIONES</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Modal de Feedback -->
     <div class="feedback-modal" id="feedbackModal">
         <div class="feedback-modal-content">
@@ -655,6 +718,9 @@
     <script src="frontend/scripts/index.js"></script>
     <script src="frontend/scripts/feedback.js"></script>
     <script src="frontend/scripts/carruselTemporadaIndex.js"></script>
+    
+    <!-- Script del modal de suscripción -->
+    <script src="frontend/scripts/subscription.js"></script>
     
 </body>
 </html>
