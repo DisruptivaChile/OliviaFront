@@ -44,8 +44,7 @@
                     <ul class="nav-list">
                         <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="productos.html" class="nav-link active" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="mujer.html" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
+                        <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </nav>
 
@@ -56,14 +55,6 @@
                 
                 <!-- Header Actions Right -->
                 <div class="header-actions">
-                    <div class="language-selector">
-                        <button class="lang-btn active" data-lang="es" title="Español">
-                            <span class="flag-icon">🇪🇸</span>
-                        </button>
-                        <button class="lang-btn" data-lang="en" title="English">
-                            <span class="flag-icon">🇺🇸</span>
-                        </button>
-                    </div>
                     <button class="icon-btn" id="cartBtn">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count" id="cartCount">0</span>
@@ -71,6 +62,17 @@
                     <button class="icon-btn" id="userBtn">
                         <i class="fas fa-user"></i>
                     </button>
+                    <div class="language-selector">
+                        <div class="lang-current" id="currentLangDisplay">
+                            <img src="" id="currentFlagImg" alt="Idioma">
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-option" id="langOptionBtn">
+                                <img src="" id="optionFlagImg" alt="Option">
+                                <span id="optionText"></span>
+                            </button>
+                        </div>
+                    </div>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -146,7 +148,7 @@
                     <h4 data-i18n="comprar_footer">Comprar</h4>
                     <ul>
                         <li><a href="productos.html" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="ofertas.html" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
+                        <li><a href="ofertas.html" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>
 

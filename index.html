@@ -44,8 +44,7 @@
                     <ul class="nav-list">
                         <li><a href="index.html" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="frontend/pages/productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="frontend/pages/mujer.html" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="frontend/pages/ofertas.html" class="nav-link" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
+                        <li><a href="frontend/pages/ofertas.html" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </nav>
 
@@ -56,14 +55,6 @@
                 
                 <!-- Header Actions Right -->
                 <div class="header-actions">
-                    <div class="language-selector">
-                        <button class="lang-btn active" data-lang="es" title="Español">
-                            <span class="flag-icon">🇪🇸</span>
-                        </button>
-                        <button class="lang-btn" data-lang="en" title="English">
-                            <span class="flag-icon">🇺🇸</span>
-                        </button>
-                    </div>
                     <button class="icon-btn" id="cartBtn">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count" id="cartCount">0</span>
@@ -71,6 +62,17 @@
                     <button class="icon-btn" id="userBtn">
                         <i class="fas fa-user"></i>
                     </button>
+                    <div class="language-selector">
+                        <div class="lang-current" id="currentLangDisplay">
+                            <img src="" id="currentFlagImg" alt="Idioma">
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-option" id="langOptionBtn">
+                                <img src="" id="optionFlagImg" alt="Option">
+                                <span id="optionText"></span>
+                            </button>
+                        </div>
+                    </div>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -82,7 +84,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
-            <div class="hero-slide active"> <div class="hero-bg" style="background-image: url('frontend/assets/images/inicio/hero/hero-principal.jpg'); background-size: cover; background-position: center;">
+            <div class="hero-slide active">
+                <div class="hero-bg" style="background-image: url('frontend/assets/images/inicio/hero/hero-principal.jpg'); background-size: cover; background-position: center;">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
@@ -118,7 +121,7 @@
             </div>
             <div class="editorial-content editorial-content-stacked">
                 <h3 class="panel-title">PRIMAVERA <span class="arrow-icon">→</span></h3>
-                <a href="frontend/pages/mujer.html" class="btn btn-hero">VER COLECCIÓN</a>
+                <a href="#" class="btn btn-hero">VER COLECCIÓN</a>
             </div>
         </div>
 
@@ -419,7 +422,7 @@
                 </div>
 
                 <div class="footer-section">
-                    <h4>Newsletter</h4>
+                    <h4 data-i18n="footer_newsletter">Newsletter</h4>
                     <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
@@ -714,39 +717,7 @@
     <script src="frontend/scripts/main.js"></script>
     <script src="frontend/scripts/index.js"></script>
     <script src="frontend/scripts/feedback.js"></script>
-    
-    <script>
-        // Carrusel Nueva Temporada
-        const track = document.getElementById('nuevaTemporadaTrack');
-        const prevBtn = document.getElementById('nuevaTemporadaPrev');
-        const nextBtn = document.getElementById('nuevaTemporadaNext');
-        
-        if (track && prevBtn && nextBtn) {
-            let currentIndex = 0;
-            const totalPanels = 6;
-            const panelsToShow = 3;
-            const maxIndex = totalPanels - panelsToShow;
-            
-            function updateCarousel() {
-                const translateValue = -(currentIndex * (100 / panelsToShow + 1.5));
-                track.style.transform = `translateX(${translateValue}%)`;
-            }
-            
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            });
-        }
-    </script>
+    <script src="frontend/scripts/carruselTemporadaIndex.js"></script>
     
     <!-- Script del modal de suscripción -->
     <script src="frontend/scripts/subscription.js"></script>

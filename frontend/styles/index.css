@@ -10,9 +10,17 @@
     color: white !important;
 }
 .header-content {
-    align-items: start !important;
+    display: flex;
+    justify-content: space-between; /* Centrado horizontal */
+    position: relative;
+    width:100%;
+    padding: 0 80px;
 }
 .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     margin-top: 2.5rem !important;
 }
 .header.scrolled .container {
@@ -26,7 +34,7 @@
 }
 /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
 .icon-btn:hover i {
-    color: #6B2D5C !important;
+    color: #2a2a2a !important;
 }
 
 /* Regla específica para cuando el header tiene la clase 'scrolled' */
@@ -36,7 +44,7 @@
 }
 
 .header.scrolled .icon-btn:hover i {
-    color: #6B2D5C !important;
+    color: #2a2a2a !important;
 }
 
 .header.scrolled .mobile-menu-btn {
@@ -45,7 +53,7 @@
 
 /* Si el contador del carrito también deja de verse bien, añade esto: */
 .header.scrolled .cart-count {
-    background: #6B2D5C;
+    background: #2a2a2a;
     color: white;
 }
 
@@ -121,11 +129,11 @@
 
 .nav-link:hover,
 .nav-link.active {
-    color: #6B2D5C !important;
+    color: #2a2a2a !important;
 }
 .header.scrolled .nav-link:hover,
 .header.scrolled .nav-link.active {
-    color: #6B2D5C !important;
+    color: #2a2a2a !important;
 }
 /* Hero - Logo más grande y textos beige */
 .header:not(.scrolled) .logo h1 {
@@ -214,21 +222,92 @@
     color: white !important;
 }
 
-/* Language Selector */
 .language-selector {
-    display: flex;
-    gap: 0.5rem;
-    margin-right: 1rem;
-}
-.lang-btn {
-    background: transparent;
-    border: 2px solid transparent;
-    padding: 0.25rem 0.5rem;
+    position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 4px;
-    color: white !important;
+    align-items: center;
+    margin-right: auto;
 }
+
+.lang-current img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #2a2a2a;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.lang-current:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 85%;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 140px;
+}
+
+.lang-dropdown:hover {
+    background-color: #2a2a2a;
+    border-color: #2a2a2a;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+.lang-dropdown:hover span {
+    color: white;
+}
+
+.language-selector:hover .lang-dropdown {
+    display: block;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a2a2a;
+    transition: all 0.2s ease;
+    border-radius: 10px;
+}
+
+.lang-option:hover {
+    border-radius: 8px;
+    transform: translateX(4px);
+}
+
+.lang-option img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Color cuando se hace scroll */
 .header.scrolled .lang-btn {
     color: #2a2a2a !important; /* Color oscuro/negro */
@@ -237,14 +316,14 @@
 /* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
 .header.scrolled .lang-btn:hover,
 .header.scrolled .lang-btn.active {
-    border-color: #6B2D5C !important;
-    color: #6B2D5C !important;
+    border-color: #2a2a2a !important;
+    color: #2a2a2a !important;
 }
 .lang-btn:hover {
-    border-color: #6B2D5C;
+    border-color: #2a2a2a;
 }
 .lang-btn.active {
-    border-color: #6B2D5C;
+    border-color: #2a2a2a;
     background: rgba(107, 45, 92, 0.1);
 }
 .flag-icon {
@@ -309,7 +388,7 @@
     z-index: 10;
 }
 .login-close-btn:hover {
-    color: #6B2D5C;
+    color: #2a2a2a;
 }
 .login-header {
     margin-bottom: 2rem;
@@ -344,7 +423,7 @@
 }
 .login-tab.active {
     background: white;
-    color: #6B2D5C;
+    color: #2a2a2a;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .login-tab i {
@@ -385,7 +464,7 @@
 }
 .form-input:focus {
     outline: none;
-    border-color: #6B2D5C;
+    border-color: #2a2a2a;
     background: white;
 }
 .form-options {
@@ -405,10 +484,10 @@
     width: 18px;
     height: 18px;
     cursor: pointer;
-    accent-color: #6B2D5C;
+    accent-color: #2a2a2a;
 }
 .forgot-link {
-    color: #6B2D5C;
+    color: #2a2a2a;
     text-decoration: none;
     transition: opacity 0.3s ease;
 }
@@ -416,7 +495,7 @@
     opacity: 0.7;
 }
 .login-submit {
-    background: #6B2D5C !important;
+    background: #2a2a2a !important;
     border: none !important;
     padding: 1rem !important;
     font-size: 1rem !important;
@@ -424,7 +503,8 @@
     margin-top: 0.5rem;
 }
 .login-submit:hover {
-    background: #5a2450 !important;
+    background: var(--white) !important;
+    border: 1px solid #2a2a2a !important;
 }
 .login-divider {
     position: relative;
@@ -487,7 +567,7 @@
     margin-top: 1rem;
 }
 .register-link {
-    color: #6B2D5C;
+    color: #2a2a2a;
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.3s ease;

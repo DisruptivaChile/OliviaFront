@@ -4,23 +4,18 @@
 
 const translations = {
     es: {
-        // Navegación
         nav_inicio: "Inicio",
         nav_productos: "Catálogo",
         nav_mujer: "Mujer",
         nav_hombre: "Hombre",
         nav_ofertas: "Ofertas",
         comprar_footer: "Comprar",
-        
-        // Hero Section
         hero_nueva_coleccion: "Nueva Colección",
         hero_primavera_verano: "Primavera/Verano",
         hero_edicion_limitada: "Edición Limitada",
         hero_diseno_exclusivo: "Diseño Exclusivo",
         hero_btn_explorar: "Explorar Colección",
         hero_btn_ver: "Ver Ahora",
-        
-        // Slides
         slide_coleccion: "Colección",
         slide_mujer: "Mujer",
         slide_hombre: "Hombre",
@@ -28,18 +23,12 @@ const translations = {
         slide_ofertas: "Ofertas",
         slide_elegancia_mujer: "Elegancia atemporal para cada ocasión",
         slide_estilo_hombre: "Estilo refinado y sofisticado",
-
-        // Redes sociales
         slide_instagram_descubre: "Descubre nuestra colección y estilo de vida",
         slide_instagram_siguenos: "Siguenos en Instagram",
         facebook_une: "Únete a",
         facebook_comunidad: "Conecta con nuestra comunidad",
-        
-        // Productos
         productos_titulo: "Mundo Olivia",
         productos_subtitulo: "Encuentra el par perfecto para ti",
-        
-        // Filtros
         filtro_categoria: "Categoría:",
         filtro_todas: "Todas",
         filtro_tipo: "Tipo:",
@@ -57,8 +46,6 @@ const translations = {
         filtro_20: "20% o más",
         filtro_30: "30% o más",
         filtro_50: "50% o más",
-        
-        // Historia/Servicios
         historia_titulo: "NUESTRA HISTORIA",
         historia_origen: "EL ORIGEN DE LAS IDEAS",
         historia_origen_desc: "Cada diseño nace de la inspiración cotidiana, viajes y momentos que capturan la esencia de la elegancia atemporal.",
@@ -67,16 +54,12 @@ const translations = {
         historia_nace: "NACE OLIVIA MERINO",
         historia_nace_desc: "La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.",
         historia_conoce: "CONOCE MÁS",
-
-        // Párrafo largo
         marca_descripcion: "Olivia Merino representa calidad, elegancia y estilo único en cada artículo del catálogo.",
         marca_diseno: "Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle,",
         marca_experiencia: "creando experiencias que trascienden el tiempo.",
         oferta_descripcion: "Aprovecha nuestras ofertas exclusivas sin comprometer",
         oferta_resaltado: "la calidad y elegancia que nos caracteriza.",
         oferta_garantia: "Cada artículo en oferta mantiene nuestro estándar de excelencia.",
-        
-        // Página Mujer
         mujer_coleccion: "Colección",
         mujer_explorar: "Explorar Colección",
         mujer_categorias: "Categorías",
@@ -91,16 +74,12 @@ const translations = {
         mujer_elegancia: "Elegancia en cada paso",
         frescura: "Frescura y sofisticación",
         estilo: "Estilo y versatilidad",
-
-        //Descuentos
         ofertas_titulo: "Ofertas Especiales",
         section_subtitle_desc: "Descuentos exclusivos en artículos seleccionados",
         hero_ofertas_label: "DESCUENTOS ESPECIALES",
         hero_ofertas_title: "Mundo Olivia",
         hero_ofertas_subtitle: "Encuentra las mejores ofertas en nuestra colección premium",
         hero_ofertas_btn: "Ver Ofertas",
-
-        // Carrito
         carrito_titulo: "Mi Carrito",
         carrito_vacio: "Tu carrito está vacío",
         carrito_total: "Total:",
@@ -108,8 +87,6 @@ const translations = {
         carrito_eliminar: "Eliminar",
         carrito_añadir: "Añadir al Carrito",
         producto_nuevo: "NUEVO",
-
-        //login
         login_header: "Iniciar Sesión",
         login_header_p: "Inicia sesión para continuar",
         login_usuario: "Usuario",
@@ -121,8 +98,6 @@ const translations = {
         login_divider: "o",
         login_footer: "¿No tienes cuenta?",
         login_footer_registro: "Regístrate aquí",
-
-        // Footer
         footer_titulo: "OLIVIA MERINO",
         footer_descripcion: "Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.",
         footer_cuenta: "Mi Cuenta",
@@ -144,23 +119,18 @@ const translations = {
         footer_guia: "Guía de Tallas"
     },
     en: {
-        // Navigation
         nav_inicio: "Home",
         nav_productos: "Catalog",
         nav_mujer: "Women",
         nav_hombre: "Men",
         nav_ofertas: "Offers",
         comprar_footer: "Shop",
-        
-        // Hero Section
         hero_nueva_coleccion: "New Collection",
         hero_primavera_verano: "Spring/Summer",
         hero_edicion_limitada: "Limited Edition",
         hero_diseno_exclusivo: "Exclusive Design",
         hero_btn_explorar: "Explore Collection",
         hero_btn_ver: "View Now",
-        
-        // Slides
         slide_coleccion: "Collection",
         slide_mujer: "Women",
         slide_hombre: "Men",
@@ -168,18 +138,12 @@ const translations = {
         slide_ofertas: "Offers",
         slide_elegancia_mujer: "Timeless elegance for every occasion",
         slide_estilo_hombre: "Refined and sophisticated style",
-
-        // Social Media
         slide_instagram_descubre: "Discover our collection and lifestyle",
         slide_instagram_siguenos: "Follow us on Instagram",
         facebook_une: "Join",
         facebook_comunidad: "Connect with our community",
-        
-        // Products
         productos_titulo: "Olivia's World",
         productos_subtitulo: "Find your perfect pair",
-        
-        // Filters
         filtro_categoria: "Category:",
         filtro_todas: "All",
         filtro_tipo: "Type:",
@@ -197,8 +161,6 @@ const translations = {
         filtro_20: "20% or more",
         filtro_30: "30% or more",
         filtro_50: "50% or more",
-        
-        // History/Services
         historia_titulo: "OUR STORY",
         historia_origen: "THE ORIGIN OF IDEAS",
         historia_origen_desc: "Each design is born from everyday inspiration, travels and moments that capture the essence of timeless elegance.",
@@ -207,16 +169,12 @@ const translations = {
         historia_nace: "OLIVIA MERINO IS BORN",
         historia_nace_desc: "The vision of creating footwear that fuses artisan tradition with contemporary design gave life to our brand.",
         historia_conoce: "LEARN MORE",
-
-        // Long Paragraph
         marca_descripcion: "Olivia Merino represents quality, elegance, and unique style in every product.",
         marca_diseno: "Each piece is carefully designed to reflect the passion for perfection and detail,",
         marca_experiencia: "creating experiences that transcend time.",
         oferta_descripcion: "Take advantage of our exclusive offers without compromising",
         oferta_resaltado: "the quality and elegance that define us.",
         oferta_garantia: "Every product on sale maintains our standard of excellence.",
-
-        // Women's Page
         mujer_coleccion: "Collection",
         mujer_explorar: "Explore Collection",
         mujer_categorias: "Categories",
@@ -231,16 +189,12 @@ const translations = {
         mujer_elegancia: "Elegance in every step",
         frescura: "Freshness and sophistication",
         estilo: "Style and versatility",
-
-        // Discounts
         ofertas_titulo: "Special Offers",
         section_subtitle_desc: "Exclusive offers on selected products",
         hero_ofertas_label: "SPECIAL OFFERS",
         hero_ofertas_title: "Olivia's World",
         hero_ofertas_subtitle: "Find the best offers in our premium collection",
         hero_ofertas_btn: "View Offers",
-
-        // Cart
         carrito_titulo: "My Cart",
         carrito_vacio: "Your cart is empty",
         carrito_total: "Total:",
@@ -248,8 +202,6 @@ const translations = {
         carrito_eliminar: "Remove",
         carrito_añadir: "Add to Cart",
         producto_nuevo: "NEW",
-
-        // Login
         login_header: "Login",
         login_header_p: "Log in to continue",
         login_usuario: "User",
@@ -261,8 +213,6 @@ const translations = {
         login_divider: "or",
         login_footer: "Don't have an account?",
         login_footer_registro: "Register here",
-
-        // Footer
         footer_titulo: "OLIVIA MERINO",
         footer_descripcion: "Your destination for premium quality shoes. Style, comfort and elegance in every step.",
         footer_cuenta: "My Account",
@@ -285,58 +235,80 @@ const translations = {
     }
 };
 
-// Idioma actual (por defecto español)
+// --- LÓGICA DE CONTROL ---
+
+// 1. Estado inicial
 let currentLanguage = localStorage.getItem('oliviaLanguage') || 'es';
 
-// Función para cambiar idioma
-function changeLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('oliviaLanguage', lang);
-    updatePageContent();
-    updateActiveFlag();
-    
-    // Recargar productos si existen
-    if (typeof displayProducts === 'function' && typeof filteredProducts !== 'undefined') {
-        displayProducts(filteredProducts);
-    }
-}
+const flagData = {
+    es: { src: "https://res.cloudinary.com/dzi3s9oof/image/upload/v1770054456/cl_mmwm5r.svg", label: "Español" },
+    en: { src: "https://res.cloudinary.com/dzi3s9oof/image/upload/v1770054456/us_ieog1r.svg", label: "English" }
+};
 
-// Función para actualizar contenido de la página
+// 2. Función para actualizar todos los textos con [data-i18n]
 function updatePageContent() {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations[currentLanguage][key]) {
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
             element.textContent = translations[currentLanguage][key];
         }
     });
 }
 
-// Función para actualizar bandera activa
-function updateActiveFlag() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    const activeBtn = document.querySelector(`.lang-btn[data-lang="${currentLanguage}"]`);
-    if (activeBtn) {
-        activeBtn.classList.add('active');
+// 3. Función para actualizar el selector de banderas (UI)
+function updateSelectorUI() {
+    const mainImg = document.getElementById('currentFlagImg');
+    const optionImg = document.getElementById('optionFlagImg');
+    const optionBtn = document.getElementById('langOptionBtn');
+    const optionText = document.getElementById('optionText');
+
+    if (!mainImg || !optionImg || !optionBtn) return;
+
+    // El idioma opuesto al actual
+    const otherLang = currentLanguage === 'es' ? 'en' : 'es';
+
+    // Setear bandera principal
+    mainImg.src = flagData[currentLanguage].src;
+    mainImg.alt = flagData[currentLanguage].label;
+
+    // Setear la opción del dropdown
+    optionImg.src = flagData[otherLang].src;
+    optionText.textContent = flagData[otherLang].label;
+    optionBtn.setAttribute('data-lang', otherLang);
+}
+
+// 4. Función central para cambiar el idioma
+function changeLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('oliviaLanguage', lang);
+    
+    updatePageContent();
+    updateSelectorUI();
+    
+    // Si tienes una función para refrescar la lista de productos, llámala aquí
+    if (typeof displayProducts === 'function' && typeof filteredProducts !== 'undefined') {
+        displayProducts(filteredProducts);
     }
 }
 
-// Función helper para obtener traducción
+// 5. Inicialización al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    // Ejecutar actualizaciones iniciales
+    updatePageContent();
+    updateSelectorUI();
+    
+    // Configurar el evento de click en el botón de la bandera oculta
+    const optionBtn = document.getElementById('langOptionBtn');
+    if (optionBtn) {
+        optionBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Evitar comportamientos extraños
+            const nextLang = optionBtn.getAttribute('data-lang');
+            changeLanguage(nextLang);
+        });
+    }
+});
+
+// Helper opcional para usar en otros scripts JS
 function t(key) {
     return translations[currentLanguage][key] || key;
 }
-
-// Inicializar al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    updatePageContent();
-    updateActiveFlag();
-    
-    // Event listeners para botones de idioma
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            changeLanguage(lang);
-        });
-    });
-});
