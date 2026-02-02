@@ -18,6 +18,22 @@
 <body>
     <!-- Header -->
     <header class="header" id="mainHeader">
+        <!-- Promotional Banner Slider -->
+        <div class="promo-banner-slider">
+            <div class="promo-slide active">
+                <p><strong>30% de descuento</strong> en colección seleccionada · <strong>Envío gratis</strong> desde €50</p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Nueva Colección</strong> Primavera/Verano 2026 · <strong>Ya disponible</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Envío gratis</strong> en compras superiores a <strong>€50</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>2x1</strong> en zapatos seleccionados · <strong>Promoción limitada</strong></p>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="header-content">
                 <!-- Navigation Left -->
@@ -27,9 +43,9 @@
                     </button>
                     <ul class="nav-list">
                         <li><a href="index.html" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
-                        <li><a href="frontend/pages/productos.html" class="nav-link" data-i18n="nav_productos">Productos</a></li>
+                        <li><a href="frontend/pages/productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
                         <li><a href="frontend/pages/mujer.html" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="frontend/pages/ofertas.html" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="frontend/pages/ofertas.html" class="nav-link" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
                     </ul>
                 </nav>
 
@@ -63,15 +79,14 @@
         </div>
     </header>
 
-    <!-- Promotional Banner -->
-    <div class="promo-banner">
-        <p><strong>30% DCTO</strong> en colección seleccionada · Envío gratis desde €50</p>
-    </div>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
+<<<<<<< HEAD
             <div class="hero-slide active"> <div class="hero-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/newMainImg_qwfobd.jpg'); background-size: cover; background-position: center;">
+=======
+            <div class="hero-slide active"> <div class="hero-bg" style="background-image: url('frontend/assets/images/inicio/hero/hero-principal.jpg'); background-size: cover; background-position: center;">
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
@@ -82,7 +97,11 @@
             </div>
             
             <div class="hero-slide">
+<<<<<<< HEAD
                 <div class="hero-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004133/mujerMain_opzdw3.png'); background-size: 140%; background-position: center 60%;">
+=======
+                <div class="hero-bg" style="background-image: url('frontend/assets/images/inicio/hero/hero-mujer.png'); background-size: 140%; background-position: center 60%;">
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
@@ -96,6 +115,7 @@
 
     </section>
 
+<<<<<<< HEAD
     <!-- Editorial Split Section -->
     <section class="editorial-split">
         <a href="frontend/pages/productos.html" class="editorial-panel" data-category="productos">
@@ -109,24 +129,39 @@
                 >
                     <source src="https://res.cloudinary.com/dzi3s9oof/video/upload/v1770004154/productosVideo_ceqoid.mp4" type="video/mp4">
                 </video>
+=======
+    <!-- Separator -->
+    <div class="section-separator"></div>
+
+    <!-- Editorial Split Section - 4 Paneles -->
+    <section class="editorial-split editorial-split-four">
+        <div class="editorial-panel" data-category="primavera">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/categorias/mujer/mujer-sandalias.png'); background-size: cover; background-position: center;">
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                 <div class="editorial-overlay"></div>
             </div>
-
-            <div class="editorial-content">
-                <h2 data-i18n="slide_productos">Productos</h2>
+            <div class="editorial-content editorial-content-stacked">
+                <h3 class="panel-title">PRIMAVERA <span class="arrow-icon">→</span></h3>
+                <a href="frontend/pages/mujer.html" class="btn btn-hero">VER COLECCIÓN</a>
             </div>
-        </a>
+        </div>
 
+<<<<<<< HEAD
         <a href="frontend/pages/ofertas.html" class="editorial-panel" data-category="ofertas">
             <div class="editorial-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004136/ofertasMain_r2efzm.png'); background-size: cover; background-position: center;">
+=======
+        <div class="editorial-panel" data-category="a-pedido">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/contenido/collage.png'); background-size: cover; background-position: center;">
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                 <div class="editorial-overlay"></div>
             </div>
-            <div class="editorial-content">
-                <h2 data-i18n="slide_ofertas">Ofertas</h2>
+            <div class="editorial-content editorial-content-stacked">
+                <h3 class="panel-title">A PEDIDO <span class="arrow-icon">→</span></h3>
+                <a href="frontend/pages/productos.html" class="btn btn-hero">VER COLECCIÓN</a>
             </div>
-        </a>
-    </section>
+        </div>
 
+<<<<<<< HEAD
     <!-- Editorial Horizontal Scroll -->
     <section class="editorial-scroll">
         <div class="scroll-wrapper">
@@ -141,16 +176,162 @@
                     <p data-i18n="slide_elegancia_mujer">Elegancia atemporal para cada ocasión</p>
                 </div>
             </a>
+=======
+        <div class="editorial-panel" data-category="marfil-negro">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/categorias/mujer/mujer-botines.png'); background-size: cover; background-position: center;">
+                <div class="editorial-overlay"></div>
+            </div>
+            <div class="editorial-content editorial-content-stacked">
+                <h3 class="panel-title">MARFIL NEGRO <span class="arrow-icon">→</span></h3>
+                <a href="frontend/pages/productos.html" class="btn btn-hero">VER COLECCIÓN</a>
+            </div>
+        </div>
+
+        <div class="editorial-panel" data-category="procesos">
+            <div class="editorial-image" style="background-image: url('frontend/assets/images/contenido/historia.png'); background-size: cover; background-position: center;">
+                <div class="editorial-overlay"></div>
+            </div>
+            <div class="editorial-content editorial-content-stacked">
+                <h3 class="panel-title">PROCESOS <span class="arrow-icon">→</span></h3>
+                <a href="frontend/pages/ejemplos-marca.html" class="btn btn-hero">CONOCE MÁS</a>
+            </div>
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
         </div>
     </section>
+
+    <!-- Separator -->
+    <div class="section-separator"></div>
+
+    <!-- Nueva Temporada Section -->
+    <section class="nueva-temporada-section">
+        <div class="container">
+            <h2 class="section-title-center">NUEVA TEMPORADA</h2>
+            
+            <div class="nueva-temporada-carousel">
+                <button class="carousel-btn carousel-btn-prev" id="nuevaTemporadaPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="nuevaTemporadaTrack">
+                        <!-- Panel 1 -->
+                        <div class="product-panel-wrapper">
+                            <div class="product-panel">
+                                <span class="sale-badge">SALE</span>
+                                <div class="product-panel-image" style="background-image: url('frontend/assets/images/inicio/slides/rojo.png'); background-size: cover; background-repeat: no-repeat; background-position: center bottom;"></div>
+                            </div>
+                            <div class="product-info-panel">
+                                <h4 class="product-name-panel">ZAPATO COYAN BLANCO NEGRO</h4>
+                                <p class="product-brand-panel">NALCA</p>
+                                <p class="product-price-panel">
+                                    <span class="price-sale">$88.350</span>
+                                    <span class="price-original">$98.000</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Panel 2 -->
+                        <div class="product-panel-wrapper">
+                            <div class="product-panel">
+                                <span class="sale-badge">SALE</span>
+                                <div class="product-panel-image" style="background-image: url('frontend/assets/images/inicio/slides/amarillo.png'); background-size: cover; background-repeat: no-repeat; background-position: center bottom;"></div>
+                            </div>
+                            <div class="product-info-panel">
+                                <h4 class="product-name-panel">ZAPATO PALQUI NEGRO</h4>
+                                <p class="product-brand-panel">NALCA</p>
+                                <p class="product-price-panel">
+                                    <span class="price-current">$96.000</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Panel 3 -->
+                        <div class="product-panel-wrapper">
+                            <div class="product-panel">
+                                <span class="sale-badge">SALE</span>
+                                <div class="product-panel-image" style="background-image: url('frontend/assets/images/inicio/slides/cafe.png'); background-size: cover; background-repeat: no-repeat; background-position: center bottom;"></div>
+                            </div>
+                            <div class="product-info-panel">
+                                <h4 class="product-name-panel">ZAPATO TEVO BLANCO NEGRO</h4>
+                                <p class="product-brand-panel">NALCA</p>
+                                <p class="product-price-panel">
+                                    <span class="price-sale">$91.200</span>
+                                    <span class="price-original">$96.000</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Panel 4 (repite) -->
+                        <div class="product-panel-wrapper">
+                            <div class="product-panel">
+                                <span class="sale-badge">SALE</span>
+                                <div class="product-panel-image" style="background-image: url('frontend/assets/images/inicio/slides/rojo.png'); background-size: cover; background-repeat: no-repeat; background-position: center bottom;"></div>
+                            </div>
+                            <div class="product-info-panel">
+                                <h4 class="product-name-panel">ZAPATO COYAN BLANCO NEGRO</h4>
+                                <p class="product-brand-panel">NALCA</p>
+                                <p class="product-price-panel">
+                                    <span class="price-sale">$88.350</span>
+                                    <span class="price-original">$98.000</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Panel 5 (repite) -->
+                        <div class="product-panel-wrapper">
+                            <div class="product-panel">
+                                <span class="sale-badge">SALE</span>
+                                <div class="product-panel-image" style="background-image: url('frontend/assets/images/inicio/slides/amarillo.png'); background-size: cover; background-repeat: no-repeat; background-position: center bottom;"></div>
+                            </div>
+                            <div class="product-info-panel">
+                                <h4 class="product-name-panel">ZAPATO PALQUI NEGRO</h4>
+                                <p class="product-brand-panel">NALCA</p>
+                                <p class="product-price-panel">
+                                    <span class="price-current">$96.000</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Panel 6 (repite) -->
+                        <div class="product-panel-wrapper">
+                            <div class="product-panel">
+                                <span class="sale-badge">SALE</span>
+                                <div class="product-panel-image" style="background-image: url('frontend/assets/images/inicio/slides/cafe.png'); background-size: cover; background-repeat: no-repeat; background-position: center bottom;"></div>
+                            </div>
+                            <div class="product-info-panel">
+                                <h4 class="product-name-panel">ZAPATO TEVO BLANCO NEGRO</h4>
+                                <p class="product-brand-panel">NALCA</p>
+                                <p class="product-price-panel">
+                                    <span class="price-sale">$91.200</span>
+                                    <span class="price-original">$96.000</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn carousel-btn-next" id="nuevaTemporadaNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Separator -->
+    <div class="section-separator"></div>
 
     <!-- Social Media Section -->
     <section class="editorial-scroll social-scroll">
         <div class="scroll-wrapper">
             <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="scroll-slide social-slide instagram-slide">
                 <div class="instagram-bg-slideshow">
+<<<<<<< HEAD
                     <div class="instagram-bg-slide active" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004133/mujerMain_opzdw3.png');"></div>
                     <div class="instagram-bg-slide" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004133/mujerHero_fls22l.jpg');"></div>
+=======
+                    <div class="instagram-bg-slide active" style="background-image: url('frontend/assets/images/inicio/hero/hero-mujer.png');"></div>
+                    <div class="instagram-bg-slide" style="background-image: url('frontend/assets/images/categorias/mujer/hero-mujer.jpg');"></div>
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     <div class="instagram-bg-overlay"></div>
                 </div>
                 <div class="instagram-content">
@@ -160,7 +341,7 @@
                     <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #E2D6C3; margin: 1.5rem 0;">@olivia_merino_</h2>
                     <p data-i18n="slide_instagram_descubre" style="font-size: 1.1rem; color: #E2D6C3; margin-bottom: 2rem;">Descubre nuestra colección y estilo de vida</p>
                     <div class="instagram-cta">
-                        <span data-i18n="slide_instagram_siguenos" style="font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: #E2D6C3; font-weight: 500;">Siguenos en Instagram</span>
+                        <span data-i18n="slide_instagram_siguenos" style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #E2D6C3; font-weight: 400;">Siguenos en Instagram</span>
                     </div>
                 </div>
             </a>
@@ -188,7 +369,11 @@
             <div class="services-grid">
                 <article class="service-card">
                     <div class="service-image">
+<<<<<<< HEAD
                         <div class="service-image-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/ideas_njfwdm.jpg'); background-size: cover; background-position: center;"></div>
+=======
+                        <div class="service-image-bg" style="background-image: url('frontend/assets/images/contenido/ideas.jpeg'); background-size: cover; background-position: center;"></div>
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     </div>
                     <div class="service-content">
                         <h3 class="service-name" data-i18n="historia_origen">EL ORIGEN DE LAS IDEAS</h3>
@@ -199,7 +384,11 @@
                 
                 <article class="service-card">
                     <div class="service-image">
+<<<<<<< HEAD
                         <div class="service-image-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/historia_w8wj9p.png'); background-size: cover; background-position: center;"></div>
+=======
+                        <div class="service-image-bg" style="background-image: url('frontend/assets/images/contenido/historia.png'); background-size: cover; background-position: center;"></div>
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     </div>
                     <div class="service-content">
                         <h3 class="service-name" data-i18n="historia_cancion">UNA CANCIÓN, UNA HISTORIA</h3>
@@ -210,7 +399,11 @@
                 
                 <article class="service-card">
                     <div class="service-image">
+<<<<<<< HEAD
                         <div class="service-image-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/marca_v3azkx.png'); background-size: cover; background-position: center;"></div>
+=======
+                        <div class="service-image-bg" style="background-image: url('frontend/assets/images/contenido/marca.png'); background-size: cover; background-position: center;"></div>
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     </div>
                     <div class="service-content">
                         <h3 class="service-name" data-i18n="historia_nace">NACE OLIVIA MERINO</h3>
@@ -227,7 +420,7 @@
         <div class="container">
             <p class="statement-text">
                 <span data-i18n="marca_descripcion">
-                    Olivia Merino representa calidad, elegancia y estilo único en cada producto.
+                    Olivia Merino representa calidad, elegancia y estilo único en cada artículo del catálogo.
                 </span>
                 <br>
                 <strong data-i18n="marca_diseno">
@@ -259,7 +452,7 @@
                     <h4 data-i18n="comprar_footer">Comprar</h4>
                     <ul>
                         <li><a href="frontend/pages/mujer.html" data-i18n="nav_mujer">Mujer</a></li>
-                        <li><a href="frontend/pages/ofertas.html" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="frontend/pages/ofertas.html" data-i18n="nav_ofertas" target="_blank">Ofertas</a></li>
                     </ul>
                 </div>
 
@@ -389,9 +582,172 @@
         </div>
     </div>
 
+    <!-- Botón Flotante de Contacto -->
+    <button class="contact-float-btn" id="contactFloatBtn">
+        <i class="fas fa-comments"></i>
+        <span>Contáctanos</span>
+    </button>
+
+    <!-- Botón Flotante de Regalo -->
+    <a href="frontend/pages/ofertas.html" class="gift-float-btn" id="giftFloatBtn">
+        <i class="fas fa-gift"></i>
+        <span class="notification-badge"></span>
+    </a>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float-btn" id="whatsappFloatBtn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal de Feedback -->
+    <div class="feedback-modal" id="feedbackModal">
+        <div class="feedback-modal-content">
+            <button class="feedback-close-btn" id="feedbackCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="feedback-logo">
+                <h1>OLIVIA MERINO</h1>
+            </div>
+            
+            <h3 class="feedback-title">Cuéntanos más detalles acerca de tu experiencia.</h3>
+            
+            <div class="feedback-question">
+                <span class="required-mark">*</span>
+                <p>¿Qué tan probable es que recomiendes a Olivia Merino de acuerdo a la experiencia que viviste en nuestra tienda online?</p>
+            </div>
+            
+            <div class="rating-scale">
+                <div class="rating-buttons">
+                    <button class="rating-btn" data-value="0">0</button>
+                    <button class="rating-btn" data-value="1">1</button>
+                    <button class="rating-btn" data-value="2">2</button>
+                    <button class="rating-btn" data-value="3">3</button>
+                    <button class="rating-btn" data-value="4">4</button>
+                    <button class="rating-btn" data-value="5">5</button>
+                    <button class="rating-btn" data-value="6">6</button>
+                    <button class="rating-btn" data-value="7">7</button>
+                    <button class="rating-btn" data-value="8">8</button>
+                    <button class="rating-btn" data-value="9">9</button>
+                    <button class="rating-btn" data-value="10">10</button>
+                </div>
+                <div class="rating-labels">
+                    <span>Definitivamente no</span>
+                    <span>Definitivamente sí</span>
+                </div>
+            </div>
+            
+            <div class="feedback-specifications">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Claridad en especificaciones del catálogo</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="claras">
+                        <span>Las especificaciones del catálogo fueron claras (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-claras">
+                        <span>No fueron claras las especificaciones del catálogo (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-sabia">
+                        <span>No sabía cómo ver las especificaciones del catálogo</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-store-info">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Facilidad para encontrar información de las tiendas de Olivia Merino</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="facil">
+                        <span>Encontré fácilmente información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="dificil">
+                        <span>Fue muy difícil encontrar información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-encontre">
+                        <span>No encontré información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-email-container">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Correo eléctronico</p>
+                </div>
+                <input type="email" class="feedback-email" placeholder="Por favor escriba su respuesta" required>
+            </div>
+            
+            <div class="feedback-textarea-container">
+                <textarea class="feedback-textarea" placeholder="Déjanos tus comentarios adicionales..."></textarea>
+            </div>
+            
+            <button class="btn btn-primary feedback-submit-btn">Enviar Feedback</button>
+        </div>
+    </div>
+
     <script src="frontend/scripts/translations.js"></script>
     <script src="frontend/scripts/main.js"></script>
     <script src="frontend/scripts/index.js"></script>
+    <script src="frontend/scripts/feedback.js"></script>
+    
+    <script>
+        // Carrusel Nueva Temporada
+        const track = document.getElementById('nuevaTemporadaTrack');
+        const prevBtn = document.getElementById('nuevaTemporadaPrev');
+        const nextBtn = document.getElementById('nuevaTemporadaNext');
+        
+        if (track && prevBtn && nextBtn) {
+            let currentIndex = 0;
+            const totalPanels = 6;
+            const panelsToShow = 3;
+            const maxIndex = totalPanels - panelsToShow;
+            
+            function updateCarousel() {
+                const translateValue = -(currentIndex * (100 / panelsToShow + 1.5));
+                track.style.transform = `translateX(${translateValue}%)`;
+            }
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+        }
+    </script>
     
 </body>
 </html>

@@ -1,6 +1,9 @@
 /* ESTILOS CRÍTICOS NAVBAR */
 .header {
-    padding: 1rem 0 3rem 0 !important;
+    padding: 0 !important;
+}
+.header .container {
+    padding: 1rem 0 3rem 0;
 }
 .footer-bottom-text {
     color: white !important;
@@ -15,7 +18,7 @@
     text-decoration: none !important; /* Elimina la línea */
     color: inherit !important;           /* Mantiene el color original del texto */
 }
-.header.scrolled {
+.header.scrolled .container {
     padding: 0.75rem 0 !important;
 }
 .header.scrolled .header-content {

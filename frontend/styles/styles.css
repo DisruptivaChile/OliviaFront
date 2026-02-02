@@ -77,6 +77,8 @@ body {
     overflow-x: hidden;
     background: var(--bg-main);
     letter-spacing: -0.01em;
+    margin: 0;
+    padding: 0;
 }
 
 /* ========================================
@@ -333,6 +335,76 @@ body {
    HEADER - PREMIUM OVERLAY TO STICKY
    ======================================== */
 
+/* Promotional Banner Slider */
+.promo-banner-slider {
+    background: white;
+    color: #2a2a2a;
+    padding: 4px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+    max-height: 35px;
+    opacity: 1;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+/* Ocultar banner cuando se hace scroll */
+.header.scrolled .promo-banner-slider {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    border-bottom: none;
+}
+
+.promo-slide {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 1.2s ease-in-out;
+    padding: 4px 20px;
+}
+
+.promo-slide.active {
+    position: relative;
+    left: 0;
+    opacity: 1;
+}
+
+.promo-slide.slide-out {
+    left: -100%;
+    opacity: 0;
+}
+
+.promo-slide p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.3px;
+    color: #2a2a2a;
+}
+
+.promo-slide strong {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .promo-banner-slider {
+        padding: 3px 0;
+    }
+    
+    .promo-slide p {
+        font-size: 14px;
+    }
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -342,7 +414,8 @@ body {
     background: transparent;
     border-bottom: 1px solid transparent;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 1rem 0 3rem 0;
+    padding: 0;
+    margin: 0;
 }
 
 /* Estado inicial - Overlay transparente */
@@ -576,6 +649,13 @@ body {
     overflow: hidden;
 }
 
+/* Section Separator */
+.section-separator {
+    width: 100%;
+    height: 4px;
+    background: white;
+}
+
 .hero-slider {
     display: flex;
     overflow-x: auto;
@@ -777,6 +857,12 @@ body {
     width: 100%;
 }
 
+.editorial-split-four {
+    grid-template-columns: repeat(4, 1fr);
+    height: 70vh;
+    min-height: 500px;
+}
+
 .editorial-panel {
     position: relative;
     overflow: hidden;
@@ -806,15 +892,65 @@ body {
     transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Contenido de texto (oculto por defecto) */
+/* Contenido de texto (botón abajo) */
 .editorial-content {
     position: absolute;
-    bottom: 3rem;
-    left: 3rem;
+    bottom: 2rem;
+    left: 2rem;
     z-index: 2;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Título arriba a la izquierda */
+.editorial-content-top {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 2;
+    opacity: 1;
+}
+
+.editorial-content-stacked {
+    left: 2rem;
+    bottom: 2rem;
+    transform: none;
+    text-align: left;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.editorial-content-stacked:hover {
+    transform: none;
+}
+
+.editorial-content-stacked .btn-hero {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+}
+
+.panel-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.arrow-icon {
+    font-size: 1.25rem;
+    font-weight: 300;
 }
 
 .editorial-content h2 {
@@ -824,6 +960,30 @@ body {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Botones en editorial-content siempre visibles */
+.editorial-content .btn-hero {
+    opacity: 1;
+    display: inline-block;
+}
+
+.editorial-panel .editorial-content:has(.btn-hero) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Centrar botones en ambos paneles */
+.editorial-panel[data-category="catálogo"] .editorial-content,
+.editorial-panel[data-category="ofertas"] .editorial-content {
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.editorial-panel[data-category="catálogo"]:hover .editorial-content,
+.editorial-panel[data-category="ofertas"]:hover .editorial-content {
+    transform: translateX(-50%);
 }
 
 /* Hover effects */
@@ -838,6 +998,159 @@ body {
 .editorial-panel:hover .editorial-content {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ========================================
+   NUEVA TEMPORADA SECTION
+   Carrusel de productos con badge SALE
+   ======================================== */
+
+.nueva-temporada-section {
+    padding: 4rem 0;
+    background: var(--bg-main);
+}
+
+.section-title-center {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 3rem;
+}
+
+.nueva-temporada-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    flex: 1;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-panel-wrapper {
+    min-width: calc(33.333% - 1rem);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product-panel {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #E8DED8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-panel:hover {
+    transform: scale(1.02);
+}
+
+.product-info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.product-name-panel {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.product-brand-panel {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.product-price-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.price-current,
+.price-sale {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.price-original {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.product-panel-image {
+    width: 100%;
+    height: 100%;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--text-main);
+    color: var(--white);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    z-index: 2;
+}
+
+.carousel-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    background: var(--text-main);
+    color: var(--white);
+    border-color: var(--text-main);
+}
+
+.carousel-btn i {
+    font-size: 1rem;
 }
 
 /* ========================================
@@ -953,8 +1266,8 @@ body {
 
 .instagram-cta {
     display: inline-block;
-    padding: 1rem 3rem;
-    border: 2px solid #E2D6C3;
+    padding: 0.65rem 1.75rem;
+    border: 1px solid #E2D6C3;
     border-radius: 4px;
     transition: all 0.3s ease;
 }
@@ -964,7 +1277,7 @@ body {
 }
 
 .instagram-cta:hover span {
-    color: #6B2D5C !important;
+    color: #2A2A2A !important;
 }
 
 
@@ -1274,11 +1587,6 @@ body {
 }
 
 /* Products Grid */
-/* ========================================
-   PRODUCTOS - DISEÑO EDITORIAL
-   Los zapatos como protagonistas
-   Colores curados para evitar caos visual
-   ======================================== */
 
 .products-grid {
     display: grid;
@@ -1300,7 +1608,7 @@ body {
     box-shadow: var(--shadow-md);
 }
 
-/* Imagen del Producto - Protagonista visual */
+/* Imagen del Artículo - Protagonista visual */
 .product-image {
     width: 100%;
     height: 420px;
@@ -1334,7 +1642,7 @@ body {
     opacity: 0.2;
 }
 
-/* Badge de producto - Usa colores de acento controlados */
+/* Badge del artículo - Usa colores de acento controlados */
 .product-badge {
     position: absolute;
     top: 1rem;
@@ -1360,7 +1668,7 @@ body {
     background: var(--accent-naranja);
 }
 
-/* Información del Producto */
+/* Información del Artículo */
 .product-info {
     padding: var(--space-4) var(--space-3);
     background: var(--white);
@@ -1375,7 +1683,7 @@ body {
     margin-bottom: var(--space-2);
 }
 
-/* Nombre del producto - Usa fuente Adelia para modelos destacados */
+/* Nombre del artículo - Usa fuente Adelia para modelos destacados */
 .product-name {
     font-family: 'Poppins', sans-serif;
     font-size: 1.125rem;
@@ -1904,6 +2212,19 @@ body {
         width: 200px;
     }
     
+    .product-panel-wrapper {
+        min-width: calc(50% - 0.75rem);
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-btn i {
+        font-size: 0.875rem;
+    }
+    
     .hero {
         height: 70vh;
         min-height: 500px;
@@ -1937,6 +2258,11 @@ body {
         height: auto;
     }
     
+    .editorial-split-four {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
     .editorial-panel {
         height: 60vh;
         min-height: 400px;
@@ -1944,6 +2270,11 @@ body {
     
     .editorial-content {
         bottom: 2rem;
+        left: 2rem;
+    }
+    
+    .editorial-content-top {
+        top: 2rem;
         left: 2rem;
     }
     
@@ -2128,5 +2459,456 @@ body {
     
     .product-image {
         height: 320px;
+    }
+}
+
+/* ========================================
+   BOTÓN FLOTANTE DE CONTACTO
+   ======================================== */
+.contact-float-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: rgba(42, 42, 42, 0.7);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.contact-float-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(42, 42, 42, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-float-btn i {
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ======================================== */
+.whatsapp-float-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: rgba(37, 211, 102, 0.25);
+    backdrop-filter: blur(15px);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.whatsapp-float-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    background: rgba(37, 211, 102, 0.35);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.whatsapp-float-btn i {
+    font-size: 1.8rem;
+}
+
+/* ========================================
+   BOTÓN FLOTANTE DE REGALO
+   ======================================== */
+.gift-float-btn {
+    position: fixed;
+    bottom: 8rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(42, 42, 42, 0.7);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.gift-float-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    background: rgba(42, 42, 42, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.gift-float-btn i {
+    font-size: 1.3rem;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    background: #E63946;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    animation: pulse-notification 2s ease-in-out infinite;
+}
+
+@keyframes pulse-notification {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* ========================================
+   MODAL DE FEEDBACK
+   ======================================== */
+.feedback-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-modal.active {
+    display: flex;
+}
+
+.feedback-modal-content {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+}
+
+.feedback-close-btn:hover {
+    color: var(--text-main);
+}
+
+.feedback-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feedback-logo h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--text-main);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.feedback-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.feedback-question {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-question .required-mark {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-right: 0.25rem;
+}
+
+.feedback-question p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.rating-scale {
+    margin-bottom: 2rem;
+}
+
+.rating-buttons {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.rating-btn {
+    width: 38px;
+    height: 38px;
+    border: 2px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-main);
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.rating-btn:hover {
+    border-color: var(--text-main);
+    background: var(--bg-main);
+}
+
+.rating-btn.selected {
+    background: var(--text-main);
+    color: var(--white);
+    border-color: var(--text-main);
+}
+
+.rating-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.feedback-specifications {
+    margin-bottom: 2rem;
+}
+
+.specifications-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.specification-option {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.specification-option:hover {
+    border-color: var(--text-main);
+    background: var(--bg-main);
+}
+
+.specification-option input[type="radio"] {
+    margin-right: 0.75rem;
+    margin-top: 0.25rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.specification-option span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.specification-option input[type="radio"]:checked + span {
+    font-weight: 500;
+}
+
+.specification-option:has(input[type="radio"]:checked) {
+    border-color: var(--text-main);
+    background: rgba(42, 42, 42, 0.05);
+}
+
+.feedback-store-info {
+    margin-bottom: 2rem;
+}
+
+.feedback-email-container {
+    margin-bottom: 2rem;
+}
+
+.feedback-email {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    transition: border-color 0.3s ease;
+}
+
+.feedback-email:focus {
+    outline: none;
+    border-color: var(--text-main);
+}
+
+.feedback-email::placeholder {
+    color: var(--text-muted);
+}
+
+.feedback-textarea-container {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.feedback-textarea:focus {
+    outline: none;
+    border-color: var(--text-main);
+}
+
+.feedback-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--text-main);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-submit-btn:hover {
+    background: var(--logo-base);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .contact-float-btn {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.85rem;
+    }
+    
+    .contact-float-btn span {
+        display: none;
+    }
+    
+    .contact-float-btn {
+        width: 56px;
+        height: 56px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .whatsapp-float-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 56px;
+        height: 56px;
+    }
+    
+    .whatsapp-float-btn i {
+        font-size: 1.6rem;
+    }
+    
+    .gift-float-btn {
+        bottom: 7rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+    }
+
+    .gift-float-btn i {
+        font-size: 1.1rem;
+    }
+
+    .notification-badge {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .feedback-modal-content {
+        padding: 2rem 1.5rem;
+        width: 95%;
+    }
+    
+    .rating-buttons {
+        gap: 0.25rem;
+    }
+    
+    .rating-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
     }
 }

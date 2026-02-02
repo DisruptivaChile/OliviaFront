@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Hero Slider
     const slides = document.querySelectorAll('.hero-slide');
     let currentSlide = 0;
 
@@ -13,6 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Auto-deslizamiento cada 5 segundos
     setInterval(nextSlide, 5000);
+
+    // Promotional Banner Slider
+    const promoSlides = document.querySelectorAll('.promo-slide');
+    let currentPromoSlide = 0;
+
+    function showPromoSlide(index) {
+        const previousSlide = currentPromoSlide;
+        currentPromoSlide = (index + promoSlides.length) % promoSlides.length;
+        
+        // Remover clases de todas las slides
+        promoSlides.forEach(slide => {
+            slide.classList.remove('active', 'slide-out');
+        });
+        
+        // Añadir clase slide-out a la anterior
+        promoSlides[previousSlide].classList.add('slide-out');
+        
+        // Añadir clase active a la nueva
+        promoSlides[currentPromoSlide].classList.add('active');
+    }
+
+    function nextPromoSlide() {
+        showPromoSlide(currentPromoSlide + 1);
+    }
+    
+    // Auto-deslizamiento cada 3 segundos
+    if (promoSlides.length > 0) {
+        setInterval(nextPromoSlide, 3000);
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {

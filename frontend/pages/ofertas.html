@@ -17,6 +17,22 @@
 <body>
     <!-- Header -->
     <header class="header" id="mainHeader">
+        <!-- Promotional Banner Slider -->
+        <div class="promo-banner-slider">
+            <div class="promo-slide active">
+                <p><strong>30% de descuento</strong> en colección seleccionada · <strong>Envío gratis</strong> desde €50</p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Nueva Colección</strong> Primavera/Verano 2026 · <strong>Ya disponible</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Envío gratis</strong> en compras superiores a <strong>€50</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>2x1</strong> en zapatos seleccionados · <strong>Promoción limitada</strong></p>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="header-content">
                 <!-- Navigation Left -->
@@ -26,7 +42,7 @@
                     </button>
                     <ul class="nav-list">
                         <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
-                        <li><a href="productos.html" class="nav-link" data-i18n="nav_productos">Productos</a></li>
+                        <li><a href="productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
                         <li><a href="mujer.html" class="nav-link" data-i18n="nav_mujer">Mujer</a></li>
                         <li><a href="ofertas.html" class="nav-link active" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
@@ -68,7 +84,11 @@
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide">
+<<<<<<< HEAD
                 <div class="hero-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004135/ofertas_l8j99b.png'); background-size: cover; background-position: center 60%;">
+=======
+                <div class="hero-bg" style="background-image: url('../assets/images/categorias/ofertas/ofertas-hero.png'); background-size: cover; background-position: center 60%;">
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content hero-content-left">
@@ -295,8 +315,138 @@
         </div>
     </div>
 
+    <!-- Botón Flotante de Contacto -->
+    <button class="contact-float-btn" id="contactFloatBtn">
+        <i class="fas fa-comments"></i>
+        <span>Contáctanos</span>
+    </button>
+
+    <!-- Botón Flotante de Regalo -->
+    <a href="ofertas.html" class="gift-float-btn" id="giftFloatBtn">
+        <i class="fas fa-gift"></i>
+        <span class="notification-badge"></span>
+    </a>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float-btn" id="whatsappFloatBtn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal de Feedback -->
+    <div class="feedback-modal" id="feedbackModal">
+        <div class="feedback-modal-content">
+            <button class="feedback-close-btn" id="feedbackCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="feedback-logo">
+                <h1>OLIVIA MERINO</h1>
+            </div>
+            
+            <h3 class="feedback-title">Cuéntanos más detalles acerca de tu experiencia.</h3>
+            
+            <div class="feedback-question">
+                <span class="required-mark">*</span>
+                <p>¿Qué tan probable es que recomiendes a Olivia Merino de acuerdo a la experiencia que viviste en nuestra tienda online?</p>
+            </div>
+            
+            <div class="rating-scale">
+                <div class="rating-buttons">
+                    <button class="rating-btn" data-value="0">0</button>
+                    <button class="rating-btn" data-value="1">1</button>
+                    <button class="rating-btn" data-value="2">2</button>
+                    <button class="rating-btn" data-value="3">3</button>
+                    <button class="rating-btn" data-value="4">4</button>
+                    <button class="rating-btn" data-value="5">5</button>
+                    <button class="rating-btn" data-value="6">6</button>
+                    <button class="rating-btn" data-value="7">7</button>
+                    <button class="rating-btn" data-value="8">8</button>
+                    <button class="rating-btn" data-value="9">9</button>
+                    <button class="rating-btn" data-value="10">10</button>
+                </div>
+                <div class="rating-labels">
+                    <span>Definitivamente no</span>
+                    <span>Definitivamente sí</span>
+                </div>
+            </div>
+            
+            <div class="feedback-specifications">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Claridad en especificaciones de productos</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="claras">
+                        <span>Las especificaciones de los productos fueron claras (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-claras">
+                        <span>No fueron claras las especificaciones de los productos (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-sabia">
+                        <span>No sabía cómo ver las especificaciones de los productos</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-store-info">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Facilidad para encontrar información de las tiendas de Olivia Merino</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="facil">
+                        <span>Encontré fácilmente información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="dificil">
+                        <span>Fue muy difícil encontrar información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-encontre">
+                        <span>No encontré información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-email-container">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Correo eléctronico</p>
+                </div>
+                <input type="email" class="feedback-email" placeholder="Por favor escriba su respuesta" required>
+            </div>
+            
+            <div class="feedback-textarea-container">
+                <textarea class="feedback-textarea" placeholder="Déjanos tus comentarios adicionales..."></textarea>
+            </div>
+            
+            <button class="btn btn-primary feedback-submit-btn">Enviar Feedback</button>
+        </div>
+    </div>
+
     <script src="../scripts/translations.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/ofertas.js"></script>
+    <script src="../scripts/feedback.js"></script>
 </body>
 </html>

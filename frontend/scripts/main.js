@@ -30,7 +30,42 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     updateCartUI();
     setupEventListeners();
+    initPromoBanner();
 });
+
+// ========================================
+// PROMOTIONAL BANNER SLIDER
+// ========================================
+
+function initPromoBanner() {
+    const promoSlides = document.querySelectorAll('.promo-slide');
+    let currentPromoSlide = 0;
+
+    function showPromoSlide(index) {
+        const previousSlide = currentPromoSlide;
+        currentPromoSlide = (index + promoSlides.length) % promoSlides.length;
+        
+        // Remover clases de todas las slides
+        promoSlides.forEach(slide => {
+            slide.classList.remove('active', 'slide-out');
+        });
+        
+        // Añadir clase slide-out a la anterior
+        promoSlides[previousSlide].classList.add('slide-out');
+        
+        // Añadir clase active a la nueva
+        promoSlides[currentPromoSlide].classList.add('active');
+    }
+
+    function nextPromoSlide() {
+        showPromoSlide(currentPromoSlide + 1);
+    }
+    
+    // Auto-deslizamiento cada 3 segundos
+    if (promoSlides.length > 0) {
+        setInterval(nextPromoSlide, 3000);
+    }
+}
 
 // ========================================
 // CONFIGURATION
@@ -87,7 +122,7 @@ async function loadProducts() {
             }
         }
         
-        productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">Error al cargar los productos. Por favor, recarga la página.</p>';
+        productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">Error al cargar los artículos del catálogo. Por favor, recarga la página.</p>';
     }
 }
 
@@ -125,13 +160,17 @@ function transformApiProducts(apiProducts) {
 
 function displayProducts(productsToShow) {
     if (productsToShow.length === 0) {
-        productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 3rem;">No se encontraron productos con los filtros seleccionados.</p>';
+        productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 3rem;">No se encontraron artículos con los filtros seleccionados.</p>';
         return;
     }
 
     productsGrid.innerHTML = productsToShow.map(product => `
         <div class="product-card" data-id="${product.id}">
+<<<<<<< HEAD
             <div class="product-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004161/image_h326qb.png'); background-size: cover; background-position: center;">
+=======
+            <div class="product-image" style="background-image: url('${product.image || '../assets/images/inicio/hero/hero-principal.jpg'}'); background-size: cover; background-position: center;">
+>>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                 ${product.new ? `<span class="product-badge">${typeof t === 'function' ? t('producto_nuevo') : 'NUEVO'}</span>` : ''}
             </div>
             <div class="product-info">

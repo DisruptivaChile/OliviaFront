@@ -6,7 +6,7 @@ const translations = {
     es: {
         // Navegación
         nav_inicio: "Inicio",
-        nav_productos: "Productos",
+        nav_productos: "Catálogo",
         nav_mujer: "Mujer",
         nav_hombre: "Hombre",
         nav_ofertas: "Ofertas",
@@ -24,7 +24,7 @@ const translations = {
         slide_coleccion: "Colección",
         slide_mujer: "Mujer",
         slide_hombre: "Hombre",
-        slide_productos: "Productos",
+        slide_productos: "Catálogo",
         slide_ofertas: "Ofertas",
         slide_elegancia_mujer: "Elegancia atemporal para cada ocasión",
         slide_estilo_hombre: "Estilo refinado y sofisticado",
@@ -69,12 +69,12 @@ const translations = {
         historia_conoce: "CONOCE MÁS",
 
         // Párrafo largo
-        marca_descripcion: "Olivia Merino representa calidad, elegancia y estilo único en cada producto.",
+        marca_descripcion: "Olivia Merino representa calidad, elegancia y estilo único en cada artículo del catálogo.",
         marca_diseno: "Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle,",
         marca_experiencia: "creando experiencias que trascienden el tiempo.",
         oferta_descripcion: "Aprovecha nuestras ofertas exclusivas sin comprometer",
         oferta_resaltado: "la calidad y elegancia que nos caracteriza.",
-        oferta_garantia: "Cada producto en oferta mantiene nuestro estándar de excelencia.",
+        oferta_garantia: "Cada artículo en oferta mantiene nuestro estándar de excelencia.",
         
         // Página Mujer
         mujer_coleccion: "Colección",
@@ -83,7 +83,7 @@ const translations = {
         mujer_zapatos: "Zapatos",
         mujer_sandalias: "Sandalias",
         mujer_botines: "Botines",
-        mujer_destacados: "Productos Destacados",
+        mujer_destacados: "Artículos Destacados",
         mujer_destacados_desc: "Lo mejor de nuestra colección femenina",
         mujer_statement_titulo: "Elegancia redefinida",
         mujer_statement_desc: "Cada zapato de nuestra colección femenina está diseñado para realzar tu estilo único, combinando comodidad excepcional con diseños sofisticados que te acompañan en cada momento especial de tu vida.",
@@ -94,7 +94,7 @@ const translations = {
 
         //Descuentos
         ofertas_titulo: "Ofertas Especiales",
-        section_subtitle_desc: "Descuentos exclusivos en productos seleccionados",
+        section_subtitle_desc: "Descuentos exclusivos en artículos seleccionados",
         hero_ofertas_label: "DESCUENTOS ESPECIALES",
         hero_ofertas_title: "Mundo Olivia",
         hero_ofertas_subtitle: "Encuentra las mejores ofertas en nuestra colección premium",
@@ -146,7 +146,7 @@ const translations = {
     en: {
         // Navigation
         nav_inicio: "Home",
-        nav_productos: "Products",
+        nav_productos: "Catalog",
         nav_mujer: "Women",
         nav_hombre: "Men",
         nav_ofertas: "Offers",
@@ -164,7 +164,7 @@ const translations = {
         slide_coleccion: "Collection",
         slide_mujer: "Women",
         slide_hombre: "Men",
-        slide_productos: "Products",
+        slide_productos: "Catalog",
         slide_ofertas: "Offers",
         slide_elegancia_mujer: "Timeless elegance for every occasion",
         slide_estilo_hombre: "Refined and sophisticated style",
