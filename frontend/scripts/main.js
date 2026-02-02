@@ -166,11 +166,7 @@ function displayProducts(productsToShow) {
 
     productsGrid.innerHTML = productsToShow.map(product => `
         <div class="product-card" data-id="${product.id}">
-<<<<<<< HEAD
-            <div class="product-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004161/image_h326qb.png'); background-size: cover; background-position: center;">
-=======
             <div class="product-image" style="background-image: url('${product.image || '../assets/images/inicio/hero/hero-principal.jpg'}'); background-size: cover; background-position: center;">
->>>>>>> a8c73b99e92b992783662e5c21e9e61dbe09c87a
                 ${product.new ? `<span class="product-badge">${typeof t === 'function' ? t('producto_nuevo') : 'NUEVO'}</span>` : ''}
             </div>
             <div class="product-info">
