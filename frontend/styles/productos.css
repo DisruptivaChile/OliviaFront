@@ -67,20 +67,93 @@
 .footer-section p {
     color: white !important;
 }
-/* Language Selector */
+
 .language-selector {
-    display: flex;
-    gap: 0.5rem;
-    margin-right: 1rem;
-}
-.lang-btn {
-    background: transparent;
-    border: 2px solid transparent;
-    padding: 0.25rem 0.5rem;
+    position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 4px;
+    align-items: center;
+    margin-right: auto;
 }
+
+.lang-current img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #2a2a2a;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.lang-current:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 85%;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 140px;
+}
+
+.lang-dropdown:hover {
+    background-color: #2a2a2a;
+    border-color: #2a2a2a;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+.lang-dropdown:hover span {
+    color: white;
+}
+
+.language-selector:hover .lang-dropdown {
+    display: block;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a2a2a;
+    transition: all 0.2s ease;
+    border-radius: 10px;
+}
+
+.lang-option:hover {
+    border-radius: 8px;
+    transform: translateX(4px);
+}
+
+.lang-option img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Color cuando se hace scroll */
 .header.scrolled .lang-btn {
     color: #2a2a2a !important; /* Color oscuro/negro */
