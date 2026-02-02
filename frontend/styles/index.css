@@ -12,10 +12,15 @@
 .header-content {
     display: flex;
     justify-content: space-between; /* Centrado horizontal */
+    position: relative;
     width:100%;
     padding: 0 80px;
 }
 .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     margin-top: 2.5rem !important;
 }
 .header.scrolled .container {
