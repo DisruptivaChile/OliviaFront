@@ -3335,6 +3335,7 @@ body {
 .subscription-form-row {
     display: flex;
     gap: 1rem;
+    width: 100%;
 }
 
 .subscription-input,
@@ -3350,6 +3351,9 @@ body {
 
 .subscription-input {
     flex: 1;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .subscription-input-full {

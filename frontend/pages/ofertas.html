@@ -320,15 +320,64 @@
     </button>
 
     <!-- Botón Flotante de Regalo -->
-    <a href="ofertas.html" class="gift-float-btn" id="giftFloatBtn">
+    <button class="gift-float-btn" id="giftFloatBtn">
         <i class="fas fa-gift"></i>
         <span class="notification-badge"></span>
-    </a>
+    </button>
 
     <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float-btn" id="whatsappFloatBtn">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Modal de Suscripción -->
+    <div class="subscription-modal" id="subscriptionModal">
+        <div class="subscription-modal-overlay" id="subscriptionModalOverlay"></div>
+        <div class="subscription-modal-content">
+            <button class="subscription-close-btn" id="closeSubscriptionBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="subscription-layout">
+                <!-- Imagen Izquierda -->
+                <div class="subscription-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004133/mujerHero_fls22l.jpg');"></div>
+                
+                <!-- Formulario Derecha -->
+                <div class="subscription-form-container">
+                    <div class="subscription-header">
+                        <p class="subscription-subtitle">suscríbete y recibe</p>
+                        <h2 class="subscription-title">15% DE DESCUENTO</h2>
+                        <p class="subscription-text">en tu primera compra</p>
+                    </div>
+                    
+                    <form class="subscription-form" id="subscriptionForm">
+                        <div class="subscription-form-row">
+                            <input type="text" class="subscription-input" placeholder="Nombres" required>
+                            <input type="text" class="subscription-input" placeholder="Apellidos" required>
+                        </div>
+                        
+                        <input type="email" class="subscription-input subscription-input-full" placeholder="Correo electrónico" required>
+                        
+                        <select class="subscription-select" required>
+                            <option value="" disabled selected>Género</option>
+                            <option value="mujer">Mujer</option>
+                            <option value="hombre">Hombre</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        
+                        <label class="subscription-checkbox">
+                            <input type="checkbox" required>
+                            <span>Acepto las políticas de privacidad y tratamiento de datos personales del sitio y del Programa de Fidelización QUIERO. <a href="#" class="subscription-link">Conoce más aquí</a>.</span>
+                        </label>
+                        
+                        <button type="submit" class="subscription-submit-btn">ENVIAR</button>
+                        
+                        <a href="#" class="subscription-terms">VER TÉRMINOS Y CONDICIONES</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Feedback -->
     <div class="feedback-modal" id="feedbackModal">
@@ -446,5 +495,6 @@
     <script src="../scripts/main.js"></script>
     <script src="../scripts/ofertas.js"></script>
     <script src="../scripts/feedback.js"></script>
+    <script src="../scripts/subscription.js"></script>
 </body>
 </html>
