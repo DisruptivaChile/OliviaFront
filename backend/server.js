@@ -120,12 +120,11 @@ app.post('/api/login', async (req, res) => {
       // Login exitoso
       res.json({
         success: true,
-        message: '¡Bienvenido, ' + user.nombre + '!',
         user: { id: user.id, nombre: user.nombre, email: user.email }
       });
     } else {
       // Contraseña incorrecta
-      res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+      res.status(401).json({ success: false});
     }
   } catch (error) {
     console.error('Error en el login:', error);

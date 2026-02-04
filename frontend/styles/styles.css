@@ -802,6 +802,20 @@ body {
     border: 1px solid var(--white);
 }
 
+.btn-subscribe {
+    background: black;
+    color: white;
+    border-color: black;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-subscribe:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
 .btn-secondary {
     background: transparent;
     color: var(--primary-color);
