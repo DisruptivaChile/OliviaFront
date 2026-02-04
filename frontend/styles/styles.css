@@ -789,17 +789,17 @@ body {
 }
 
 .btn-primary {
-    background: var(--primary-color);
-    color: var(--white);
-    border: 1px solid var(--primary-color);
-}
-
-.btn-primary:hover {
     background: var(--white);
     color: var(--text-main);
     border-color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--white);
 }
 
 .btn-secondary {
@@ -3142,7 +3142,9 @@ body {
 }
 
 .feedback-submit-btn:hover {
-    background: var(--logo-base);
+    background: var(--white);
+    color: var(--text-main);
+    border: 1px solid var(--text-main);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -3411,7 +3413,9 @@ body {
 }
 
 .subscription-submit-btn:hover {
-    background: #1a1a1a;
+    background: white;
+    color: var(--text-main);
+    border: 1px solid var(--text-main);
 }
 
 .subscription-terms {

@@ -43,8 +43,20 @@
     transition: color 0.3s ease;
 }
 
-.header.scrolled .icon-btn:hover i {
-    color: #2a2a2a !important;
+.header.scrolled .icon-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px; /* Grosor de la línea */
+    bottom: 0;
+    left: 0;
+    background-color: #333; /* Color de la línea */
+    transform: scaleX(0); /* Empieza invisible (escala 0) */
+    transition: transform 0.3s ease; /* Animación suave */
+}
+
+.header.scrolled .icon-btn:hover::after{
+    transform: scaleX(1);
 }
 
 .header.scrolled .mobile-menu-btn {
