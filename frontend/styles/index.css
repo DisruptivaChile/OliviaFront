@@ -621,38 +621,25 @@
     .header-content {
         padding: 0 1rem;
     }
+}
 
-    /* 3. Editorial Split: De 2 columnas a 1 columna */
-    .editorial-split {
-        display: flex;
-        flex-direction: column;
-        height: auto !important; /* Permitir que crezca verticalmente */
-        flex-direction: column;
-        height: auto;
+@media (max-width: 1300px) {
+    .editorial-split-four {
+        /* Pasamos de 4 columnas a 2 columnas y 2 filas */
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        /* Ajustamos la altura total para que los cuadros tengan mejor proporción */
+        height: auto; 
+        min-height: 800px; 
     }
 
     .editorial-panel {
-        height: 50vh; /* Cada panel ocupa media pantalla */
-        width: 100% !important;
+        /* Forzamos una altura mínima por cuadro para evitar que se aplasten */
+        min-height: 400px;
     }
 
-    /* Forzamos que el contenido sea visible siempre */
-    .editorial-content {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    /* Oscurecemos un poco el fondo para que el texto blanco/beige se lea bien */
-    .editorial-overlay {
-        opacity: 0.5 !important;
-        background: rgba(0, 0, 0, 0.4); /* Capa oscura constante en móvil */
-    }
-
-    /* Ajuste de tamaño para móvil */
-    .editorial-content h2 {
-        font-size: 2.2rem !important;
-        display: block !important;
-        visibility: visible !important;
+    .panel-title {
+        font-size: 1rem; /* Ajuste ligero de fuente para pantallas medianas */
     }
 }
 

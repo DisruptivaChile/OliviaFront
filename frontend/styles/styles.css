@@ -873,6 +873,7 @@ body {
 }
 
 .editorial-split-four {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     height: 70vh;
     min-height: 500px;
@@ -1416,6 +1417,25 @@ body {
    COMUNIDAD OLIVIA SECTION
    ============================================ */
 
+.testimonios-carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.testimonios-viewport {
+    flex: 1;
+    overflow-x: hidden; /* En desktop ocultamos el scroll */
+}
+
+.testimonios-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 .comunidad-section {
     padding: 5rem 0;
     background: #FAFAFA;
@@ -1506,33 +1526,36 @@ body {
     color: #657786;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .testimonios-grid {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 900px) {
+    .testimonios-viewport {
+        overflow-x: auto; /* Permitimos scroll táctil */
+        scroll-snap-type: x mandatory; /* Efecto imán para que no se corte la carta */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
+
+    /* Ocultar barra de scroll estética */
+    .testimonios-viewport::-webkit-scrollbar { display: none; }
+
+    .testimonios-track {
+        display: flex !important; /* De grid a fila */
+        gap: 0 !important;
+        width: 100%;
+    }
+
+    .testimonio-card {
+        min-width: 100% !important; /* Una carta por pantalla */
+        scroll-snap-align: center; /* Alineación del imán */
+        box-sizing: border-box;
+        border-radius: 0; /* Opcional: look más limpio */
+        background: #fff;
+        border-radius: 12px;
+    }
+
+    #testimonioPrev { left: 5px; }
+    #testimonioNext { right: 5px; }
 }
 
-@media (max-width: 768px) {
-    .comunidad-section {
-        padding: 3rem 0;
-    }
-    
-    .comunidad-title {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .testimonios-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-    
-    .testimonio-card {
-        padding: 1.25rem;
-    }
-}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -2240,6 +2263,76 @@ body {
     margin: 0;
 }
 
+.accordion-icon {
+    display: none; /* Oculto en PC */
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        display: flex; /* Cambiamos grid por flex para usar order */
+        flex-direction: column;
+        gap: 0; /* Controlamos el gap manualmente */
+    }
+
+    /* REORDENAMIENTO */
+    .section-newsletter {
+        order: 1;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-section:nth-of-type(2) { order: 2; } /* Comprar */
+    .accordion-section:nth-of-type(3) { order: 3; } /* Ayuda */
+
+    .section-brand {
+        order: 4;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    /* ESTILO ACORDEÓN */
+    .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-header h4 {
+        margin-bottom: 0; /* Alineación con el icono */
+    }
+
+    .accordion-icon {
+        display: block;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+        padding-left: 0;
+    }
+
+    /* Clase activa que inyectaremos con JS */
+    .accordion-section.active .accordion-content {
+        max-height: 220px; /* Suficiente para los links */
+        padding: 1rem 0;
+    }
+
+    .accordion-section.active .accordion-icon {
+        transform: rotate(45deg); /* El + se vuelve una x o gira */
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
 /* ========================================
    MODAL
    ======================================== */
@@ -2564,35 +2657,6 @@ body {
         gap: var(--spacing-sm);
     }
     
-    .editorial-split {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    .editorial-split-four {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    .editorial-panel {
-        height: 60vh;
-        min-height: 400px;
-    }
-    
-    .editorial-content {
-        bottom: 2rem;
-        left: 2rem;
-    }
-    
-    .editorial-content-top {
-        top: 2rem;
-        left: 2rem;
-    }
-    
-    .editorial-content h2 {
-        font-size: 2.5rem;
-    }
-    
     .category-card {
         height: 400px;
     }
@@ -2731,20 +2795,6 @@ body {
     
     .slide-content p {
         font-size: 1rem;
-    }
-    
-    .editorial-panel {
-        height: 50vh;
-        min-height: 350px;
-    }
-    
-    .editorial-content {
-        bottom: 1.5rem;
-        left: 1.5rem;
-    }
-    
-    .editorial-content h2 {
-        font-size: 2rem;
     }
     
     .category-content {
