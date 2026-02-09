@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = e.target.closest('.internal-prev, .internal-next');
         if (!btn) return;
 
+        // Prevenir que el click en las flechas active el enlace del producto
+        e.preventDefault();
+        e.stopPropagation();
+
         const panelWrapper = btn.closest('.product-panel-wrapper');
         // Usamos el nombre del producto como identificador único para sincronizar clones
         const productName = panelWrapper.querySelector('.product-name-panel').innerText;
@@ -97,6 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetImg.classList.add('fade-in');
             }
         });
+    });
+
+    // Hacer clickeable todo el producto (excepto las flechas internas)
+    track.addEventListener('click', (e) => {
+        // Si se hizo click en una flecha interna, no hacer nada (ya se maneja arriba)
+        if (e.target.closest('.internal-prev, .internal-next')) {
+            return;
+        }
+
+        // Buscar el product-panel-wrapper más cercano
+        const wrapper = e.target.closest('.product-panel-wrapper');
+        if (wrapper && wrapper.dataset.productUrl) {
+            window.location.href = wrapper.dataset.productUrl;
+        }
     });
 
     // Precarga automática de todas las variantes

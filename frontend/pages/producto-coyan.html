@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAPATO COYAN - Olivia Merino</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <nav class="nav" id="mainNav">
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="../../index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="productos.html" class="nav-link active">Catálogo</a></li>
+                        <li><a href="ofertas.html" class="nav-link">Ofertas</a></li>
+                    </ul>
+                </nav>
+
+                <div class="logo">
+                    <h1>OLIVIA MERINO</h1>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <button class="icon-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="product-detail-layout">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <img id="mainProductImage" src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770061683/rojo_bw9g7c.png" alt="ZAPATO COYAN">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img class="thumbnail active" src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770061683/rojo_bw9g7c.png" alt="Vista 1">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770169070/Gemini_Generated_Image_g5cgddg5cgddg5cg_erwkgv.png" alt="Vista 2">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770169070/Gemini_Generated_Image_ftwbzvftwbzvftwb_txwocv.png" alt="Vista 3">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <span class="product-badge">SALE</span>
+                    <h1 class="product-title">ZAPATO COYAN</h1>
+                    <p class="product-brand">NALCA</p>
+                    <div class="product-pricing">
+                        <span class="price-sale">$88.350</span>
+                        <span class="price-original">$98.000</span>
+                    </div>
+
+                    <div class="product-description">
+                        <p>Zapato elegante de diseño contemporáneo. Perfecto para cualquier ocasión, combina estilo y comodidad en cada paso.</p>
+                    </div>
+
+                    <div class="product-size-selector">
+                        <h3>Selecciona tu talla</h3>
+                        <div class="size-options">
+                            <button class="size-btn">35</button>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        Agregar al Carrito
+                    </button>
+
+                    <div class="product-details-accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Descripción</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Zapato de alta calidad fabricado con materiales premium. Diseño moderno que se adapta a diferentes estilos y ocasiones.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Materiales</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Exterior: Cuero sintético de alta calidad<br>
+                                Interior: Forro textil suave<br>
+                                Suela: Goma antideslizante</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Envío y Devoluciones</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Envío gratis en compras superiores a $50.000<br>
+                                Devoluciones gratuitas dentro de 30 días<br>
+                                Entrega estimada: 3-5 días hábiles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>OLIVIA MERINO</h3>
+                    <p>Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Comprar</h4>
+                    <ul>
+                        <li><a href="productos.html">Catálogo</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Envíos</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Guía de Tallas</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Suscríbete para recibir ofertas exclusivas</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu email" class="newsletter-input">
+                        <button class="btn btn-primary">Suscribirse</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-bottom-text">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/translations.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Product Image Gallery
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.getElementById('mainProductImage');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+                mainImage.src = thumb.src;
+            });
+        });
+
+        // Size Selection
+        const sizeButtons = document.querySelectorAll('.size-btn');
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeButtons.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+            });
+        });
+
+        // Accordion
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
