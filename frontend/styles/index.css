@@ -620,20 +620,6 @@
         padding: 0 1rem;
     }
 
-    /* 3. Editorial Split: De 2 columnas a 1 columna */
-    .editorial-split {
-        display: flex;
-        flex-direction: column;
-        height: auto !important; /* Permitir que crezca verticalmente */
-        flex-direction: column;
-        height: auto;
-    }
-
-    .editorial-panel {
-        height: 50vh; /* Cada panel ocupa media pantalla */
-        width: 100% !important;
-    }
-
     /* Forzamos que el contenido sea visible siempre */
     .editorial-content {
         opacity: 1 !important;

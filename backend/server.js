@@ -117,15 +117,11 @@ app.post('/api/login', async (req, res) => {
     const match = await bcrypt.compare(password, user.password_hash);
 
     if (match) {
-      // Login exitoso
       res.json({
         success: true,
-        message: '¡Bienvenido, ' + user.nombre + '!',
+        // Eliminamos el campo message para no enviar texto innecesario
         user: { id: user.id, nombre: user.nombre, email: user.email }
       });
-    } else {
-      // Contraseña incorrecta
-      res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
     }
   } catch (error) {
     console.error('Error en el login:', error);

@@ -802,6 +802,20 @@ body {
     border: 1px solid var(--white);
 }
 
+.btn.btn-primary.btn-block {
+    background: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.btn.btn-primary.btn-block:hover {
+    background: var(--white);
+    color: var(--text-main);
+    border: #14171A solid 1px;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
 .btn-secondary {
     background: transparent;
     color: var(--primary-color);
@@ -859,6 +873,7 @@ body {
 }
 
 .editorial-split-four {
+    display:grid;
     grid-template-columns: repeat(4, 1fr);
     height: 70vh;
     min-height: 500px;
@@ -999,6 +1014,26 @@ body {
 .editorial-panel:hover .editorial-content {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 1300px) {
+    .editorial-split-four {
+        /* Pasamos de 4 columnas a 2 columnas y 2 filas */
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        /* Ajustamos la altura total para que los cuadros tengan mejor proporción */
+        height: auto; 
+        min-height: 800px; 
+    }
+
+    .editorial-panel {
+        /* Forzamos una altura mínima por cuadro para evitar que se aplasten */
+        min-height: 400px;
+    }
+
+    .panel-title {
+        font-size: 1rem; /* Ajuste ligero de fuente para pantallas medianas */
+    }
 }
 
 /* ========================================
@@ -2550,21 +2585,6 @@ body {
         gap: var(--spacing-sm);
     }
     
-    .editorial-split {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    .editorial-split-four {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    .editorial-panel {
-        height: 60vh;
-        min-height: 400px;
-    }
-    
     .editorial-content {
         bottom: 2rem;
         left: 2rem;
@@ -2717,11 +2737,6 @@ body {
     
     .slide-content p {
         font-size: 1rem;
-    }
-    
-    .editorial-panel {
-        height: 50vh;
-        min-height: 350px;
     }
     
     .editorial-content {

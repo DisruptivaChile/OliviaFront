@@ -174,20 +174,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         sessionStorage.setItem('adminName', data.user.nombre);
                         sessionStorage.setItem('lastActivity', Date.now());
 
-                        alert(data.message);
+                        // --- ELIMINADO: alert(data.message) ---
                                 
-                        // 2. Redirección
+                        // 2. Redirección inmediata
                         window.location.href = 'frontend/pages/admin-panel.html';
                         closeLoginModal();
                     } else {
-                        alert(data.message);
+                        // Si el login falla, simplemente no hacemos nada o imprimimos en consola
+                        console.warn('Intento de login fallido:', data.message);
                     }
                 } catch (error) {
+                    // Error de red o servidor caído
                     console.error('Error en la conexión:', error);
-                    alert('Error: No se pudo conectar con el servidor backend');
                 }
             } else {
-                alert('La lógica para usuarios normales aún no está conectada.');
+                // Lógica para usuarios normales (silenciosa por ahora)
+                console.log('Login de usuario normal intentado.');
             }
         });
     }
@@ -199,20 +201,21 @@ if (loginForm) {
         e.preventDefault();
                 
         const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
         const activeTab = document.querySelector('.login-tab.active').dataset.tab;
                 
         if (activeTab === 'admin') {
             if (email === 'admin@olivia.com' || email === 'olivia') {
-                alert('Bienvenido Admin');
+                // Si es correcto, cerramos el modal de inmediato
                 closeLoginModal();
             } else {
-                alert('Esperando conexión con el backend para validación de admin...');
+                // Aquí podrías agregar un efecto visual de "sacudida" (shake) al input 
+                // para indicar error sin usar texto, o simplemente no hacer nada 
+                // hasta que el backend esté listo.
+                console.log('Validación de admin fallida: esperando backend.');
             }
         } else {
-                alert(`Login usuario: ${email}`);
-                closeLoginModal();
+            // Login de usuario normal
+            closeLoginModal();
         }
-                
     });
 }
