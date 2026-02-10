@@ -1436,12 +1436,37 @@ body {
 /* ============================================
    COMUNIDAD OLIVIA SECTION
    ============================================ */
-
+.testimonios-carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.testimonios-viewport {
+    flex: 1;
+    overflow: hidden; /* Corta el resto de tarjetas */
+}
+.testimonios-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+    gap: 2rem;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.slider-arrow {
+    display: none; /* Ocultas en desktop por defecto */
+    background: white;
+    border: 1px solid #ddd;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 .comunidad-section {
     padding: 5rem 0;
     background: #FAFAFA;
 }
-
 .comunidad-title {
     font-size: 2rem;
     font-weight: 600;
@@ -1450,7 +1475,6 @@ body {
     margin-bottom: 3rem;
     letter-spacing: -0.01em;
 }
-
 .testimonios-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1458,7 +1482,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .testimonio-card {
     background: var(--white);
     border: 1px solid #E1E8ED;
@@ -1466,19 +1489,16 @@ body {
     padding: 1.5rem;
     transition: all 0.3s ease;
 }
-
 .testimonio-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-
 .testimonio-header {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
 }
-
 .testimonio-avatar {
     width: 48px;
     height: 48px;
@@ -1492,36 +1512,30 @@ body {
     font-size: 1.125rem;
     flex-shrink: 0;
 }
-
 .testimonio-user {
     display: flex;
     flex-direction: column;
     gap: 0.125rem;
 }
-
 .testimonio-name {
     font-weight: 600;
     font-size: 0.9375rem;
     color: var(--text-main);
 }
-
 .testimonio-handle {
     font-size: 0.875rem;
     color: #657786;
 }
-
 .testimonio-text {
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #14171A;
     margin-bottom: 1rem;
 }
-
 .testimonio-footer {
     padding-top: 0.75rem;
     border-top: 1px solid #E1E8ED;
 }
-
 .testimonio-date {
     font-size: 0.8125rem;
     color: #657786;
@@ -1534,24 +1548,29 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .comunidad-section {
-        padding: 3rem 0;
+@media (max-width: 900px) {
+    .testimonios-viewport {
+        overflow-x: auto; /* Permitimos scroll táctil */
+        scroll-snap-type: x mandatory; /* Efecto imán para que no se corte la carta */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
-    
-    .comunidad-title {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
+
+    /* Ocultar barra de scroll estética */
+    .testimonios-viewport::-webkit-scrollbar { display: none; }
+
+    .testimonios-track {
+        display: flex !important; /* De grid a fila */
+        gap: 0 !important;
+        width: 100%;
     }
-    
-    .testimonios-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-    
+
     .testimonio-card {
-        padding: 1.25rem;
+        min-width: 100% !important; /* Una carta por pantalla */
+        scroll-snap-align: center; /* Alineación del imán */
+        box-sizing: border-box;
+        border-radius: 25px; /* Opcional: look más limpio */
+        background: #fff;
     }
 }
 
