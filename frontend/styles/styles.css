@@ -2280,6 +2280,106 @@ body {
     margin: 0;
 }
 
+.accordion-icon {
+    display: none; /* Oculto en PC */
+}
+
+@media (max-width: 1200px) {
+    .footer-content {
+        display: flex; /* Cambiamos grid por flex para usar order */
+        flex-direction: column;
+        gap: 0; /* Controlamos el gap manualmente */
+    }
+
+    /* REORDENAMIENTO */
+    .section-newsletter {
+        order: 1;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-section:nth-of-type(2) { order: 2; } /* Comprar */
+    .accordion-section:nth-of-type(3) { order: 3; } /* Ayuda */
+
+    .section-brand {
+        order: 4;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    /* ESTILO ACORDEÓN */
+    .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding-left: 0;
+    }
+
+    .accordion-icon {
+        display: block; /* Solo visible en móvil */
+        color: var(--white);
+    }
+
+    .accordion-section.active .accordion-content {
+        max-height: 300px; /* Permitimos que se expanda */
+        padding: 1rem 0;
+    }
+
+    .accordion-section.active .accordion-icon {
+        transform: rotate(45deg); /* El + se vuelve una x o gira */
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    /* Forzamos que los títulos sean blancos */
+    .footer-section h3, 
+    .footer-section h4,
+    .accordion-header h4 {
+        color: var(--white) !important;
+        margin-bottom: var(--spacing-xs);
+        text-transform: uppercase;
+    }
+
+    /* Forzamos que el contenido sea visible siempre */
+    .accordion-content {
+        max-height: none !important;
+        display: block !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Ocultamos el icono de '+' en PC */
+    .accordion-icon {
+        display: none !important;
+    }
+
+    /* Estilo de los links para asegurar visibilidad */
+    .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        display: block;
+        padding: 4px 0;
+    }
+
+    .footer-section ul li a:hover {
+        color: var(--white) !important;
+    }
+}
+
 /* ========================================
    MODAL
    ======================================== */
@@ -2838,17 +2938,17 @@ body {
     right: 2rem;
     width: 60px;
     height: 60px;
-    background: rgba(37, 211, 102, 0.25);
+    background: rgba(37, 211, 102, 0.75);
     backdrop-filter: blur(15px);
     color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     z-index: 500;
 }
@@ -2856,12 +2956,13 @@ body {
 .whatsapp-float-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-    background: rgba(37, 211, 102, 0.35);
+    background: rgba(23, 158, 73, 0.75);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
 .whatsapp-float-btn i {
     font-size: 1.8rem;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
 }
 
 /* ========================================
@@ -3597,13 +3698,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.price-current,
-.price-sale {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
 .price-original {
     font-size: 1.5rem;
     color: #999;
@@ -3762,7 +3856,7 @@ body {
     
     .price-current,
     .price-sale {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     
     .price-original {

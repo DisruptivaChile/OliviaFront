@@ -111,13 +111,6 @@
 
             <!-- Filtros -->
             <div class="filters">
-                <div class="filter-group">
-                    <label for="categoryFilter" data-i18n="filtro_categoria">Categoría:</label>
-                    <select id="categoryFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="mujer" data-i18n="nav_mujer">Mujer</option>
-                    </select>
-                </div>
 
                 <div class="filter-group">
                     <label for="typeFilter" data-i18n="filtro_tipo">Tipo:</label>
@@ -136,6 +129,21 @@
                         <option value="20" data-i18n="filtro_20">20% o más</option>
                         <option value="30" data-i18n="filtro_30">30% o más</option>
                         <option value="50" data-i18n="filtro_50">50% o más</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="categoryFilter">Talla:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all" data-i18n="filtro_todos">Todos</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
                     </select>
                 </div>
 
@@ -172,27 +180,32 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
-                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <div class="footer-section section-newsletter">
+                    <h4 data-i18n="footer_newsletter">Newsletter</h4>
+                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu email" class="newsletter-input">
+                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
                     </div>
                 </div>
 
-                <div class="footer-section">
-                    <h4 data-i18n="comprar_footer">Comprar</h4>
-                    <ul>
+                <div class="footer-section accordion-section">
+                    <div class="accordion-header">
+                        <h4 data-i18n="comprar_footer">Comprar</h4>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <ul class="accordion-content">
                         <li><a href="productos.html" data-i18n="nav_productos">Catálogo</a></li>
                         <li><a href="ofertas.html" data-i18n="nav_ofertas">Ofertas</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h4 data-i18n="footer_ayuda">Ayuda</h4>
-                    <ul>
+                <div class="footer-section accordion-section">
+                    <div class="accordion-header">
+                        <h4 data-i18n="footer_ayuda">Ayuda</h4>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <ul class="accordion-content">
                         <li><a href="#" data-i18n="footer_envios">Envíos</a></li>
                         <li><a href="#" data-i18n="footer_devoluciones">Devoluciones</a></li>
                         <li><a href="#" data-i18n="footer_guia">Guía de Tallas</a></li>
@@ -200,12 +213,13 @@
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h4>Newsletter</h4>
-                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
+                <div class="footer-section section-brand">
+                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
+                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -497,5 +511,6 @@
     <script src="../scripts/ofertas.js"></script>
     <script src="../scripts/feedback.js"></script>
     <script src="../scripts/subscription.js"></script>
+    <script src="../scripts/open-footer.js"></script>
 </body>
 </html>

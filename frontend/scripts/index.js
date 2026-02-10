@@ -219,3 +219,15 @@ if (loginForm) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const editorialPanels = document.querySelectorAll('.editorial-panel');
+
+    editorialPanels.forEach(panel => {
+        // Opción B: Evitar que otros scripts detengan el botón
+        const btn = panel.querySelector('.btn-hero');
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que el clic suba al panel padre
+        });
+    });
+});
