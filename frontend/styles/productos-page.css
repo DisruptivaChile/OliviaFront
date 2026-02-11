@@ -1,0 +1,1459 @@
+/* ========================================
+   OLIVIA MERINO - PREMIUM FOOTWEAR STORE
+   Inspired by minimalist luxury design
+   ======================================== */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+:root {
+    /* ========================================
+       COLORES DE MARCA - OLIVIA MERINO
+       Basado en Manual de Identidad Visual
+       ======================================== */
+    
+    /* Colores Base - High-End Interface */
+    --bg-main: #F5F5F0;              /* Fondo Principal - Marfil cálido */
+    --text-main: #2A2A2A;            /* Texto Principal - Negro suave */
+    --logo-base: #1F1F1F;            /* Logo Base - Negro cálido */
+    --logo-alt: #F5F5F0;             /* Logo Alternativo - Blanco hueso */
+    --resources-gray: #D6D2CC;       /* Recursos Gráficos - Gris cálido */
+    
+    /* Colores de Acento - Inspirados en Zapatos */
+    /* NOTA: Aplicar UN SOLO color de acento a la vez por sección/colección */
+    --accent-morado: #2a2a2a;        /* Morado identidad */
+    --accent-verde: #3F6D5A;         /* Verde cuero */
+    --accent-rosado: #D16C8A;        /* Rosado acento */
+    --accent-naranja: #C6A51E;       /* Naranja cuero */
+    --accent-beige: #E2D6C3;         /* Beige cuero claro */
+    
+    /* Colores Funcionales */
+    --white: #ffffff;
+    --border-color: #D6D2CC;         /* Usa el gris cálido de recursos */
+    --text-light: #666666;
+    --text-muted: #999999;
+    
+    /* Sistema de Sombras - Sutiles para High-End */
+    --shadow-sm: 0 2px 8px rgba(42, 42, 42, 0.04);
+    --shadow-md: 0 4px 16px rgba(42, 42, 42, 0.06);
+    --shadow-lg: 0 8px 24px rgba(42, 42, 42, 0.08);
+    
+    /* Transiciones Profesionales */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Sistema de Espaciado - Grid Editorial 8px base */
+    --space-1: 0.5rem;   /* 8px */
+    --space-2: 1rem;     /* 16px */
+    --space-3: 1.5rem;   /* 24px */
+    --space-4: 2rem;     /* 32px */
+    --space-5: 3rem;     /* 48px */
+    --space-6: 4rem;     /* 64px */
+    --space-7: 6rem;     /* 96px */
+    --space-8: 8rem;     /* 128px */
+    
+    /* Compatibilidad con nombres anteriores */
+    --spacing-xs: var(--space-1);
+    --spacing-sm: var(--space-2);
+    --spacing-md: var(--space-4);
+    --spacing-lg: var(--space-6);
+    --spacing-xl: var(--space-7);
+    --primary-color: var(--logo-base);
+    --secondary-color: var(--accent-morado);
+    --bg-light: var(--bg-main);
+}
+
+body {
+    /* Sistema Tipográfico - Manual de Marca Olivia Merino */
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-main);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background: var(--bg-main);
+    letter-spacing: -0.01em;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================================
+   SISTEMA TIPOGRÁFICO - MANUAL DE MARCA
+   ======================================== */
+
+/* Títulos de Modelos de Zapatos - Adelia Regular 72pt */
+.product-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* 72pt ≈ 4.5rem */
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: var(--text-main);
+}
+
+/* Títulos Informativos - Poppins Medium 60pt */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.75rem); /* 60pt ≈ 3.75rem */
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text-main);
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.75rem, 4vw, 3rem); /* 48pt */
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: var(--text-main);
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.25rem, 3vw, 2rem); /* 32pt */
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+/* ========================================
+   PROMOTIONAL BANNER
+   ======================================== */
+
+.promo-banner {
+    background: var(--bg-main);
+    color: var(--text-main);
+    text-align: center;
+    padding: 0.4rem var(--spacing-sm);
+    font-size: 0.625rem; /* 10px - muy pequeño */
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--resources-gray);
+    line-height: 1.4;
+}
+
+.promo-banner p {
+    margin: 0;
+}
+
+.promo-banner strong {
+    font-weight: 700;
+    color: var(--accent-morado);
+}
+
+/* ========================================
+   HEADER - PREMIUM OVERLAY TO STICKY
+   ======================================== */
+
+/* Promotional Banner Slider */
+.promo-banner-slider {
+    background: white;
+    color: #2a2a2a;
+    padding: 4px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+    max-height: 35px;
+    opacity: 1;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+/* Ocultar banner cuando se hace scroll */
+.header.scrolled .promo-banner-slider {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    border-bottom: none;
+}
+
+.promo-slide {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 1.2s ease-in-out;
+    padding: 4px 20px;
+}
+
+.promo-slide.active {
+    position: relative;
+    left: 0;
+    opacity: 1;
+}
+
+.promo-slide.slide-out {
+    left: -100%;
+    opacity: 0;
+}
+
+.promo-slide p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.3px;
+    color: #2a2a2a;
+}
+
+.promo-slide strong {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .promo-banner-slider {
+        padding: 3px 0;
+    }
+    
+    .promo-slide p {
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   HEADER - NAVBAR (Estilos de productos.css)
+   ======================================== */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    margin: 0;
+}
+
+/* Estado inicial - Overlay transparente */
+.header-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: var(--spacing-md);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navigation - Izquierda */
+.nav {
+    justify-self: start;
+}
+
+/* Logo - Centro */
+.logo {
+    justify-self: center;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 2.5rem;
+}
+
+/* Actions - Derecha */
+.header-actions {
+    justify-self: end;
+}
+
+/* ========================================
+   LOGO - SISTEMA DE MARCA
+   Actúa como anclaje visual manteniendo estabilidad
+   ======================================== */
+
+/* Logo Base - Negro cálido (overlay transparente) */
+.logo h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--white); /* Logo alternativo para fondos oscuros/hero */
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Logo Alternativo - Blanco hueso para fondos oscuros */
+.logo--light h1,
+.header--dark .logo h1 {
+    color: var(--logo-alt); /* #F5F5F0 */
+}
+
+/* Logo Base - Negro cálido para fondos claros */
+.logo--dark h1,
+.header.scrolled .logo h1,
+.header.header-white .logo h1 {
+    color: var(--logo-base); /* #1F1F1F */
+    text-shadow: none;
+}
+
+.tagline {
+    display: none;
+}
+
+/* ========================================
+   HEADER - ESTADO SCROLLED (Sticky)
+   ======================================== */
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 0.75rem 0;
+}
+.header.scrolled .header-content {
+    align-items: center;
+}
+
+.header.scrolled .logo {
+    margin-top: 0;
+}
+
+
+/* Header blanco permanente para páginas internas */
+.header.header-white {
+    background: var(--white);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* Logo achicado al hacer scroll */
+.header.scrolled .logo h1 {
+    font-size: 1.5rem;
+}
+
+/* Links oscuros en header blanco */
+.header.header-white .nav-link {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+.header.header-white .icon-btn {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+/* Links - Color claro en estado inicial, tamaño reducido */
+.nav-link {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Links oscuros al hacer scroll */
+.header.scrolled .nav-link {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--secondary-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Navigation */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+/* Header Actions - Estado inicial (claro) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icon buttons - Claro en estado inicial */
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.125rem;
+    color: var(--white);
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.header.scrolled .icon-btn {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+.icon-btn:hover {
+    color: var(--secondary-color);
+    text-shadow: none;
+}
+
+.cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--secondary-color);
+    color: var(--white);
+    font-size: 0.625rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+.btn {
+    padding: 0.875rem 2.5rem;
+    border: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-base);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--text-main);
+    border-color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.btn.btn-primary.btn-block {
+    background: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.btn.btn-primary.btn-block:hover {
+    background: var(--white);
+    color: var(--text-main);
+    border: #14171A solid 1px;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-hero {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 0.65rem 1.75rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+}
+
+.btn-hero:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+}
+
+.btn-light {
+    background: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--white);
+}
+
+.btn-light:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-lg) 0 var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.footer-section h3 {
+    font-size: 1.125rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+.footer-section p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-size: 0.875rem;
+}
+
+.footer-section a:hover {
+    color: var(--white);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: var(--transition-base);
+    padding-left: 0;
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.newsletter-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    transition: var(--transition-fast);
+    font-size: 0.875rem;
+}
+
+.newsletter-form .btn {
+    white-space: nowrap;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.6;
+    font-size: 0.65rem;
+    color: white !important;
+}
+
+.footer-bottom p {
+    font-size: 0.65rem !important;
+    margin: 0;
+}
+
+.accordion-icon {
+    display: none; /* Oculto en PC */
+}
+
+@media (max-width: 1200px) {
+    .footer-content {
+        display: flex; /* Cambiamos grid por flex para usar order */
+        flex-direction: column;
+        gap: 0; /* Controlamos el gap manualmente */
+    }
+
+    /* REORDENAMIENTO */
+    .section-newsletter {
+        order: 1;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-section:nth-of-type(2) { order: 2; } /* Comprar */
+    .accordion-section:nth-of-type(3) { order: 3; } /* Ayuda */
+
+    .section-brand {
+        order: 4;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    /* ESTILO ACORDEÓN */
+    .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding-left: 0;
+    }
+
+    .accordion-icon {
+        display: block; /* Solo visible en móvil */
+        color: var(--white);
+    }
+
+    .accordion-section.active .accordion-content {
+        max-height: 300px; /* Permitimos que se expanda */
+        padding: 1rem 0;
+    }
+
+    .accordion-section.active .accordion-icon {
+        transform: rotate(45deg); /* El + se vuelve una x o gira */
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    /* Forzamos que los títulos sean blancos */
+    .footer-section h3, 
+    .footer-section h4,
+    .accordion-header h4 {
+        color: var(--white) !important;
+        margin-bottom: var(--spacing-xs);
+        text-transform: uppercase;
+    }
+
+    /* Forzamos que el contenido sea visible siempre */
+    .accordion-content {
+        max-height: none !important;
+        display: block !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Ocultamos el icono de '+' en PC */
+    .accordion-icon {
+        display: none !important;
+    }
+
+    /* Estilo de los links para asegurar visibilidad */
+    .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        display: block;
+        padding: 4px 0;
+    }
+
+    .footer-section ul li a:hover {
+        color: var(--white) !important;
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
+    }
+    
+    .nav-list {
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 3rem;
+        --spacing-lg: 2rem;
+    }
+    
+    .nav {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.125rem;
+    }
+    
+    .header-content {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
+}
+
+/* ========================================
+            RESPONSIVE DESIGN
+======================================== */
+
+.product-panel-wrapper {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-panel-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.product-detail-section {
+    padding: 4rem 0;
+    min-height: 70vh;
+}
+
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Product Images */
+.product-images {
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+}
+
+.main-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: var(--background-light);
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.thumbnail {
+    width: calc(33.333% - 0.5rem);
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    object-fit: cover;
+}
+
+.thumbnail:hover {
+    border-color: var(--border-color);
+}
+
+.thumbnail.active {
+    border-color: var(--text-main);
+}
+
+/* Product Info */
+.product-info {
+    padding-top: 1rem;
+}
+
+.product-badge {
+    display: inline-block;
+    background: var(--text-main);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    color: var(--text-main);
+}
+
+.product-brand {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+}
+
+.product-pricing {
+    margin-bottom: 1.5rem;
+}
+
+.price-original {
+    font-size: 1.5rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 1rem;
+}
+
+.product-description {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-description p {
+    line-height: 1.8;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+/* Size Selector */
+.product-size-selector {
+    margin-bottom: 2rem;
+}
+
+.product-size-selector h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.size-options {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.size-btn {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-main);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.size-btn:hover {
+    border-color: var(--text-main);
+}
+
+.size-btn.selected {
+    background: var(--text-main);
+    color: var(--white);
+    border-color: var(--text-main);
+}
+
+/* Add to Cart Button */
+.btn-add-to-cart {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+/* Accordion */
+.product-details-accordion {
+    border-top: 1px solid var(--border-color);
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    opacity: 0.7;
+}
+
+.accordion-header i {
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-header i {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    padding-bottom: 1.25rem;
+}
+
+.accordion-content p {
+    line-height: 1.8;
+    color: var(--text-main);
+    font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .product-detail-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .product-images {
+        position: relative;
+        top: 0;
+    }
+    
+    .product-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detail-section {
+        padding: 2rem 0;
+    }
+    
+    .product-title {
+        font-size: 1.75rem;
+    }
+    
+    .price-current,
+    .price-sale {
+        font-size: 1rem;
+    }
+    
+    .price-original {
+        font-size: 1.25rem;
+    }
+    
+    .thumbnail {
+        width: calc(33.333% - 0.5rem);
+    }
+}
+
+.header {
+    padding: 0 !important;
+}
+.header .container {
+    padding: 0.5rem 0 !important;
+}
+.footer-bottom-text {
+    color: white !important;
+}
+/* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
+.icon-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px; /* Grosor de la línea */
+    bottom: 0;
+    left: 0;
+    background-color: #333; /* Color de la línea */
+    transform: scaleX(0); /* Empieza invisible (escala 0) */
+    transition: transform 0.3s ease; /* Animación suave */
+}
+
+.icon-btn:hover::after{
+    transform: scaleX(1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Centrado horizontal */
+    position: relative;
+    width:100%;
+    padding: 0 80px;
+}
+
+.logo {
+    margin-top: 1rem !important;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.header.scrolled .logo {
+    margin-top: 0 !important;
+}
+
+/* Regla específica para cuando el header tiene la clase 'scrolled' */
+.header.scrolled .icon-btn i {
+    color: #2a2a2a; /* O el color oscuro que prefieras para el estado scroll */
+    transition: color 0.3s ease;
+}
+
+.header.scrolled .icon-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px; /* Grosor de la línea */
+    bottom: 0;
+    left: 0;
+    background-color: #333; /* Color de la línea */
+    transform: scaleX(0); /* Empieza invisible (escala 0) */
+    transition: transform 0.3s ease; /* Animación suave */
+}
+
+.header.scrolled .icon-btn:hover::after{
+    transform: scaleX(1);
+}
+
+.mobile-menu-btn {
+    color: #2a2a2a !important; /* Color oscuro/neg
+}
+
+.header.scrolled .mobile-menu-btn {
+    color: #2a2a2a !important; /* Color oscuro/negro */
+}
+
+/* Si el contador del carrito también deja de verse bien, añade esto: */
+.header.scrolled .cart-count {
+    background: #2a2a2a;
+    color: white;
+}
+
+.logo h1 {
+    font-size: 1.5rem !important;
+}
+.nav-link {
+    font-size: 0.85rem !important;
+}
+.nav-link:hover,
+.nav-link.active {
+    color: #2a2a2a !important;
+}
+/* Título Mundo Olivia */
+.section-title {
+    font-family: 'Cormorant Garamond', serif !important;
+}
+/* Footer */
+.footer-section h3,
+.footer-section p {
+    color: white !important;
+}
+
+.language-selector {
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    margin-right: auto;
+}
+
+.lang-current img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #2a2a2a;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.lang-current:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 85%;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 140px;
+}
+
+.lang-dropdown:hover {
+    background-color: #2a2a2a;
+    border-color: #2a2a2a;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+.lang-dropdown:hover span {
+    color: white;
+}
+
+.language-selector:hover .lang-dropdown {
+    display: block;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a2a2a;
+    transition: all 0.2s ease;
+    border-radius: 10px;
+}
+
+.lang-option:hover {
+    border-radius: 8px;
+    transform: translateX(4px);
+}
+
+.lang-option img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Color cuando se hace scroll */
+.header.scrolled .lang-btn {
+    color: #2a2a2a !important; /* Color oscuro/negro */
+}
+
+/* Color cuando están activos o se pasa el mouse sobre ellos al hacer scroll */
+.header.scrolled .lang-btn:hover,
+.header.scrolled .lang-btn.active {
+    border-color: #2a2a2a !important;
+    color: #2a2a2a !important;
+}
+.lang-btn:hover {
+    border-color: #2a2a2a;
+}
+.lang-btn.active {
+    border-color: #2a2a2a;
+    background: rgba(107, 45, 92, 0.1);
+}
+.flag-icon {
+    font-size: 1.5rem;
+    display: block;
+}
+@media (min-width: 769px) {
+    .close-menu-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 100%;
+        height: 100vh;
+        background-color: white !important;
+        z-index: 99999; /* Por debajo del modal de login pero sobre todo lo demás */
+        transition: 0.4s ease-in-out;
+        display: flex !important; /* Forzamos flex para alinear contenido */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+    }
+
+    .nav.active {
+        right: 0; /* Se muestra */
+        visibility: visible;
+        z-index: 99999;
+    }
+
+    /* 3. Mostrar la X SOLO cuando el menú es responsivo */
+    .close-menu-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #2a2a2a;
+        cursor: pointer;
+        z-index: 100000;
+    }
+
+    .nav-list {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+
+    .nav-link {
+        color: #2a2a2a !important;
+        font-size: 1.8rem !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+
+    /* 4. LA CLAVE: La X solo se muestra SI el padre (.nav) tiene la clase .active */
+    .nav.active .close-menu-btn {
+        display: block !important;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #2a2a2a;
+        cursor: pointer;
+    }
+
+    /* Ajuste adicional para que el logo no se tape en móvil */
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        position: relative;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Da espacio entre los iconos para evitar el amontonamiento de la foto */
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0 !important; /* Quitamos el margen excesivo en móvil */
+        text-align: center;
+        width: max-content;
+    }
+
+    .logo h1 {
+        display: flex;
+        flex-direction: column; /* Alinea las palabras una debajo de otra */
+        align-items: center;    /* Centra las palabras entre sí */
+        line-height: 1.1;       /* Reduce el espacio vertical entre las palabras */
+        font-size: 1rem;      /* Ajuste opcional para que quepa mejor */
+    }
+
+    .logo span {
+        display: block;         /* Asegura que ocupen toda la línea */
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+        z-index: 10;
+        background: none;
+        border: none;
+        color: white; /* O el color de tus otros iconos */
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
