@@ -161,6 +161,78 @@
         </div>
     </section>
 
+    <!-- History Section -->
+    <section class="history-section">
+        <div class="container history-layout">
+            <div class="history-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004133/mujerHero_fls22l.jpg" alt="Historia Zapato Coyan">
+            </div>
+
+            <aside class="history-card">
+                <h2>HISTORIA</h2>
+                <p>El ZAPATO COYAN nace de la búsqueda por combinar tradición artesanal y estética contemporánea. Inspirado en caminos rurales y en la simplicidad funcional del calzado clásico, cada par está diseñado para ofrecer durabilidad y elegancia cotidiana. </p>
+
+                <div class="music-embed">
+                    <p>Escucha la canción relacionada:</p>
+                    <!-- Preferible Spotify: reemplaza REPLACE_TRACK_ID por el id de pista si deseas el embed directo -->
+                    <div class="embed-wrap">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2PneNdtypG6XcgmWmGd9FI?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <p class="embed-fallback">Si el reproductor no carga, <a href="https://open.spotify.com/search/These%20Boots%20Are%20Made%20For%20Walkin%20Nancy%20Sinatra" target="_blank" rel="noopener">abre la canción en Spotify</a>.</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>RESEÑAS</h2>
+                <button id="openReviewBtn" class="btn btn-primary btn-add-review">Añadir reseña</button>
+            </div>
+
+            <div id="reviewsList" class="reviews-list">
+                <!-- Ejemplo de reseña existente -->
+                <article class="review">
+                    <div class="review-header">
+                        <div class="review-author">María</div>
+                        <div class="review-rating">★★★★☆</div>
+                    </div>
+                    <p class="review-text">Muy cómodos y con excelente acabado. Los recomiendo para uso diario.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Modal -->
+    <div class="review-modal" id="reviewModal" aria-hidden="true">
+        <div class="review-modal-overlay" id="reviewModalOverlay"></div>
+        <div class="review-modal-content">
+            <button class="review-modal-close" id="closeReviewBtn"><i class="fas fa-times"></i></button>
+            <h3>Escribe una reseña</h3>
+            <form id="reviewForm" class="review-form">
+                <input type="text" id="reviewName" placeholder="Tu nombre" required>
+
+                <div class="star-input">
+                    <label><input type="radio" name="rating" value="5" required> ★★★★★</label>
+                    <label><input type="radio" name="rating" value="4"> ★★★★☆</label>
+                    <label><input type="radio" name="rating" value="3"> ★★★☆☆</label>
+                    <label><input type="radio" name="rating" value="2"> ★★☆☆☆</label>
+                    <label><input type="radio" name="rating" value="1"> ★☆☆☆☆</label>
+                </div>
+
+                <textarea id="reviewText" rows="4" placeholder="Tu comentario" required></textarea>
+                <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+                    <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+                    <button type="button" class="btn" id="cancelReviewBtn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -498,5 +570,47 @@
     <script src="../scripts/productos-page.js"></script>
     <script src="../scripts/feedback.js"></script>
     <script src="../scripts/subscription.js"></script>
+    <script src="../scripts/calificacionZapato.js"></script>
+    <script>
+    (function(){
+        var openBtn = document.getElementById('openReviewBtn');
+        var modal = document.getElementById('reviewModal');
+        var overlay = document.getElementById('reviewModalOverlay');
+        var closeBtn = document.getElementById('closeReviewBtn');
+        var cancelBtn = document.getElementById('cancelReviewBtn');
+        var form = document.getElementById('reviewForm');
+        var list = document.getElementById('reviewsList');
+
+        function openModal(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); }
+        function closeModal(){ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); }
+
+        if(openBtn) openBtn.addEventListener('click', openModal);
+        if(overlay) overlay.addEventListener('click', closeModal);
+        if(closeBtn) closeBtn.addEventListener('click', closeModal);
+        if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+        function starsVisual(n){ n = parseInt(n,10)||0; return '★'.repeat(n) + '☆'.repeat(5-n); }
+
+        if(form){
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                var name = document.getElementById('reviewName').value.trim();
+                var rating = form.rating.value;
+                var text = document.getElementById('reviewText').value.trim();
+                if(!name || !rating || !text) return;
+
+                var article = document.createElement('article');
+                article.className = 'review';
+                article.innerHTML = '<div class="review-header"><div class="review-author">'+
+                    (name)+'</div><div class="review-rating">'+starsVisual(rating)+
+                    '</div></div><p class="review-text">'+(text)+'</p>';
+
+                list.insertBefore(article, list.firstChild);
+                form.reset();
+                closeModal();
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
