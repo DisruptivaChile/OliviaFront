@@ -27,26 +27,17 @@
     /* Colores de Acento - Inspirados en Zapatos */
     /* NOTA: Aplicar UN SOLO color de acento a la vez por sección/colección */
     --accent-morado: #2a2a2a;        /* Morado identidad */
-    --accent-verde: #3F6D5A;         /* Verde cuero */
-    --accent-rosado: #D16C8A;        /* Rosado acento */
-    --accent-naranja: #C6A51E;       /* Naranja cuero */
-    --accent-beige: #E2D6C3;         /* Beige cuero claro */
     
     /* Colores Funcionales */
     --white: #ffffff;
     --border-color: #D6D2CC;         /* Usa el gris cálido de recursos */
-    --text-light: #666666;
-    --text-muted: #999999;
     
     /* Sistema de Sombras - Sutiles para High-End */
-    --shadow-sm: 0 2px 8px rgba(42, 42, 42, 0.04);
     --shadow-md: 0 4px 16px rgba(42, 42, 42, 0.06);
-    --shadow-lg: 0 8px 24px rgba(42, 42, 42, 0.08);
     
     /* Transiciones Profesionales */
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* Sistema de Espaciado - Grid Editorial 8px base */
     --space-1: 0.5rem;   /* 8px */
@@ -66,7 +57,6 @@
     --spacing-xl: var(--space-7);
     --primary-color: var(--logo-base);
     --secondary-color: var(--accent-morado);
-    --bg-light: var(--bg-main);
 }
 
 body {
@@ -86,12 +76,13 @@ body {
    ======================================== */
 
 /* Títulos de Modelos de Zapatos - Adelia Regular 72pt */
+
 .product-title {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem); /* 72pt ≈ 4.5rem */
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
     color: var(--text-main);
 }
 
@@ -240,35 +231,50 @@ h3 {
     background: transparent;
     border-bottom: 1px solid transparent;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0;
+    padding: 0 !important;
     margin: 0;
 }
 
+.header .container {
+    padding: 0.5rem 0 !important;
+}
+
 /* Estado inicial - Overlay transparente */
+
 .header-content {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: start;
-    gap: var(--spacing-md);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Asegura que Nav, Logo y Actions compartan el mismo eje central */
+    position: relative;
+    width: 100%;
+    padding: 0 80px;
+    height: 40px;
 }
 
 /* Navigation - Izquierda */
 .nav {
-    justify-self: start;
+    display: flex;
+    align-items: center; /* Centrado vertical del contenedor de navegación */
+    height: 100%;
 }
 
 /* Logo - Centro */
 .logo {
     justify-self: center;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: 2.5rem;
+    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
 /* Actions - Derecha */
 .header-actions {
-    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ========================================
@@ -278,7 +284,7 @@ h3 {
 
 /* Logo Base - Negro cálido (overlay transparente) */
 .logo h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 300;
     letter-spacing: 0.15em;
     color: var(--white); /* Logo alternativo para fondos oscuros/hero */
@@ -301,10 +307,6 @@ h3 {
     text-shadow: none;
 }
 
-.tagline {
-    display: none;
-}
-
 /* ========================================
    HEADER - ESTADO SCROLLED (Sticky)
    ======================================== */
@@ -322,9 +324,8 @@ h3 {
 }
 
 .header.scrolled .logo {
-    margin-top: 0;
+    margin-top: 0 !important;
 }
-
 
 /* Header blanco permanente para páginas internas */
 .header.header-white {
@@ -354,11 +355,15 @@ h3 {
     text-decoration: none;
     color: var(--white);
     font-weight: 400;
-    font-size: 0.8125rem;
+    font-size: 0.85rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     letter-spacing: 0.05em;
     text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    display: inline-flex;
+    align-items: center;
+    line-height: 1; /* Resetear el line-height evita que el texto "flote" hacia arriba o abajo */
+    height: 100%;
 }
 
 /* Links oscuros al hacer scroll */
@@ -369,7 +374,7 @@ h3 {
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--secondary-color);
+    color: #2a2a2a !important;
 }
 
 .nav-link::after {
@@ -394,14 +399,9 @@ h3 {
     display: flex;
     list-style: none;
     gap: 1.5rem;
-}
-
-/* Header Actions - Estado inicial (claro) */
-.header-actions {
-    display: flex;
+    margin: 0;
+    padding: 0;
     align-items: center;
-    gap: 0.75rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Icon buttons - Claro en estado inicial */
@@ -417,14 +417,51 @@ h3 {
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-.header.scrolled .icon-btn {
-    color: var(--text-dark);
-    text-shadow: none;
+.icon-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.icon-btn:hover::after {
+    transform: scaleX(1);
 }
 
 .icon-btn:hover {
     color: var(--secondary-color);
     text-shadow: none;
+}
+
+.header.scrolled .icon-btn {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+.header.scrolled .icon-btn i {
+    color: #2a2a2a;
+    transition: color 0.3s ease;
+}
+
+.header.scrolled .icon-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.header.scrolled .icon-btn:hover::after {
+    transform: scaleX(1);
 }
 
 .cart-count {
@@ -443,6 +480,11 @@ h3 {
 
 .mobile-menu-btn {
     display: none;
+    color: #2a2a2a !important;
+}
+
+.header.scrolled .mobile-menu-btn {
+    color: #2a2a2a !important;
 }
 
 .btn {
@@ -485,45 +527,6 @@ h3 {
     border: #14171A solid 1px;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-}
-
-.btn-secondary:hover {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
-.btn-hero {
-    background: transparent;
-    color: var(--white);
-    border: 1px solid var(--white);
-    padding: 0.65rem 1.75rem;
-    font-size: 0.8125rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-}
-
-.btn-hero:hover {
-    background: var(--white);
-    color: var(--primary-color);
-    border-color: var(--white);
-}
-
-.btn-light {
-    background: var(--white);
-    color: var(--primary-color);
-    border: 1px solid var(--white);
-}
-
-.btn-light:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    border-color: var(--primary-color);
 }
 
 .btn-block {
@@ -667,6 +670,14 @@ h3 {
 }
 
 @media (max-width: 1200px) {
+    .product-details-accordion .accordion-item {
+        display: block !important; /* Evita el flex-direction: column del footer */
+    }
+    
+    .product-details-accordion .accordion-header {
+        border-bottom: none; /* El borde ya lo tiene el .accordion-item */
+    }
+    
     .footer-content {
         display: flex; /* Cambiamos grid por flex para usar order */
         flex-direction: column;
@@ -689,8 +700,8 @@ h3 {
         padding-top: 2rem;
     }
 
-    /* ESTILO ACORDEÓN */
-    .accordion-header {
+    /* ESTILO ACORDEÓN - SOLO PARA FOOTER */
+    .footer .accordion-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -700,24 +711,24 @@ h3 {
         color: white !important;
     }
 
-    .accordion-content {
+    .footer .accordion-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-out;
         padding-left: 0;
     }
 
-    .accordion-icon {
+    .footer .accordion-icon {
         display: block; /* Solo visible en móvil */
         color: var(--white);
     }
 
-    .accordion-section.active .accordion-content {
+    .footer .accordion-section.active .accordion-content {
         max-height: 300px; /* Permitimos que se expanda */
         padding: 1rem 0;
     }
 
-    .accordion-section.active .accordion-icon {
+    .footer .accordion-section.active .accordion-icon {
         transform: rotate(45deg); /* El + se vuelve una x o gira */
     }
 
@@ -859,20 +870,12 @@ h3 {
 }
 
 /* ========================================
-            RESPONSIVE DESIGN
+            PRODCUT DETAIL PAGE
 ======================================== */
-
-.product-panel-wrapper {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.product-panel-wrapper:hover {
-    transform: translateY(-5px);
-}
 
 .product-detail-section {
     padding: 4rem 0;
+    padding-top: 120px;
     min-height: 70vh;
 }
 
@@ -929,9 +932,7 @@ h3 {
 }
 
 /* Product Info */
-.product-info {
-    padding-top: 1rem;
-}
+
 
 .product-badge {
     display: inline-block;
@@ -942,14 +943,6 @@ h3 {
     font-weight: 600;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
-}
-
-.product-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.05em;
-    color: var(--text-main);
 }
 
 .product-brand {
@@ -964,10 +957,14 @@ h3 {
 }
 
 .price-original {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #999;
     text-decoration: line-through;
     margin-left: 1rem;
+}
+
+.price-sale {
+    font-size: 1.5rem;
 }
 
 .product-description {
@@ -1035,6 +1032,17 @@ h3 {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
+    background: #2a2a2a !important;
+    color: white !important;
+    border-color: #2a2a2a !important;
+    transform: translateY(0) !important;
+}
+
+.btn-add-to-cart:hover {
+    background: white !important;
+    color: #2a2a2a !important;
+    border: 1px solid #2a2a2a !important;
+    transform: translateY(-2px) !important;
 }
 
 /* Accordion */
@@ -1042,8 +1050,47 @@ h3 {
     border-top: 1px solid var(--border-color);
 }
 
+.product-details-accordion .accordion-content {
+    display: block !important; /* Mantenemos el bloque para la animación */
+    max-height: 0 !important;   /* Pero forzamos que esté cerrado */
+    overflow: hidden !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    transition: max-height 0.4s ease, padding 0.4s ease !important;
+}
+
+.product-details-accordion .accordion-item.active .accordion-content {
+    max-height: 1000px !important; 
+    padding-bottom: 2rem !important;
+    opacity: 1 !important;
+    overflow: visible !important; /* Permite que el texto respire */
+}
+
+.product-details-accordion .accordion-item .accordion-header i {
+    transition: transform 0.3s ease;
+}
+
 .accordion-item {
     border-bottom: 1px solid var(--border-color);
+}
+
+.product-details-accordion .accordion-header {
+    width: 100%;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2a2a2a !important;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
 }
 
 .accordion-header {
@@ -1062,6 +1109,18 @@ h3 {
     color: var(--text-main);
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
+}
+
+.product-details-accordion .accordion-header:hover {
+    opacity: 0.7;
+}
+
+.product-details-accordion .accordion-header i {
+    transition: transform 0.3s ease;
+}
+
+.product-details-accordion .accordion-item.active .accordion-header i {
+    transform: rotate(180deg);
 }
 
 .accordion-header:hover {
@@ -1119,13 +1178,12 @@ h3 {
         font-size: 1.75rem;
     }
     
-    .price-current,
     .price-sale {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
     
     .price-original {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
     
     .thumbnail {
@@ -1133,9 +1191,6 @@ h3 {
     }
 }
 
-.header {
-    padding: 0 !important;
-}
 .header .container {
     padding: 0.5rem 0 !important;
 }
@@ -1157,26 +1212,6 @@ h3 {
 
 .icon-btn:hover::after{
     transform: scaleX(1);
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between; /* Centrado horizontal */
-    position: relative;
-    width:100%;
-    padding: 0 80px;
-}
-
-.logo {
-    margin-top: 1rem !important;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-.header.scrolled .logo {
-    margin-top: 0 !important;
 }
 
 /* Regla específica para cuando el header tiene la clase 'scrolled' */
@@ -1201,10 +1236,6 @@ h3 {
     transform: scaleX(1);
 }
 
-.mobile-menu-btn {
-    color: #2a2a2a !important; /* Color oscuro/neg
-}
-
 .header.scrolled .mobile-menu-btn {
     color: #2a2a2a !important; /* Color oscuro/negro */
 }
@@ -1215,20 +1246,20 @@ h3 {
     color: white;
 }
 
-.logo h1 {
-    font-size: 1.5rem !important;
+.cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--secondary-color);
+    color: var(--white);
+    font-size: 0.625rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+    font-weight: 600;
 }
-.nav-link {
-    font-size: 0.85rem !important;
-}
-.nav-link:hover,
-.nav-link.active {
-    color: #2a2a2a !important;
-}
-/* Título Mundo Olivia */
-.section-title {
-    font-family: 'Cormorant Garamond', serif !important;
-}
+
 /* Footer */
 .footer-section h3,
 .footer-section p {
