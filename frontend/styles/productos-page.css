@@ -548,15 +548,18 @@ h3 {
 .reviews-section { padding: 3rem 0; }
 .reviews-section h2 { margin-bottom: 1rem; }
 .reviews-list { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
-.review { background: var(--white); padding: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); }
+.review { background: var(--white); padding: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); transition: var(--transition-base); }
+.review:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42, 42, 42, 0.12); }
 .review-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; }
 .review-author { font-weight:600; }
 .review-rating { color: #D18B2B; font-size:1rem; }
 .review-text { color: var(--text-main); line-height:1.6; }
 
 .review-form { display:flex; flex-direction:column; gap:0.75rem; max-width:720px; }
-.review-form input[type="text"], .review-form textarea { padding:0.75rem; border:1px solid var(--border-color); border-radius:6px; }
-.star-input { display:flex; gap:0.5rem; flex-wrap:wrap; font-size:0.95rem; }
+.review-form input[type="text"], .review-form textarea { padding:0.75rem; border:1px solid var(--border-color); border-radius:6px; font-family: 'Poppins', sans-serif; }
+.review-form textarea { resize: none; }
+.review-form input[type="text"]::placeholder, .review-form textarea::placeholder { color: #A9A9A9; font-weight: 400; font-family: 'Poppins', sans-serif; }
+.star-input { display:flex; gap:0.5rem; flex-wrap:wrap; font-size:0.95rem; justify-content: center;}
 .star-input label { cursor:pointer; background:#f6f6f6; padding:0.4rem 0.6rem; border-radius:6px; }
 
 @media (max-width: 1024px) {
@@ -567,15 +570,20 @@ h3 {
 
 /* Reviews header with right aligned button */
 .reviews-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
-.btn-add-review { padding:0.5rem 1rem; font-size:0.9rem; }
+.btn-add-review { padding:0.5rem 1rem; font-size:0.9rem; background: #2a2a2a !important; color: var(--white) !important; border: 2px solid #2a2a2a; border-radius: 4px; font-weight: 500; transition: var(--transition-base); }
+.btn-add-review:hover { background: var(--white) !important; color: #2a2a2a !important; border-color: #2a2a2a !important; }
 
 /* Modal for reviews */
 .review-modal { display:none; position:fixed; inset:0; z-index:2200; }
 .review-modal.is-open { display:block; }
 .review-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.45); }
-.review-modal-content { position:relative; width:100%; max-width:640px; margin:6vh auto; background:var(--white); padding:1.25rem; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.25); z-index:2201; }
+.review-modal-content { position:relative; width:100%; max-width:640px; margin:50vh auto; transform: translateY(-50%); background:var(--white); padding:2.5rem; border-radius:12px; box-shadow:0 20px 80px rgba(0,0,0,0.15); z-index:2201; top: 0; }
 .review-modal-close { position:absolute; top:12px; right:12px; background:none; border:none; font-size:1.1rem; cursor:pointer; }
-.review-modal-content h3 { margin-top:0; margin-bottom:0.75rem; }
+.review-modal-content h3 { margin-top:0; margin-bottom:1.5rem; font-size: 1.5rem; text-align: center; color: var(--text-main); }
+.review-form button[type="submit"] { background: #2a2a2a; color: var(--white); border: 2px solid #2a2a2a; border-radius: 4px; font-weight: 500; transition: var(--transition-base); padding: 0.75rem 2rem; }
+.review-form button[type="submit"]:hover { background: var(--white); color: #2a2a2a; border-color: #2a2a2a; }
+
+.btn-review { width: 100%; }
 
 @media (max-width: 768px) {
     .review-modal-content { margin: 4vh 1rem; }
