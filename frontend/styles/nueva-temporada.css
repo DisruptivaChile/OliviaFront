@@ -1,0 +1,305 @@
+/* ========================================
+   NUEVA TEMPORADA - CAROUSEL SECTION
+   Premium product slider
+   ======================================== */
+
+.nueva-temporada-section {
+    padding: 4rem 0;
+    background: var(--bg-main);
+}
+
+.section-title-center {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 3rem;
+}
+
+.nueva-temporada-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    flex: 1;
+    position: relative;
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.carousel-wrapper:hover .carousel-nav-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-nav-prev {
+    left: 1rem;
+}
+
+.carousel-nav-next {
+    right: 1rem;
+}
+
+.carousel-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn i {
+    font-size: 0.875rem;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-panel-wrapper {
+    min-width: calc(31% - 1rem);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product-panel {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #E8DED8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.product-panel:hover {
+    transform: scale(1.02);
+}
+
+.product-info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.product-name-panel {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.product-brand-panel {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.product-price-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.price-current,
+.price-sale {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.price-original {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.product-panel-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+.sale-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--text-main);
+    color: var(--white);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    z-index: 2;
+}
+
+.product-internal-arrows {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.product-panel:hover .product-internal-arrows {
+    opacity: 1;
+}
+
+.product-internal-arrows i {
+    font-size: 12px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.9);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-internal-arrows i:hover {
+    transform: scale(1.2);
+    background: #fff;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .product-panel-wrapper {
+        min-width: calc(50% - 0.75rem);
+    }
+
+    .carousel-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nueva-temporada-section {
+        padding: 3rem 0;
+    }
+
+    .section-title-center {
+        margin-bottom: 2rem;
+    }
+
+    .product-panel-wrapper {
+        min-width: 100%;
+    }
+
+    .carousel-nav-btn {
+        width: 28px;
+        height: 28px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .carousel-nav-btn i {
+        font-size: 0.75rem;
+    }
+
+    .carousel-track {
+        gap: 1rem;
+    }
+
+    .product-name-panel {
+        font-size: 0.8125rem;
+    }
+
+    .product-brand-panel {
+        font-size: 0.6875rem;
+    }
+
+    .product-price-panel {
+        font-size: 0.8125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nueva-temporada-section {
+        padding: 2rem 0;
+    }
+
+    .section-title-center {
+        font-size: 0.8125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-wrapper {
+        padding: 0 var(--spacing-xs);
+    }
+
+    .carousel-nav-btn {
+        width: 24px;
+        height: 24px;
+        top: 45%;
+    }
+
+    .carousel-nav-prev {
+        left: 0.5rem;
+    }
+
+    .carousel-nav-next {
+        right: 0.5rem;
+    }
+}
