@@ -177,7 +177,14 @@
                     <p>Escucha la canción relacionada:</p>
                     <!-- Preferible Spotify: reemplaza REPLACE_TRACK_ID por el id de pista si deseas el embed directo -->
                     <div class="embed-wrap">
-                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2PneNdtypG6XcgmWmGd9FI?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/2PneNdtypG6XcgmWmGd9FI?utm_source=generator&theme=0" 
+                        width="100%" 
+                        height="152" 
+                        frameBorder="0" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy"
+                        style="border-radius:12px; min-width: 100%;">
+                    </iframe>
                     </div>
                     <p class="embed-fallback">Si el reproductor no carga, <a href="https://open.spotify.com/search/These%20Boots%20Are%20Made%20For%20Walkin%20Nancy%20Sinatra" target="_blank" rel="noopener">abre la canción en Spotify</a>.</p>
                 </div>
@@ -275,7 +282,7 @@
                             <div class="product-info-panel">
                                 <h4 class="product-name-panel">ZAPATO TEVO</h4>
                                 <p class="product-brand-panel">NALCA</p>
-                                <p class="product-price-panel"><span class="price-sale">$91.200</span></p>
+                                <p class="product-price-panel"><span class="price-current">$91.200</span></p>
                             </div>
                         </div>
 
@@ -412,7 +419,7 @@
         </div>
     </div>
 
-    <!-- Login Modal Slide -->
+    <!-- Login Modal -->
     <div class="login-modal" id="loginModal">
         <div class="login-modal-overlay" id="loginModalOverlay"></div>
         <div class="login-modal-content">
