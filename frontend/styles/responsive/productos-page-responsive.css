@@ -1,0 +1,344 @@
+@media (max-width: 768px) {
+    .promo-banner-slider {
+        padding: 3px 0;
+    }
+    
+    .promo-slide p {
+        font-size: 14px;
+    }
+
+    :root {
+        --spacing-xl: 3rem;
+        --spacing-lg: 2rem;
+    }
+    
+    .product-title {
+        font-size: 1.75rem;
+    }
+    
+    .price-sale {
+        font-size: 1.25rem;
+    }
+    
+    .price-original {
+        font-size: 1rem;
+    }
+    
+    .thumbnail {
+        width: calc(33.333% - 0.5rem);
+    }
+}
+
+
+@media (min-width: 769px) {
+    .close-menu-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .history-layout { grid-template-columns: 1fr; }
+    .history-image { order: 1; }
+    .history-card { order: 2; }
+    :root {
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
+    }
+    
+    .nav-list {
+        gap: var(--spacing-sm);
+    }
+
+    .product-detail-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .product-images {
+        position: relative;
+        top: 0;
+    }
+    
+    .product-title {
+        font-size: 2rem;
+    }
+
+    /* NUEVA TEMPORADA - Responsive adjustments */
+    .product-panel-wrapper {
+        min-width: calc(50% - 0.75rem);
+    }
+
+    .carousel-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 100%;
+        height: 100vh;
+        background-color: white !important;
+        z-index: 99999; /* Por debajo del modal de login pero sobre todo lo demás */
+        transition: 0.4s ease-in-out;
+        display: flex !important; /* Forzamos flex para alinear contenido */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+    }
+
+    .nav.active {
+        right: 0; /* Se muestra */
+        visibility: visible;
+        z-index: 99999;
+    }
+
+    /* 3. Mostrar la X SOLO cuando el menú es responsivo */
+    .close-menu-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #2a2a2a;
+        cursor: pointer;
+        z-index: 100000;
+    }
+
+    .nav-list {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+
+    .nav-link {
+        color: #2a2a2a !important;
+        font-size: 1.8rem !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+
+    /* 4. LA CLAVE: La X solo se muestra SI el padre (.nav) tiene la clase .active */
+    .nav.active .close-menu-btn {
+        display: block !important;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #2a2a2a;
+        cursor: pointer;
+    }
+
+    /* Ajuste adicional para que el logo no se tape en móvil */
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        position: relative;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Da espacio entre los iconos para evitar el amontonamiento de la foto */
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0 !important; /* Quitamos el margen excesivo en móvil */
+        text-align: center;
+        width: max-content;
+    }
+
+    .logo h1 {
+        display: flex;
+        flex-direction: column; /* Alinea las palabras una debajo de otra */
+        align-items: center;    /* Centra las palabras entre sí */
+        line-height: 1.1;       /* Reduce el espacio vertical entre las palabras */
+        font-size: 1rem;      /* Ajuste opcional para que quepa mejor */
+    }
+
+    .logo span {
+        display: block;         /* Asegura que ocupen toda la línea */
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+        z-index: 10;
+        background: none;
+        border: none;
+        color: white; /* O el color de tus otros iconos */
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1200px) {
+    .product-details-accordion .accordion-item {
+        display: block !important; /* Evita el flex-direction: column del footer */
+    }
+    
+    .product-details-accordion .accordion-header {
+        border-bottom: none; /* El borde ya lo tiene el .accordion-item */
+    }
+    
+    .footer-content {
+        display: flex; /* Cambiamos grid por flex para usar order */
+        flex-direction: column;
+        gap: 0; /* Controlamos el gap manualmente */
+    }
+
+    /* REORDENAMIENTO */
+    .section-newsletter {
+        order: 1;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-section:nth-of-type(2) { order: 2; } /* Comprar */
+    .accordion-section:nth-of-type(3) { order: 3; } /* Ayuda */
+
+    .section-brand {
+        order: 4;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    /* ESTILO ACORDEÓN - SOLO PARA FOOTER */
+    .footer .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .footer .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding-left: 0;
+    }
+
+    .footer .accordion-icon {
+        display: block; /* Solo visible en móvil */
+        color: var(--white);
+    }
+
+    .footer .accordion-section.active .accordion-content {
+        max-height: 300px; /* Permitimos que se expanda */
+        padding: 1rem 0;
+    }
+
+    .footer .accordion-section.active .accordion-icon {
+        transform: rotate(45deg); /* El + se vuelve una x o gira */
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    /* Forzamos que los títulos sean blancos */
+    .footer-section h3, 
+    .footer-section h4,
+    .accordion-header h4 {
+        color: var(--white) !important;
+        margin-bottom: var(--spacing-xs);
+        text-transform: uppercase;
+    }
+
+    /* Forzamos que el contenido sea visible siempre */
+    .accordion-content {
+        max-height: none !important;
+        display: block !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Ocultamos el icono de '+' en PC */
+    .accordion-icon {
+        display: none !important;
+    }
+
+    /* Estilo de los links para asegurar visibilidad */
+    .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        display: block;
+        padding: 4px 0;
+    }
+
+    .footer-section ul li a:hover {
+        color: var(--white) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.125rem;
+    }
+    
+    .header-content {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
+}
+
+@media (max-width: 712px) {
+    .container {
+        padding: 0 15px; /* Mantenemos un margen seguro */
+    }
+
+    .reviews-header {
+        flex-direction: column; /* Apilamos título y botón si el espacio es muy poco */
+        text-align: center;
+    }
+
+    .btn-add-review {
+        width: 100%; /* El botón se adapta mejor al ancho móvil */
+    }
+
+    .review-modal-content {
+        padding: 1.5rem; /* Reducimos un poco el padding interno para ganar espacio */
+        width: calc(100% - 32px); /* Forzamos un margen exacto de 16px a cada lado */
+        
+    }
+
+    /* Ajuste para las estrellas si se ven apretadas */
+    .star-input {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .star-input label {
+        font-size: 0.85rem; /* Texto un poco más pequeño en móvil */
+        white-space: nowrap;
+    }
+
+    .btn-review {
+        width: 100%; /* Botón de enviar ocupa todo el ancho en móvil */
+    }
+}

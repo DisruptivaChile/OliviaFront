@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../styles/productos-page.css">
     <link rel="stylesheet" href="../styles/pop-ups.css">
     <link rel="stylesheet" href="../styles/nueva-temporada.css">
+    <link rel="stylesheet" href="../styles/responsive/productos-page-responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -194,14 +195,13 @@
 
     <!-- Reviews Section -->
     <section class="reviews-section">
-        <div class="container">
+        <div class="container reviews-container">
             <div class="reviews-header">
                 <h2>RESEÑAS</h2>
                 <button id="openReviewBtn" class="btn btn-primary btn-add-review">Añadir reseña</button>
             </div>
 
             <div id="reviewsList" class="reviews-list">
-                <!-- Ejemplo de reseña existente -->
                 <article class="review">
                     <div class="review-header">
                         <div class="review-author">María</div>
@@ -252,7 +252,7 @@
                     </button>
                     <div class="carousel-track" id="nuevaTemporadaTrack">
 
-                        <div class="product-panel-wrapper" data-product-url="frontend/pages/producto-palqui.html">
+                        <div class="product-panel-wrapper" data-product-url="producto-palqui.html">
                             <div class="product-panel">
                                 <span class="sale-badge">SALE</span>
                                 <div class="product-panel-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770061683/amarillo_xi07jr.png');" 
@@ -269,7 +269,7 @@
                             </div>
                         </div>
 
-                        <div class="product-panel-wrapper" data-product-url="frontend/pages/producto-tevo.html">
+                        <div class="product-panel-wrapper" data-product-url="producto-tevo.html">
                             <div class="product-panel">
                                 <span class="sale-badge">SALE</span>
                                 <div class="product-panel-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770061683/cafe_zzofnw.png');" 

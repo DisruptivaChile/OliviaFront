@@ -197,7 +197,7 @@
 }
 
 .product-panel:hover .product-internal-arrows {
-    opacity: 1;
+    opacity: 1; /* Aparecen al hacer hover */
 }
 
 .product-internal-arrows i {
@@ -217,89 +217,4 @@
 .product-internal-arrows i:hover {
     transform: scale(1.2);
     background: #fff;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-
-@media (max-width: 1024px) {
-    .product-panel-wrapper {
-        min-width: calc(50% - 0.75rem);
-    }
-
-    .carousel-nav-btn {
-        width: 32px;
-        height: 32px;
-    }
-}
-
-@media (max-width: 768px) {
-    .nueva-temporada-section {
-        padding: 3rem 0;
-    }
-
-    .section-title-center {
-        margin-bottom: 2rem;
-    }
-
-    .product-panel-wrapper {
-        min-width: 100%;
-    }
-
-    .carousel-nav-btn {
-        width: 28px;
-        height: 28px;
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .carousel-nav-btn i {
-        font-size: 0.75rem;
-    }
-
-    .carousel-track {
-        gap: 1rem;
-    }
-
-    .product-name-panel {
-        font-size: 0.8125rem;
-    }
-
-    .product-brand-panel {
-        font-size: 0.6875rem;
-    }
-
-    .product-price-panel {
-        font-size: 0.8125rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .nueva-temporada-section {
-        padding: 2rem 0;
-    }
-
-    .section-title-center {
-        font-size: 0.8125rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .carousel-wrapper {
-        padding: 0 var(--spacing-xs);
-    }
-
-    .carousel-nav-btn {
-        width: 24px;
-        height: 24px;
-        top: 45%;
-    }
-
-    .carousel-nav-prev {
-        left: 0.5rem;
-    }
-
-    .carousel-nav-next {
-        right: 0.5rem;
-    }
 }
