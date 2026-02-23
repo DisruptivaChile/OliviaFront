@@ -12,6 +12,7 @@
     
     <link rel="stylesheet" href="../styles/styles.css?v=7">
     <link rel="stylesheet" href="../styles/productos.css?v=3">
+    <link rel="stylesheet" href="../styles/pop-ups.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -48,7 +49,7 @@
                         <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
                         <li><a href="productos.html" class="nav-link active" data-i18n="nav_productos">Catálogo</a></li>
                         <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
-                        <li><a href="#" class="nav-link" data-i18n="nav_tallas">Tallas</a></li>
+                        <li><a href="tallas.html" class="nav-link" data-i18n="nav_tallas">Tallas</a></li>
                     </ul>
                 </nav>
 
@@ -183,9 +184,9 @@
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="#" data-i18n="footer_envios">Envíos</a></li>
-                        <li><a href="#" data-i18n="footer_devoluciones">Devoluciones</a></li>
-                        <li><a href="#" data-i18n="footer_guia">Guía de Tallas</a></li>
+                        <li><a href="#" id="enviosBtn" data-i18n="footer_envios">Envíos</a></li>
+                        <li><a href="#" id="devolucionesBtn" data-i18n="footer_devoluciones">Devoluciones</a></li>
+                        <li><a href="tallas.html" data-i18n="footer_guia">Guía de Tallas</a></li>
                         <li><a href="https://wa.me/1234567890" target="_blank" data-i18n="footer_contacto">Contacto</a></li>
                     </ul>
                 </div>
@@ -482,6 +483,89 @@
             </div>
             
             <button class="btn btn-primary feedback-submit-btn">Enviar Feedback</button>
+        </div>
+    </div>
+
+    <!-- Modal de Envíos -->
+    <div class="info-modal" id="enviosModal">
+        <div class="info-modal-overlay"></div>
+        <div class="info-modal-content">
+            <button class="info-close-btn" id="closeEnviosModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="info-modal-logo">
+                <h1>
+                    <span>OLIVIA</span>
+                    <span>MERINO</span>
+                </h1>
+            </div>
+            
+            <div class="info-modal-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/newMainImg_qwfobd.jpg" alt="Envíos">
+            </div>
+            
+            <div class="info-modal-body">
+                <h2 class="info-modal-title">Información de Envíos</h2>
+                <div class="info-modal-text">
+                    <p><strong>Envío Gratis</strong> en compras superiores a €50</p>
+                    <p>Nuestros tiempos de entrega son:</p>
+                    <ul>
+                        <li><strong>Envío Estándar:</strong> 3-5 días hábiles</li>
+                        <li><strong>Envío Express:</strong> 1-2 días hábiles</li>
+                    </ul>
+                    <p>Realizamos envíos a toda España y Portugal. Una vez realizada tu compra, recibirás un correo con el código de seguimiento para que puedas rastrear tu pedido en todo momento.</p>
+                    <p>En Olivia Merino nos comprometemos a que tus zapatos lleguen en perfectas condiciones, cuidadosamente empaquetados para garantizar su seguridad durante el transporte.</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary info-accept-btn" id="acceptEnviosBtn">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Devoluciones -->
+    <div class="info-modal" id="devolucionesModal">
+        <div class="info-modal-overlay"></div>
+        <div class="info-modal-content">
+            <button class="info-close-btn" id="closeDevolucionesModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="info-modal-logo">
+                <h1>
+                    <span>OLIVIA</span>
+                    <span>MERINO</span>
+                </h1>
+            </div>
+            
+            <div class="info-modal-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770062312/hero_mujer_ijpjgo.png" alt="Devoluciones">
+            </div>
+            
+            <div class="info-modal-body">
+                <h2 class="info-modal-title">Información de Devoluciones</h2>
+                <div class="info-modal-text">
+                    <p><strong>Devoluciones Gratuitas</strong> dentro de 30 días</p>
+                    <p>En Olivia Merino queremos que estés completamente satisfecho con tu compra. Si por alguna razón no es así, puedes devolver tus zapatos de forma gratuita.</p>
+                    
+                    <p><strong>Condiciones para devoluciones:</strong></p>
+                    <ul>
+                        <li>Tienes hasta 30 días desde la recepción de tu pedido</li>
+                        <li>Los zapatos deben estar sin usar y en su empaque original</li>
+                        <li>Incluye la etiqueta original y todos los accesorios</li>
+                    </ul>
+                    
+                    <p><strong>Proceso de devolución:</strong></p>
+                    <ol>
+                        <li>Solicita tu devolución a través de nuestro formulario online</li>
+                        <li>Imprime la etiqueta de devolución que te enviaremos por correo</li>
+                        <li>Empaqueta el producto y pégala etiqueta</li>
+                        <li>Tu reembolso será procesado en 5-7 días hábiles</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary info-accept-btn" id="acceptDevolucionesBtn">Aceptar</button>
         </div>
     </div>
 
