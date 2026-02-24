@@ -672,3 +672,116 @@ if (document.readyState === 'loading') {
 } else {
     initInstagramSlideshow();
 }
+
+// ========================================
+// INFO MODALS (Envíos y Devoluciones)
+// ========================================
+
+function initInfoModals() {
+    // Modal elements
+    const enviosModal = document.getElementById('enviosModal');
+    const devolucionesModal = document.getElementById('devolucionesModal');
+    
+    // Buttons to open modals
+    const enviosBtn = document.getElementById('enviosBtn');
+    const devolucionesBtn = document.getElementById('devolucionesBtn');
+    
+    // Close buttons
+    const closeEnviosModal = document.getElementById('closeEnviosModal');
+    const closeDevolucionesModal = document.getElementById('closeDevolucionesModal');
+    
+    // Accept buttons
+    const acceptEnviosBtn = document.getElementById('acceptEnviosBtn');
+    const acceptDevolucionesBtn = document.getElementById('acceptDevolucionesBtn');
+    
+    // Overlay elements
+    const enviosOverlay = enviosModal ? enviosModal.querySelector('.info-modal-overlay') : null;
+    const devolucionesOverlay = devolucionesModal ? devolucionesModal.querySelector('.info-modal-overlay') : null;
+    
+    // Function to open modal
+    function openModal(modal) {
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    // Function to close modal
+    function closeModal(modal) {
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // Event listeners for Envíos modal
+    if (enviosBtn) {
+        enviosBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(enviosModal);
+        });
+    }
+    
+    if (closeEnviosModal) {
+        closeEnviosModal.addEventListener('click', () => {
+            closeModal(enviosModal);
+        });
+    }
+    
+    if (acceptEnviosBtn) {
+        acceptEnviosBtn.addEventListener('click', () => {
+            closeModal(enviosModal);
+        });
+    }
+    
+    if (enviosOverlay) {
+        enviosOverlay.addEventListener('click', () => {
+            closeModal(enviosModal);
+        });
+    }
+    
+    // Event listeners for Devoluciones modal
+    if (devolucionesBtn) {
+        devolucionesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(devolucionesModal);
+        });
+    }
+    
+    if (closeDevolucionesModal) {
+        closeDevolucionesModal.addEventListener('click', () => {
+            closeModal(devolucionesModal);
+        });
+    }
+    
+    if (acceptDevolucionesBtn) {
+        acceptDevolucionesBtn.addEventListener('click', () => {
+            closeModal(devolucionesModal);
+        });
+    }
+    
+    if (devolucionesOverlay) {
+        devolucionesOverlay.addEventListener('click', () => {
+            closeModal(devolucionesModal);
+        });
+    }
+    
+    // Close modals with ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (enviosModal && enviosModal.classList.contains('active')) {
+                closeModal(enviosModal);
+            }
+            if (devolucionesModal && devolucionesModal.classList.contains('active')) {
+                closeModal(devolucionesModal);
+            }
+        }
+    });
+}
+
+// Initialize info modals when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInfoModals);
+} else {
+    initInfoModals();
+}

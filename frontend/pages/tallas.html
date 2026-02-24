@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Tallas - Olivia Merino</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/productos-page.css">
+    <link rel="stylesheet" href="../styles/pop-ups.css">
+    <link rel="stylesheet" href="../styles/nueva-temporada.css">
+    <link rel="stylesheet" href="../styles/responsive/productos-page-responsive.css">
+    <link rel="stylesheet" href="../styles/tallas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header scrolled header-white" id="mainHeader">
+        <!-- Promotional Banner Slider -->
+        <div class="promo-banner-slider">
+            <div class="promo-slide active">
+                <p><strong>30% de descuento</strong> en colección seleccionada · <strong>Envío gratis</strong> desde €50</p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Nueva Colección</strong> Primavera/Verano 2026 · <strong>Ya disponible</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>Envío gratis</strong> en compras superiores a <strong>€50</strong></p>
+            </div>
+            <div class="promo-slide">
+                <p><strong>2x1</strong> en zapatos seleccionados · <strong>Promoción limitada</strong></p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="header-content">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav" id="mainNav">
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
+                        <li><a href="productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
+                        <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas">Ofertas</a></li>
+                        <li><a href="tallas.html" class="nav-link active" data-i18n="nav_tallas">Tallas</a></li>
+                    </ul>
+                </nav>
+
+                <div class="logo">
+                    <a href="../../index.html"><h1>OLIVIA MERINO</h1></a>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="icon-btn search-toggle" id="searchToggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <button class="icon-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Tallas -->
+    <section class="tallas-hero">
+        <div class="container">
+            <h1 class="tallas-hero-title">GUÍA DE TALLAS</h1>
+            <p class="tallas-hero-subtitle">Tu comodidad comienza eligiendo la talla perfecta</p>
+        </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="tallas-intro">
+        <div class="container">
+            <div class="tallas-intro-content">
+                <div class="tallas-intro-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2>Elegir la talla correcta es clave para tu comodidad y estilo</h2>
+                <p>Sabemos que comprar zapatos en línea puede generar dudas. Por eso, te ayudamos a medir tu pie correctamente desde casa para que encuentres tu calce ideal sin complicaciones.</p>
+                <p class="tallas-intro-highlight"><i class="fas fa-shield-alt"></i> Si te equivocas de talla, no te preocupes. Nuestro proceso de cambio es rápido, sencillo y sin costo adicional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guía Paso a Paso -->
+    <section class="tallas-steps">
+        <div class="container">
+            <h2 class="tallas-section-title">¿CÓMO MEDIR TU PIE?</h2>
+            <p class="tallas-section-subtitle">Sigue estos simples pasos para encontrar tu talla ideal</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Prepara los materiales</h3>
+                    <p>Coloca una hoja de papel en el suelo contra una pared. Necesitarás también un lápiz y una regla o cinta métrica.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>Pon tu pie sobre el papel</h3>
+                    <p>Párate sobre la hoja con el talón contra la pared. Distribuye tu peso de forma natural, como si estuvieras de pie normalmente.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>Marca la punta del dedo más largo</h3>
+                    <p>Con el lápiz en posición vertical, marca el punto exacto donde termina tu dedo más largo. No inclines el lápiz.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-ruler"></i>
+                    </div>
+                    <h3>Mide la distancia</h3>
+                    <p>Mide desde el borde de la hoja (donde estaba tu talón) hasta la marca que hiciste. Esa es la medida de tu pie en centímetros.</p>
+                </div>
+
+                <div class="step-card step-card-wide">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                    <h3>Mide el ancho (opcional)</h3>
+                    <p>Marca los puntos más anchos de tu pie (justo debajo de los dedos) y mide la distancia entre ellos. Esto te ayudará si tienes pie ancho o angosto.</p>
+                </div>
+            </div>
+
+            <!-- Consejos -->
+            <div class="tallas-tips">
+                <h3><i class="fas fa-lightbulb"></i> Consejos para una medición precisa</h3>
+                <div class="tips-grid">
+                    <div class="tip-item">
+                        <i class="fas fa-clock"></i>
+                        <p><strong>Mide en la tarde:</strong> Tus pies se hinchan naturalmente durante el día, así obtendrás una medida más realista.</p>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fas fa-socks"></i>
+                        <p><strong>Usa las medias correctas:</strong> Mide con el tipo de calcetín que usarás con tus zapatos.</p>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <p><strong>Mide ambos pies:</strong> Es normal que un pie sea ligeramente más grande. Usa la medida del pie más grande.</p>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fas fa-redo"></i>
+                        <p><strong>Repite la medición:</strong> Mide al menos dos veces para asegurar la precisión del resultado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabla de Conversión -->
+    <section class="tallas-table-section">
+        <div class="container">
+            <h2 class="tallas-section-title">TABLA DE CONVERSIÓN</h2>
+            <p class="tallas-section-subtitle">Encuentra tu talla según tu medida en centímetros</p>
+
+            <div class="table-wrapper">
+                <table class="tallas-table">
+                    <thead>
+                        <tr>
+                            <th>CM</th>
+                            <th>Talla Chile</th>
+                            <th>Talla US</th>
+                            <th>Talla EU</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22.0</td>
+                            <td>34</td>
+                            <td>4</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>22.5</td>
+                            <td>35</td>
+                            <td>5</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>23.0</td>
+                            <td>36</td>
+                            <td>5.5</td>
+                            <td>36.5</td>
+                        </tr>
+                        <tr>
+                            <td>23.5</td>
+                            <td>37</td>
+                            <td>6</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <td>24.0</td>
+                            <td>37</td>
+                            <td>6.5</td>
+                            <td>37.5</td>
+                        </tr>
+                        <tr>
+                            <td>24.5</td>
+                            <td>38</td>
+                            <td>7</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>25.0</td>
+                            <td>39</td>
+                            <td>7.5</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>25.5</td>
+                            <td>39</td>
+                            <td>8</td>
+                            <td>39.5</td>
+                        </tr>
+                        <tr>
+                            <td>26.0</td>
+                            <td>40</td>
+                            <td>8.5</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>26.5</td>
+                            <td>41</td>
+                            <td>9</td>
+                            <td>41</td>
+                        </tr>
+                        <tr>
+                            <td>27.0</td>
+                            <td>42</td>
+                            <td>9.5</td>
+                            <td>42</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notas Importantes -->
+    <section class="tallas-notes">
+        <div class="container">
+            <h2 class="tallas-section-title">NOTAS IMPORTANTES</h2>
+            
+            <div class="notes-grid">
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-arrows-alt-v"></i>
+                    </div>
+                    <h3>¿Entre dos tallas?</h3>
+                    <p>Si tu medida queda entre dos tallas, te recomendamos elegir la talla mayor para mayor comodidad.</p>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3>Horma variable</h3>
+                    <p>Algunos modelos pueden hormar diferente. Revisa las notas específicas en la descripción de cada producto.</p>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h3>Botas y tacones</h3>
+                    <p>Las botas pueden requerir media talla más por el grosor de las medias. Los tacones altos suelen calzar más ajustados.</p>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Cambios sin costo</h3>
+                    <p>Si la talla no es la correcta, puedes hacer un cambio de forma fácil y sin costo adicional. Tu satisfacción es nuestra prioridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA WhatsApp -->
+    <section class="tallas-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h2>¿Tienes dudas con tu talla?</h2>
+                <p>Te ayudamos a elegir tu talla perfecta. Escríbenos y te asesoramos de forma personalizada.</p>
+                <a href="https://wa.me/1234567890?text=Hola%2C%20necesito%20ayuda%20para%20elegir%20mi%20talla" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Escríbenos por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section section-newsletter">
+                    <h4 data-i18n="footer_newsletter">Newsletter</h4>
+                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu email" class="newsletter-input">
+                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
+                    </div>
+                </div>
+
+                <div class="footer-section accordion-section">
+                    <div class="accordion-header">
+                        <h4 data-i18n="comprar_footer">Comprar</h4>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <ul class="accordion-content">
+                        <li><a href="productos.html" data-i18n="nav_productos">Catálogo</a></li>
+                        <li><a href="ofertas.html" data-i18n="nav_ofertas">Ofertas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section accordion-section">
+                    <div class="accordion-header">
+                        <h4 data-i18n="footer_ayuda">Ayuda</h4>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <ul class="accordion-content">
+                        <li><a href="#" id="enviosBtn" data-i18n="footer_envios">Envíos</a></li>
+                        <li><a href="#" id="devolucionesBtn" data-i18n="footer_devoluciones">Devoluciones</a></li>
+                        <li><a href="tallas.html" data-i18n="footer_guia">Guía de Tallas</a></li>
+                        <li><a href="https://wa.me/1234567890" target="_blank" data-i18n="footer_contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section section-brand">
+                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
+                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-bottom-text" data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Envíos -->
+    <div class="info-modal" id="enviosModal">
+        <div class="info-modal-overlay"></div>
+        <div class="info-modal-content">
+            <button class="info-close-btn" id="closeEnviosModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="info-modal-logo">
+                <h1>
+                    <span>OLIVIA</span>
+                    <span>MERINO</span>
+                </h1>
+            </div>
+            
+            <div class="info-modal-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/newMainImg_qwfobd.jpg" alt="Envíos">
+            </div>
+            
+            <div class="info-modal-body">
+                <h2 class="info-modal-title">Información de Envíos</h2>
+                <div class="info-modal-text">
+                    <p><strong>Envío Gratis</strong> en compras superiores a €50</p>
+                    <p>Nuestros tiempos de entrega son:</p>
+                    <ul>
+                        <li><strong>Envío Estándar:</strong> 3-5 días hábiles</li>
+                        <li><strong>Envío Express:</strong> 1-2 días hábiles</li>
+                    </ul>
+                    <p>Realizamos envíos a toda España y Portugal. Una vez realizada tu compra, recibirás un correo con el código de seguimiento para que puedas rastrear tu pedido en todo momento.</p>
+                    <p>En Olivia Merino nos comprometemos a que tus zapatos lleguen en perfectas condiciones, cuidadosamente empaquetados para garantizar su seguridad durante el transporte.</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary info-accept-btn" id="acceptEnviosBtn">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Devoluciones -->
+    <div class="info-modal" id="devolucionesModal">
+        <div class="info-modal-overlay"></div>
+        <div class="info-modal-content">
+            <button class="info-close-btn" id="closeDevolucionesModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="info-modal-logo">
+                <h1>
+                    <span>OLIVIA</span>
+                    <span>MERINO</span>
+                </h1>
+            </div>
+            
+            <div class="info-modal-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770062312/hero_mujer_ijpjgo.png" alt="Devoluciones">
+            </div>
+            
+            <div class="info-modal-body">
+                <h2 class="info-modal-title">Información de Devoluciones</h2>
+                <div class="info-modal-text">
+                    <p><strong>Devoluciones Gratuitas</strong> dentro de 30 días</p>
+                    <p>En Olivia Merino queremos que estés completamente satisfecho con tu compra. Si por alguna razón no es así, puedes devolver tus zapatos de forma gratuita.</p>
+                    
+                    <p><strong>Condiciones para devoluciones:</strong></p>
+                    <ul>
+                        <li>Tienes hasta 30 días desde la recepción de tu pedido</li>
+                        <li>Los zapatos deben estar sin usar y en su empaque original</li>
+                        <li>Incluye la etiqueta original y todos los accesorios</li>
+                    </ul>
+                    
+                    <p><strong>Proceso de devolución:</strong></p>
+                    <ol>
+                        <li>Solicita tu devolución a través de nuestro formulario online</li>
+                        <li>Imprime la etiqueta de devolución que te enviaremos por correo</li>
+                        <li>Empaqueta el producto y pégala etiqueta</li>
+                        <li>Tu reembolso será procesado en 5-7 días hábiles</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary info-accept-btn" id="acceptDevolucionesBtn">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="../scripts/translations.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/open-footer.js"></script>
+</body>
+</html>
