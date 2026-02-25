@@ -1,76 +1,105 @@
 /* ========================================
    HISTORIA-RESPONSIVE.CSS - OLIVIA MERINO
-   Media Queries copiadas y adaptadas de productos-page-responsive.css
+   Responsive completo para historia.html
    ======================================== */
 
 
 /* ========================================
-   TABLET HORIZONTAL (1025px - 1200px)
+   ULTRA WIDE (1441px+)
    ======================================== */
 
-@media (min-width: 1025px) and (max-width: 1200px) {
-    :root {
-        --spacing-xl: 4rem;
-        --spacing-lg: 3rem;
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1320px;
     }
 
-    .historia-layout {
-        grid-template-columns: 1.2fr 1fr;
-        gap: var(--spacing-lg);
-        align-items: stretch;
+    .sticky-scroll-wrapper {
+        padding: 5rem 4rem;
     }
 
-    .historia-layout.reverse {
-        grid-template-columns: 1fr 1.2fr;
+    .sticky-scroll {
+        height: 40rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 4rem;
     }
 
-    .historia-image {
-        min-height: 450px;
+    .sticky-scroll__title {
+        font-size: 2.1rem;
     }
 
-    .historia-card {
-        padding: 2rem;
-    }
-
-    .historia-title {
-        font-size: 1.5rem;
-    }
-
-    .historia-text {
-        font-size: 0.9rem;
-        text-align: left;
-    }
-
-    .cta-title {
-        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-    }
-
-    .cta-text {
+    .sticky-scroll__desc {
         font-size: 1rem;
+        max-width: 36rem;
     }
 
-    .hero {
-        height: 50vh;
-        min-height: 350px;
+    .sticky-scroll__media {
+        height: 26rem;
+        width: 30rem;
     }
 
-    .hero-title {
-        font-size: clamp(2rem, 6vw, 3rem);
+    .expansion-hero__title-line {
+        font-size: 4.5rem;
     }
 
+    .expansion-hero__content-inner {
+        max-width: 1000px;
+    }
+}
+
+
+/* ========================================
+   DESKTOP (1025px - 1440px)
+   ======================================== */
+
+@media (min-width: 1025px) and (max-width: 1440px) {
     .nav-list {
         gap: var(--spacing-sm);
     }
+}
 
-    /* Footer Tablet */
-    .product-details-accordion .accordion-item {
+
+/* ========================================
+   FOOTER DESKTOP RESET (min 1201px)
+   ======================================== */
+
+@media (min-width: 1201px) {
+    .footer-section h3, 
+    .footer-section h4,
+    .accordion-header h4 {
+        color: var(--white) !important;
+        margin-bottom: var(--spacing-xs);
+        text-transform: uppercase;
+    }
+
+    .accordion-content {
+        max-height: none !important;
         display: block !important;
+        overflow: visible !important;
+        opacity: 1 !important;
     }
-    
-    .product-details-accordion .accordion-header {
-        border-bottom: none;
+
+    .accordion-icon {
+        display: none !important;
     }
-    
+
+    .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        display: block;
+        padding: 4px 0;
+    }
+
+    .footer-section ul li a:hover {
+        color: var(--white) !important;
+    }
+}
+
+
+/* ========================================
+   FOOTER ACCORDION (max 1200px)
+   ======================================== */
+
+@media (max-width: 1200px) {
     .footer-content {
         display: flex;
         flex-direction: column;
@@ -129,6 +158,7 @@
     }
 }
 
+
 /* ========================================
    TABLET VERTICAL (769px - 1024px)
    ======================================== */
@@ -139,65 +169,27 @@
         --spacing-lg: 3rem;
     }
 
-    .historia-layout,
-    .historia-layout.reverse {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-
-    .historia-layout.reverse .historia-image,
-    .historia-layout.reverse .historia-card {
-        order: unset;
-    }
-
-    .historia-image {
-        min-height: 400px;
-    }
-
-    .historia-card {
-        padding: 2rem;
-        min-height: auto;
-    }
-
-    .historia-title {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    .historia-text {
-        font-size: 0.9rem;
-        text-align: left;
-        line-height: 1.7;
-    }
-
-    .cta-title {
-        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-    }
-
-    .cta-text {
-        font-size: 1rem;
-    }
-
-    .hero {
-        height: 50vh;
-        min-height: 350px;
-    }
-
-    .hero-title {
-        font-size: clamp(2rem, 6vw, 3rem);
-    }
-
-    .section-separator {
-        width: 60%;
-    }
-
     .close-menu-btn {
         display: none;
     }
+
+    /* Expansion hero ajustado */
+    .expansion-hero__content {
+        padding: 2rem 1.5rem 3rem;
+    }
+
+    .expansion-hero__content-inner h2 {
+        font-size: 1.5rem;
+    }
+
+    .expansion-hero__content-inner p {
+        font-size: 1rem;
+    }
 }
 
+
 /* ========================================
-   TABLET (768px - 800px)
+   TABLET & MOBILE (max 768px)
    ======================================== */
 
 @media (max-width: 768px) {
@@ -209,91 +201,12 @@
     .promo-banner-slider {
         padding: 3px 0;
     }
-    
+
     .promo-slide p {
         font-size: 14px;
     }
 
-    .historia-section {
-        padding: var(--spacing-md) 0;
-    }
-
-    .historia-card-wrapper {
-        margin-bottom: var(--spacing-lg);
-    }
-
-    .historia-image {
-        min-height: 300px;
-        max-height: 400px;
-    }
-
-    .historia-card {
-        padding: 1.5rem;
-    }
-
-    .historia-title {
-        font-size: 1.375rem;
-        margin-bottom: var(--spacing-xs);
-        text-align: center;
-    }
-
-    .historia-text {
-        font-size: 0.875rem;
-        text-align: left;
-    }
-
-    .historia-music-btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.85rem;
-        margin-top: var(--spacing-sm);
-    }
-
-    .historia-cta-section {
-        padding: var(--spacing-lg) 0;
-    }
-
-    .cta-title {
-        font-size: 1.5rem;
-    }
-
-    .cta-text {
-        font-size: 0.95rem;
-    }
-
-    .hero {
-        height: 50vh;
-        min-height: 350px;
-    }
-
-    .hero-title {
-        font-size: clamp(2rem, 6vw, 3rem);
-    }
-
-    .hero-label {
-        font-size: 0.875rem;
-    }
-
-    .section-separator {
-        width: 60%;
-    }
-
-    .product-title {
-        font-size: 1.75rem;
-    }
-    
-    .price-sale {
-        font-size: 1.25rem;
-    }
-    
-    .price-original {
-        font-size: 1rem;
-    }
-    
-    .thumbnail {
-        width: calc(33.333% - 0.5rem);
-    }
-
-    /* Navigation Mobile */
+    /* Navigation Mobile - fullscreen overlay */
     .nav {
         position: fixed;
         top: 0;
@@ -329,6 +242,13 @@
         z-index: 100000;
     }
 
+    .nav.active .close-menu-btn {
+        display: block !important;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+    }
+
     .nav-list {
         flex-direction: column !important;
         gap: 2rem !important;
@@ -339,18 +259,6 @@
         color: #2a2a2a !important;
         font-size: 1.8rem !important;
         font-family: 'Cormorant Garamond', serif !important;
-    }
-
-    .nav.active .close-menu-btn {
-        display: block !important;
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        color: #2a2a2a;
-        cursor: pointer;
     }
 
     .header-content {
@@ -398,67 +306,106 @@
         cursor: pointer;
     }
 
-    /* Footer Mobile */
-    .footer-content {
-        display: flex;
+    /* Expansion hero */
+    .expansion-hero__title-line {
+        font-size: 2.25rem;
+    }
+
+    .expansion-hero__date {
+        font-size: 1.2rem;
+    }
+
+    .expansion-hero__scroll-hint {
+        font-size: 0.8rem;
+    }
+
+    .expansion-hero__content {
+        padding: 1.5rem 1rem 2.5rem;
+    }
+
+    .expansion-hero__content-inner h2 {
+        font-size: 1.35rem;
+    }
+
+    .expansion-hero__content-inner p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+    }
+
+    /* Sticky Scroll */
+    .sticky-scroll-wrapper {
+        padding: 2.5rem 1rem;
+    }
+
+    .sticky-scroll {
+        height: 28rem;
+        padding: 1.75rem 1rem;
+    }
+
+    .sticky-scroll__card {
+        margin: 3rem 0;
+    }
+
+    .sticky-scroll__title {
+        font-size: 1.35rem;
+    }
+
+    .sticky-scroll__desc {
+        font-size: 0.88rem;
+        max-width: 100%;
+    }
+
+    /* Login modal mobile */
+    .login-modal-content {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Subscription modal mobile */
+    .subscription-layout {
         flex-direction: column;
-        gap: 0;
     }
 
-    .section-newsletter {
-        order: 1;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .subscription-image {
+        min-height: 200px;
     }
 
-    .accordion-section:nth-of-type(2) { order: 2; }
-    .accordion-section:nth-of-type(3) { order: 3; }
-
-    .section-brand {
-        order: 4;
-        text-align: center;
-        padding-top: 2rem;
+    .subscription-modal-content {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
-    .footer .accordion-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.2rem 0;
-        cursor: pointer;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        color: white !important;
+    /* Feedback modal mobile */
+    .feedback-modal-content {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 1.5rem;
     }
 
-    .footer .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        padding-left: 0;
+    .rating-buttons {
+        gap: 0.25rem;
     }
 
-    .footer .accordion-icon {
-        display: block;
-        color: var(--white);
+    .rating-btn {
+        min-width: 28px;
+        padding: 0.35rem;
+        font-size: 0.75rem;
     }
 
-    .footer .accordion-section.active .accordion-content {
-        max-height: 300px;
-        padding: 1rem 0;
-    }
-
-    .footer .accordion-section.active .accordion-icon {
-        transform: rotate(45deg);
-    }
-
-    .social-links {
-        justify-content: center;
-        margin-bottom: 2rem;
+    /* Info modals (envíos/devoluciones) */
+    .info-modal-content {
+        width: 95%;
+        max-height: 85vh;
+        overflow-y: auto;
     }
 }
 
+
 /* ========================================
-   MOBILE (480px - 767px)
+   MOBILE (max 480px)
    ======================================== */
 
 @media (max-width: 480px) {
@@ -468,76 +415,6 @@
         --spacing-md: 1rem;
     }
 
-    .historia-section {
-        padding: var(--spacing-md) 0;
-    }
-
-    .historia-card-wrapper {
-        margin-bottom: var(--spacing-md);
-    }
-
-    .historia-layout,
-    .historia-layout.reverse {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-    }
-
-    .historia-image {
-        min-height: 250px;
-    }
-
-    .historia-card {
-        padding: 1.25rem;
-    }
-
-    .historia-title {
-        font-size: 1.25rem;
-        text-align: left;
-    }
-
-    .historia-text {
-        font-size: 0.8rem;
-        line-height: 1.6;
-        text-align: left;
-    }
-
-    .historia-music-btn {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 0.75rem;
-        justify-content: center;
-    }
-
-    .historia-cta-section {
-        padding: var(--spacing-md) 0;
-    }
-
-    .cta-title {
-        font-size: 1.375rem;
-    }
-
-    .cta-text {
-        font-size: 0.875rem;
-    }
-
-    .hero {
-        height: 45vh;
-        min-height: 300px;
-    }
-
-    .hero-title {
-        font-size: clamp(1.75rem, 5vw, 2.5rem);
-    }
-
-    .hero-label {
-        font-size: 0.75rem;
-    }
-
-    .section-separator {
-        width: 80%;
-        margin: var(--spacing-md) auto;
-    }
-
     .container {
         padding: 0 var(--spacing-sm);
     }
@@ -545,17 +422,9 @@
     .logo h1 {
         font-size: 1.125rem;
     }
-    
+
     .header-content {
         padding: var(--spacing-sm) 0;
-    }
-    
-    .section-title {
-        font-size: 1.875rem;
-    }
-
-    .product-title {
-        font-size: 1.25rem;
     }
 
     .btn {
@@ -566,10 +435,123 @@
     .btn-block {
         width: 100%;
     }
+
+    /* Expansion Hero mobile */
+    .expansion-hero__title-line {
+        font-size: 2rem;
+    }
+
+    .expansion-hero__date {
+        font-size: 1.1rem;
+    }
+
+    .expansion-hero__content-inner h2 {
+        font-size: 1.25rem;
+    }
+
+    .expansion-hero__content-inner p {
+        font-size: 0.9rem !important;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    /* Sticky Scroll mobile */
+    .sticky-scroll-wrapper {
+        padding: 2rem 0.5rem;
+    }
+
+    .sticky-scroll {
+        height: 24rem;
+        padding: 1.25rem 0.75rem;
+    }
+
+    .sticky-scroll__card {
+        margin: 2rem 0;
+    }
+
+    .sticky-scroll__card:first-child {
+        margin-top: 0.5rem;
+    }
+
+    .sticky-scroll__title {
+        font-size: 1.2rem;
+    }
+
+    .sticky-scroll__desc {
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .sticky-scroll__link {
+        font-size: 0.78rem;
+        padding: 0.5rem 1.1rem;
+    }
+
+    .sticky-scroll__spacer {
+        height: 6rem;
+    }
+
+    /* Footer mobile small */
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-input {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .newsletter-form .btn {
+        width: 100%;
+    }
+
+    .footer {
+        padding: var(--spacing-md) 0 var(--spacing-xs);
+    }
+
+    /* Login modal */
+    .login-modal-content {
+        width: 100%;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .login-header h2 {
+        font-size: 2rem !important;
+    }
+
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+
+    /* Subscription */
+    .subscription-modal-content {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .subscription-image {
+        min-height: 150px;
+    }
+
+    .subscription-title {
+        font-size: 1.5rem;
+    }
+
+    .subscription-form-row {
+        flex-direction: column;
+    }
+
+    /* Info modals */
+    .info-modal-content {
+        width: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+    }
 }
 
+
 /* ========================================
-   MOBILE EXTRA PEQUEÑO (360px - 479px)
+   MOBILE EXTRA SMALL (max 360px)
    ======================================== */
 
 @media (max-width: 360px) {
@@ -579,37 +561,12 @@
         --spacing-md: 0.75rem;
     }
 
-    .historia-title {
-        font-size: 1.125rem;
-    }
-
-    .historia-text {
-        font-size: 0.75rem;
-        line-height: 1.5;
-    }
-
-    .cta-title {
-        font-size: 1.25rem;
-    }
-
-    .cta-text {
-        font-size: 0.8rem;
-    }
-
-    .hero-title {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-    }
-
-    .hero-label {
-        font-size: 0.7rem;
-    }
-
     .container {
         padding: 0 0.75rem;
     }
 
-    .historia-card {
-        padding: 1rem;
+    .logo h1 {
+        font-size: 0.875rem;
     }
 
     .btn {
@@ -617,53 +574,70 @@
         font-size: 0.75rem;
     }
 
-    .logo h1 {
-        font-size: 0.875rem;
+    /* Expansion hero xs */
+    .expansion-hero__title-line {
+        font-size: 1.65rem;
+    }
+
+    .expansion-hero__date {
+        font-size: 0.95rem;
+    }
+
+    .expansion-hero__scroll-hint {
+        font-size: 0.7rem;
+    }
+
+    .expansion-hero__content-inner h2 {
+        font-size: 1.1rem;
+    }
+
+    .expansion-hero__content-inner p {
+        font-size: 0.85rem !important;
+    }
+
+    /* Sticky scroll xs */
+    .sticky-scroll {
+        height: 22rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .sticky-scroll__card {
+        margin: 1.75rem 0;
+    }
+
+    .sticky-scroll__title {
+        font-size: 1.1rem;
+    }
+
+    .sticky-scroll__desc {
+        font-size: 0.78rem;
+        line-height: 1.55;
+    }
+
+    .sticky-scroll__link {
+        font-size: 0.72rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .sticky-scroll__spacer {
+        height: 4rem;
+    }
+
+    /* Feedback xs */
+    .feedback-modal-content {
+        padding: 1rem;
+    }
+
+    .rating-btn {
+        min-width: 24px;
+        padding: 0.25rem;
+        font-size: 0.7rem;
     }
 }
 
-/* ========================================
-   MEDIA QUERY PARA REVIEWS (712px max)
-   ======================================== */
-
-@media (max-width: 712px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .reviews-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .btn-add-review {
-        width: 100%;
-    }
-
-    .review-modal-content {
-        padding: 1.5rem;
-        width: calc(100% - 32px);
-    }
-
-    .star-input {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .star-input label {
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-
-    .btn-review {
-        width: 100%;
-    }
-}
 
 /* ========================================
-   ESTADOS DE HEADER EN DISPOSITIVOS
+   HEADER DESKTOP RESET (min 769px)
    ======================================== */
 
 @media (min-width: 769px) {
@@ -704,6 +678,38 @@
     }
 }
 
+
+/* ========================================
+   LANDSCAPE PHONES
+   ======================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .expansion-hero__section {
+        min-height: 100vh;
+    }
+
+    .expansion-hero__title-line {
+        font-size: 1.75rem;
+    }
+
+    .expansion-hero__date {
+        font-size: 0.9rem;
+    }
+
+    .sticky-scroll {
+        height: 20rem;
+    }
+
+    .sticky-scroll__card {
+        margin: 1.5rem 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem !important;
+    }
+}
+
+
 /* ========================================
    PRINT STYLES
    ======================================== */
@@ -711,18 +717,33 @@
 @media print {
     .header,
     .footer,
-    .section-separator,
     .contact-float-btn,
     .gift-float-btn,
-    .whatsapp-float-btn {
+    .whatsapp-float-btn,
+    .expansion-hero,
+    .login-modal,
+    .subscription-modal,
+    .feedback-modal,
+    .info-modal {
         display: none;
     }
 
-    .historia-section {
-        padding: 0;
+    .sticky-scroll-wrapper {
+        padding: 1rem 0;
     }
 
-    .historia-card {
+    .sticky-scroll {
+        height: auto;
+        overflow: visible;
+    }
+
+    .sticky-scroll__card {
+        opacity: 1 !important;
         page-break-inside: avoid;
+    }
+
+    .sticky-scroll__title,
+    .sticky-scroll__desc {
+        opacity: 1 !important;
     }
 }

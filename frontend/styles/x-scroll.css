@@ -1,0 +1,269 @@
+/* ========================================
+   X-SCROLL COMPONENT - OLIVIA MERINO
+   Vanilla conversion of React XScroll
+   Horizontal scroll area with custom scrollbar
+   ======================================== */
+
+/* Section wrapper */
+.x-scroll-section {
+    padding: 4rem 0;
+    background: #faf8f6;
+}
+
+.x-scroll-section .tallas-section-title {
+    margin-bottom: 0.5rem;
+}
+
+.x-scroll-section .tallas-section-subtitle {
+    margin-bottom: 2rem;
+}
+
+/* Scroll area */
+.x-scroll-wrapper {
+    display: flex;
+    position: relative;
+}
+
+.x-scroll {
+    flex: 1;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar — WebKit (Chrome, Safari, Edge) */
+.x-scroll::-webkit-scrollbar {
+    height: 10px;
+}
+
+.x-scroll::-webkit-scrollbar-track {
+    background: transparent;
+    border-top: 1px solid transparent;
+    padding: 1px;
+}
+
+.x-scroll::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 9999px;
+    min-width: 40px;
+    transition: background 0.2s ease;
+}
+
+.x-scroll::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+.x-scroll::-webkit-scrollbar-thumb:active {
+    background: #888;
+}
+
+/* Custom scrollbar — Firefox */
+.x-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #c4c4c4 transparent;
+}
+
+/* Inner flex track */
+.x-scroll-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0 1.25rem;
+    width: max-content;
+}
+
+/* Note cards in scroll */
+.x-scroll-card {
+    flex-shrink: 0;
+    width: 280px;
+    background: #fff;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: grab;
+    user-select: none;
+}
+
+.x-scroll-card:active {
+    cursor: grabbing;
+}
+
+.x-scroll-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.x-scroll-card .note-icon {
+    width: 50px;
+    height: 50px;
+    background: #2c2c2c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    font-size: 1.1rem;
+}
+
+.x-scroll-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 0.75rem;
+}
+
+.x-scroll-card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* Drag state */
+.x-scroll.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+.x-scroll.is-dragging .x-scroll-card {
+    pointer-events: none;
+}
+
+/* Fade edges (scroll hint) */
+.x-scroll-wrapper::before,
+.x-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 10px;
+    width: 40px;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.x-scroll-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #faf8f6, transparent);
+    opacity: 0;
+}
+
+.x-scroll-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #faf8f6, transparent);
+    opacity: 1;
+}
+
+.x-scroll-wrapper.scrolled-start::before {
+    opacity: 1;
+}
+
+.x-scroll-wrapper.scrolled-end::after {
+    opacity: 0;
+}
+
+/* Separator between scroll and CTA */
+.x-scroll-separator {
+    width: 100%;
+    height: 1px;
+    background: #e5e5e5;
+    border: none;
+    margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 1441px) {
+    .x-scroll-card {
+        width: 320px;
+    }
+
+    .x-scroll-track {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .x-scroll-section {
+        padding: 3rem 0;
+    }
+
+    .x-scroll-card {
+        width: 250px;
+        padding: 1.5rem 1.25rem;
+    }
+
+    .x-scroll-track {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .x-scroll-section {
+        padding: 2rem 0;
+    }
+
+    .x-scroll-card {
+        width: 220px;
+        padding: 1.25rem 1rem;
+    }
+
+    .x-scroll-card h3 {
+        font-size: 0.875rem;
+    }
+
+    .x-scroll-card p {
+        font-size: 0.8rem;
+    }
+
+    .x-scroll-card .note-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
+    }
+
+    .x-scroll-wrapper::before,
+    .x-scroll-wrapper::after {
+        width: 24px;
+    }
+}
+
+@media (max-width: 360px) {
+    .x-scroll-card {
+        width: 200px;
+        padding: 1rem 0.75rem;
+    }
+
+    .x-scroll-card .note-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+}
+
+@media print {
+    .x-scroll-section {
+        padding: 1rem 0;
+    }
+
+    .x-scroll-track {
+        flex-wrap: wrap;
+        width: auto;
+    }
+
+    .x-scroll-card {
+        width: calc(50% - 0.75rem);
+        flex-shrink: 1;
+    }
+
+    .x-scroll-wrapper::before,
+    .x-scroll-wrapper::after {
+        display: none;
+    }
+}

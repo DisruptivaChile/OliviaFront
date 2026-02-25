@@ -1,0 +1,440 @@
+/* ========================================
+   TALLAS-RESPONSIVE.CSS - OLIVIA MERINO
+   Responsive completo para tallas.html
+   Complementa: minimalist-hero.css,
+   timeline.css, productos-page-responsive.css
+   ======================================== */
+
+
+/* ========================================
+   ULTRA WIDE (1441px+)
+   ======================================== */
+
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .tallas-intro-content {
+        max-width: 800px;
+    }
+
+    .tallas-intro-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .table-wrapper {
+        max-width: 900px;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+
+/* ========================================
+   DESKTOP (1025px - 1440px)
+   ======================================== */
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .nav-list {
+        gap: var(--spacing-sm);
+    }
+}
+
+
+/* ========================================
+   TABLET VERTICAL (max 1024px)
+   ======================================== */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
+    }
+
+}
+
+
+/* ========================================
+   TABLET & MOBILE (max 768px)
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 3rem;
+        --spacing-lg: 2rem;
+    }
+
+    /* Intro */
+    .tallas-intro,
+    .tallas-table-section {
+        padding: 3rem 0;
+    }
+
+    .tallas-intro-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .tallas-intro-content > p {
+        font-size: 0.875rem;
+    }
+
+    .tallas-section-title {
+        font-size: 1.25rem;
+    }
+
+    .tallas-section-subtitle {
+        font-size: 0.85rem;
+    }
+
+    /* Table */
+    .tallas-table th,
+    .tallas-table td {
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* CTA */
+    .tallas-cta {
+        padding: 3.5rem 0;
+    }
+
+    .cta-content h2 {
+        font-size: 1.35rem;
+    }
+
+    .cta-content > p {
+        font-size: 0.875rem;
+    }
+
+    /* Login modal */
+    .login-modal-content {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Subscription modal */
+    .subscription-layout {
+        flex-direction: column;
+    }
+
+    .subscription-image {
+        min-height: 200px;
+    }
+
+    .subscription-modal-content {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* Feedback modal */
+    .feedback-modal-content {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 1.5rem;
+    }
+
+    .rating-buttons {
+        gap: 0.25rem;
+    }
+
+    .rating-btn {
+        min-width: 28px;
+        padding: 0.35rem;
+        font-size: 0.75rem;
+    }
+
+    /* Info modals (envíos/devoluciones) */
+    .info-modal-content {
+        width: 95%;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+}
+
+
+/* ========================================
+   MOBILE (max 480px)
+   ======================================== */
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Intro */
+    .tallas-intro {
+        padding: 2rem 0;
+    }
+
+    .tallas-intro-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .tallas-intro-content > p {
+        font-size: 0.82rem;
+    }
+
+    .tallas-intro-highlight {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.8rem !important;
+    }
+
+    /* Table */
+    .tallas-table-section {
+        padding: 2rem 0;
+    }
+
+    .tallas-table th,
+    .tallas-table td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* CTA */
+    .tallas-cta {
+        padding: 2.5rem 0;
+    }
+
+    .cta-content h2 {
+        font-size: 1.15rem;
+    }
+
+    .cta-icon {
+        font-size: 2.5rem;
+    }
+
+    .btn-whatsapp {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Login modal */
+    .login-modal-content {
+        width: 100%;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .login-header h2 {
+        font-size: 2rem !important;
+    }
+
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+
+    /* Subscription */
+    .subscription-modal-content {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .subscription-image {
+        min-height: 150px;
+    }
+
+    .subscription-title {
+        font-size: 1.5rem;
+    }
+
+    .subscription-form-row {
+        flex-direction: column;
+    }
+
+    /* Info modals */
+    .info-modal-content {
+        width: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+
+    /* Newsletter */
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-input {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .newsletter-form .btn {
+        width: 100%;
+    }
+
+    .footer {
+        padding: var(--spacing-md) 0 var(--spacing-xs);
+    }
+}
+
+
+/* ========================================
+   MOBILE EXTRA SMALL (max 360px)
+   ======================================== */
+
+@media (max-width: 360px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-lg: 1rem;
+        --spacing-md: 0.75rem;
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .logo h1 {
+        font-size: 0.875rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    /* Intro */
+    .tallas-intro-content h2 {
+        font-size: 1rem;
+    }
+
+    /* Table */
+    .tallas-table th,
+    .tallas-table td {
+        padding: 0.5rem 0.35rem;
+        font-size: 0.7rem;
+    }
+
+    /* CTA */
+    .cta-content h2 {
+        font-size: 1rem;
+    }
+
+    .cta-content > p {
+        font-size: 0.8rem;
+    }
+
+    /* Feedback */
+    .feedback-modal-content {
+        padding: 1rem;
+    }
+
+    .rating-btn {
+        min-width: 24px;
+        padding: 0.25rem;
+        font-size: 0.7rem;
+    }
+}
+
+
+/* ========================================
+   HEADER DESKTOP RESET (min 769px)
+   ======================================== */
+
+@media (min-width: 769px) {
+    .close-menu-btn {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent !important;
+        z-index: auto;
+        transition: none;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        visibility: visible;
+    }
+
+    .nav-list {
+        flex-direction: row !important;
+        gap: 1.5rem !important;
+    }
+
+    .nav-link {
+        font-size: 0.85rem !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+
+    .header.scrolled .nav-link {
+        color: var(--text-main) !important;
+    }
+}
+
+
+/* ========================================
+   LANDSCAPE PHONES
+   ======================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .tallas-intro,
+    .tallas-table-section {
+        padding: 2rem 0;
+    }
+
+    .tallas-cta {
+        padding: 2rem 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem !important;
+    }
+}
+
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    .header,
+    .footer,
+    .minimalist-hero,
+    .tallas-cta,
+    .login-modal,
+    .subscription-modal,
+    .feedback-modal,
+    .info-modal {
+        display: none;
+    }
+
+    .tallas-intro,
+    .timeline,
+    .tallas-table-section {
+        padding: 1rem 0;
+    }
+
+    .timeline__line {
+        display: none;
+    }
+
+    .tallas-table {
+        page-break-inside: avoid;
+    }
+}

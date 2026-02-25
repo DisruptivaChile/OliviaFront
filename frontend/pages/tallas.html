@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="../styles/productos-page.css">
     <link rel="stylesheet" href="../styles/pop-ups.css">
     <link rel="stylesheet" href="../styles/responsive/productos-page-responsive.css">
+    <link rel="stylesheet" href="../styles/minimalist-hero.css">
+    <link rel="stylesheet" href="../styles/timeline.css">
     <link rel="stylesheet" href="../styles/tallas.css">
+    <link rel="stylesheet" href="../styles/x-scroll.css">
+    <link rel="stylesheet" href="../styles/responsive/tallas-responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -85,21 +89,48 @@
         </div>
     </header>
 
-    <!-- Hero Tallas -->
-    <section class="tallas-hero">
-        <div class="container">
-            <h1 class="tallas-hero-title">GUÍA DE TALLAS</h1>
-            <p class="tallas-hero-subtitle">Tu comodidad comienza eligiendo la talla perfecta</p>
+    <!-- Minimalist Hero -->
+    <section class="minimalist-hero">
+        <!-- Hero Header -->
+        <div class="mh-header">
+            <a href="../../index.html" class="mh-logo">OLIVIA MERINO</a>
+            <nav class="mh-nav">
+                <a href="../../index.html">INICIO</a>
+                <a href="productos.html">CATÁLOGO</a>
+                <a href="ofertas.html">OFERTAS</a>
+                <a href="tallas.html">TALLAS</a>
+            </nav>
         </div>
+
+        <!-- Hero Content -->
+        <div class="mh-content">
+            <!-- Left: Title -->
+            <div class="mh-right">
+                <h1 class="mh-overlay-title">guía de<br>tallas.</h1>
+            </div>
+
+            <!-- Center Image -->
+            <div class="mh-center">
+                <div class="mh-circle"></div>
+                <img class="mh-image"
+                     src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80&auto=format&fit=crop"
+                     alt="Zapato elegante Olivia Merino"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x600/c9a96e/ffffff?text=Olivia+Merino';">
+            </div>
+
+            <!-- Right: Text + Button -->
+            <div class="mh-left">
+                <p>Elegir la talla correcta es clave para tu comodidad. Te ayudamos a encontrar el calce perfecto desde casa.</p>
+                <a href="#tallas-steps">Descubre cómo</a>
+            </div>
+        </div>
+
     </section>
 
     <!-- Introducción -->
     <section class="tallas-intro">
         <div class="container">
             <div class="tallas-intro-content">
-                <div class="tallas-intro-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
                 <h2>Elegir la talla correcta es clave para tu comodidad y estilo</h2>
                 <p>Sabemos que comprar zapatos en línea puede generar dudas. Por eso, te ayudamos a medir tu pie correctamente desde casa para que encuentres tu calce ideal sin complicaciones.</p>
                 <p class="tallas-intro-highlight"> Si te equivocas de talla, no te preocupes. Nuestro proceso de cambio es rápido, sencillo y sin costo adicional.</p>
@@ -107,80 +138,127 @@
         </div>
     </section>
 
-    <!-- Guía Paso a Paso -->
-    <section class="tallas-steps">
-        <div class="container">
-            <h2 class="tallas-section-title">¿CÓMO MEDIR TU PIE?</h2>
-            <p class="tallas-section-subtitle">Sigue estos simples pasos para encontrar tu talla ideal</p>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3>Prepara los materiales</h3>
-                    <p>Coloca una hoja de papel en el suelo contra una pared. Necesitarás también un lápiz y una regla o cinta métrica.</p>
-                </div>
+    <!-- Timeline: ¿Cómo medir tu pie? -->
+    <section class="timeline" id="tallas-steps">
+        <!-- Header -->
+        <div class="timeline__header">
+            <h2 class="timeline__title">¿CÓMO MEDIR TU PIE?</h2>
+            <p class="timeline__subtitle">Sigue estos simples pasos para encontrar tu talla ideal</p>
+        </div>
 
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-shoe-prints"></i>
-                    </div>
-                    <h3>Pon tu pie sobre el papel</h3>
-                    <p>Párate sobre la hoja con el talón contra la pared. Distribuye tu peso de forma natural, como si estuvieras de pie normalmente.</p>
-                </div>
+        <!-- Timeline Body -->
+        <div class="timeline__body">
 
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-pencil-alt"></i>
-                    </div>
-                    <h3>Marca la punta del dedo más largo</h3>
-                    <p>Con el lápiz en posición vertical, marca el punto exacto donde termina tu dedo más largo. No inclines el lápiz.</p>
+            <!-- Paso 1 -->
+            <div class="timeline__entry">
+                <div class="timeline__marker">
+                    <div class="timeline__dot-wrap"><div class="timeline__dot"></div></div>
+                    <h3 class="timeline__step-title">Paso 1</h3>
                 </div>
-
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">
-                        <i class="fas fa-ruler"></i>
+                <div class="timeline__content">
+                    <h3 class="timeline__step-title-mobile">Paso 1</h3>
+                    <div class="timeline__icon"><i class="fas fa-file-alt"></i></div>
+                    <p class="timeline__text"><strong>Prepara los materiales.</strong> Coloca una hoja de papel en el suelo contra una pared. Necesitarás también un lápiz y una regla o cinta métrica.</p>
+                    <div class="timeline__images">
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&q=80&auto=format&fit=crop" alt="Materiales para medir el pie">
+                        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=500&q=80&auto=format&fit=crop" alt="Papel y lápiz preparados">
                     </div>
-                    <h3>Mide la distancia</h3>
-                    <p>Mide desde el borde de la hoja (donde estaba tu talón) hasta la marca que hiciste. Esa es la medida de tu pie en centímetros.</p>
                 </div>
+            </div>
 
-                <div class="step-card step-card-wide">
-                    <div class="step-number">5</div>
-                    <div class="step-icon">
-                        <i class="fas fa-arrows-alt-h"></i>
+            <!-- Paso 2 -->
+            <div class="timeline__entry">
+                <div class="timeline__marker">
+                    <div class="timeline__dot-wrap"><div class="timeline__dot"></div></div>
+                    <h3 class="timeline__step-title">Paso 2</h3>
+                </div>
+                <div class="timeline__content">
+                    <h3 class="timeline__step-title-mobile">Paso 2</h3>
+                    <div class="timeline__icon"><i class="fas fa-shoe-prints"></i></div>
+                    <p class="timeline__text"><strong>Pon tu pie sobre el papel.</strong> Párate sobre la hoja con el talón contra la pared. Distribuye tu peso de forma natural, como si estuvieras de pie normalmente.</p>
+                    <div class="timeline__images">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80&auto=format&fit=crop" alt="Pie sobre el papel">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80&auto=format&fit=crop" alt="Posición correcta del pie">
                     </div>
-                    <h3>Mide el ancho (opcional)</h3>
-                    <p>Marca los puntos más anchos de tu pie (justo debajo de los dedos) y mide la distancia entre ellos. Esto te ayudará si tienes pie ancho o angosto.</p>
+                </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="timeline__entry">
+                <div class="timeline__marker">
+                    <div class="timeline__dot-wrap"><div class="timeline__dot"></div></div>
+                    <h3 class="timeline__step-title">Paso 3</h3>
+                </div>
+                <div class="timeline__content">
+                    <h3 class="timeline__step-title-mobile">Paso 3</h3>
+                    <div class="timeline__icon"><i class="fas fa-pencil-alt"></i></div>
+                    <p class="timeline__text"><strong>Marca la punta del dedo más largo.</strong> Con el lápiz en posición vertical, marca el punto exacto donde termina tu dedo más largo. No inclines el lápiz.</p>
+                </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="timeline__entry">
+                <div class="timeline__marker">
+                    <div class="timeline__dot-wrap"><div class="timeline__dot"></div></div>
+                    <h3 class="timeline__step-title">Paso 4</h3>
+                </div>
+                <div class="timeline__content">
+                    <h3 class="timeline__step-title-mobile">Paso 4</h3>
+                    <div class="timeline__icon"><i class="fas fa-ruler"></i></div>
+                    <p class="timeline__text"><strong>Mide la distancia.</strong> Mide desde el borde de la hoja (donde estaba tu talón) hasta la marca que hiciste. Esa es la medida de tu pie en centímetros.</p>
+                    <div class="timeline__images">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80&auto=format&fit=crop" alt="Midiendo el pie">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&q=80&auto=format&fit=crop" alt="Resultado de la medición">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 5 -->
+            <div class="timeline__entry">
+                <div class="timeline__marker">
+                    <div class="timeline__dot-wrap"><div class="timeline__dot"></div></div>
+                    <h3 class="timeline__step-title">Paso 5</h3>
+                </div>
+                <div class="timeline__content">
+                    <h3 class="timeline__step-title-mobile">Paso 5</h3>
+                    <div class="timeline__icon"><i class="fas fa-arrows-alt-h"></i></div>
+                    <p class="timeline__text"><strong>Mide el ancho (opcional).</strong> Marca los puntos más anchos de tu pie (justo debajo de los dedos) y mide la distancia entre ellos. Esto te ayudará si tienes pie ancho o angosto.</p>
                 </div>
             </div>
 
             <!-- Consejos -->
-            <div class="tallas-tips">
-                <h3>Consejos para una medición precisa</h3>
-                <div class="tips-grid">
-                    <div class="tip-item">
-                        <i class="fas fa-clock"></i>
-                        <p><strong>Mide en la tarde:</strong> Tus pies se hinchan naturalmente durante el día, así obtendrás una medida más realista.</p>
-                    </div>
-                    <div class="tip-item">
-                        <i class="fas fa-socks"></i>
-                        <p><strong>Usa las medias correctas:</strong> Mide con el tipo de calcetín que usarás con tus zapatos.</p>
-                    </div>
-                    <div class="tip-item">
-                        <i class="fas fa-balance-scale"></i>
-                        <p><strong>Mide ambos pies:</strong> Es normal que un pie sea ligeramente más grande. Usa la medida del pie más grande.</p>
-                    </div>
-                    <div class="tip-item">
-                        <i class="fas fa-redo"></i>
-                        <p><strong>Repite la medición:</strong> Mide al menos dos veces para asegurar la precisión del resultado.</p>
+            <div class="timeline__entry">
+                <div class="timeline__marker">
+                    <div class="timeline__dot-wrap"><div class="timeline__dot"></div></div>
+                    <h3 class="timeline__step-title">Consejos</h3>
+                </div>
+                <div class="timeline__content">
+                    <h3 class="timeline__step-title-mobile">Consejos</h3>
+                    <p class="timeline__text">Para una medición precisa, ten en cuenta lo siguiente:</p>
+                    <div class="timeline__tips">
+                        <div class="timeline__tip">
+                            <i class="fas fa-check"></i>
+                            <span><strong>Mide en la tarde:</strong> Tus pies se hinchan naturalmente durante el día, así obtendrás una medida más realista.</span>
+                        </div>
+                        <div class="timeline__tip">
+                            <i class="fas fa-check"></i>
+                            <span><strong>Usa las medias correctas:</strong> Mide con el tipo de calcetín que usarás con tus zapatos.</span>
+                        </div>
+                        <div class="timeline__tip">
+                            <i class="fas fa-check"></i>
+                            <span><strong>Mide ambos pies:</strong> Es normal que un pie sea ligeramente más grande. Usa la medida del pie más grande.</span>
+                        </div>
+                        <div class="timeline__tip">
+                            <i class="fas fa-check"></i>
+                            <span><strong>Repite la medición:</strong> Mide al menos dos veces para asegurar la precisión del resultado.</span>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Vertical line -->
+            <div class="timeline__line">
+                <div class="timeline__line-progress"></div>
             </div>
         </div>
     </section>
@@ -274,42 +352,79 @@
         </div>
     </section>
 
-    <!-- Notas Importantes -->
-    <section class="tallas-notes">
+    <!-- Notas Importantes — X-Scroll -->
+    <section class="x-scroll-section">
         <div class="container">
             <h2 class="tallas-section-title">NOTAS IMPORTANTES</h2>
-            
-            <div class="notes-grid">
-                <div class="note-card">
-                    <div class="note-icon">
-                        <i class="fas fa-arrows-alt-v"></i>
-                    </div>
-                    <h3>¿Entre dos tallas?</h3>
-                    <p>Si tu medida queda entre dos tallas, te recomendamos elegir la talla mayor para mayor comodidad.</p>
-                </div>
+            <p class="tallas-section-subtitle">Desliza para ver todos los consejos</p>
 
-                <div class="note-card">
-                    <div class="note-icon">
-                        <i class="fas fa-random"></i>
-                    </div>
-                    <h3>Horma variable</h3>
-                    <p>Algunos modelos pueden hormar diferente. Revisa las notas específicas en la descripción de cada producto.</p>
-                </div>
+            <div class="x-scroll-wrapper">
+                <div class="x-scroll">
+                    <div class="x-scroll-track">
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-arrows-alt-v"></i>
+                            </div>
+                            <h3>¿Entre dos tallas?</h3>
+                            <p>Si tu medida queda entre dos tallas, te recomendamos elegir la talla mayor para mayor comodidad.</p>
+                        </div>
 
-                <div class="note-card">
-                    <div class="note-icon">
-                        <i class="fas fa-hiking"></i>
-                    </div>
-                    <h3>Botas y tacones</h3>
-                    <p>Las botas pueden requerir media talla más por el grosor de las medias. Los tacones altos suelen calzar más ajustados.</p>
-                </div>
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-random"></i>
+                            </div>
+                            <h3>Horma variable</h3>
+                            <p>Algunos modelos pueden hormar diferente. Revisa las notas específicas en la descripción de cada producto.</p>
+                        </div>
 
-                <div class="note-card">
-                    <div class="note-icon">
-                        <i class="fas fa-exchange-alt"></i>
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-hiking"></i>
+                            </div>
+                            <h3>Botas y tacones</h3>
+                            <p>Las botas pueden requerir media talla más por el grosor de las medias. Los tacones altos suelen calzar más ajustados.</p>
+                        </div>
+
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>Cambios sin costo</h3>
+                            <p>Si la talla no es la correcta, puedes hacer un cambio de forma fácil y sin costo adicional. Tu satisfacción es nuestra prioridad.</p>
+                        </div>
+
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-shoe-prints"></i>
+                            </div>
+                            <h3>Cuero natural</h3>
+                            <p>Nuestros zapatos de cuero se adaptan al pie con el uso. Es normal que se sientan ligeramente ajustados los primeros días.</p>
+                        </div>
+
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-ruler"></i>
+                            </div>
+                            <h3>Mide al final del día</h3>
+                            <p>Los pies se hinchan ligeramente durante el día. Mide tus pies al atardecer para obtener la talla más precisa.</p>
+                        </div>
+
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-socks"></i>
+                            </div>
+                            <h3>Considera las medias</h3>
+                            <p>Si usarás medias gruesas con tus zapatos, mide tu pie con ellas puestas para asegurar el calce perfecto.</p>
+                        </div>
+
+                        <div class="x-scroll-card">
+                            <div class="note-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3>Pie dominante</h3>
+                            <p>Es normal tener un pie ligeramente más grande que el otro. Siempre elige la talla del pie mayor.</p>
+                        </div>
                     </div>
-                    <h3>Cambios sin costo</h3>
-                    <p>Si la talla no es la correcta, puedes hacer un cambio de forma fácil y sin costo adicional. Tu satisfacción es nuestra prioridad.</p>
                 </div>
             </div>
         </div>
@@ -727,5 +842,8 @@
     <script src="../scripts/productos-page.js"></script>
     <script src="../scripts/feedback.js"></script>
     <script src="../scripts/subscription.js"></script>
+    <script src="../scripts/minimalist-hero.js"></script>
+    <script src="../scripts/timeline.js"></script>
+    <script src="../scripts/x-scroll.js"></script>
 </body>
 </html>

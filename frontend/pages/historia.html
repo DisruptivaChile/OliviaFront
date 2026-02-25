@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../styles/historia.css">
+    <link rel="stylesheet" href="../styles/scroll-expansion-hero.css">
+    <link rel="stylesheet" href="../styles/sticky-scroll-reveal.css">
     <link rel="stylesheet" href="../styles/responsive/historia-responsive.css">
     <link rel="stylesheet" href="../styles/pop-ups.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -86,120 +88,140 @@
         </div>
     </header>
 
-    <!-- Separator -->
-    <div class="section-separator-main"></div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-slider">
-            <div class="hero-slide active">
-                <div class="hero-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1771994606/Imagen13_myomsg.jpg'); background-size: cover; background-position: center;">
-                    <div class="hero-overlay"></div>
+    <!-- Scroll Expansion Hero -->
+    <div id="expansionHero" class="expansion-hero">
+        <section class="expansion-hero__section">
+            <div class="expansion-hero__wrapper">
+                <!-- Background Image -->
+                <div class="expansion-hero__bg">
+                    <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004133/mujerHero_fls22l.jpg" alt="Background">
+                    <div class="expansion-hero__bg-overlay"></div>
                 </div>
-                <div class="hero-content">
-                    <span class="hero-label">Conoce Nuestra Marca</span>
-                    <h2 class="hero-title">Nuestra Historia</h2>
+
+                <div class="expansion-hero__container">
+                    <!-- Viewport -->
+                    <div class="expansion-hero__viewport">
+                        <!-- Expanding Media -->
+                        <div class="expansion-hero__media-frame">
+                            <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1771994606/Imagen13_myomsg.jpg" alt="Nuestra Historia">
+                            <div class="expansion-hero__media-overlay"></div>
+                        </div>
+
+                        <!-- Split Title -->
+                        <div class="expansion-hero__titles">
+                            <h2 class="expansion-hero__title-line expansion-hero__title-first">Nuestra</h2>
+                            <h2 class="expansion-hero__title-line expansion-hero__title-rest">Historia</h2>
+                        </div>
+
+                        <!-- Hints below media -->
+                        <div class="expansion-hero__hints">
+                            <p class="expansion-hero__date">Conoce Nuestra Marca</p>
+                            <p class="expansion-hero__scroll-hint">Desplaza para explorar</p>
+                        </div>
+                    </div>
+
+                    <!-- Content revealed after expansion -->
+                    <section class="expansion-hero__content">
+                        <div class="expansion-hero__content-inner">
+                            <h2>Sobre Olivia Merino</h2>
+                            <p>Cada zapato que creamos es una pieza de arte, diseñada con pasión y elaborada con los mejores materiales. Nuestra historia es un viaje de inspiración, artesanía y dedicación al detalle que define cada uno de nuestros diseños.</p>
+                            <p>Desde nuestros inicios, nos hemos comprometido a ofrecer calzado que combina elegancia atemporal con comodidad excepcional. Descubre más sobre el origen de nuestras ideas, nuestra historia y lo que nos hace únicos.</p>
+                        </div>
+                    </section>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
+    <!-- Sticky Scroll Reveal -->
+    <div class="sticky-scroll-wrapper">
+        <div class="sticky-scroll">
+            <!-- Sticky Media Panel (first in DOM for mobile column layout) -->
+            <div class="sticky-scroll__media">
+                <div class="sticky-scroll__media-item active">
+                    <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/ideas_njfwdm.jpg" alt="El Origen de las Ideas">
+                </div>
+                <div class="sticky-scroll__media-item">
+                    <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/historia_w8wj9p.png" alt="Una Canción, Una Historia">
+                </div>
+                <div class="sticky-scroll__media-item">
+                    <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/marca_v3azkx.png" alt="Nace Olivia Merino">
+                </div>
+            </div>
 
-    <!-- Historia Section -->
-    <section class="historia-section">
-        <div class="container">
-            <!-- Sección 1: El Origen de las Ideas -->
-            <div class="historia-card-wrapper">
-                <div class="historia-layout">
-                    <div class="historia-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/ideas_njfwdm.jpg'); background-size: cover; background-position: center;"></div>
-                    <div class="historia-card">
-                        <h2 class="historia-title">El Origen de las Ideas</h2>
-                        <p class="historia-text">
+            <!-- Text Cards -->
+            <div class="sticky-scroll__texts">
+                <div class="sticky-scroll__texts-inner">
+
+                    <!-- Card 1: El Origen de las Ideas -->
+                    <div class="sticky-scroll__card active">
+                        <h2 class="sticky-scroll__title">El Origen de las Ideas</h2>
+                        <p class="sticky-scroll__desc">
                             Cada diseño nace de la inspiración cotidiana. Viajes lejanos, momentos inesperados, conversaciones que marcan, 
-                            música que resuena en el alma: todo está en nuestros zapatos. 
+                            música que resuena en el alma: todo está en nuestros zapatos.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             El proceso creativo de Olivia Merino comienza con la observación. Observamos cómo la luz toca un objeto, 
                             cómo el movimiento crea nuevas formas, cómo cada detalle cuenta una historia. Esta filosofía se refleja en 
                             cada par que creamos: zapatos que no solo visten, sino que cuentan historias.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             La elegancia atemporal es nuestro norte. No buscamos seguir tendencias fugaces, sino crear piezas que trascienden 
                             el tiempo y se conviertan en compañeras de vida, en testigos de tus momentos más importantes.
                         </p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Sección 2: Una Canción, Una Historia -->
-            <div class="historia-card-wrapper">
-                <div class="historia-layout reverse">
-                    <div class="historia-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/historia_w8wj9p.png'); background-size: cover; background-position: center;"></div>
-                    <div class="historia-card">
-                        <h2 class="historia-title">Una Canción, Una Historia</h2>
-                        <p class="historia-text">
+                    <!-- Card 2: Una Canción, Una Historia -->
+                    <div class="sticky-scroll__card">
+                        <h2 class="sticky-scroll__title">Una Canción, Una Historia</h2>
+                        <p class="sticky-scroll__desc">
                             Detrás de cada diseño de Olivia Merino existe una melodía. No es una coincidencia, es una filosofía. 
                             Creemos que la música y el diseño hablan el mismo lenguaje: el de las emociones.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             Cada colección nace acompañada de una canción que la inspiró. Esa pieza musical es parte integral de la 
                             identidad del modelo, un acompañante invisible que explica su esencia. Cuando vistes un zapato de Olivia, 
                             no solo llevas diseño en tus pies, llevas una sinfonía caminando.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             Te invitamos a escuchar la música que inspira nuestra creación. Cada nota, cada acorde, refleja la pasión 
                             y la dedicación que ponemos en cada par.
                         </p>
-                        <a href="https://open.spotify.com/user/olivia-merino" target="_blank" class="historia-music-btn">
+                        <a href="https://open.spotify.com/user/olivia-merino" target="_blank" class="sticky-scroll__link">
                             <i class="fab fa-spotify"></i>
                             Escucha Nuestra Playlist
                         </a>
                     </div>
-                </div>
-            </div>
 
-            <!-- Sección 3: Nace Olivia Merino -->
-            <div class="historia-card-wrapper-last">
-                <div class="historia-layout">
-                    <div class="historia-image" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/marca_v3azkx.png'); background-size: cover; background-position: center;"></div>
-                    <div class="historia-card">
-                        <h2 class="historia-title">Nace Olivia Merino</h2>
-                        <p class="historia-text">
+                    <!-- Card 3: Nace Olivia Merino -->
+                    <div class="sticky-scroll__card">
+                        <h2 class="sticky-scroll__title">Nace Olivia Merino</h2>
+                        <p class="sticky-scroll__desc">
                             Lo que comenzó como un sueño se convirtió en realidad. La visión de crear calzado que fusionara tradición 
                             artesanal con diseño contemporáneo dio vida a Olivia Merino. No fue una decisión impulsiva, fue una 
                             consecuencia natural de años de observación, exploración y pasión por la excelencia.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             Nuestro nombre, Olivia, representa delicadeza y sofisticación. Merino, la conexión con nuestras raíces, 
                             con la tradición del calzado artesanal que hemos honrado desde el inicio. Juntos, estos nombres reflejan 
                             nuestra identidad: lo antiguo y lo moderno en perfecta armonía.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             Cada par que sale de nuestro taller es resultado de ese compromiso. Proceso meticuloso, materiales de 
                             primera calidad, y un equipo apasionado que cree que los detalles hacen la diferencia. No hacemos zapatos, 
                             creamos experiencias que caminan contigo por la vida.
                         </p>
-                        <p class="historia-text">
+                        <p class="sticky-scroll__desc">
                             Hoy, Olivia Merino es más que una marca. Es una comunidad de personas que saben que la verdadera lujo 
                             es la comodidad, la calidad y el estilo que perdura. Te invitamos a formar parte de nuestra historia.
                         </p>
                     </div>
+
+                    <div class="sticky-scroll__spacer"></div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="historia-cta-section">
-        <div class="container">
-            <h2 class="cta-title">Descubre Nuestra Colección</h2>
-            <p class="cta-text">Cada zapato cuenta una historia. ¿Cuál será la tuya?</p>
-            <a href="productos.html" class="btn btn-hero">Explorar Catálogo</a>
-        </div>
-    </section>
-
-    <!-- Separator -->
-    <div class="section-separator"></div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -611,5 +633,7 @@
     <script src="../scripts/productos-page.js"></script>
     <script src="../scripts/feedback.js"></script>
     <script src="../scripts/subscription.js"></script>
+    <script src="../scripts/scroll-expansion-hero.js"></script>
+    <script src="../scripts/sticky-scroll-reveal.js"></script>
 </body>
 </html>
