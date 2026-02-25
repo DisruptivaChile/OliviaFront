@@ -5,12 +5,13 @@
 /* Hero Section */
 .tallas-hero {
     background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
-    padding: 8rem 0 4rem;
+    padding: 10rem 0 4rem;
     text-align: center;
     color: #fff;
 }
 
 .tallas-hero-title {
+    color: #fff;
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 600;
@@ -408,7 +409,7 @@
 
 @media (max-width: 768px) {
     .tallas-hero {
-        padding: 7rem 0 3rem;
+        padding: 9rem 0 3rem;
     }
 
     .tallas-hero-title {
