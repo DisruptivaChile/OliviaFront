@@ -41,7 +41,7 @@
 /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
 .icon-btn:hover,
 .icon-btn:hover i {
-    color: #2a2a2a !important;
+    color: #ffd000;
     text-shadow: none !important;
 }
 
@@ -65,6 +65,7 @@
 
 .header.scrolled .icon-btn:hover::after{
     transform: scaleX(1);
+    color: #2a2a2a !important;
 }
 
 .header.scrolled .mobile-menu-btn {
@@ -84,10 +85,7 @@
 .promo-banner {
     display: none !important;
 }
-.nav-link:hover,
-.nav-link.active {
-    color: #2a2a2a !important;
-}
+
 .header.scrolled .nav-link:hover,
 .header.scrolled .nav-link.active {
     color: #2a2a2a !important;

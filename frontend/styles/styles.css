@@ -543,7 +543,11 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--secondary-color);
+    color: #ffd000 !important;
+}
+
+.nav-link:hover {
+    color: #ffd000 !important;
 }
 
 .nav-link::after {

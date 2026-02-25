@@ -33,8 +33,9 @@
     margin-top: 0 !important;
 }
 /* Asegura que los iconos cambien de color al pasar el mouse en cualquier estado */
-.icon-btn:hover i {
-    color: #2a2a2a !important;
+.icon-btn:hover {
+    color: #ffd000 !important;
+    text-shadow: none;
 }
 
 /* Regla específica para cuando el header tiene la clase 'scrolled' */
@@ -139,10 +140,6 @@
     }
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: #2a2a2a !important;
-}
 .header.scrolled .nav-link:hover,
 .header.scrolled .nav-link.active {
     color: #2a2a2a !important;
@@ -684,7 +681,6 @@
     }
 
     .nav-link {
-        color: #2a2a2a !important;
         font-size: 1.8rem !important;
         font-family: 'Cormorant Garamond', serif !important;
     }
