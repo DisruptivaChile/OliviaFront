@@ -1247,7 +1247,7 @@
     }
 }
 /* ========================================
-   INFO MODALS (Envíos y Devoluciones)
+   INFO MODALS (Envï¿½os y Devoluciones)
    ======================================== */
 
 .info-modal {
@@ -1331,7 +1331,7 @@
     color: var(--text-main);
     text-transform: uppercase;
     margin: 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .info-modal-logo h1 span {
@@ -1359,7 +1359,7 @@
 }
 
 .info-modal-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.75rem;
     font-weight: 500;
     color: var(--text-main);
@@ -1402,6 +1402,14 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    background: var(--text-main);
+    color: var(--white);
+}
+
+.info-accept-btn:hover {
+    background: var(--white);
+    color: var(--text-main);
+    border: 1px solid var(--text-main);
 }
 
 /* Responsive */
