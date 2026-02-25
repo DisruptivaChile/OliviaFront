@@ -1,0 +1,728 @@
+/* ========================================
+   HISTORIA-RESPONSIVE.CSS - OLIVIA MERINO
+   Media Queries copiadas y adaptadas de productos-page-responsive.css
+   ======================================== */
+
+
+/* ========================================
+   TABLET HORIZONTAL (1025px - 1200px)
+   ======================================== */
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    :root {
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
+    }
+
+    .historia-layout {
+        grid-template-columns: 1.2fr 1fr;
+        gap: var(--spacing-lg);
+        align-items: stretch;
+    }
+
+    .historia-layout.reverse {
+        grid-template-columns: 1fr 1.2fr;
+    }
+
+    .historia-image {
+        min-height: 450px;
+    }
+
+    .historia-card {
+        padding: 2rem;
+    }
+
+    .historia-title {
+        font-size: 1.5rem;
+    }
+
+    .historia-text {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    .cta-title {
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    }
+
+    .cta-text {
+        font-size: 1rem;
+    }
+
+    .hero {
+        height: 50vh;
+        min-height: 350px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .nav-list {
+        gap: var(--spacing-sm);
+    }
+
+    /* Footer Tablet */
+    .product-details-accordion .accordion-item {
+        display: block !important;
+    }
+    
+    .product-details-accordion .accordion-header {
+        border-bottom: none;
+    }
+    
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .section-newsletter {
+        order: 1;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-section:nth-of-type(2) { order: 2; }
+    .accordion-section:nth-of-type(3) { order: 3; }
+
+    .section-brand {
+        order: 4;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .footer .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .footer .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding-left: 0;
+    }
+
+    .footer .accordion-icon {
+        display: block;
+        color: var(--white);
+    }
+
+    .footer .accordion-section.active .accordion-content {
+        max-height: 300px;
+        padding: 1rem 0;
+    }
+
+    .footer .accordion-section.active .accordion-icon {
+        transform: rotate(45deg);
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
+/* ========================================
+   TABLET VERTICAL (769px - 1024px)
+   ======================================== */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
+    }
+
+    .historia-layout,
+    .historia-layout.reverse {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .historia-layout.reverse .historia-image,
+    .historia-layout.reverse .historia-card {
+        order: unset;
+    }
+
+    .historia-image {
+        min-height: 400px;
+    }
+
+    .historia-card {
+        padding: 2rem;
+        min-height: auto;
+    }
+
+    .historia-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .historia-text {
+        font-size: 0.9rem;
+        text-align: left;
+        line-height: 1.7;
+    }
+
+    .cta-title {
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    }
+
+    .cta-text {
+        font-size: 1rem;
+    }
+
+    .hero {
+        height: 50vh;
+        min-height: 350px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .section-separator {
+        width: 60%;
+    }
+
+    .close-menu-btn {
+        display: none;
+    }
+}
+
+/* ========================================
+   TABLET (768px - 800px)
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 3rem;
+        --spacing-lg: 2rem;
+    }
+
+    .promo-banner-slider {
+        padding: 3px 0;
+    }
+    
+    .promo-slide p {
+        font-size: 14px;
+    }
+
+    .historia-section {
+        padding: var(--spacing-md) 0;
+    }
+
+    .historia-card-wrapper {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .historia-image {
+        min-height: 300px;
+        max-height: 400px;
+    }
+
+    .historia-card {
+        padding: 1.5rem;
+    }
+
+    .historia-title {
+        font-size: 1.375rem;
+        margin-bottom: var(--spacing-xs);
+        text-align: center;
+    }
+
+    .historia-text {
+        font-size: 0.875rem;
+        text-align: left;
+    }
+
+    .historia-music-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+        margin-top: var(--spacing-sm);
+    }
+
+    .historia-cta-section {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-text {
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        height: 50vh;
+        min-height: 350px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .hero-label {
+        font-size: 0.875rem;
+    }
+
+    .section-separator {
+        width: 60%;
+    }
+
+    .product-title {
+        font-size: 1.75rem;
+    }
+    
+    .price-sale {
+        font-size: 1.25rem;
+    }
+    
+    .price-original {
+        font-size: 1rem;
+    }
+    
+    .thumbnail {
+        width: calc(33.333% - 0.5rem);
+    }
+
+    /* Navigation Mobile */
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: white !important;
+        z-index: 99999;
+        transition: 0.4s ease-in-out;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+    }
+
+    .nav.active {
+        right: 0;
+        visibility: visible;
+        z-index: 99999;
+    }
+
+    .close-menu-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #2a2a2a;
+        cursor: pointer;
+        z-index: 100000;
+    }
+
+    .nav-list {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+
+    .nav-link {
+        color: #2a2a2a !important;
+        font-size: 1.8rem !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+
+    .nav.active .close-menu-btn {
+        display: block !important;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #2a2a2a;
+        cursor: pointer;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        position: relative;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0 !important;
+        text-align: center;
+        width: max-content;
+    }
+
+    .logo h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.1;
+        font-size: 1rem;
+    }
+
+    .logo span {
+        display: block;
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+        z-index: 10;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Footer Mobile */
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .section-newsletter {
+        order: 1;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-section:nth-of-type(2) { order: 2; }
+    .accordion-section:nth-of-type(3) { order: 3; }
+
+    .section-brand {
+        order: 4;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .footer .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .footer .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding-left: 0;
+    }
+
+    .footer .accordion-icon {
+        display: block;
+        color: var(--white);
+    }
+
+    .footer .accordion-section.active .accordion-content {
+        max-height: 300px;
+        padding: 1rem 0;
+    }
+
+    .footer .accordion-section.active .accordion-icon {
+        transform: rotate(45deg);
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
+/* ========================================
+   MOBILE (480px - 767px)
+   ======================================== */
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+
+    .historia-section {
+        padding: var(--spacing-md) 0;
+    }
+
+    .historia-card-wrapper {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .historia-layout,
+    .historia-layout.reverse {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .historia-image {
+        min-height: 250px;
+    }
+
+    .historia-card {
+        padding: 1.25rem;
+    }
+
+    .historia-title {
+        font-size: 1.25rem;
+        text-align: left;
+    }
+
+    .historia-text {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .historia-music-btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.75rem;
+        justify-content: center;
+    }
+
+    .historia-cta-section {
+        padding: var(--spacing-md) 0;
+    }
+
+    .cta-title {
+        font-size: 1.375rem;
+    }
+
+    .cta-text {
+        font-size: 0.875rem;
+    }
+
+    .hero {
+        height: 45vh;
+        min-height: 300px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    .hero-label {
+        font-size: 0.75rem;
+    }
+
+    .section-separator {
+        width: 80%;
+        margin: var(--spacing-md) auto;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .logo h1 {
+        font-size: 1.125rem;
+    }
+    
+    .header-content {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
+
+    .product-title {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   MOBILE EXTRA PEQUEÑO (360px - 479px)
+   ======================================== */
+
+@media (max-width: 360px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-lg: 1rem;
+        --spacing-md: 0.75rem;
+    }
+
+    .historia-title {
+        font-size: 1.125rem;
+    }
+
+    .historia-text {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .cta-title {
+        font-size: 1.25rem;
+    }
+
+    .cta-text {
+        font-size: 0.8rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .hero-label {
+        font-size: 0.7rem;
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .historia-card {
+        padding: 1rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .logo h1 {
+        font-size: 0.875rem;
+    }
+}
+
+/* ========================================
+   MEDIA QUERY PARA REVIEWS (712px max)
+   ======================================== */
+
+@media (max-width: 712px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .reviews-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .btn-add-review {
+        width: 100%;
+    }
+
+    .review-modal-content {
+        padding: 1.5rem;
+        width: calc(100% - 32px);
+    }
+
+    .star-input {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .star-input label {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .btn-review {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   ESTADOS DE HEADER EN DISPOSITIVOS
+   ======================================== */
+
+@media (min-width: 769px) {
+    .close-menu-btn {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent !important;
+        z-index: auto;
+        transition: none;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        visibility: visible;
+    }
+
+    .nav-list {
+        flex-direction: row !important;
+        gap: 1.5rem !important;
+    }
+
+    .nav-link {
+        font-size: 0.85rem !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+
+    .header.scrolled .nav-link {
+        color: var(--text-main) !important;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    .header,
+    .footer,
+    .section-separator,
+    .contact-float-btn,
+    .gift-float-btn,
+    .whatsapp-float-btn {
+        display: none;
+    }
+
+    .historia-section {
+        padding: 0;
+    }
+
+    .historia-card {
+        page-break-inside: avoid;
+    }
+}
