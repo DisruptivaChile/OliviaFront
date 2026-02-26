@@ -271,6 +271,67 @@
     }
 }
 
+@media (max-width: 767px) {
+    .timeline {
+        padding: 0 1rem; /* Reducimos el padding lateral del contenedor */
+        overflow-x: hidden; /* Evitamos cualquier scroll horizontal residual */
+    }
+
+    .timeline__entry {
+        display: block; /* Cambiamos flex por block para que no haya empuje lateral */
+        position: relative;
+        padding-top: 3rem;
+    }
+
+    /* Ajustamos el marcador para que no ocupe espacio horizontal */
+    .timeline__marker {
+        position: absolute;
+        left: 0;
+        top: 3rem; /* Alineado con el inicio del paso */
+        width: auto; 
+        max-width: none;
+        z-index: 40;
+    }
+
+    /* El punto de la línea */
+    .timeline__dot-wrap {
+        left: -0.2rem; /* Ajuste fino para centrar con la línea */
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    /* Contenido principal: Quitamos el empuje hacia la derecha */
+    .timeline__content {
+        padding-left: 3rem; /* Espacio justo para que no choque con la línea vertical */
+        padding-right: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* La línea vertical */
+    .timeline__line {
+        left: 1rem; /* La pegamos más al borde izquierdo */
+    }
+
+    /* Ajuste de imágenes para que no se desborden */
+    .timeline__images {
+        grid-template-columns: 1fr; /* Una imagen por fila en móvil */
+        width: 100%;
+    }
+    
+    .timeline__images img {
+        max-height: 200px;
+        width: 100%;
+    }
+
+    /* Títulos de pasos en móvil */
+    .timeline__step-title-mobile {
+        font-size: 1.4rem;
+        margin-top: -0.5rem; /* Ajuste para alinear con el punto */
+        color: #1a1a1a;
+    }
+}
+
 /* Small mobile */
 @media (max-width: 480px) {
     .timeline {
@@ -328,25 +389,14 @@
 /* Extra small */
 @media (max-width: 360px) {
     .timeline__content {
-        padding-left: 3rem;
+        padding-left: 2.5rem;
     }
-
-    .timeline__step-title-mobile {
-        font-size: 1.1rem;
+    
+    .timeline__line {
+        left: 0.8rem;
     }
 
     .timeline__dot-wrap {
-        left: 0;
-        width: 2rem;
-        height: 2rem;
-    }
-
-    .timeline__dot {
-        width: 0.75rem;
-        height: 0.75rem;
-    }
-
-    .timeline__line {
-        left: 1.25rem;
+        left: -0.4rem;
     }
 }
