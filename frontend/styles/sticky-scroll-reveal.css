@@ -51,7 +51,7 @@
 }
 
 .sticky-scroll__title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.65rem;
     font-weight: 700;
     color: #1a1a1a;
@@ -175,26 +175,87 @@
 }
 
 @media (max-width: 1023px) {
+    /* 1. Convertimos el contenedor en un Grid de una sola columna */
     .sticky-scroll {
-        padding: 2rem 1.25rem;
+        display: grid !important;
+        grid-template-columns: 100%;
+        height: auto !important;
+        overflow: visible !important;
+        padding: 1.5rem;
+        padding-bottom: 0 !important;
+        gap: 0;
     }
 
+    /* 2. "Rompemos" los contenedores para que sus hijos se mezclen */
+    .sticky-scroll__media, 
+    .sticky-scroll__texts,
+    .sticky-scroll__texts-inner {
+        display: contents; 
+    }
+
+    /* 3. Definimos el orden manual de cada elemento */
+    
+    /* BLOQUE 1: El Origen */
+    .sticky-scroll__media-item:nth-child(1) { order: 1; display: block; position: relative; opacity: 1; }
+    .sticky-scroll__card:nth-child(1) { order: 2; margin-top: 0.5rem; margin-bottom: 3rem; }
+
+    /* BLOQUE 2: Una Canción */
+    .sticky-scroll__media-item:nth-child(2) { order: 3; display: block; position: relative; opacity: 1; }
+    .sticky-scroll__card:nth-child(2) { order: 4; margin-top: 0.5rem; margin-bottom: 3rem; }
+
+    /* BLOQUE 3: Nace Olivia */
+    .sticky-scroll__media-item:nth-child(3) { order: 5; display: block; position: relative; opacity: 1; }
+    .sticky-scroll__card:nth-child(3) { order: 6; margin-top: 0.5rem; margin-bottom: 3rem; }
+
+    /* 4. Ajustes visuales de Imagen */
     .sticky-scroll__media {
-        height: 12rem;
-        border-radius: 0.375rem;
+        box-shadow: none;
+    }
+    
+    .sticky-scroll__media-item img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 30 / 9;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
     }
 
-    .sticky-scroll__card {
-        margin: 3.5rem 0;
-    }
-
+    /* 5. Ajustes de Texto (Ancho total y color original) */
     .sticky-scroll__title {
-        font-size: 1.4rem;
+        color: #1a1a1a !important;
+        opacity: 1 !important;
+        font-size: 1.6rem;
+        margin-top: 0 !important;
+        margin-bottom: 0.75rem;
     }
 
     .sticky-scroll__desc {
-        font-size: 0.9rem;
-        max-width: 100%;
+        opacity: 1 !important;
+        max-width: 100% !important; /* Ocupa todo el ancho de la imagen */
+        text-align: justify;
+    }
+
+    /* 6. Spotify Link */
+    .sticky-scroll__link {
+        background: #1DB954 !important;
+        color: white !important;
+        opacity: 1 !important;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-flex;
+        margin-top: 1rem;
+    }
+
+    .sticky-scroll__link:hover {
+        background: #1ed760 !important;
+        transform: scale(1.05);
+    }
+
+    /* Limpieza de elementos de escritorio */
+    .sticky-scroll__spacer {
+        display: none;
     }
 }
 
