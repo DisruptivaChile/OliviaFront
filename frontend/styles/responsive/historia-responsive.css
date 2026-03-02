@@ -148,7 +148,7 @@
    TABLET & MOBILE (max 768px)
    ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     :root {
         --spacing-xl: 3rem;
         --spacing-lg: 2rem;
@@ -379,10 +379,6 @@
         font-size: 1.125rem;
     }
 
-    .header-content {
-        padding: var(--spacing-sm) 0;
-    }
-
     .btn {
         padding: 0.75rem 1.5rem;
         font-size: 0.85rem;
@@ -588,49 +584,6 @@
         min-width: 24px;
         padding: 0.25rem;
         font-size: 0.7rem;
-    }
-}
-
-
-/* ========================================
-   HEADER DESKTOP RESET (min 769px)
-   ======================================== */
-
-@media (min-width: 769px) {
-    .close-menu-btn {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: none;
-    }
-
-    .nav {
-        position: static;
-        width: auto;
-        height: auto;
-        background-color: transparent !important;
-        z-index: auto;
-        transition: none;
-        display: flex !important;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        visibility: visible;
-    }
-
-    .nav-list {
-        flex-direction: row !important;
-        gap: 1.5rem !important;
-    }
-
-    .nav-link {
-        font-size: 0.85rem !important;
-        font-family: 'Poppins', sans-serif !important;
-    }
-
-    .header.scrolled .nav-link {
-        color: var(--text-main) !important;
     }
 }
 

@@ -308,49 +308,6 @@
 
 
 /* ========================================
-   HEADER DESKTOP RESET (min 769px)
-   ======================================== */
-
-@media (min-width: 769px) {
-    .close-menu-btn {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: none;
-    }
-
-    .nav {
-        position: static;
-        width: auto;
-        height: auto;
-        background-color: transparent !important;
-        z-index: auto;
-        transition: none;
-        display: flex !important;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        visibility: visible;
-    }
-
-    .nav-list {
-        flex-direction: row !important;
-        gap: 1.5rem !important;
-    }
-
-    .nav-link {
-        font-size: 0.85rem !important;
-        font-family: 'Poppins', sans-serif !important;
-    }
-
-    .header.scrolled .nav-link {
-        color: var(--text-main) !important;
-    }
-}
-
-
-/* ========================================
    LANDSCAPE PHONES
    ======================================== */
 

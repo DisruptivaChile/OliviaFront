@@ -512,13 +512,11 @@
     }
 }
 
-@media (min-width: 769px) {
-    .close-menu-btn {
-        display: none;
+@media (max-width: 1024px) {
+    .header:not(.scrolled) .logo h1 {
+        font-size: 2rem !important;
     }
-}
-
-@media (max-width: 768px) {
+    
     .nav {
         position: fixed;
         top: 0;

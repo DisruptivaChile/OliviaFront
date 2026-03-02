@@ -461,13 +461,7 @@
     }
 }
 
-@media (min-width: 769px) {
-    .close-menu-btn {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .nav {
         position: fixed;
         top: 0;

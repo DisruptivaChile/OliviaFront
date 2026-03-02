@@ -54,13 +54,6 @@
     }
 }
 
-
-@media (min-width: 769px) {
-    .close-menu-btn {
-        display: none;
-    }
-}
-
 @media (max-width: 1024px) {
     .history-layout { grid-template-columns: 1fr; }
     .history-image { order: 1; }
@@ -133,7 +126,6 @@
         cursor: pointer;
         z-index: 100000;
     }
-
     .nav-list {
         flex-direction: column !important;
         gap: 2rem !important;
@@ -141,9 +133,9 @@
     }
 
     .nav-link {
-        color: #2a2a2a !important;
         font-size: 1.8rem !important;
         font-family: 'Cormorant Garamond', serif !important;
+        color: #2a2a2a;
     }
 
     /* 4. LA CLAVE: La X solo se muestra SI el padre (.nav) tiene la clase .active */
@@ -190,7 +182,6 @@
         line-height: 1.1;       /* Reduce el espacio vertical entre las palabras */
         font-size: 1rem;      /* Ajuste opcional para que quepa mejor */
     }
-
     .logo span {
         display: block;         /* Asegura que ocupen toda la línea */
     }
@@ -321,12 +312,17 @@
         font-size: 1.125rem;
     }
     
-    .header-content {
-        padding: var(--spacing-sm) 0;
-    }
-    
     .section-title {
         font-size: 1.875rem;
+    }
+
+    .header:not(.scrolled) .logo h1 {
+        font-size: 1.5rem !important;
+    }
+            
+    .btn-hero {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
 
