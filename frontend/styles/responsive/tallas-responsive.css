@@ -7,44 +7,6 @@
 
 
 /* ========================================
-   ULTRA WIDE (1441px+)
-   ======================================== */
-
-@media (min-width: 1441px) {
-    .container {
-        max-width: 1320px;
-    }
-
-    .tallas-intro-content {
-        max-width: 800px;
-    }
-
-    .tallas-intro-content h2 {
-        font-size: 1.75rem;
-    }
-
-    .table-wrapper {
-        max-width: 900px;
-    }
-
-    .cta-content h2 {
-        font-size: 2rem;
-    }
-}
-
-
-/* ========================================
-   DESKTOP (1025px - 1440px)
-   ======================================== */
-
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .nav-list {
-        gap: var(--spacing-sm);
-    }
-}
-
-
-/* ========================================
    TABLET VERTICAL (max 1024px)
    ======================================== */
 

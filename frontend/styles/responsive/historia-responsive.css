@@ -5,50 +5,6 @@
 
 
 /* ========================================
-   ULTRA WIDE (1441px+)
-   ======================================== */
-
-@media (min-width: 1441px) {
-    .container {
-        max-width: 1320px;
-    }
-
-    .sticky-scroll-wrapper {
-        padding: 5rem 4rem;
-    }
-
-    .sticky-scroll {
-        height: 40rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        gap: 4rem;
-    }
-
-    .sticky-scroll__title {
-        font-size: 2.1rem;
-    }
-
-    .sticky-scroll__desc {
-        font-size: 1rem;
-        max-width: 36rem;
-    }
-
-    .sticky-scroll__media {
-        height: 26rem;
-        width: 30rem;
-    }
-
-    .expansion-hero__title-line {
-        font-size: 4.5rem;
-    }
-
-    .expansion-hero__content-inner {
-        max-width: 1000px;
-    }
-}
-
-
-/* ========================================
    DESKTOP (1025px - 1440px)
    ======================================== */
 
