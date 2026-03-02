@@ -3871,3 +3871,29 @@ body {
         width: calc(33.333% - 0.5rem);
     }
 }
+
+.carousel-track {
+    /* Evita comportamientos extraños del navegador durante el swipe */
+    touch-action: pan-y; 
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Opcional: Si quieres ocultar las flechas en móvil ahora que hay swipe */
+@media (max-width: 1024px) {
+    .carousel-nav-btn {
+        display: none !important; /* Las ocultamos porque el usuario usará el dedo */
+    }
+
+    .product-internal-arrows {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important; /* Asegura que el contenedor se muestre */
+    }
+
+    /* Ajuste de tamaño para facilitar el toque con el dedo */
+    .internal-prev, .internal-next {
+        width: 44px; /* Tamaño recomendado por Apple/Google para touch */
+        height: 44px;
+    }
+}

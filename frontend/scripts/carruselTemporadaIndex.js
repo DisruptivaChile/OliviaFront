@@ -15,6 +15,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = itemsToShow; 
 
+    // --- LÓGICA DE SWIPE (DESLIZAR) ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    // Registramos dónde empieza el toque
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    // Registramos dónde termina el toque
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // Distancia mínima en píxeles para que cuente como swipe
+        
+        // Deslizar a la izquierda (Siguiente)
+        if (touchStartX - touchEndX > swipeThreshold) {
+            resetAllImages();
+            currentIndex++;
+            updateCarousel();
+        }
+        
+        // Deslizar a la derecha (Anterior)
+        if (touchEndX - touchStartX > swipeThreshold) {
+            resetAllImages();
+            currentIndex--;
+            updateCarousel();
+        }
+    }
+
     // --- FUNCIÓN: RESET CON FUNDIDO ---
     function resetAllImages() {
         const allImages = track.querySelectorAll('.product-panel-image');
