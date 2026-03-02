@@ -1392,3 +1392,38 @@
         font-size: 0.9rem;
     }
 }
+
+
+/* Corrección para pantallas menores a 450px */
+@media (max-width: 450px) {
+    .header-content {
+        /* Cambiamos el alineamiento para que no distribuya espacio entre los extremos */
+        justify-content: flex-start !important; 
+        gap: 15px; /* Espacio pequeño entre el botón de menú y el logo */
+    }
+
+    .logo {
+        /* Reset de la posición absoluta centrada */
+        position: static !important; 
+        transform: none !important; 
+        left: auto !important;
+        text-align: left !important;
+        margin: 0 !important;
+    }
+
+    .logo h1 {
+        /* Alineamos las palabras a la izquierda en lugar de al centro */
+        align-items: flex-start !important;
+        padding-left: 10px;
+    }
+
+    /* Empujamos los iconos de la derecha (carrito/usuario) al final */
+    .header-actions {
+        margin-left: auto; 
+    }
+
+    /* Ajuste visual para el botón de menú */
+    .mobile-menu-btn {
+        padding-left: 0;
+    }
+}
