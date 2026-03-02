@@ -2681,11 +2681,6 @@ body {
         min-width: calc(50% - 0.75rem);
     }
     
-    .hero {
-        height: 70vh;
-        min-height: 500px;
-    }
-    
     .hero-content {
         left: 5%;
         max-width: 90%;
@@ -2784,11 +2779,6 @@ body {
     
     .header-content {
         padding: var(--spacing-sm) 0;
-    }
-    
-    .hero {
-        height: 60vh;
-        min-height: 450px;
     }
     
     .hero-slider {
