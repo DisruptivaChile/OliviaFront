@@ -9,7 +9,7 @@ if (!process.env.DB_PASSWORD) {
 const poolConfig = {
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'olivia_zapatos_db',
+  database: process.env.DB_NAME || 'olivia_zapatos_new',
   user: process.env.DB_USER || 'olivia_user',
   password: String(process.env.DB_PASSWORD || ''), // Forzamos que sea un string
   max: 20, 

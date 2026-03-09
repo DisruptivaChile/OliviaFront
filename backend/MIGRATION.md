@@ -10,7 +10,7 @@ Integrar el backend Node.js con la base de datos PostgreSQL que ya existe del pr
 
 1. **PostgreSQL instalado y corriendo**
 2. **Node.js v16 o superior**
-3. **Base de datos `olivia_zapatos_db` existente** (del repo PHP)
+3. **Base de datos `olivia_zapatos_new` existente** (del repo PHP)
 4. **Usuario `olivia_user` con permisos**
 
 ## 📋 Pasos de Migración
@@ -67,6 +67,7 @@ npm install
 ```
 
 **Dependencias que se instalarán:**
+
 - `express` - Framework web
 - `pg` - Cliente PostgreSQL
 - `cors` - Manejo de CORS
@@ -96,6 +97,7 @@ npm run dev
 ```
 
 **Deberías ver:**
+
 ```
 ========================================
 🚀 Servidor Olivia Merino Backend
@@ -109,21 +111,25 @@ npm run dev
 Abre tu navegador o Postman:
 
 **1. Health Check:**
+
 ```
 GET http://localhost:3000/health
 ```
 
 **2. Ver todos los productos:**
+
 ```
 GET http://localhost:3000/api/products
 ```
 
 **3. Ver producto específico:**
+
 ```
 GET http://localhost:3000/api/products/1
 ```
 
 **4. Filtrar productos:**
+
 ```
 GET http://localhost:3000/api/products?tipo=sandalia
 GET http://localhost:3000/api/products?search=cuero
@@ -134,12 +140,14 @@ GET http://localhost:3000/api/products?search=cuero
 El archivo `js/app.js` ya está modificado para usar la API.
 
 **Para activar la API:**
+
 ```javascript
 // En js/app.js, línea 7
-const USE_API = true;  // Ya está configurado
+const USE_API = true; // Ya está configurado
 ```
 
 **Abrir el frontend:**
+
 1. Usa Live Server en VS Code
 2. O abre `index.html` directamente
 3. El frontend automáticamente cargará productos desde la API
@@ -151,6 +159,7 @@ const USE_API = true;  // Ya está configurado
 **Problema:** No puede conectar a PostgreSQL
 
 **Solución:**
+
 1. Verifica que PostgreSQL esté corriendo:
    ```bash
    # Windows: Buscar en Services "PostgreSQL"
@@ -164,6 +173,7 @@ const USE_API = true;  // Ya está configurado
 **Problema:** Las tablas no existen
 
 **Solución:**
+
 ```bash
 # Ejecutar el script de creación
 psql -U olivia_user -d olivia_zapatos_db -f backend/database/schema.sql
@@ -174,6 +184,7 @@ psql -U olivia_user -d olivia_zapatos_db -f backend/database/schema.sql
 **Problema:** No hay productos publicados
 
 **Solución:**
+
 ```sql
 -- Publicar todos los productos
 UPDATE zapatos SET publicado = true;
@@ -185,6 +196,7 @@ UPDATE zapatos SET publicado = true;
 ### Puerto 3000 ya en uso
 
 **Solución:**
+
 ```env
 # Cambiar en .env
 PORT=3001
@@ -214,7 +226,7 @@ SELECT ruta_imagen FROM zapato_imagenes LIMIT 5;
 
 -- Si están como 'img/zapatos/foto.jpg' (del PHP)
 -- Actualizar a rutas del proyecto Olivia:
-UPDATE zapato_imagenes 
+UPDATE zapato_imagenes
 SET ruta_imagen = REPLACE(ruta_imagen, 'img/zapatos/', 'assets/images/products/');
 ```
 
@@ -227,6 +239,7 @@ psql -U olivia_user -d olivia_zapatos_db -f backend/database/seed.sql
 ```
 
 Esto insertará:
+
 - 4 productos de ejemplo
 - Stock por tallas
 - Imágenes de referencia
@@ -259,6 +272,7 @@ Una vez que el backend esté funcionando:
 ## 🆘 Ayuda Adicional
 
 Si encuentras problemas:
+
 1. Revisa los logs del servidor (terminal donde corre `npm run dev`)
 2. Verifica la conexión a PostgreSQL en pgAdmin
 3. Confirma que hay productos con `publicado = true`
