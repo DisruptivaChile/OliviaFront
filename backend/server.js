@@ -147,7 +147,7 @@ app.post('/api/login', async (req, res) => {
 
 // POST /api/zapatos
 // Crea un nuevo zapato en la BD
-app.post('/api/zapatos', async (req, res) => {
+/** app.post('/api/zapatos', async (req, res) => {
   const { nombre, tipo_id, precio, temporada_id, es_a_pedido, descripcion, publicado } = req.body;
 
   // Validación básica de campos obligatorios
@@ -179,7 +179,7 @@ app.post('/api/zapatos', async (req, res) => {
       message: 'Error al guardar en la base de datos'
     });
   }
-});
+}); **/
 
 
 // ========================================

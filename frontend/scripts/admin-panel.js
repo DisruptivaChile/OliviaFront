@@ -1,13 +1,19 @@
-// Mostrar el nombre del admin guardado en el login
+// PROTECCIÓN — redirige si no hay sesión activa
+if (!sessionStorage.getItem('adminToken')) {
+    window.location.href = '../../index.html';
+}
+
+// Mostrar el nombre del admin
 document.getElementById('adminName').textContent = sessionStorage.getItem('adminName') || 'Administrador';
 
-// Lógica del botón de Logout
+// Logout
 document.getElementById('btnLogout').addEventListener('click', () => {
     sessionStorage.clear();
     window.location.href = '../../index.html';
 });
-// --- MOTOR DE SEGURIDAD PARA EL PANEL ---
-const TIMEOUT_INACTIVITY = 3 * 60 * 1000; // 3 minutos
+
+// --- MOTOR DE SEGURIDAD ---
+const TIMEOUT_INACTIVITY = 3 * 60 * 1000;
 
 function checkInactivity() {
     const lastActivity = sessionStorage.getItem('lastActivity');
@@ -17,7 +23,7 @@ function checkInactivity() {
         if (Date.now() - lastActivity > TIMEOUT_INACTIVITY) {
             sessionStorage.clear();
             alert("Sesión cerrada por inactividad.");
-            window.location.href = '../../index.html'; 
+            window.location.href = '../../index.html';
         }
     }
 }
@@ -28,10 +34,7 @@ function resetActivityTimer() {
     }
 }
 
-// Revisar cada 5 segundos
-setInterval(checkInactivity, 5000); 
-
-// Escuchar actividad en el panel
+setInterval(checkInactivity, 5000);
 window.addEventListener('mousemove', resetActivityTimer);
 window.addEventListener('keypress', resetActivityTimer);
 window.addEventListener('click', resetActivityTimer);

@@ -1,174 +1,248 @@
+// =============================================
+// backend/models/Product.js
+// =============================================
+
 const db = require('../config/database');
 
 class Product {
-  // Obtener todos los productos publicados con sus imágenes y tallas
-  static async getAll(filters = {}) {
-    try {
-      let query = `
-        SELECT 
-          z.id,
-          z.nombre,
-          z.tipo,
-          z.precio,
-          z.descripcion,
-          z.a_pedido,
-          z.publicado,
-          COALESCE(
-            json_agg(
-              DISTINCT jsonb_build_object(
-                'id', zi.id,
-                'url', zi.ruta_imagen,
-                'es_principal', zi.es_principal
-              )
-            ) FILTER (WHERE zi.id IS NOT NULL),
-            '[]'
-          ) as imagenes,
-          COALESCE(
-            json_agg(
-              DISTINCT jsonb_build_object(
-                'talla', t.numero_talla,
-                'stock', zt.stock
-              )
-            ) FILTER (WHERE t.id IS NOT NULL),
-            '[]'
-          ) as tallas
-        FROM zapatos z
-        LEFT JOIN zapato_imagenes zi ON z.id = zi.zapato_id
-        LEFT JOIN zapato_tallas zt ON z.id = zt.zapato_id
-        LEFT JOIN tallas t ON zt.talla_id = t.id
-        WHERE z.publicado = true
-      `;
 
-      const params = [];
-      let paramCount = 1;
+    // -----------------------------------------------
+    // Obtener todos los productos publicados
+    // -----------------------------------------------
+    static async getAll(filters = {}) {
+        try {
+            let query = `
+                SELECT
+                    z.id,
+                    z.nombre,
+                    z.precio,
+                    z.descripcion,
+                    z.es_a_pedido,
+                    z.publicado,
+                    t.nombre  AS tipo,
+                    te.nombre AS temporada,
+                    (
+                        SELECT ruta_imagen
+                        FROM zapato_imagenes
+                        WHERE zapato_id = z.id AND es_principal = TRUE
+                        LIMIT 1
+                    ) AS imagen_principal,
+                    COALESCE(
+                        json_agg(
+                            DISTINCT jsonb_build_object(
+                                'id',           zi.id,
+                                'url',          zi.ruta_imagen,
+                                'es_principal', zi.es_principal,
+                                'orden',        zi.orden_display
+                            )
+                        ) FILTER (WHERE zi.id IS NOT NULL),
+                        '[]'
+                    ) AS imagenes,
+                    COALESCE(
+                        json_agg(
+                            DISTINCT jsonb_build_object(
+                                'talla', ta.numero_talla,
+                                'stock', zt.stock
+                            )
+                        ) FILTER (WHERE ta.id IS NOT NULL AND zt.stock > 0),
+                        '[]'
+                    ) AS tallas
+                FROM zapatos z
+                LEFT JOIN tipos_zapato    t  ON z.tipo_id      = t.id
+                LEFT JOIN temporadas      te ON z.temporada_id = te.id
+                LEFT JOIN zapato_imagenes zi ON z.id           = zi.zapato_id
+                LEFT JOIN zapato_tallas   zt ON z.id           = zt.zapato_id
+                LEFT JOIN tallas          ta ON zt.talla_id    = ta.id
+                WHERE z.publicado = TRUE
+            `;
 
-      // Filtro por tipo
-      if (filters.tipo) {
-        query += ` AND z.tipo = $${paramCount}`;
-        params.push(filters.tipo);
-        paramCount++;
-      }
+            const params = [];
+            let idx = 1;
 
-      // Búsqueda por nombre
-      if (filters.search) {
-        query += ` AND z.nombre ILIKE $${paramCount}`;
-        params.push(`%${filters.search}%`);
-        paramCount++;
-      }
+            if (filters.es_a_pedido !== undefined) {
+                query += ` AND z.es_a_pedido = $${idx}`;
+                params.push(filters.es_a_pedido);
+                idx++;
+            }
 
-      // Filtro por precio
-      if (filters.precioMin) {
-        query += ` AND z.precio >= $${paramCount}`;
-        params.push(filters.precioMin);
-        paramCount++;
-      }
+            if (filters.tipo_id) {
+                query += ` AND z.tipo_id = $${idx}`;
+                params.push(parseInt(filters.tipo_id));
+                idx++;
+            }
 
-      if (filters.precioMax) {
-        query += ` AND z.precio <= $${paramCount}`;
-        params.push(filters.precioMax);
-        paramCount++;
-      }
+            if (filters.temporada_id) {
+                query += ` AND z.temporada_id = $${idx}`;
+                params.push(parseInt(filters.temporada_id));
+                idx++;
+            }
 
-      query += `
-        GROUP BY z.id
-        ORDER BY z.id DESC
-      `;
+            if (filters.search) {
+                query += ` AND z.nombre ILIKE $${idx}`;
+                params.push(`%${filters.search}%`);
+                idx++;
+            }
 
-      const result = await db.query(query, params);
-      return result.rows;
-    } catch (error) {
-      console.error('Error al obtener productos:', error);
-      throw error;
+            if (filters.precioMin) {
+                query += ` AND z.precio >= $${idx}`;
+                params.push(parseFloat(filters.precioMin));
+                idx++;
+            }
+
+            if (filters.precioMax) {
+                query += ` AND z.precio <= $${idx}`;
+                params.push(parseFloat(filters.precioMax));
+                idx++;
+            }
+
+            if (filters.talla) {
+                query += `
+                    AND EXISTS (
+                        SELECT 1 FROM zapato_tallas zt2
+                        JOIN tallas ta2 ON zt2.talla_id = ta2.id
+                        WHERE zt2.zapato_id = z.id
+                          AND ta2.numero_talla = $${idx}
+                          AND zt2.stock > 0
+                    )
+                `;
+                params.push(filters.talla);
+                idx++;
+            }
+
+            query += ` GROUP BY z.id, t.nombre, te.nombre ORDER BY z.id DESC`;
+
+            const result = await db.query(query, params);
+            return result.rows;
+
+        } catch (error) {
+            console.error('❌ Error en Product.getAll:', error);
+            throw error;
+        }
     }
-  }
 
-  // Obtener un producto por ID
-  static async getById(id) {
-    try {
-      const query = `
-        SELECT 
-          z.id,
-          z.nombre,
-          z.tipo,
-          z.precio,
-          z.descripcion,
-          z.a_pedido,
-          z.publicado,
-          COALESCE(
-            json_agg(
-              DISTINCT jsonb_build_object(
-                'id', zi.id,
-                'url', zi.ruta_imagen,
-                'es_principal', zi.es_principal
-              )
-            ) FILTER (WHERE zi.id IS NOT NULL),
-            '[]'
-          ) as imagenes,
-          COALESCE(
-            json_agg(
-              DISTINCT jsonb_build_object(
-                'talla', t.numero_talla,
-                'stock', zt.stock
-              )
-            ) FILTER (WHERE t.id IS NOT NULL),
-            '[]'
-          ) as tallas
-        FROM zapatos z
-        LEFT JOIN zapato_imagenes zi ON z.id = zi.zapato_id
-        LEFT JOIN zapato_tallas zt ON z.id = zt.zapato_id
-        LEFT JOIN tallas t ON zt.talla_id = t.id
-        WHERE z.id = $1 AND z.publicado = true
-        GROUP BY z.id
-      `;
+    // -----------------------------------------------
+    // Obtener un producto por ID con detalle completo
+    // -----------------------------------------------
+    static async getById(id) {
+        try {
+            const result = await db.query(`
+                SELECT
+                    z.id,
+                    z.nombre,
+                    z.precio,
+                    z.descripcion,
+                    z.materiales,
+                    z.historia,
+                    z.musica_url,
+                    z.es_a_pedido,
+                    t.nombre  AS tipo,
+                    te.nombre AS temporada,
+                    (
+                        SELECT ruta_imagen
+                        FROM zapato_imagenes
+                        WHERE zapato_id = z.id AND es_principal = TRUE
+                        LIMIT 1
+                    ) AS imagen_principal,
+                    COALESCE(
+                        json_agg(
+                            DISTINCT jsonb_build_object(
+                                'id',           zi.id,
+                                'url',          zi.ruta_imagen,
+                                'es_principal', zi.es_principal,
+                                'orden',        zi.orden_display
+                            )
+                        ) FILTER (WHERE zi.id IS NOT NULL),
+                        '[]'
+                    ) AS imagenes,
+                    COALESCE(
+                        json_agg(
+                            DISTINCT jsonb_build_object(
+                                'talla', ta.numero_talla,
+                                'stock', zt.stock
+                            )
+                        ) FILTER (WHERE ta.id IS NOT NULL AND zt.stock > 0),
+                        '[]'
+                    ) AS tallas
+                FROM zapatos z
+                LEFT JOIN tipos_zapato    t  ON z.tipo_id      = t.id
+                LEFT JOIN temporadas      te ON z.temporada_id = te.id
+                LEFT JOIN zapato_imagenes zi ON z.id           = zi.zapato_id
+                LEFT JOIN zapato_tallas   zt ON z.id           = zt.zapato_id
+                LEFT JOIN tallas          ta ON zt.talla_id    = ta.id
+                WHERE z.id = $1 AND z.publicado = TRUE
+                GROUP BY z.id, t.nombre, te.nombre
+            `, [id]);
 
-      const result = await db.query(query, [id]);
-      return result.rows[0] || null;
-    } catch (error) {
-      console.error('Error al obtener producto:', error);
-      throw error;
+            return result.rows[0] || null;
+
+        } catch (error) {
+            console.error('❌ Error en Product.getById:', error);
+            throw error;
+        }
     }
-  }
 
-  // Obtener tipos únicos de productos
-  static async getTypes() {
-    try {
-      const query = `
-        SELECT DISTINCT tipo 
-        FROM zapatos 
-        WHERE publicado = true
-        ORDER BY tipo
-      `;
-      const result = await db.query(query);
-      return result.rows.map(row => row.tipo);
-    } catch (error) {
-      console.error('Error al obtener tipos:', error);
-      throw error;
+    // -----------------------------------------------
+    // Obtener tipos de zapato
+    // -----------------------------------------------
+    static async getTypes() {
+        try {
+            const result = await db.query(`
+                SELECT id, nombre FROM tipos_zapato ORDER BY nombre
+            `);
+            return result.rows;
+        } catch (error) {
+            console.error('❌ Error en Product.getTypes:', error);
+            throw error;
+        }
     }
-  }
 
-  // Obtener productos destacados (puedes personalizar la lógica)
-  static async getFeatured(limit = 6) {
-    try {
-      const query = `
-        SELECT 
-          z.id,
-          z.nombre,
-          z.tipo,
-          z.precio,
-          z.descripcion,
-          (SELECT ruta_imagen FROM zapato_imagenes WHERE zapato_id = z.id AND es_principal = true LIMIT 1) as imagen_principal
-        FROM zapatos z
-        WHERE z.publicado = true
-        ORDER BY z.id DESC
-        LIMIT $1
-      `;
-      const result = await db.query(query, [limit]);
-      return result.rows;
-    } catch (error) {
-      console.error('Error al obtener productos destacados:', error);
-      throw error;
+    // -----------------------------------------------
+    // Obtener temporadas activas
+    // -----------------------------------------------
+    static async getTemporadas() {
+        try {
+            const result = await db.query(`
+                SELECT id, nombre FROM temporadas
+                WHERE activa = TRUE ORDER BY nombre
+            `);
+            return result.rows;
+        } catch (error) {
+            console.error('❌ Error en Product.getTemporadas:', error);
+            throw error;
+        }
     }
-  }
+
+    // -----------------------------------------------
+    // Obtener productos destacados (más recientes)
+    // -----------------------------------------------
+    static async getFeatured(limit = 6) {
+        try {
+            const result = await db.query(`
+                SELECT
+                    z.id,
+                    z.nombre,
+                    z.precio,
+                    z.es_a_pedido,
+                    t.nombre AS tipo,
+                    (
+                        SELECT ruta_imagen
+                        FROM zapato_imagenes
+                        WHERE zapato_id = z.id AND es_principal = TRUE
+                        LIMIT 1
+                    ) AS imagen_principal
+                FROM zapatos z
+                LEFT JOIN tipos_zapato t ON z.tipo_id = t.id
+                WHERE z.publicado = TRUE AND z.es_a_pedido = FALSE
+                ORDER BY z.id DESC
+                LIMIT $1
+            `, [limit]);
+
+            return result.rows;
+        } catch (error) {
+            console.error('❌ Error en Product.getFeatured:', error);
+            throw error;
+        }
+    }
 }
 
 module.exports = Product;

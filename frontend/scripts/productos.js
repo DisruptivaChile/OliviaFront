@@ -124,49 +124,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     const data = await response.json();
 
                     if (data.success) {
-                        // Guardar estado de sesión
+                        // Guardar sesión y redirigir sin alertas
                         sessionStorage.setItem('adminToken', 'active');
                         sessionStorage.setItem('adminName', data.user.nombre);
                         sessionStorage.setItem('lastActivity', Date.now());
-
-                        alert(data.message);
-                                
-                        // Redirección al panel
                         window.location.href = 'admin-panel.html';
-                        closeLoginModal();
                     } else {
-                        alert(data.message);
+                        // Mostrar error debajo del formulario, sin alert
+                        console.warn('Login fallido:', data.message);
+                        mostrarErrorLogin(data.message || 'Credenciales incorrectas');
                     }
+
                 } catch (error) {
-                    console.error('Error en la conexión:', error);
-                    alert('Error: No se pudo conectar con el servidor backend');
+                    console.error('Error de conexión:', error);
+                    mostrarErrorLogin('No se pudo conectar con el servidor');
                 }
+
             } else {
-                alert('La lógica para usuarios normales aún no está conectada.');
+                // Lógica de usuario normal — pendiente de implementar
+                console.log('Login de usuario normal — próximamente');
             }
         });
     }
 });
-
-// Submit form
-if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        const activeTab = document.querySelector('.login-tab.active').dataset.tab;
-        
-        if (activeTab === 'admin') {
-            if (email === 'admin@olivia.com' || email === 'olivia') {
-                alert('Bienvenido Admin');
-                closeLoginModal();
-            } else {
-                alert('Esperando conexión con el backend para validación de admin...');
-            }
-        } else {
-            alert(`Login usuario: ${email}`);
-            closeLoginModal();
-        }
-    });
-}
