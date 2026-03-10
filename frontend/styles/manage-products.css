@@ -1,0 +1,361 @@
+:root {
+    --primary-dark: #1a1a1a;
+    --accent-color: #4a0e2e;
+    --accent-light: #fdf8f9;
+    --bg-light: #f9f9f9;
+    --border: #eee;
+    --text-light: #666;
+    --success: #2e7d32;
+    --error: #c0392b;
+    --warning: #e65100;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.page-header {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.header-left { display: flex; align-items: center; gap: 1rem; }
+
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.2s;
+    background: white;
+}
+
+.btn-back:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+.page-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.page-header h1 i { color: var(--accent-color); }
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-add:hover { background: #3a0b24; transform: translateY(-1px); }
+
+/* ── FILTROS ── */
+.filters-bar {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+    min-width: 140px;
+}
+
+.filter-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.55rem 0.85rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--primary-dark);
+    background: white;
+    transition: border-color 0.2s;
+}
+
+.filter-group select:focus,
+.filter-group input:focus { outline: none; border-color: var(--accent-color); }
+
+.search-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    flex: 2;
+    min-width: 200px;
+}
+
+.search-group input {
+    flex: 1;
+    padding: 0.55rem 0.85rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.search-group input:focus { outline: none; border-color: var(--accent-color); }
+
+.btn-search {
+    padding: 0.55rem 1rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.btn-search:hover { background: #3a0b24; }
+
+.btn-clear-filters {
+    padding: 0.55rem 1rem;
+    background: white;
+    color: var(--text-light);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-clear-filters:hover { border-color: #ccc; color: #444; }
+
+/* ── CONTADOR ── */
+.results-info {
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* ── GRILLA ── */
+.products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+/* ── TARJETA ── */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.product-card.no-publicado { border-color: #f0f0f0; opacity: 0.75; }
+.product-card.a-pedido { border-color: #fff3e0; }
+
+.card-image {
+    position: relative;
+    height: 200px;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .card-image img { transform: scale(1.04); }
+
+.card-image .no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    font-size: 2.5rem;
+}
+
+.badge-group {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-publicado    { background: #e8f5e9; color: var(--success); }
+.badge-no-publicado { background: #f5f5f5; color: #999; }
+.badge-a-pedido     { background: #fff3e0; color: var(--warning); }
+
+.card-info {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.card-tipo {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+}
+
+.card-nombre {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-precio {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-top: 0.2rem;
+}
+
+.card-temporada { font-size: 0.78rem; color: var(--text-light); }
+
+.card-actions {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-card {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 7px;
+    border: 2px solid var(--border);
+    background: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.btn-card.btn-publicar   { color: var(--success); border-color: #c8e6c9; }
+.btn-card.btn-publicar:hover { background: #e8f5e9; border-color: var(--success); }
+
+.btn-card.btn-despublicar:hover { background: #f5f5f5; border-color: #bbb; color: #444; }
+
+.btn-card.btn-pedido-on  { color: var(--warning); border-color: #ffe0b2; }
+.btn-card.btn-pedido-on:hover { background: #fff3e0; border-color: var(--warning); }
+
+.btn-card.btn-pedido-off:hover { background: #f5f5f5; border-color: #bbb; }
+
+.btn-card.btn-editar:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: var(--accent-light);
+}
+
+/* ── ESTADOS ── */
+.state-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+.state-msg i { font-size: 2.5rem; opacity: 0.3; display: block; margin-bottom: 1rem; }
+
+/* ── TOAST ── */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary-dark);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.toast.visible  { transform: translateX(-50%) translateY(0); }
+.toast.success  { background: var(--success); }
+.toast.error    { background: var(--error); }
+
+@media (max-width: 600px) {
+    .filters-bar  { flex-direction: column; }
+    .search-group { flex: 1; width: 100%; }
+}

@@ -4,8 +4,9 @@ const helmet  = require('helmet');
 const bcrypt  = require('bcrypt');
 require('dotenv').config();
 
-const db            = require('./config/database');
+const db             = require('./config/database');
 const productsRoutes = require('./routes/products');
+const adminRoutes    = require('./routes/admin');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -13,24 +14,19 @@ const PORT = process.env.PORT || 3000;
 
 // ========================================
 // SECCIÓN 1: MIDDLEWARES
-// (Siempre antes de las rutas)
 // ========================================
 
-// Seguridad HTTP
 app.use(helmet());
 
-// CORS — Permite peticiones desde el frontend
 app.use(cors({
   origin:         process.env.FRONTEND_URL || '*',
   methods:        ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Body parsers — Permiten leer req.body en todas las rutas
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Logger simple
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
   next();
@@ -41,7 +37,6 @@ app.use((req, res, next) => {
 // SECCIÓN 2: RUTAS BASE
 // ========================================
 
-// Ruta de bienvenida
 app.get('/', (req, res) => {
   res.json({
     message:  '🎉 API Olivia Merino funcionando correctamente',
@@ -50,26 +45,19 @@ app.get('/', (req, res) => {
       login:       'POST /api/login',
       products:    'GET  /api/products',
       productById: 'GET  /api/products/:id',
+      filters:     'GET  /api/products/filters',
+      featured:    'GET  /api/products/featured',
       zapatos:     'POST /api/zapatos',
     }
   });
 });
 
-// Health check — Verifica conexión a la BD
 app.get('/health', async (req, res) => {
   try {
     await db.query('SELECT NOW()');
-    res.json({
-      status:    'OK',
-      database:  'Connected',
-      timestamp: new Date().toISOString()
-    });
+    res.json({ status: 'OK', database: 'Connected', timestamp: new Date().toISOString() });
   } catch (error) {
-    res.status(503).json({
-      status:   'ERROR',
-      database: 'Disconnected',
-      error:    error.message
-    });
+    res.status(503).json({ status: 'ERROR', database: 'Disconnected', error: error.message });
   }
 });
 
@@ -78,65 +66,38 @@ app.get('/health', async (req, res) => {
 // SECCIÓN 3: AUTENTICACIÓN
 // ========================================
 
-// POST /api/login
-// Login de administrador con email + contraseña
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
 
-  // Validación básica de campos
   if (!email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: 'Email y contraseña son obligatorios'
-    });
+    return res.status(400).json({ success: false, message: 'Email y contraseña son obligatorios' });
   }
 
   try {
-    // 1. Buscar el admin por email
     const result = await db.query(
       'SELECT * FROM usuarios_admin WHERE email = $1',
       [email]
     );
 
     if (result.rows.length === 0) {
-      // Usamos el mismo mensaje para no revelar si el email existe o no
-      return res.status(401).json({
-        success: false,
-        message: 'Credenciales incorrectas'
-      });
+      return res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
     }
 
-    const user = result.rows[0];
-
-    // 2. Comparar la contraseña con el hash guardado en la BD
-    // Nota: el hash debe haber sido generado con bcrypt desde Node.js
-    // (no con pgcrypto). Ejecuta scripts/crearAdmin.js para regenerarlo.
+    const user  = result.rows[0];
     const match = await bcrypt.compare(password, user.password_hash);
 
     if (match) {
-      // 3. Login exitoso
       return res.json({
         success: true,
-        user: {
-          id:     user.id,
-          nombre: user.nombre,
-          email:  user.email
-        }
+        user: { id: user.id, nombre: user.nombre, email: user.email }
       });
     } else {
-      // 4. Contraseña incorrecta
-      return res.status(401).json({
-        success: false,
-        message: 'Credenciales incorrectas'
-      });
+      return res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
     }
 
   } catch (error) {
     console.error('❌ Error en /api/login:', error);
-    return res.status(500).json({
-      success: false,
-      message: 'Error interno del servidor'
-    });
+    return res.status(500).json({ success: false, message: 'Error interno del servidor' });
   }
 });
 
@@ -145,12 +106,10 @@ app.post('/api/login', async (req, res) => {
 // SECCIÓN 4: RUTAS DE ZAPATOS
 // ========================================
 
-// POST /api/zapatos
-// Crea un nuevo zapato en la BD
-/** app.post('/api/zapatos', async (req, res) => {
+// POST /api/zapatos — Crear un nuevo zapato
+app.post('/api/zapatos', async (req, res) => {
   const { nombre, tipo_id, precio, temporada_id, es_a_pedido, descripcion, publicado } = req.body;
 
-  // Validación básica de campos obligatorios
   if (!nombre || !tipo_id || !precio) {
     return res.status(400).json({
       success: false,
@@ -174,35 +133,27 @@ app.post('/api/login', async (req, res) => {
 
   } catch (error) {
     console.error('❌ Error en POST /api/zapatos:', error);
-    return res.status(500).json({
-      success: false,
-      message: 'Error al guardar en la base de datos'
-    });
+    return res.status(500).json({ success: false, message: 'Error al guardar en la base de datos' });
   }
-}); **/
+});
 
 
 // ========================================
-// SECCIÓN 5: RUTAS EXTERNAS
+// SECCIÓN 5: RUTAS DE PRODUCTOS
 // ========================================
 
 app.use('/api/products', productsRoutes);
+app.use('/api/admin',    adminRoutes);
 
 
 // ========================================
 // SECCIÓN 6: MANEJO DE ERRORES
 // ========================================
 
-// Ruta no encontrada (404)
 app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Endpoint no encontrado',
-    path:    req.url
-  });
+  res.status(404).json({ success: false, message: 'Endpoint no encontrado', path: req.url });
 });
 
-// Manejador de errores global
 app.use((err, req, res, next) => {
   console.error('❌ Error global:', err);
   res.status(err.status || 500).json({
@@ -227,7 +178,6 @@ app.listen(PORT, () => {
   console.log('========================================\n');
 });
 
-// Cierre graceful al recibir señal de apagado
 process.on('SIGTERM', () => {
   console.log('⚠️  SIGTERM recibido. Cerrando servidor...');
   db.pool.end(() => {

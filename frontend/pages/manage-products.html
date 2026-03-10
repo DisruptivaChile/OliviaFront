@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Catálogo - Olivia Merino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/manage-products.css">
+</head>
+<body>
+
+    <script>
+        if (!sessionStorage.getItem('adminToken')) {
+            window.location.href = '../../index.html';
+        }
+    </script>
+
+    <div class="page-header">
+        <div class="header-left">
+            <a href="admin-panel.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+            <h1><i class="fas fa-tasks"></i> Administrar catálogo</h1>
+        </div>
+        <a href="add-product.html" class="btn-add">
+            <i class="fas fa-plus"></i> Añadir artículo
+        </a>
+    </div>
+
+    <div class="filters-bar">
+        <div class="filter-group">
+            <label>Estado</label>
+            <select id="filterPublicado">
+                <option value="all">Todos</option>
+                <option value="true">Publicados</option>
+                <option value="false">No publicados</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Tipo</label>
+            <select id="filterAPedido">
+                <option value="all">Todos</option>
+                <option value="false">Normal</option>
+                <option value="true">A pedido</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Precio máx.</label>
+            <input type="number" id="filterPrecio" placeholder="Sin límite" min="0">
+        </div>
+
+        <div class="search-group">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre...">
+            <button class="btn-search" id="btnSearch">
+                <i class="fas fa-search"></i> Buscar
+            </button>
+            <button class="btn-clear-filters" id="btnClearFilters">
+                <i class="fas fa-times"></i> Limpiar
+            </button>
+        </div>
+    </div>
+
+    <p class="results-info" id="resultsInfo"></p>
+
+    <div class="products-grid" id="productsGrid">
+        <div class="state-msg">
+            <i class="fas fa-spinner fa-spin"></i>
+            Cargando productos...
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="../scripts/manage-products.js"></script>
+</body>
+</html>
