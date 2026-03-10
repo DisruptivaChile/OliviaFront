@@ -44,7 +44,7 @@ function renderTarjeta(producto) {
 
     // Tallas disponibles (con stock > 0)
     const tallasDisponibles = Array.isArray(producto.tallas)
-        ? producto.tallas.filter(t => t.stock > 0)
+        ? producto.tallas.filter(t => t.stock > 0).sort((a, b) => parseFloat(a.talla) - parseFloat(b.talla))
         : [];
 
     const tallasHTML = tallasDisponibles.length > 0
@@ -289,13 +289,34 @@ function aplicarFiltroPrecio(valor) {
 // -----------------------------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Cargar filtros y productos en paralelo
-    await Promise.all([cargarFiltros(), cargarProductos()]);
+    // 1. Cargar filtros primero (necesitamos los ids antes de cargar productos)
+    await cargarFiltros();
 
-    // Inicializar delegación de eventos del carrito
+    // 2. Leer parámetro de URL y aplicar filtro de temporada si existe
+    const urlParams      = new URLSearchParams(window.location.search);
+    const temporadaParam = urlParams.get('temporada'); // "primavera"
+
+    if (temporadaParam) {
+        const selectTemp = document.getElementById('seasonFilter');
+        if (selectTemp) {
+            // Buscar la option cuyo texto incluya el parámetro
+            const option = Array.from(selectTemp.options).find(
+                opt => opt.text.toLowerCase().includes(temporadaParam.toLowerCase())
+            );
+            if (option) {
+                selectTemp.value     = option.value;
+                filtros.temporada_id = option.value;
+            }
+        }
+    }
+
+    // 3. Cargar productos con los filtros ya aplicados
+    await cargarProductos();
+
+    // 4. Inicializar delegación de eventos del carrito
     initCartDelegation();
 
-    // Event listeners de filtros
+    // 5. Event listeners de filtros
     document.getElementById('typeFilter')
         ?.addEventListener('change', e => {
             filtros.tipo_id = e.target.value === 'all' ? null : e.target.value;
