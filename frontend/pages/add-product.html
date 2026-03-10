@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../styles/add-product.css">
 </head>
 <body>
+
     <script>
         if (!sessionStorage.getItem('adminToken')) {
             window.location.href = '../../index.html';
         }
     </script>
 
-    <!-- Header -->
     <div class="page-header">
         <a href="admin-panel.html" class="btn-back">
             <i class="fas fa-arrow-left"></i> Volver
@@ -22,40 +22,33 @@
         <h1><i class="fas fa-plus-circle"></i> Añadir artículo</h1>
     </div>
 
-    <!-- Formulario -->
     <div class="form-card">
         <form id="addProductForm">
 
             <!-- SECCIÓN 1: INFORMACIÓN BÁSICA -->
             <div class="form-section">
-                <p class="section-title">
-                    <i class="fas fa-tag"></i> Información básica
-                </p>
+                <p class="section-title"><i class="fas fa-tag"></i> Información básica</p>
                 <div class="form-grid">
                     <div class="form-group full">
                         <label for="nombre">Nombre del artículo <span class="req">*</span></label>
                         <input type="text" id="nombre" placeholder="Ej: Botín Camel" required>
                     </div>
-
                     <div class="form-group">
                         <label for="tipo_id">Tipo <span class="req">*</span></label>
                         <select id="tipo_id" required>
                             <option value="">Seleccionar tipo...</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="temporada_id">Temporada</label>
                         <select id="temporada_id">
                             <option value="">Sin temporada (atemporal)</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="precio">Precio (CLP) <span class="req">*</span></label>
                         <input type="number" id="precio" placeholder="89990" min="0" required>
                     </div>
-
                     <div class="form-group">
                         <label>Visibilidad</label>
                         <div class="toggle-group">
@@ -74,9 +67,7 @@
 
             <!-- SECCIÓN 2: DESCRIPCIÓN -->
             <div class="form-section">
-                <p class="section-title">
-                    <i class="fas fa-align-left"></i> Descripción y materiales
-                </p>
+                <p class="section-title"><i class="fas fa-align-left"></i> Descripción y materiales</p>
                 <div class="form-grid">
                     <div class="form-group full">
                         <label for="descripcion">Descripción</label>
@@ -91,9 +82,7 @@
 
             <!-- SECCIÓN 3: HISTORIA Y MÚSICA -->
             <div class="form-section">
-                <p class="section-title">
-                    <i class="fas fa-book-open"></i> Historia y música
-                </p>
+                <p class="section-title"><i class="fas fa-book-open"></i> Historia y música</p>
                 <div class="form-grid">
                     <div class="form-group full">
                         <label for="historia">Historia del producto</label>
@@ -108,12 +97,11 @@
 
             <!-- SECCIÓN 4: IMÁGENES -->
             <div class="form-section">
-                <p class="section-title">
-                    <i class="fas fa-images"></i> Imágenes (URLs de Cloudinary)
+                <p class="section-title"><i class="fas fa-images"></i> Imágenes</p>
+                <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:1.25rem;">
+                    Sube imágenes desde tu PC (JPG, PNG o WEBP, máx. 5MB). Se subirán automáticamente a Cloudinary al guardar.
                 </p>
-                <div class="images-list" id="imagesList">
-                    <!-- Filas de imágenes se añaden dinámicamente -->
-                </div>
+                <div class="images-list" id="imagesList"></div>
                 <button type="button" class="btn-add-image" id="btnAddImage">
                     <i class="fas fa-plus"></i> Añadir imagen
                 </button>
@@ -121,20 +109,15 @@
 
             <!-- SECCIÓN 5: TALLAS Y STOCK -->
             <div class="form-section">
-                <p class="section-title">
-                    <i class="fas fa-ruler"></i> Tallas y stock
-                </p>
+                <p class="section-title"><i class="fas fa-ruler"></i> Tallas y stock</p>
                 <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:1rem;">
-                    Deja en 0 las tallas que no apliquen. Solo se guardarán las tallas con stock mayor a 0.
+                    Ingresa el stock disponible para cada talla. Puedes dejar 0 para tallas sin stock.
                 </p>
-                <div class="tallas-grid" id="tallasGrid">
-                    <!-- Generado dinámicamente -->
-                </div>
+                <div class="tallas-grid" id="tallasGrid"></div>
             </div>
 
         </form>
 
-        <!-- Footer con acciones -->
         <div class="form-footer">
             <span id="formStatus"></span>
             <a href="admin-panel.html" class="btn-cancel">Cancelar</a>

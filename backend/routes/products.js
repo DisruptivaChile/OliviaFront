@@ -7,6 +7,47 @@ const express = require('express');
 const router  = express.Router();
 const Product = require('../models/Product');
 const db      = require('../config/database');
+const cloudinary = require('../config/cloudinary');
+const upload     = require('../config/upload');
+
+
+
+// -----------------------------------------------
+// POST /api/products/upload-imagen
+// Sube una imagen a Cloudinary y devuelve la URL
+// -----------------------------------------------
+router.post('/upload-imagen', upload.single('imagen'), async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: 'No se recibió ninguna imagen' });
+    }
+
+    try {
+        // Subir a Cloudinary desde buffer (sin guardar en disco)
+        const resultado = await new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream(
+                {
+                    folder: 'olivia_merino',
+                    transformation: [{ quality: 'auto', fetch_format: 'auto' }]
+                },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            );
+            stream.end(req.file.buffer);
+        });
+
+        return res.json({
+            success: true,
+            url:     resultado.secure_url,
+            public_id: resultado.public_id
+        });
+
+    } catch (error) {
+        console.error('❌ Error subiendo imagen a Cloudinary:', error);
+        return res.status(500).json({ success: false, message: 'Error al subir la imagen' });
+    }
+});
 
 
 // -----------------------------------------------

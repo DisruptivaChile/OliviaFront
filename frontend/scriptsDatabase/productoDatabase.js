@@ -214,7 +214,7 @@ function renderizarMusica(musicaUrl) {
 
     // Convertir URL de Spotify a embed si es necesario
     let embedUrl = musicaUrl;
-    if (musicaUrl.includes('open.spotify.com/track/')) {
+    if (musicaUrl.includes('spotify.com') && musicaUrl.includes('/track/')) {
         const trackId = musicaUrl.split('/track/')[1].split('?')[0];
         embedUrl = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
     }

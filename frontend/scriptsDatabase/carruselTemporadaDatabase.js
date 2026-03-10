@@ -22,7 +22,11 @@ function renderTarjetaCarrusel(producto) {
     const imagen     = producto.imagen_principal
                         || 'https://via.placeholder.com/400x500?text=Sin+imagen';
     const precio     = '$' + Number(producto.precio).toLocaleString('es-CL');
-    const productoUrl = `producto-coyan.html?id=${producto.id}`;
+    const esIndex = window.location.pathname.endsWith('index.html') 
+                    || window.location.pathname.endsWith('/');
+    const productoUrl = esIndex 
+        ? `frontend/pages/producto-coyan.html?id=${producto.id}`
+        : `producto-coyan.html?id=${producto.id}`;
 
     return `
         <div class="product-panel-wrapper" data-product-url="${productoUrl}">
