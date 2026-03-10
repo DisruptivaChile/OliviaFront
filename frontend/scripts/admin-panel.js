@@ -22,7 +22,6 @@ function checkInactivity() {
     if (token && lastActivity) {
         if (Date.now() - lastActivity > TIMEOUT_INACTIVITY) {
             sessionStorage.clear();
-            alert("Sesión cerrada por inactividad.");
             window.location.href = '../../index.html';
         }
     }

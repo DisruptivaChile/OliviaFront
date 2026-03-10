@@ -1,0 +1,347 @@
+:root {
+    --primary-dark: #1a1a1a;
+    --accent-color: #4a0e2e;
+    --accent-light: #fdf8f9;
+    --bg-light: #f9f9f9;
+    --border: #eee;
+    --text-light: #666;
+    --success: #2e7d32;
+    --error: #c0392b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* ── HEADER ── */
+.page-header {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.2s;
+    background: white;
+}
+
+.btn-back:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.page-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.page-header h1 i {
+    color: var(--accent-color);
+}
+
+/* ── CARD ── */
+.form-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* ── SECCIONES ── */
+.form-section {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ── GRID DE CAMPOS ── */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.form-grid.cols-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+label span.req {
+    color: var(--accent-color);
+    margin-left: 2px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    padding: 0.65rem 0.9rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--primary-dark);
+    transition: border-color 0.2s;
+    background: white;
+    width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ── TOGGLE PUBLICADO / A PEDIDO ── */
+.toggle-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    padding: 0.65rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    transition: all 0.2s;
+    flex: 1;
+    justify-content: center;
+}
+
+.toggle-label input { display: none; }
+
+.toggle-label.active {
+    border-color: var(--accent-color);
+    background: var(--accent-light);
+    color: var(--accent-color);
+}
+
+/* ── TALLAS ── */
+.tallas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.talla-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.talla-item label {
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.talla-item input[type="number"] {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+/* ── IMÁGENES ── */
+.images-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.image-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.image-row input { margin: 0; }
+
+.btn-principal {
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-light);
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.btn-principal.active {
+    border-color: var(--accent-color);
+    background: var(--accent-light);
+    color: var(--accent-color);
+}
+
+.btn-remove-img {
+    padding: 0.5rem 0.65rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-remove-img:hover {
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.btn-add-image {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    background: none;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-add-image:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* ── FOOTER DEL FORM ── */
+.form-footer {
+    padding: 1.5rem 2rem;
+    background: var(--bg-light);
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-cancel {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover { border-color: #ccc; color: #444; }
+
+.btn-submit {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn-submit:hover { background: #3a0b24; transform: translateY(-1px); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* ── MENSAJE DE ESTADO ── */
+#formStatus {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    display: none;
+}
+
+#formStatus.success {
+    display: block;
+    background: #e8f5e9;
+    color: var(--success);
+}
+
+#formStatus.error {
+    display: block;
+    background: #fdecea;
+    color: var(--error);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .form-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .tallas-grid { grid-template-columns: repeat(4, 1fr); }
+    .toggle-group { flex-direction: column; }
+}

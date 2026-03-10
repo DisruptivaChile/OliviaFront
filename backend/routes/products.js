@@ -6,6 +6,7 @@
 const express = require('express');
 const router  = express.Router();
 const Product = require('../models/Product');
+const db      = require('../config/database');
 
 
 // -----------------------------------------------
@@ -137,6 +138,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+
 // -----------------------------------------------
 // POST /api/products
 // Crea un nuevo zapato en la BD.
@@ -197,6 +199,71 @@ router.post('/', async (req, res) => {
             success: false,
             message: 'Error al guardar en la base de datos'
         });
+    }
+});
+
+// -----------------------------------------------
+// POST /api/products/:id/imagenes
+// Añade una imagen a un zapato existente
+// -----------------------------------------------
+router.post('/:id/imagenes', async (req, res) => {
+    const zapatoId = parseInt(req.params.id);
+    const { ruta_imagen, es_principal, orden_display } = req.body;
+
+    if (!ruta_imagen) {
+        return res.status(400).json({ success: false, message: 'ruta_imagen es obligatorio' });
+    }
+
+    try {
+        await db.query(
+            `INSERT INTO zapato_imagenes (zapato_id, ruta_imagen, es_principal, orden_display)
+             VALUES ($1, $2, $3, $4)`,
+            [zapatoId, ruta_imagen, es_principal || false, orden_display || 0]
+        );
+        return res.status(201).json({ success: true });
+    } catch (error) {
+        console.error('❌ Error en POST /api/products/:id/imagenes:', error);
+        return res.status(500).json({ success: false, message: 'Error al guardar imagen' });
+    }
+});
+
+
+// -----------------------------------------------
+// POST /api/products/:id/tallas
+// Añade una talla con stock a un zapato existente
+// -----------------------------------------------
+router.post('/:id/tallas', async (req, res) => {
+    const zapatoId    = parseInt(req.params.id);
+    const { numero_talla, stock } = req.body;
+
+    if (!numero_talla || stock === undefined) {
+        return res.status(400).json({ success: false, message: 'numero_talla y stock son obligatorios' });
+    }
+
+    try {
+        // Buscar el id de la talla por su número
+        const tallaRes = await db.query(
+            'SELECT id FROM tallas WHERE numero_talla = $1',
+            [numero_talla.toString()]
+        );
+
+        if (tallaRes.rows.length === 0) {
+            return res.status(404).json({ success: false, message: `Talla ${numero_talla} no encontrada` });
+        }
+
+        const tallaId = tallaRes.rows[0].id;
+
+        await db.query(
+            `INSERT INTO zapato_tallas (zapato_id, talla_id, stock)
+             VALUES ($1, $2, $3)
+             ON CONFLICT (zapato_id, talla_id) DO UPDATE SET stock = $3`,
+            [zapatoId, tallaId, stock]
+        );
+
+        return res.status(201).json({ success: true });
+    } catch (error) {
+        console.error('❌ Error en POST /api/products/:id/tallas:', error);
+        return res.status(500).json({ success: false, message: 'Error al guardar talla' });
     }
 });
 
