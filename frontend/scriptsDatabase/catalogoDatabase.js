@@ -123,6 +123,19 @@ function initCartDelegation() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
 
+    // Click en tarjeta → redirige a página de detalle
+    // (salvo que el click sea en el botón de carrito o en una talla)
+    grid.addEventListener('click', (e) => {
+        const ignorar = e.target.closest('.add-to-cart-btn') || e.target.closest('.size-option');
+        if (ignorar) return;
+
+        const card = e.target.closest('.product-card');
+        if (!card) return;
+
+        const id = card.dataset.id;
+        if (id) window.location.href = `producto-coyan.html?id=${id}`;
+    });
+
     grid.addEventListener('click', (e) => {
         // Click en botón de añadir al carrito
         const btn = e.target.closest('.add-to-cart-btn');
