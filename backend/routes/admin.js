@@ -222,4 +222,103 @@ router.put('/products/:id', async (req, res) => {
 });
 
 
+
+
+// -----------------------------------------------
+// DELETE /api/admin/products/:id/imagenes/:imgId
+// Elimina una imagen de un zapato
+// -----------------------------------------------
+router.delete('/products/:id/imagenes/:imgId', async (req, res) => {
+    const imgId = parseInt(req.params.imgId);
+    if (isNaN(imgId)) return res.status(400).json({ success: false, message: 'ID inválido' });
+
+    try {
+        await db.query('DELETE FROM zapato_imagenes WHERE id = $1', [imgId]);
+        return res.json({ success: true });
+    } catch (error) {
+        console.error('❌ Error en DELETE imagen:', error);
+        return res.status(500).json({ success: false, message: 'Error al eliminar imagen' });
+    }
+});
+
+
+// -----------------------------------------------
+// PATCH /api/admin/products/:id/imagenes/:imgId/principal
+// Marca una imagen como principal (desmarca el resto)
+// -----------------------------------------------
+router.patch('/products/:id/imagenes/:imgId/principal', async (req, res) => {
+    const zapatoId = parseInt(req.params.id);
+    const imgId    = parseInt(req.params.imgId);
+
+    if (isNaN(zapatoId) || isNaN(imgId)) {
+        return res.status(400).json({ success: false, message: 'IDs inválidos' });
+    }
+
+    try {
+        // Desmarcar todas las imágenes del zapato
+        await db.query(
+            'UPDATE zapato_imagenes SET es_principal = FALSE WHERE zapato_id = $1',
+            [zapatoId]
+        );
+        // Marcar la seleccionada
+        await db.query(
+            'UPDATE zapato_imagenes SET es_principal = TRUE WHERE id = $1',
+            [imgId]
+        );
+        return res.json({ success: true });
+    } catch (error) {
+        console.error('❌ Error en PATCH principal:', error);
+        return res.status(500).json({ success: false, message: 'Error al actualizar imagen principal' });
+    }
+});
+
+
+// -----------------------------------------------
+// DELETE /api/admin/imagenes/:id
+// Elimina una imagen de la BD
+// -----------------------------------------------
+router.delete('/imagenes/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inválido' });
+
+    try {
+        await db.query('DELETE FROM zapato_imagenes WHERE id = $1', [id]);
+        return res.json({ success: true });
+    } catch (error) {
+        console.error('❌ Error en DELETE /api/admin/imagenes/:id:', error);
+        return res.status(500).json({ success: false, message: 'Error al eliminar imagen' });
+    }
+});
+
+
+// -----------------------------------------------
+// PATCH /api/admin/products/:id/imagen-principal
+// Cambia qué imagen es la principal del zapato
+// -----------------------------------------------
+// PATCH /api/admin/products/:id/imagenes/principal
+router.patch('/products/:id/imagenes/principal', async (req, res) => {
+    const zapatoId  = parseInt(req.params.id);
+    const { imagen_id } = req.body;
+
+    if (isNaN(zapatoId) || !imagen_id) {
+        return res.status(400).json({ success: false, message: 'Parámetros inválidos' });
+    }
+
+    try {
+        await db.query(
+            'UPDATE zapato_imagenes SET es_principal = FALSE WHERE zapato_id = $1',
+            [zapatoId]
+        );
+        await db.query(
+            'UPDATE zapato_imagenes SET es_principal = TRUE WHERE id = $1 AND zapato_id = $2',
+            [imagen_id, zapatoId]
+        );
+        return res.json({ success: true });
+    } catch (error) {
+        console.error('❌ Error actualizando imagen principal:', error);
+        return res.status(500).json({ success: false, message: 'Error al actualizar' });
+    }
+});
+
+
 module.exports = router;

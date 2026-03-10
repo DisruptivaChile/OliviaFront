@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Artículo - Olivia Merino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/edit-product.css">
+</head>
+<body>
+
+    <script>
+        if (!sessionStorage.getItem('adminToken')) {
+            window.location.href = '../../index.html';
+        }
+    </script>
+
+    <div class="loading-state" id="loadingState">
+        <i class="fas fa-spinner fa-spin"></i>
+        Cargando producto...
+    </div>
+
+    <div class="page-header" id="pageHeader" style="display:none;">
+        <a href="manage-products.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+        <h1><i class="fas fa-pen"></i> Editar: <span id="headerNombre"></span></h1>
+    </div>
+
+    <div class="form-card" id="formCard" style="display:none;">
+        <form id="editProductForm">
+
+            <div class="form-section">
+                <p class="section-title"><i class="fas fa-tag"></i> Información básica</p>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="nombre">Nombre del artículo <span class="req">*</span></label>
+                        <input type="text" id="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_id">Tipo <span class="req">*</span></label>
+                        <select id="tipo_id" required><option value="">Seleccionar tipo...</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="temporada_id">Temporada</label>
+                        <select id="temporada_id"><option value="">Sin temporada (atemporal)</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio (CLP) <span class="req">*</span></label>
+                        <input type="number" id="precio" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Visibilidad</label>
+                        <div class="toggle-group">
+                            <label class="toggle-label" id="labelPublicado">
+                                <input type="checkbox" id="publicado">
+                                <i class="fas fa-eye"></i> Publicado
+                            </label>
+                            <label class="toggle-label" id="labelAPedido">
+                                <input type="checkbox" id="es_a_pedido">
+                                <i class="fas fa-clock"></i> A pedido
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <p class="section-title"><i class="fas fa-align-left"></i> Descripción y materiales</p>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion"></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label for="materiales">Materiales</label>
+                        <textarea id="materiales"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <p class="section-title"><i class="fas fa-book-open"></i> Historia y música</p>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="historia">Historia del producto</label>
+                        <textarea id="historia" style="min-height:120px;"></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label for="musica_url">URL de Spotify</label>
+                        <input type="url" id="musica_url" placeholder="https://open.spotify.com/track/...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <p class="section-title"><i class="fas fa-images"></i> Imágenes</p>
+                <p class="divider-label">Imágenes actuales</p>
+                <div class="existing-images-grid" id="existingImagesGrid">
+                    <p style="color:var(--text-light); font-size:0.85rem;">Sin imágenes.</p>
+                </div>
+                <p class="divider-label" style="margin-top:1.5rem;">Añadir imágenes nuevas</p>
+                <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:1rem;">
+                    Las imágenes nuevas se añadirán a las actuales (excepto las marcadas para eliminar).
+                </p>
+                <div class="images-list" id="newImagesList"></div>
+                <button type="button" class="btn-add-image" id="btnAddImage">
+                    <i class="fas fa-plus"></i> Añadir imagen
+                </button>
+            </div>
+
+            <div class="form-section">
+                <p class="section-title"><i class="fas fa-ruler"></i> Tallas y stock</p>
+                <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:1rem;">
+                    Modifica el stock de cada talla. Puedes dejar 0 para tallas sin stock.
+                </p>
+                <div class="tallas-grid" id="tallasGrid"></div>
+            </div>
+
+        </form>
+
+        <div class="form-footer">
+            <span id="formStatus"></span>
+            <a href="manage-products.html" class="btn-cancel">Cancelar</a>
+            <button type="submit" form="editProductForm" class="btn-submit" id="btnSubmit">
+                <i class="fas fa-save"></i> Guardar cambios
+            </button>
+        </div>
+    </div>
+
+    <script src="../scripts/edit-product.js"></script>
+
+</body>
+</html>
