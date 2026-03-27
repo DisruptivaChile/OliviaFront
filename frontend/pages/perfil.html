@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Olivia Merino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/perfil.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="perfil-navbar">
+        <a href="../../index.html" class="navbar-logo">
+            Olivia <em>Merino</em>
+        </a>
+        <nav class="navbar-links">
+            <a href="../../index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="ofertas.html">Ofertas</a>
+        </nav>
+        <button class="btn-cerrar-sesion-nav" id="btnCerrarSesionNav">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+        </button>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="perfil-main">
+
+        <!-- HERO DEL PERFIL -->
+        <section class="perfil-hero">
+            <div class="perfil-hero-content">
+                <div class="avatar">
+                    <span id="avatarInicial">?</span>
+                </div>
+                <div class="perfil-hero-info">
+                    <p class="perfil-eyebrow">Mi cuenta</p>
+                    <h1 class="perfil-nombre" id="perfilNombre">Cargando...</h1>
+                    <p class="perfil-email" id="perfilEmail"></p>
+                    <p class="perfil-fecha">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="perfilFecha">Miembro desde —</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID DE SECCIONES -->
+        <div class="perfil-grid">
+
+            <!-- INFORMACIÓN PERSONAL -->
+            <section class="perfil-card" id="seccionInfo">
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <i class="fas fa-user"></i>
+                        <h2>Información personal</h2>
+                    </div>
+                    <button class="btn-card-action" id="btnEditarInfo">
+                        <i class="fas fa-pen"></i> Editar
+                    </button>
+                </div>
+
+                <!-- Vista lectura -->
+                <div class="info-display" id="infoDisplay">
+                    <div class="info-row">
+                        <span class="info-label">Nombre completo</span>
+                        <span class="info-value" id="displayNombreCompleto">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Correo electrónico</span>
+                        <span class="info-value" id="displayEmail">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Miembro desde</span>
+                        <span class="info-value" id="displayFecha">—</span>
+                    </div>
+                </div>
+
+                <!-- Vista edición -->
+                <div class="info-edit" id="infoEdit" style="display:none;">
+                    <div class="edit-row">
+                        <div class="edit-group">
+                            <label>Nombre</label>
+                            <input type="text" id="editNombre" placeholder="Tu nombre">
+                        </div>
+                        <div class="edit-group">
+                            <label>Apellido</label>
+                            <input type="text" id="editApellido" placeholder="Tu apellido">
+                        </div>
+                    </div>
+                    <p class="edit-note"><i class="fas fa-info-circle"></i> El correo no puede modificarse.</p>
+                    <span class="edit-error" id="editError"></span>
+                    <span class="edit-success" id="editSuccess"></span>
+                    <div class="edit-actions">
+                        <button class="btn-edit-cancel" id="btnCancelarEdit">Cancelar</button>
+                        <button class="btn-edit-save"   id="btnGuardarEdit">
+                            <i class="fas fa-save"></i> Guardar cambios
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCIONES DE CUENTA -->
+            <section class="perfil-card perfil-card-actions">
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>Seguridad y cuenta</h2>
+                    </div>
+                </div>
+                <div class="account-actions">
+                    <a href="cambiar-password.html" class="account-action-item">
+                        <div class="action-icon action-icon-blue">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="action-text">
+                            <span class="action-title">Cambiar contraseña</span>
+                            <span class="action-desc">Actualiza tu contraseña de acceso</span>
+                        </div>
+                        <i class="fas fa-chevron-right action-arrow"></i>
+                    </a>
+
+                    <button class="account-action-item" id="btnCerrarSesion">
+                        <div class="action-icon action-icon-gray">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <div class="action-text">
+                            <span class="action-title">Cerrar sesión</span>
+                            <span class="action-desc">Salir de tu cuenta en este dispositivo</span>
+                        </div>
+                        <i class="fas fa-chevron-right action-arrow"></i>
+                    </button>
+
+                    <button class="account-action-item account-action-danger" id="btnEliminarCuenta">
+                        <div class="action-icon action-icon-red">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                        <div class="action-text">
+                            <span class="action-title">Eliminar cuenta</span>
+                            <span class="action-desc">Esta acción es permanente e irreversible</span>
+                        </div>
+                        <i class="fas fa-chevron-right action-arrow"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- PEDIDOS EN CURSO -->
+            <section class="perfil-card perfil-card-pedidos">
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <i class="fas fa-truck"></i>
+                        <h2>Pedidos en curso</h2>
+                    </div>
+                    <a href="pedidos-activos.html" class="btn-card-action">
+                        Ver todos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="pedidos-placeholder">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <p class="placeholder-title">Sin pedidos activos</p>
+                    <p class="placeholder-desc">Cuando realices una compra, podrás rastrear tu pedido aquí.</p>
+                    <a href="productos.html" class="btn-placeholder">
+                        <i class="fas fa-shopping-bag"></i> Ver productos
+                    </a>
+                </div>
+            </section>
+
+            <!-- HISTORIAL DE PEDIDOS -->
+            <section class="perfil-card perfil-card-historial">
+                <div class="card-header">
+                    <div class="card-header-left">
+                        <i class="fas fa-history"></i>
+                        <h2>Historial de pedidos</h2>
+                    </div>
+                    <a href="historial-pedidos.html" class="btn-card-action">
+                        Ver todos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="pedidos-placeholder">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <p class="placeholder-title">Aún no has realizado pedidos</p>
+                    <p class="placeholder-desc">Tu historial de compras aparecerá aquí una vez que realices tu primer pedido.</p>
+                    <a href="productos.html" class="btn-placeholder">
+                        <i class="fas fa-shopping-bag"></i> Explorar catálogo
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- MODAL CONFIRMAR ELIMINAR CUENTA -->
+    <div class="confirm-modal" id="confirmEliminar">
+        <div class="confirm-overlay" id="confirmOverlay"></div>
+        <div class="confirm-box">
+            <div class="confirm-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>¿Eliminar tu cuenta?</h3>
+            <p>Esta acción es <strong>permanente</strong>. Se borrarán todos tus datos y no podrás recuperar tu cuenta.</p>
+            <div class="confirm-actions">
+                <button class="btn-confirm-cancel" id="btnCancelarEliminar">Cancelar</button>
+                <button class="btn-confirm-delete" id="btnConfirmarEliminar">
+                    <i class="fas fa-trash-alt"></i> Sí, eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/perfil.js"></script>
+</body>
+</html>

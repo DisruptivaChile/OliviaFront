@@ -3,11 +3,44 @@ const cors    = require('cors');
 const helmet  = require('helmet');
 const bcrypt  = require('bcrypt');
 require('dotenv').config();
+const rateLimit = require('express-rate-limit');
 
 const db             = require('./config/database');
 const productsRoutes = require('./routes/products');
 const adminRoutes    = require('./routes/admin');
 const authRoutes     = require('./routes/auth');
+
+
+// ========================================
+// RATE LIMITING — Protección contra fuerza
+// bruta y abuso de endpoints sensibles
+// ========================================
+
+// Login y registro: máx 10 intentos por 15 min por IP
+const authLimiter = rateLimit({
+    windowMs:         15 * 60 * 1000,
+    max:              10,
+    standardHeaders:  true,
+    legacyHeaders:    false,
+    message: {
+        success: false,
+        code:    'DEMASIADOS_INTENTOS',
+        message: 'Demasiados intentos. Espera 15 minutos antes de volver a intentarlo.'
+    }
+});
+
+// API general: máx 100 peticiones por minuto por IP
+const apiLimiter = rateLimit({
+    windowMs:        60 * 1000,
+    max:             100,
+    standardHeaders: true,
+    legacyHeaders:   false,
+    message: {
+        success: false,
+        code:    'LIMITE_EXCEDIDO',
+        message: 'Demasiadas peticiones. Intenta en unos segundos.'
+    }
+});
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -145,7 +178,8 @@ app.post('/api/zapatos', async (req, res) => {
 
 app.use('/api/products', productsRoutes);
 app.use('/api/admin',    adminRoutes);
-app.use('/api/auth',     authRoutes);
+app.use('/api/auth',     authLimiter, authRoutes);
+app.use('/api',          apiLimiter);
 
 
 // ========================================

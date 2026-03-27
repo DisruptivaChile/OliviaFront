@@ -1,26 +1,35 @@
 // =============================================
 // backend/routes/auth.js
 // Autenticación de usuarios normales
-// Registro, login, sesión
+// JWT + rutas protegidas con verifyToken
 // =============================================
 
-const express = require('express');
-const router  = express.Router();
-const bcrypt  = require('bcrypt');
-const db      = require('../config/database');
+const express     = require('express');
+const router      = express.Router();
+const bcrypt      = require('bcrypt');
+const jwt         = require('jsonwebtoken');
+const db          = require('../config/database');
+const verifyToken = require('../middleware/verifyToken');
 
 const SALT_ROUNDS = 12;
+
+// Helper para generar JWT
+function generarToken(user) {
+    return jwt.sign(
+        { id: user.id, email: user.email, nombre: user.nombre },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+    );
+}
 
 
 // -----------------------------------------------
 // POST /api/auth/registro
-// Crea un nuevo usuario
 // Body: { nombre, apellido, email, password, genero? }
 // -----------------------------------------------
 router.post('/registro', async (req, res) => {
     const { nombre, apellido, email, password, genero } = req.body;
 
-    // Validaciones básicas del servidor
     if (!nombre || !apellido || !email || !password) {
         return res.status(400).json({
             success: false,
@@ -44,7 +53,6 @@ router.post('/registro', async (req, res) => {
     }
 
     try {
-        // Verificar si el email ya existe
         const existe = await db.query(
             'SELECT id FROM usuarios WHERE email = $1',
             [email.toLowerCase()]
@@ -58,10 +66,8 @@ router.post('/registro', async (req, res) => {
             });
         }
 
-        // Hash de la contraseña
         const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
 
-        // Insertar usuario
         const result = await db.query(
             `INSERT INTO usuarios (nombre, apellido, email, genero, password_hash)
              VALUES ($1, $2, $3, $4, $5)
@@ -75,10 +81,8 @@ router.post('/registro', async (req, res) => {
             ]
         );
 
-        const user = result.rows[0];
-
-        // Token simple de sesión (en producción usar JWT)
-        const token = Buffer.from(`${user.id}:${Date.now()}`).toString('base64');
+        const user  = result.rows[0];
+        const token = generarToken(user);
 
         return res.status(201).json({
             success: true,
@@ -95,17 +99,13 @@ router.post('/registro', async (req, res) => {
 
     } catch (error) {
         console.error('❌ Error en POST /api/auth/registro:', error);
-        return res.status(500).json({
-            success: false,
-            message: 'Error interno del servidor.'
-        });
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
     }
 });
 
 
 // -----------------------------------------------
 // POST /api/auth/login
-// Inicia sesión de usuario normal
 // Body: { email, password }
 // -----------------------------------------------
 router.post('/login', async (req, res) => {
@@ -134,7 +134,6 @@ router.post('/login', async (req, res) => {
 
         const user = result.rows[0];
 
-        // Usuario OAuth sin contraseña
         if (!user.password_hash) {
             return res.status(401).json({
                 success: false,
@@ -153,7 +152,7 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        const token = Buffer.from(`${user.id}:${Date.now()}`).toString('base64');
+        const token = generarToken(user);
 
         return res.json({
             success: true,
@@ -169,10 +168,144 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         console.error('❌ Error en POST /api/auth/login:', error);
-        return res.status(500).json({
-            success: false,
-            message: 'Error interno del servidor.'
-        });
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+
+// -----------------------------------------------
+// GET /api/auth/perfil
+// PROTEGIDA — el id viene del JWT, no de la URL
+// -----------------------------------------------
+router.get('/perfil', verifyToken, async (req, res) => {
+    const id = req.usuario.id;
+
+    try {
+        const result = await db.query(
+            'SELECT id, nombre, apellido, email, genero, fecha_creacion FROM usuarios WHERE id = $1',
+            [id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado.' });
+        }
+
+        return res.json({ success: true, user: result.rows[0] });
+
+    } catch (error) {
+        console.error('❌ Error en GET /api/auth/perfil:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+
+// -----------------------------------------------
+// PUT /api/auth/perfil
+// PROTEGIDA — actualiza nombre y apellido
+// -----------------------------------------------
+router.put('/perfil', verifyToken, async (req, res) => {
+    const id               = req.usuario.id;
+    const { nombre, apellido } = req.body;
+
+    if (!nombre || !apellido) {
+        return res.status(400).json({ success: false, message: 'Nombre y apellido son obligatorios.' });
+    }
+
+    try {
+        await db.query(
+            'UPDATE usuarios SET nombre = $1, apellido = $2 WHERE id = $3',
+            [nombre.trim(), apellido.trim(), id]
+        );
+        return res.json({ success: true, message: 'Perfil actualizado.' });
+
+    } catch (error) {
+        console.error('❌ Error en PUT /api/auth/perfil:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+
+// -----------------------------------------------
+// DELETE /api/auth/perfil
+// PROTEGIDA — elimina la cuenta
+// -----------------------------------------------
+router.delete('/perfil', verifyToken, async (req, res) => {
+    const id = req.usuario.id;
+
+    try {
+        await db.query('DELETE FROM usuarios WHERE id = $1', [id]);
+        return res.json({ success: true, message: 'Cuenta eliminada.' });
+
+    } catch (error) {
+        console.error('❌ Error en DELETE /api/auth/perfil:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+
+// -----------------------------------------------
+// PUT /api/auth/cambiar-password
+// PROTEGIDA — cambia la contraseña
+// -----------------------------------------------
+router.put('/cambiar-password', verifyToken, async (req, res) => {
+    const id = req.usuario.id;
+    const { passwordActual, passwordNueva } = req.body;
+
+    if (!passwordActual || !passwordNueva) {
+        return res.status(400).json({ success: false, message: 'Ambas contraseñas son obligatorias.' });
+    }
+
+    if (passwordNueva.length < 8) {
+        return res.status(400).json({ success: false, message: 'La nueva contraseña debe tener al menos 8 caracteres.' });
+    }
+
+    try {
+        const result = await db.query(
+            'SELECT password_hash FROM usuarios WHERE id = $1', [id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado.' });
+        }
+
+        const { password_hash } = result.rows[0];
+
+        if (!password_hash) {
+            return res.status(400).json({
+                success: false,
+                code:    'SIN_PASSWORD',
+                message: 'Esta cuenta no tiene contraseña porque fue creada con Google o Facebook.'
+            });
+        }
+
+        const match = await bcrypt.compare(passwordActual, password_hash);
+        if (!match) {
+            return res.status(401).json({
+                success: false,
+                code:    'PASSWORD_INCORRECTO',
+                message: 'La contraseña actual es incorrecta.'
+            });
+        }
+
+        const misma = await bcrypt.compare(passwordNueva, password_hash);
+        if (misma) {
+            return res.status(400).json({
+                success: false,
+                message: 'La nueva contraseña debe ser diferente a la actual.'
+            });
+        }
+
+        const nuevoHash = await bcrypt.hash(passwordNueva, SALT_ROUNDS);
+        await db.query(
+            'UPDATE usuarios SET password_hash = $1 WHERE id = $2',
+            [nuevoHash, id]
+        );
+
+        return res.json({ success: true, message: 'Contraseña actualizada correctamente.' });
+
+    } catch (error) {
+        console.error('❌ Error en PUT /api/auth/cambiar-password:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
     }
 });
 
