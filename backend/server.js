@@ -7,6 +7,7 @@ require('dotenv').config();
 const db             = require('./config/database');
 const productsRoutes = require('./routes/products');
 const adminRoutes    = require('./routes/admin');
+const authRoutes     = require('./routes/auth');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -144,6 +145,7 @@ app.post('/api/zapatos', async (req, res) => {
 
 app.use('/api/products', productsRoutes);
 app.use('/api/admin',    adminRoutes);
+app.use('/api/auth',     authRoutes);
 
 
 // ========================================
