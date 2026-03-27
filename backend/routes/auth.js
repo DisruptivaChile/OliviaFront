@@ -309,5 +309,91 @@ router.put('/cambiar-password', verifyToken, async (req, res) => {
     }
 });
 
+// =============================================
+// AGREGAR AL FINAL DE routes/auth.js
+// Justo antes de: module.exports = router;
+// =============================================
+
+const passport = require('../config/passport');
+
+// -----------------------------------------------
+// GET /api/auth/google
+// Inicia el flujo OAuth — redirige a Google
+// -----------------------------------------------
+router.get('/google',
+    passport.authenticate('google', {
+        scope: ['profile', 'email'],
+        session: false   // No usamos sesión de Passport, usamos JWT
+    })
+);
+
+// -----------------------------------------------
+// GET /api/auth/google/callback
+// Google redirige aquí tras autenticación exitosa
+// -----------------------------------------------
+router.get('/google/callback',
+    passport.authenticate('google', {
+        session:      false,
+        failureRedirect: `${process.env.FRONTEND_URL}/frontend/pages/registro.html?error=google_failed`
+    }),
+    (req, res) => {
+        // req.user viene del strategy de Passport
+        const token = generarToken(req.user);
+
+        // Redirigimos al frontend con el token en la URL
+        // El JS del frontend lo captura y lo guarda en localStorage
+        res.redirect(
+            `${process.env.FRONTEND_URL}/index.html?token=${token}&nombre=${encodeURIComponent(req.user.nombre)}&id=${req.user.id}`
+        );
+    }
+);
+
+// -----------------------------------------------
+// POST /api/auth/crear-password
+// PROTEGIDA — Para usuarios OAuth que quieren
+// agregar una contraseña a su cuenta
+// -----------------------------------------------
+router.post('/crear-password', verifyToken, async (req, res) => {
+    const id              = req.usuario.id;
+    const { passwordNueva } = req.body;
+
+    if (!passwordNueva) {
+        return res.status(400).json({ success: false, message: 'La contraseña es obligatoria.' });
+    }
+
+    if (passwordNueva.length < 8) {
+        return res.status(400).json({ success: false, message: 'La contraseña debe tener al menos 8 caracteres.' });
+    }
+
+    try {
+        const result = await db.query(
+            'SELECT password_hash FROM usuarios WHERE id = $1', [id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado.' });
+        }
+
+        if (result.rows[0].password_hash) {
+            return res.status(400).json({
+                success: false,
+                code:    'YA_TIENE_PASSWORD',
+                message: 'Esta cuenta ya tiene contraseña. Usa cambiar-password en su lugar.'
+            });
+        }
+
+        const nuevoHash = await bcrypt.hash(passwordNueva, SALT_ROUNDS);
+        await db.query(
+            'UPDATE usuarios SET password_hash = $1 WHERE id = $2',
+            [nuevoHash, id]
+        );
+
+        return res.json({ success: true, message: 'Contraseña creada correctamente. Ya puedes iniciar sesión con email y contraseña.' });
+
+    } catch (error) {
+        console.error('❌ Error en POST /api/auth/crear-password:', error);
+        return res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
 
 module.exports = router;
