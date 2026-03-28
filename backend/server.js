@@ -13,6 +13,7 @@ const adminRoutes    = require('./routes/admin');
 const authRoutes     = require('./routes/auth');
 const suscripcionesRoutes = require('./routes/suscripciones');
 const feedbackRoutes      = require('./routes/feedback');
+const resenasRoutes = require('./routes/resenas');
 
 
 // ========================================
@@ -201,6 +202,7 @@ app.use('/api/auth',     authLimiter, authRoutes);
 app.use('/api',          apiLimiter);
 app.use('/api/suscripciones', suscripcionesRoutes);
 app.use('/api/feedback',      feedbackRoutes);
+app.use('/api/resenas', resenasRoutes);
 
 
 // ========================================
