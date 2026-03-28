@@ -125,7 +125,7 @@ function templateNewsletter(asunto, contenido, email) {
 // Suscribe un email y envía bienvenida
 // -----------------------------------------------
 router.post('/', async (req, res) => {
-    const { email } = req.body;
+    const { email, nombre, apellido, genero } = req.body;
 
     if (!email) {
         return res.status(400).json({ success: false, message: 'El email es obligatorio.' });
@@ -144,11 +144,16 @@ router.post('/', async (req, res) => {
 
         if (existe.rows.length > 0) {
             if (!existe.rows[0].activo) {
+                // Reactivar y actualizar datos opcionales si vienen
                 await db.query(
-                    'UPDATE suscriptores_email SET activo = true WHERE id = $1',
-                    [existe.rows[0].id]
+                    `UPDATE suscriptores_email
+                     SET activo   = true,
+                         nombre   = COALESCE($2, nombre),
+                         apellido = COALESCE($3, apellido),
+                         genero   = COALESCE($4, genero)
+                     WHERE id = $1`,
+                    [existe.rows[0].id, nombre || null, apellido || null, genero || null]
                 );
-                // Reactivado → enviar bienvenida de vuelta
                 enviarBienvenida(email).catch(err =>
                     console.error('❌ Error enviando bienvenida (reactivado):', err.message)
                 );
@@ -157,12 +162,18 @@ router.post('/', async (req, res) => {
             return res.status(409).json({ success: false, code: 'YA_SUSCRITO', message: 'Este correo ya está suscrito.' });
         }
 
+        // Insertar con campos opcionales
         await db.query(
-            'INSERT INTO suscriptores_email (email) VALUES ($1)',
-            [email.toLowerCase().trim()]
+            `INSERT INTO suscriptores_email (email, nombre, apellido, genero)
+             VALUES ($1, $2, $3, $4)`,
+            [
+                email.toLowerCase().trim(),
+                nombre   ? nombre.trim()   : null,
+                apellido ? apellido.trim() : null,
+                genero   || null
+            ]
         );
 
-        // Enviar bienvenida en segundo plano (no bloquea la respuesta)
         enviarBienvenida(email).catch(err =>
             console.error('❌ Error enviando bienvenida:', err.message)
         );
