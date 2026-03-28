@@ -103,7 +103,10 @@ async function verificarPermiso() {
     var token = sessionStorage.getItem('userToken');
 
     // Sin sesión → botón visible pero al hacer clic pedirá login (manejado en el listener)
-    if (!token) return;
+    if (!token) {
+        btn.style.display = 'none';
+        return;
+    }
 
     try {
         var res  = await fetch(RESENAS_API + '/' + zapatoId + '/puede-resenar', {
