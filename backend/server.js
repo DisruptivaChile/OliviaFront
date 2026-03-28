@@ -11,6 +11,8 @@ const db             = require('./config/database');
 const productsRoutes = require('./routes/products');
 const adminRoutes    = require('./routes/admin');
 const authRoutes     = require('./routes/auth');
+const suscripcionesRoutes = require('./routes/suscripciones');
+const feedbackRoutes      = require('./routes/feedback');
 
 
 // ========================================
@@ -197,6 +199,8 @@ app.use('/api/products', productsRoutes);
 app.use('/api/admin',    adminRoutes);
 app.use('/api/auth',     authLimiter, authRoutes);
 app.use('/api',          apiLimiter);
+app.use('/api/suscripciones', suscripcionesRoutes);
+app.use('/api/feedback',      feedbackRoutes);
 
 
 // ========================================

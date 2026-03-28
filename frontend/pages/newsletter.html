@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter - Olivia Merino</title>
+    <link rel="stylesheet" href="../styles/admin-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/newsletter.css">
+</head>
+<body>
+
+    <script>
+        if (!sessionStorage.getItem('adminToken')) {
+            window.location.href = '../../index.html';
+        }
+    </script>
+
+    <div class="admin-card">
+
+        <a href="admin-panel.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver al panel
+        </a>
+
+        <div class="card-header">
+            <i class="fas fa-envelope-open-text"></i>
+            <h1>Enviar Newsletter</h1>
+        </div>
+
+        <div class="stats-bar">
+            <i class="fas fa-users"></i>
+            <span>Suscriptores activos: <strong id="contadorSuscriptores">cargando...</strong></span>
+        </div>
+
+        <div id="msgBox" class="msg-box"></div>
+
+        <form id="newsletterForm" novalidate>
+
+            <div class="form-group">
+                <label for="asunto">Asunto del correo</label>
+                <input type="text" id="asunto" placeholder="Ej: Nueva colección Primavera 2026 🌸" maxlength="150">
+                <p class="form-hint">Máximo 150 caracteres.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="contenido">Mensaje</label>
+                <textarea id="contenido" placeholder="Escribe aquí el contenido del newsletter..."></textarea>
+                <p class="form-hint">
+                    El correo incluirá automáticamente el logo de Olivia Merino, el pie de página
+                    y el link de cancelación de suscripción.
+                </p>
+            </div>
+
+            <hr class="divider">
+
+            <button type="submit" class="btn-send" id="btnEnviar">
+                <i class="fas fa-paper-plane"></i> &nbsp;Enviar a todos los suscriptores
+            </button>
+
+        </form>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="confirm-overlay" id="confirmOverlay">
+        <div class="confirm-box">
+            <div class="confirm-icon">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+            <p class="confirm-title">¿Confirmar envío?</p>
+            <p class="confirm-text" id="confirmText">
+                Se enviará el newsletter a todos los suscriptores activos.
+            </p>
+            <div class="confirm-actions">
+                <button class="confirm-btn confirm-btn-cancel" id="confirmCancelar">
+                    Cancelar
+                </button>
+                <button class="confirm-btn confirm-btn-ok" id="confirmAceptar">
+                    Sí, enviar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/newsletter.js"></script>
+
+</body>
+</html>

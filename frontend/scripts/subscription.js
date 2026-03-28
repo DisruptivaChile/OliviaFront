@@ -1,95 +1,118 @@
-// ============================================
-// MODAL DE SUSCRIPCIÓN
-// ============================================
+// =============================================
+// frontend/scripts/subscription.js
+// Conecta el input del footer con la BD
+// =============================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del DOM
-    const giftFloatBtn = document.getElementById('giftFloatBtn');
-    const subscriptionModal = document.getElementById('subscriptionModal');
-    const subscriptionModalOverlay = document.getElementById('subscriptionModalOverlay');
-    const closeSubscriptionBtn = document.getElementById('closeSubscriptionBtn');
-    const subscriptionForm = document.getElementById('subscriptionForm');
+const SUSCRIPCION_API = 'http://localhost:3000/api/suscripciones';
 
-    // Abrir modal al hacer clic en el botón de regalo
-    if (giftFloatBtn) {
-        giftFloatBtn.addEventListener('click', () => {
-            subscriptionModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ── Suscripción desde el footer ───────────────────────────────────
+    // Seleccionamos la sección del newsletter en el footer
+    const newsletterForms = document.querySelectorAll('.newsletter-form');
+
+    newsletterForms.forEach(function(form) {
+        const input = form.querySelector('.newsletter-input');
+        const btn   = form.querySelector('.btn-primary');
+
+        if (!input || !btn) return;
+
+        btn.addEventListener('click', async function() {
+            await enviarSuscripcion(input, btn);
         });
-    }
 
-    // Cerrar modal al hacer clic en el botón de cierre
-    if (closeSubscriptionBtn) {
-        closeSubscriptionBtn.addEventListener('click', () => {
-            subscriptionModal.classList.remove('active');
-            document.body.style.overflow = ''; // Restaurar scroll
+        // También al presionar Enter en el input
+        input.addEventListener('keydown', async function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                await enviarSuscripcion(input, btn);
+            }
         });
-    }
-
-    // Cerrar modal al hacer clic en el overlay
-    if (subscriptionModalOverlay) {
-        subscriptionModalOverlay.addEventListener('click', () => {
-            subscriptionModal.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    }
-
-    // Cerrar modal con tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && subscriptionModal.classList.contains('active')) {
-            subscriptionModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
     });
-
-    // Manejo del envío del formulario
-    if (subscriptionForm) {
-        subscriptionForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Obtener valores del formulario
-            const nombres = subscriptionForm.querySelector('input[placeholder="Nombres"]').value;
-            const apellidos = subscriptionForm.querySelector('input[placeholder="Apellidos"]').value;
-            const email = subscriptionForm.querySelector('input[type="email"]').value;
-            const sexo = subscriptionForm.querySelector('.subscription-select').value;
-            const privacyAccepted = subscriptionForm.querySelector('input[type="checkbox"]').checked;
-
-            // Validación básica
-            if (!nombres || !apellidos || !email || !sexo || !privacyAccepted) {
-                alert('Por favor, completa todos los campos y acepta las políticas de privacidad.');
-                return;
-            }
-
-            // Validar formato de email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Por favor, ingresa un correo electrónico válido.');
-                return;
-            }
-
-            // Aquí irían las acciones de envío (API, etc.)
-            console.log('Formulario de suscripción enviado:', {
-                nombres,
-                apellidos,
-                email,
-                sexo,
-                privacyAccepted
-            });
-
-            // Mostrar mensaje de éxito
-            alert('¡Gracias por suscribirte! Recibirás tu código de descuento en tu correo.');
-
-            // Limpiar formulario
-            subscriptionForm.reset();
-
-            // Cerrar modal
-            subscriptionModal.classList.remove('active');
-            document.body.style.overflow = '';
-
-            // Opcional: redirigir a ofertas después de un delay
-            setTimeout(() => {
-                window.location.href = 'frontend/pages/ofertas.html';
-            }, 1500);
-        });
-    }
 });
+
+
+async function enviarSuscripcion(input, btn) {
+    const email = input.value.trim();
+
+    // Limpiar estado anterior
+    limpiarMensajeNewsletter(input);
+
+    // Validación básica en frontend
+    if (!email) {
+        mostrarMensajeNewsletter(input, 'Por favor ingresa tu correo electrónico.', 'error');
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        mostrarMensajeNewsletter(input, 'Ingresa un correo electrónico válido.', 'error');
+        return;
+    }
+
+    // Estado de carga
+    const textoOriginal = btn.textContent;
+    btn.disabled    = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+        const res  = await fetch(SUSCRIPCION_API, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            mostrarMensajeNewsletter(input, data.message, 'success');
+            input.value = '';
+        } else if (data.code === 'YA_SUSCRITO') {
+            mostrarMensajeNewsletter(input, 'Este correo ya está suscrito. ¡Gracias!', 'info');
+        } else {
+            mostrarMensajeNewsletter(input, data.message || 'Ocurrió un error. Intenta de nuevo.', 'error');
+        }
+
+    } catch (err) {
+        console.error('❌ Error al suscribirse:', err);
+        mostrarMensajeNewsletter(input, 'No se pudo conectar con el servidor.', 'error');
+    } finally {
+        btn.disabled    = false;
+        btn.textContent = textoOriginal;
+    }
+}
+
+
+// ── Helpers de mensajes ───────────────────────────────────────────────
+
+function mostrarMensajeNewsletter(input, mensaje, tipo) {
+    limpiarMensajeNewsletter(input);
+
+    const colores = {
+        success: { bg: '#edf7f1 !important', border: '#b7dfc8 !important', text: '#2d6a4f !important' },
+        error:   { bg: '#fdecea !important', border: '#f5c6c2 !important', text: '#c0392b !important' },
+        info:    { bg: '#fef9ec !important', border: '#f5e4a0 !important', text: '#856404 !important' }
+    };
+
+    const c = colores[tipo] || colores.info;
+
+    const msg = document.createElement('p');
+    msg.className = 'newsletter-msg';
+    msg.textContent = mensaje;
+    msg.style.cssText =
+        'margin:8px 0 0;font-size:0.8rem;padding:0.5rem 0.75rem;border-radius:4px;' +
+        'border:1px solid ' + c.border + ';' +
+        'background:' + c.bg + ';' +
+        'color:' + c.text + ';' +
+        'line-height:1.4;';
+
+    input.parentElement.appendChild(msg);
+
+    // Auto-eliminar después de 5 segundos
+    setTimeout(function() { msg.remove(); }, 5000);
+}
+
+function limpiarMensajeNewsletter(input) {
+    var msg = input.parentElement.querySelector('.newsletter-msg');
+    if (msg) msg.remove();
+}
