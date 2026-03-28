@@ -1,12 +1,11 @@
 // =============================================
 // frontend/scripts/oauth.js
-// Maneja el flujo OAuth Google en el frontend
+// Maneja el flujo OAuth Google + Facebook
 // =============================================
 
 const OAUTH_API_URL = 'http://localhost:3000/api';
 
-// ── 1. Capturar token OAuth al volver de Google ───────────────────────
-// Google redirige a: index.html?token=xxx&nombre=yyy&id=zzz
+// ── 1. Capturar token OAuth al volver de Google o Facebook ────────────
 (function capturarTokenOAuth() {
     const params = new URLSearchParams(window.location.search);
     const token  = params.get('token');
@@ -15,21 +14,23 @@ const OAUTH_API_URL = 'http://localhost:3000/api';
     const error  = params.get('error');
 
     if (error) {
-        console.warn('⚠️ OAuth falló:', error);
         limpiarURLParams();
-        mostrarToastOAuth('No se pudo iniciar sesión con Google. Intenta de nuevo.', 'error');
+        mostrarToastOAuth(
+            error === 'facebook_failed'
+                ? 'No se pudo iniciar sesión con Facebook. Intenta de nuevo.'
+                : 'No se pudo iniciar sesión con Google. Intenta de nuevo.',
+            'error'
+        );
         return;
     }
 
     if (token && nombre && id) {
-        // Guardar con el mismo formato que usa index.js
         sessionStorage.setItem('userToken',  token);
         sessionStorage.setItem('userNombre', decodeURIComponent(nombre));
         sessionStorage.setItem('userId',     id);
 
         limpiarURLParams();
 
-        // Actualizar navbar si la función existe (definida en index.js)
         if (typeof actualizarNavbarUsuario === 'function') {
             actualizarNavbarUsuario(decodeURIComponent(nombre));
         }
@@ -39,12 +40,20 @@ const OAUTH_API_URL = 'http://localhost:3000/api';
 })();
 
 
-// ── 2. Conectar botón Google al flujo OAuth ───────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-    const btnGoogle = document.querySelector('.btn-google');
+// ── 2. Conectar botones Google y Facebook al flujo OAuth ──────────────
+document.addEventListener('DOMContentLoaded', function() {
+    var btnGoogle   = document.querySelector('.btn-google');
+    var btnFacebook = document.querySelector('.btn-facebook');
+
     if (btnGoogle) {
-        btnGoogle.addEventListener('click', () => {
+        btnGoogle.addEventListener('click', function() {
             window.location.href = OAUTH_API_URL + '/auth/google';
+        });
+    }
+
+    if (btnFacebook) {
+        btnFacebook.addEventListener('click', function() {
+            window.location.href = OAUTH_API_URL + '/auth/facebook';
         });
     }
 });
@@ -57,7 +66,7 @@ function limpiarURLParams() {
 
 function mostrarToastOAuth(mensaje, tipo) {
     tipo = tipo || 'success';
-    const toast = document.createElement('div');
+    var toast = document.createElement('div');
     toast.textContent = mensaje;
     toast.style.cssText =
         'position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);' +

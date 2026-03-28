@@ -396,4 +396,192 @@ router.post('/crear-password', verifyToken, async (req, res) => {
     }
 });
 
+// =============================================
+// AGREGAR AL FINAL DE routes/auth.js
+// Debajo de las rutas de Google ya existentes
+// Justo antes de: module.exports = router;
+// =============================================
+
+// -----------------------------------------------
+// GET /api/auth/facebook
+// Inicia el flujo OAuth — redirige a Facebook
+// -----------------------------------------------
+router.get('/facebook',
+    passport.authenticate('facebook', {
+        scope:   ['email'],   // Pedir email explícitamente
+        session: false
+    })
+);
+
+// -----------------------------------------------
+// GET /api/auth/facebook/callback
+// Facebook redirige aquí tras autenticación
+// -----------------------------------------------
+router.get('/facebook/callback',
+    passport.authenticate('facebook', {
+        session:         false,
+        failureRedirect: `${process.env.FRONTEND_URL}/frontend/pages/registro.html?error=facebook_failed`
+    }),
+    (req, res) => {
+        const token = generarToken(req.user);
+        res.redirect(
+            `${process.env.FRONTEND_URL}/index.html?token=${token}&nombre=${encodeURIComponent(req.user.nombre)}&id=${req.user.id}`
+        );
+    }
+);
+
+// =============================================
+// AGREGAR AL FINAL DE routes/auth.js
+// Antes de: module.exports = router;
+// =============================================
+
+const crypto                   = require('crypto');
+const { enviarEmailResetPassword } = require('../config/mailer');
+
+
+// -----------------------------------------------
+// POST /api/auth/forgot-password
+// Body: { email }
+// Genera token y envía email de recuperación
+// -----------------------------------------------
+router.post('/forgot-password', async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({
+            success: false,
+            message: 'El email es obligatorio.'
+        });
+    }
+
+    try {
+        // Buscar usuario — respuesta genérica siempre para no revelar
+        // si el email existe o no (seguridad)
+        const result = await db.query(
+            'SELECT id, nombre, email FROM usuarios WHERE email = $1',
+            [email.toLowerCase().trim()]
+        );
+
+        // Respuesta genérica aunque no exista el usuario
+        if (result.rows.length === 0) {
+            return res.json({
+                success: true,
+                message: 'Si ese correo está registrado, recibirás un enlace en breve.'
+            });
+        }
+
+        const usuario = result.rows[0];
+
+        // Invalidar tokens anteriores del usuario
+        await db.query(
+            'UPDATE password_reset_tokens SET usado = true WHERE usuario_id = $1 AND usado = false',
+            [usuario.id]
+        );
+
+        // Generar token seguro
+        const token    = crypto.randomBytes(32).toString('hex');
+        const expiraEn = new Date(Date.now() + 30 * 60 * 1000); // 30 minutos
+
+        await db.query(
+            `INSERT INTO password_reset_tokens (usuario_id, token, expira_en)
+             VALUES ($1, $2, $3)`,
+            [usuario.id, token, expiraEn]
+        );
+
+        // Construir URL de reset
+        const resetUrl = `${process.env.FRONTEND_URL}/frontend/pages/reset-password.html?token=${token}`;
+
+        // Enviar email
+        await enviarEmailResetPassword(usuario.email, usuario.nombre, resetUrl);
+
+        return res.json({
+            success: true,
+            message: 'Si ese correo está registrado, recibirás un enlace en breve.'
+        });
+
+    } catch (error) {
+        console.error('❌ Error en POST /api/auth/forgot-password:', error);
+        return res.status(500).json({
+            success: false,
+            message: 'Error interno del servidor.'
+        });
+    }
+});
+
+
+// -----------------------------------------------
+// POST /api/auth/reset-password
+// Body: { token, passwordNueva }
+// Valida el token y actualiza la contraseña
+// -----------------------------------------------
+router.post('/reset-password', async (req, res) => {
+    const { token, passwordNueva } = req.body;
+
+    if (!token || !passwordNueva) {
+        return res.status(400).json({
+            success: false,
+            message: 'Token y nueva contraseña son obligatorios.'
+        });
+    }
+
+    if (passwordNueva.length < 8) {
+        return res.status(400).json({
+            success: false,
+            message: 'La contraseña debe tener al menos 8 caracteres.'
+        });
+    }
+
+    try {
+        // Buscar token válido, no usado y no expirado
+        const result = await db.query(
+            `SELECT prt.id, prt.usuario_id, u.email, u.nombre
+             FROM password_reset_tokens prt
+             JOIN usuarios u ON u.id = prt.usuario_id
+             WHERE prt.token = $1
+               AND prt.usado = false
+               AND prt.expira_en > NOW()`,
+            [token]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(400).json({
+                success: false,
+                code:    'TOKEN_INVALIDO',
+                message: 'El enlace no es válido o ya expiró. Solicita uno nuevo.'
+            });
+        }
+
+        const { id: tokenId, usuario_id, nombre } = result.rows[0];
+
+        // Hashear nueva contraseña
+        const nuevoHash = await bcrypt.hash(passwordNueva, SALT_ROUNDS);
+
+        // Actualizar contraseña
+        await db.query(
+            'UPDATE usuarios SET password_hash = $1 WHERE id = $2',
+            [nuevoHash, usuario_id]
+        );
+
+        // Marcar token como usado
+        await db.query(
+            'UPDATE password_reset_tokens SET usado = true WHERE id = $1',
+            [tokenId]
+        );
+
+        console.log(`✅ Contraseña reseteada para usuario ${usuario_id} (${nombre})`);
+
+        return res.json({
+            success: true,
+            message: 'Contraseña actualizada correctamente. Ya puedes iniciar sesión.'
+        });
+
+    } catch (error) {
+        console.error('❌ Error en POST /api/auth/reset-password:', error);
+        return res.status(500).json({
+            success: false,
+            message: 'Error interno del servidor.'
+        });
+    }
+});
+
 module.exports = router;
