@@ -92,7 +92,7 @@ function updateCartUI() {
         <div class="cart-item">
             <div class="cart-item-details">
                 <div class="cart-item-name">${item.nombre}</div>
-                <div class="cart-item-price">€${parseFloat(item.precio).toFixed(2)}</div>
+                <div class="cart-item-price">$${parseFloat(item.precio).toLocaleString('es-CL')}</div>
                 <div class="cart-item-meta">Talla: ${item.talla}</div>
                 <div class="cart-item-quantity">
                     <button class="quantity-btn" onclick="updateQuantity(${item.id}, '${item.talla}', -1)">−</button>
@@ -107,7 +107,7 @@ function updateCartUI() {
     `).join('');
 
     const total = cart.reduce((sum, item) => sum + (item.precio * item.quantity), 0);
-    if (totalAmount) totalAmount.textContent = `€${total.toFixed(2)}`;
+    if (totalAmount) totalAmount.textContent = `$${total.toLocaleString('es-CL')}`;
 }
 
 function openCart() {

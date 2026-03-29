@@ -12,8 +12,9 @@
 
 const API_CARRUSEL = 'http://localhost:3000';
 
-// Nombre exacto de la temporada a mostrar
+// Nombre exacto de la temporada a mostrar (prioridad)
 const TEMPORADA_NOMBRE = 'Verano 2026';
+const TEMPORADA_FALLBACK = 'Primavera 2026';
 
 // -----------------------------------------------
 // GENERAR HTML DE UNA TARJETA DEL CARRUSEL
@@ -68,6 +69,8 @@ async function cargarCarruselTemporada() {
 
         const temporada = dataFilters.temporadas.find(
             t => t.nombre.toLowerCase() === TEMPORADA_NOMBRE.toLowerCase()
+        ) || dataFilters.temporadas.find(
+            t => t.nombre.toLowerCase() === TEMPORADA_FALLBACK.toLowerCase()
         );
 
         if (!temporada) {
@@ -75,16 +78,15 @@ async function cargarCarruselTemporada() {
             return;
         }
 
-        // 2. Obtener productos de esa temporada
+        // 2. Obtener productos de esa temporada (todos, incluyendo a pedido)
         const params = new URLSearchParams({
-            temporada_id: temporada.id,
-            es_a_pedido:  false
+            temporada_id: temporada.id
         });
 
         const res  = await fetch(`${API_CARRUSEL}/api/products?${params}`);
         const data = await res.json();
 
-        if (!data.success || data.products.length === 0) {
+        if (!data.success || !data.data || data.data.length === 0) {
             // Si no hay productos, ocultar la sección completa
             const seccion = document.querySelector('.nueva-temporada-section');
             if (seccion) seccion.style.display = 'none';
@@ -92,7 +94,7 @@ async function cargarCarruselTemporada() {
         }
 
         // 3. Reemplazar contenido estático del track con los productos de la BD
-        track.innerHTML = data.products.map(renderTarjetaCarrusel).join('');
+        track.innerHTML = data.data.map(renderTarjetaCarrusel).join('');
 
     } catch (error) {
         console.error('❌ Error al cargar carrusel de temporada:', error);

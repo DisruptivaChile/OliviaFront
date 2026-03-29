@@ -16,6 +16,8 @@ class Product {
                     z.id,
                     z.nombre,
                     z.precio,
+                    z.precio_original,
+                    z.en_oferta,
                     z.descripcion,
                     z.es_a_pedido,
                     z.publicado,

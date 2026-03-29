@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de Pago — Olivia Merino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #faf9f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #e8e0d8;
+            max-width: 520px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            text-align: center;
+        }
+        .icon { font-size: 4rem; margin-bottom: 1.5rem; }
+        .icon.success { color: #27ae60; }
+        .icon.pending { color: #f39c12; }
+        .icon.error   { color: #c0392b; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1rem; color: #2c2c2c; }
+        p  { color: #666; line-height: 1.6; margin-bottom: 1rem; }
+        .orden-codigo { font-size: 1.2rem; font-weight: 600; color: #2c2c2c; letter-spacing: 0.1em; background: #f5f0ea; padding: 0.75rem 1.5rem; display: inline-block; margin: 1rem 0; }
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.9rem 2.5rem;
+            background: #2c2c2c;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #555; }
+        .details { margin-top: 1.5rem; text-align: left; border-top: 1px solid #e8e0d8; padding-top: 1.5rem; }
+        .details h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 1rem; color: #2c2c2c; }
+        .detail-row { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #f0ebe4; font-size: 0.9rem; color: #555; }
+        .detail-row:last-child { border-bottom: none; }
+        .detail-row strong { color: #2c2c2c; }
+    </style>
+</head>
+<body>
+    <div class="card" id="resultCard">
+        <div class="icon" id="resultIcon"><i class="fas fa-circle-notch fa-spin"></i></div>
+        <h1 id="resultTitle">Verificando pago...</h1>
+        <p id="resultDesc">Por favor espera un momento.</p>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000';
+
+        async function mostrarResultado() {
+            const params   = new URLSearchParams(window.location.search);
+            const estado   = params.get('estado');
+            const codigo   = params.get('orden');
+            const card     = document.getElementById('resultCard');
+            const icon     = document.getElementById('resultIcon');
+            const title    = document.getElementById('resultTitle');
+            const desc     = document.getElementById('resultDesc');
+
+            const configs = {
+                exitoso: {
+                    iconClass: 'fas fa-check-circle success',
+                    titulo:    '¡Pago exitoso!',
+                    desc:      'Tu pedido ha sido confirmado y está en proceso. Recibirás un correo con los detalles.',
+                },
+                pendiente: {
+                    iconClass: 'fas fa-clock pending',
+                    titulo:    'Pago en proceso',
+                    desc:      'Tu pago está siendo verificado. Te notificaremos por email cuando se confirme.',
+                },
+                fallido: {
+                    iconClass: 'fas fa-times-circle error',
+                    titulo:    'Pago no completado',
+                    desc:      'No pudimos procesar tu pago. No se realizó ningún cobro. Puedes intentarlo nuevamente.',
+                },
+            };
+
+            const cfg = configs[estado] || configs['fallido'];
+            icon.innerHTML  = `<i class="${cfg.iconClass}"></i>`;
+            title.textContent = cfg.titulo;
+            desc.textContent  = cfg.desc;
+
+            // Mostrar número de orden y detalles
+            if (codigo) {
+                const ordenDiv = document.createElement('div');
+                ordenDiv.innerHTML = `<p style="margin-top:1rem;color:#888;font-size:0.85rem;">Número de orden</p>
+                    <div class="orden-codigo">${codigo}</div>`;
+                desc.after(ordenDiv);
+
+                // Cargar detalles de la orden desde el API
+                try {
+                    const resp = await fetch(`${API_URL}/api/orders/${codigo}`);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        if (data.success && data.orden) {
+                            const o = data.orden;
+                            const detailsEl = document.createElement('div');
+                            detailsEl.className = 'details';
+                            detailsEl.innerHTML = `
+                                <h3>Detalle del pedido</h3>
+                                ${o.items.map(i => `
+                                    <div class="detail-row">
+                                        <span>${i.nombre} — Talla ${i.talla} × ${i.cantidad}</span>
+                                        <strong>$${parseFloat(i.subtotal).toLocaleString('es-CL')}</strong>
+                                    </div>`).join('')}
+                                <div class="detail-row" style="margin-top:0.5rem;font-size:1rem;">
+                                    <strong>Total</strong>
+                                    <strong>$${parseFloat(o.total).toLocaleString('es-CL')}</strong>
+                                </div>
+                            `;
+                            card.appendChild(detailsEl);
+                        }
+                    }
+                } catch(_) { /* silencioso */ }
+            }
+
+            // Botón volver
+            const btn = document.createElement('a');
+            btn.href      = 'index.html';
+            btn.className = 'btn';
+            btn.textContent = estado === 'fallido' ? 'Volver a la tienda' : 'Seguir comprando';
+            card.appendChild(btn);
+
+            // Limpiar carrito si fue exitoso
+            if (estado === 'exitoso') {
+                localStorage.removeItem('oliviaCart');
+            }
+        }
+
+        mostrarResultado();
+    </script>
+</body>
+</html>

@@ -9,6 +9,8 @@ const db             = require('./config/database');
 const productsRoutes = require('./routes/products');
 const adminRoutes    = require('./routes/admin');
 const authRoutes     = require('./routes/auth');
+const ordersRoutes   = require('./routes/orders');
+const clientesRoutes = require('./routes/clientes');
 
 
 // ========================================
@@ -179,6 +181,8 @@ app.post('/api/zapatos', async (req, res) => {
 app.use('/api/products', productsRoutes);
 app.use('/api/admin',    adminRoutes);
 app.use('/api/auth',     authLimiter, authRoutes);
+app.use('/api/orders',   ordersRoutes);
+app.use('/api/clientes', clientesRoutes);
 app.use('/api',          apiLimiter);
 
 
