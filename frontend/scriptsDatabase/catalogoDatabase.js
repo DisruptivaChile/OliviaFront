@@ -38,7 +38,10 @@ const filtros = {
 function renderTarjeta(producto) {
     const imagen    = producto.imagen_principal
                         || 'https://via.placeholder.com/400x500?text=Sin+imagen';
-    const precio    = `€${parseFloat(producto.precio).toFixed(2)}`;
+    const precio    = `$${parseFloat(producto.precio).toLocaleString('es-CL')}`;
+    const precioOriginalHTML = producto.en_oferta && producto.precio_original
+        ? `<span class="product-price-original">$${parseFloat(producto.precio_original).toLocaleString('es-CL')}</span>`
+        : '';
     const tipo      = producto.tipo      || '';
     const temporada = producto.temporada || '';
 
@@ -59,6 +62,9 @@ function renderTarjeta(producto) {
                  style="background-image:url('${imagen}');
                         background-size:cover;
                         background-position:center;">
+                ${producto.en_oferta
+                    ? `<span class="product-badge badge-oferta">OFERTA</span>`
+                    : ''}
                 ${producto.es_a_pedido
                     ? `<span class="product-badge">A PEDIDO</span>`
                     : ''}
@@ -66,7 +72,7 @@ function renderTarjeta(producto) {
             <div class="product-info">
                 <span class="product-category">${tipo}${temporada ? ' · ' + temporada : ''}</span>
                 <h3 class="product-name">${producto.nombre}</h3>
-                <p class="product-price">${precio}</p>
+                <p class="product-price">${precioOriginalHTML}${precio}</p>
                 <div class="product-sizes">${tallasHTML}</div>
                 <button
                     class="add-to-cart-btn"
@@ -201,12 +207,12 @@ async function cargarProductos() {
         const grid = document.getElementById('productsGrid');
         if (!grid) return;
 
-        if (!data.success || data.products.length === 0) {
+        if (!data.success || !data.data || data.data.length === 0) {
             mostrarVacio();
             return;
         }
 
-        grid.innerHTML = data.products.map(renderTarjeta).join('');
+        grid.innerHTML = data.data.map(renderTarjeta).join('');
 
     } catch (err) {
         console.error('❌ Error al cargar productos:', err);

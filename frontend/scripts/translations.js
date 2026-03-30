@@ -54,7 +54,7 @@ const translations = {
         historia_nace: "NACE OLIVIA MERINO",
         historia_nace_desc: "La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.",
         historia_conoce: "CONOCE MÁS",
-        marca_descripcion: "Olivia Merino representa calidad, elegancia y estilo único en cada artículo del catálogo.",
+        marca_descripcion: "Los zapatos que cuentan historias, eso intentamos hacer aquí. Son relatos a través de las canciones que a mí y quizá muchas de ustedes han acompañado en distintos momentos de su vida, año o día.",
         marca_diseno: "Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle,",
         marca_experiencia: "creando experiencias que trascienden el tiempo.",
         //oferta_descripcion: "Aprovecha nuestras ofertas exclusivas sin comprometer",

@@ -80,7 +80,7 @@ router.get('/', async (req, res) => {
         return res.json({
             success: true,
             count:   products.length,
-            products
+            data:    products
         });
 
     } catch (error) {

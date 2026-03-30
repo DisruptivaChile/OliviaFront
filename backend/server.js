@@ -14,6 +14,8 @@ const authRoutes     = require('./routes/auth');
 const suscripcionesRoutes = require('./routes/suscripciones');
 const feedbackRoutes      = require('./routes/feedback');
 const resenasRoutes = require('./routes/resenas');
+const ordersRoutes   = require('./routes/orders');
+const clientesRoutes = require('./routes/clientes');
 
 
 // ========================================
@@ -199,6 +201,8 @@ app.post('/api/zapatos', async (req, res) => {
 app.use('/api/products', productsRoutes);
 app.use('/api/admin',    adminRoutes);
 app.use('/api/auth',     authLimiter, authRoutes);
+app.use('/api/orders',   ordersRoutes);
+app.use('/api/clientes', clientesRoutes);
 app.use('/api',          apiLimiter);
 app.use('/api/suscripciones', suscripcionesRoutes);
 app.use('/api/feedback',      feedbackRoutes);

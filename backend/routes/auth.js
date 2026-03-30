@@ -68,13 +68,24 @@ router.post('/registro', async (req, res) => {
 
         const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
 
+        // Buscar si ya existía como cliente histórico (Jumpseller)
+        const historial = await db.query(
+            'SELECT nombre, apellido FROM clientes_historial WHERE email = $1',
+            [email.toLowerCase().trim()]
+        );
+        const esClienteRecurrente = historial.rows.length > 0;
+
+        // Usar nombre del historial solo si el usuario no proporcionó uno propio
+        const nombreFinal   = nombre.trim()   || (esClienteRecurrente ? historial.rows[0].nombre   : '');
+        const apellidoFinal = apellido.trim()  || (esClienteRecurrente ? historial.rows[0].apellido : '');
+
         const result = await db.query(
             `INSERT INTO usuarios (nombre, apellido, email, genero, password_hash)
              VALUES ($1, $2, $3, $4, $5)
              RETURNING id, nombre, apellido, email, genero, fecha_creacion`,
             [
-                nombre.trim(),
-                apellido.trim(),
+                nombreFinal,
+                apellidoFinal,
                 email.toLowerCase().trim(),
                 genero || null,
                 passwordHash
@@ -85,8 +96,11 @@ router.post('/registro', async (req, res) => {
         const token = generarToken(user);
 
         return res.status(201).json({
-            success: true,
-            message: 'Cuenta creada exitosamente.',
+            success:             true,
+            message:             esClienteRecurrente
+                                   ? '¡Bienvenida de vuelta! Cuenta creada exitosamente.'
+                                   : 'Cuenta creada exitosamente.',
+            cliente_recurrente:  esClienteRecurrente,
             token,
             user: {
                 id:       user.id,
