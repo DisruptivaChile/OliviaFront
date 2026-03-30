@@ -13,7 +13,7 @@
 const API_CARRUSEL = 'http://localhost:3000';
 
 // Nombre exacto de la temporada a mostrar (prioridad)
-const TEMPORADA_NOMBRE = 'Verano 2026';
+const TEMPORADA_NOMBRE = 'Primavera 2026';
 const TEMPORADA_FALLBACK = 'Primavera 2026';
 
 // -----------------------------------------------
@@ -35,7 +35,9 @@ function renderTarjetaCarrusel(producto) {
                 ${producto.es_a_pedido ? '<span class="sale-badge">A PEDIDO</span>' : ''}
                 <div class="product-panel-image"
                      style="background-image: url('${imagen}');"
-                     data-images="${imagen}"
+                     data-images="${producto.imagenes && producto.imagenes.length > 0 
+                        ? producto.imagenes.map(img => img.url).join(',') 
+                        : imagen}"
                      data-index="0">
                 </div>
                 <div class="product-internal-arrows">

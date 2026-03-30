@@ -200,7 +200,10 @@ app.post('/api/zapatos', async (req, res) => {
 
 app.use('/api/products', productsRoutes);
 app.use('/api/admin',    adminRoutes);
-app.use('/api/auth',     authLimiter, authRoutes);
+// El limiter solo aplica a login y registro, no a OAuth
+app.use('/api/auth/login',    authLimiter);
+app.use('/api/auth/registro', authLimiter);
+app.use('/api/auth',          authRoutes);
 app.use('/api/orders',   ordersRoutes);
 app.use('/api/clientes', clientesRoutes);
 app.use('/api',          apiLimiter);
