@@ -1,18 +1,13 @@
 // =============================================
 // backend/routes/orders.js
-// Gestión de órdenes + integración MercadoPago
+// Gestión de órdenes + integración Flow.cl
 // =============================================
 
 const express    = require('express');
 const router     = express.Router();
-const { MercadoPagoConfig, Preference, Payment } = require('mercadopago');
+const flow       = require('../config/flow');
 const db         = require('../config/database');
 const verifyToken = require('../middleware/verifyToken');
-
-// Inicializar MercadoPago
-const mpClient = new MercadoPagoConfig({
-    accessToken: process.env.MP_ACCESS_TOKEN || '',
-});
 
 // =============================================
 // Generar código único de orden
@@ -27,7 +22,7 @@ function generarCodigo() {
 }
 
 // =============================================
-// POST /api/orders — Crear orden + preferencia MP
+// POST /api/orders — Crear orden + pago Flow.cl
 // =============================================
 router.post('/', async (req, res) => {
     const {
@@ -128,50 +123,34 @@ router.post('/', async (req, res) => {
 
         await client.query('COMMIT');
 
-        // Crear preferencia MercadoPago
-        const frontendUrl = process.env.FRONTEND_URL || 'http://127.0.0.1:5500';
-        const preference = new Preference(mpClient);
+        // Crear pago en Flow.cl
+        const frontendUrl  = process.env.FRONTEND_URL || 'http://127.0.0.1:5500';
+        const backendUrl   = process.env.BACKEND_URL  || 'http://localhost:3000';
 
-        const mpItems = items.map(i => ({
-            id:          String(i.zapato_id),
-            title:       `${i.nombre} - Talla ${i.talla}`,
-            quantity:    parseInt(i.cantidad),
-            unit_price:  parseFloat(i.precio),
-            currency_id: 'CLP',
-        }));
+        const subject = items.length === 1
+            ? `${items[0].nombre} - Talla ${items[0].talla}`
+            : `Pedido Olivia Merino (${items.length} productos)`;
 
-        const prefData = await preference.create({
-            body: {
-                items: mpItems,
-                payer: {
-                    name:  nombre_cliente,
-                    email: email_cliente,
-                    phone: telefono_cliente ? { number: telefono_cliente } : undefined,
-                },
-                external_reference: orden.codigo,
-                back_urls: {
-                    success: `${frontendUrl}/checkout-resultado.html?estado=exitoso&orden=${orden.codigo}`,
-                    failure: `${frontendUrl}/checkout-resultado.html?estado=fallido&orden=${orden.codigo}`,
-                    pending: `${frontendUrl}/checkout-resultado.html?estado=pendiente&orden=${orden.codigo}`,
-                },
-                auto_return:        'approved',
-                statement_descriptor: 'OLIVIA MERINO',
-                notification_url:   `${process.env.BACKEND_URL || 'http://localhost:3000'}/api/orders/webhook`,
-            }
+        const flowResult = await flow.createPayment({
+            commerceOrder:   orden.codigo,
+            subject,
+            amount:          total,
+            email:           email_cliente,
+            urlConfirmation: `${backendUrl}/api/orders/flow-confirmation`,
+            urlReturn:       `${frontendUrl}/checkout-resultado.html?orden=${orden.codigo}`,
         });
 
-        // Guardar preference_id en la orden
+        // Guardar token de Flow en la orden
         await db.query(
-            'UPDATE ordenes SET mp_preference_id = $1 WHERE id = $2',
-            [prefData.id, orden.id]
+            'UPDATE ordenes SET flow_token = $1 WHERE id = $2',
+            [flowResult.token, orden.id]
         );
 
         return res.status(201).json({
-            success:       true,
-            orden_codigo:  orden.codigo,
-            orden_id:      orden.id,
-            mp_init_point: prefData.init_point,  // URL de pago MP
-            sandbox_url:   prefData.sandbox_init_point,
+            success:      true,
+            orden_codigo: orden.codigo,
+            orden_id:     orden.id,
+            flow_url:     flowResult.redirectUrl,
         });
 
     } catch (error) {
@@ -184,6 +163,64 @@ router.post('/', async (req, res) => {
 });
 
 // =============================================
+// POST /api/orders/flow-confirmation — Webhook Flow
+// Flow llama aquí para notificar el resultado del pago
+// =============================================
+router.post('/flow-confirmation', async (req, res) => {
+    const { token } = req.body;
+    if (!token) return res.sendStatus(400);
+
+    try {
+        const payInfo = await flow.getPaymentStatus(token);
+        // payInfo.status: 1=pendiente, 2=pagado, 3=rechazado, 4=anulado
+        const nuevoEstado = flow.mapFlowStatus(payInfo.status);
+        const comercio    = payInfo.commerceOrder || '';
+
+        await db.query(
+            `UPDATE ordenes
+             SET estado = $1, flow_status = $2, actualizado_en = NOW()
+             WHERE codigo = $3`,
+            [nuevoEstado, String(payInfo.status), comercio]
+        );
+
+        return res.sendStatus(200);
+    } catch (error) {
+        console.error('❌ Error en webhook Flow:', error);
+        return res.sendStatus(500);
+    }
+});
+
+// =============================================
+// GET /api/orders/flow-return?token= — Estado para la página de resultado
+// =============================================
+router.get('/flow-return', async (req, res) => {
+    const { token } = req.query;
+    if (!token) return res.status(400).json({ success: false, message: 'Token requerido' });
+
+    try {
+        const payInfo = await flow.getPaymentStatus(token);
+        const estado  = flow.mapFlowStatus(payInfo.status);
+
+        // Actualizar DB con estado final
+        await db.query(
+            `UPDATE ordenes SET estado = $1, flow_status = $2, actualizado_en = NOW()
+             WHERE flow_token = $3`,
+            [estado, String(payInfo.status), token]
+        );
+
+        return res.json({
+            success: true,
+            estado,
+            flow_status: payInfo.status,
+            orden_codigo: payInfo.commerceOrder || null,
+        });
+    } catch (error) {
+        console.error('❌ Error al verificar estado Flow:', error);
+        return res.status(500).json({ success: false, message: 'Error al verificar pago' });
+    }
+});
+
+// =============================================
 // GET /api/orders/:codigo — Estado de una orden
 // =============================================
 router.get('/:codigo', async (req, res) => {
@@ -192,7 +229,7 @@ router.get('/:codigo', async (req, res) => {
     try {
         const result = await db.query(
             `SELECT o.id, o.codigo, o.estado, o.total, o.nombre_cliente, o.email_cliente,
-                    o.direccion, o.ciudad, o.region, o.pais, o.creado_en, o.mp_status,
+                    o.direccion, o.ciudad, o.region, o.pais, o.creado_en, o.flow_status,
                     json_agg(json_build_object(
                         'nombre',     z.nombre,
                         'talla',      oi.talla,
@@ -241,39 +278,7 @@ router.get('/mis-ordenes/historial', verifyToken, async (req, res) => {
     }
 });
 
-// =============================================
-// POST /api/orders/webhook — Notificaciones MP
-// =============================================
-router.post('/webhook', async (req, res) => {
-    const { type, data } = req.body;
 
-    if (type !== 'payment') {
-        return res.sendStatus(200);
-    }
-
-    try {
-        const payment = new Payment(mpClient);
-        const paymentInfo = await payment.get({ id: data.id });
-
-        const { external_reference, status, id: payment_id } = paymentInfo;
-
-        let nuevoEstado = 'pendiente';
-        if (status === 'approved')  nuevoEstado = 'pagado';
-        if (status === 'rejected')  nuevoEstado = 'cancelado';
-
-        await db.query(
-            `UPDATE ordenes
-             SET estado = $1, mp_payment_id = $2, mp_status = $3, actualizado_en = NOW()
-             WHERE codigo = $4`,
-            [nuevoEstado, String(payment_id), status, external_reference]
-        );
-
-        return res.sendStatus(200);
-    } catch (error) {
-        console.error('❌ Error en webhook MP:', error);
-        return res.sendStatus(500);
-    }
-});
 
 // =============================================
 // GET /api/admin/orders — Ver todas las órdenes (admin)

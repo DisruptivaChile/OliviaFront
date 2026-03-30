@@ -1,7 +1,7 @@
 // =============================================
 // backend/middleware/verifyToken.js
 // Middleware que verifica el JWT en cada
-// petici贸n protegida de usuarios normales
+// petici+ protegida de usuarios normales
 // =============================================
 
 const jwt = require('jsonwebtoken');
@@ -15,7 +15,7 @@ function verifyToken(req, res, next) {
         return res.status(401).json({
             success: false,
             code:    'TOKEN_REQUERIDO',
-            message: 'Acceso denegado. Inicia sesi贸n para continuar.'
+            message: 'Acceso denegado. Inicia sesi+ para continuar.'
         });
     }
 
@@ -28,13 +28,13 @@ function verifyToken(req, res, next) {
             return res.status(401).json({
                 success: false,
                 code:    'TOKEN_EXPIRADO',
-                message: 'Tu sesi贸n ha expirado. Inicia sesi贸n nuevamente.'
+                message: 'Tu sesi+ ha expirado. Inicia sesi+ nuevamente.'
             });
         }
         return res.status(401).json({
             success: false,
             code:    'TOKEN_INVALIDO',
-            message: 'Token inv谩lido.'
+            message: 'Token inv+韑ido.'
         });
     }
 }

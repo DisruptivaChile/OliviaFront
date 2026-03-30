@@ -176,20 +176,18 @@ if (checkoutForm) {
                 throw new Error(data.message || 'Error al procesar el pedido');
             }
 
-            // Redirigir a MercadoPago
-            const mpUrl = data.mp_init_point || data.sandbox_url;
-            if (mpUrl) {
-                window.location.href = mpUrl;
+            // Redirigir a Flow para completar el pago
+            if (data.flow_url) {
+                window.location.href = data.flow_url;
             } else {
-                // Si no hay token MP configurado, ir directo a resultado pendiente
-                window.location.href = `checkout-resultado.html?estado=pendiente&orden=${data.orden_codigo}`;
+                window.location.href = `checkout-resultado.html?orden=${data.orden_codigo}`;
             }
 
         } catch (err) {
             console.error('Error checkout:', err);
             showError(err.message || 'Ocurrió un error. Por favor intenta de nuevo.');
             submitCheckout.disabled  = false;
-            submitCheckout.innerHTML = '<i class="fas fa-lock" style="margin-right:0.5rem;"></i> Pagar con MercadoPago';
+            submitCheckout.innerHTML = '<i class="fas fa-lock" style="margin-right:0.5rem;"></i> Pagar con Flow';
         }
     });
 }

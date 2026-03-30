@@ -1,7 +1,7 @@
 // =============================================
 // backend/routes/admin.js
-// Rutas exclusivas del panel de administraci√≥n
-// Sin filtro de publicado=TRUE ‚Äî el admin
+// Rutas exclusivas del panel de administraci+¶n
+// Sin filtro de publicado=TRUE ‘«ˆ el admin
 // necesita ver todos los productos
 // =============================================
 
@@ -45,7 +45,7 @@ router.get('/products', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('‚ùå Error en GET /api/admin/products:', error);
+        console.error('‘ÿÓ Error en GET /api/admin/products:', error);
         return res.status(500).json({ success: false, message: 'Error al obtener productos' });
     }
 });
@@ -53,12 +53,12 @@ router.get('/products', async (req, res) => {
 
 // -----------------------------------------------
 // GET /api/admin/products/:id
-// Devuelve un producto completo para edici√≥n
-// (incluye im√°genes, tallas, todos los campos)
+// Devuelve un producto completo para edici+¶n
+// (incluye im+Ìgenes, tallas, todos los campos)
 // -----------------------------------------------
 router.get('/products/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inv√°lido' });
+    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inv+Ìlido' });
 
     try {
         const result = await db.query(`
@@ -113,7 +113,7 @@ router.get('/products/:id', async (req, res) => {
         return res.json({ success: true, product: result.rows[0] });
 
     } catch (error) {
-        console.error('‚ùå Error en GET /api/admin/products/:id:', error);
+        console.error('‘ÿÓ Error en GET /api/admin/products/:id:', error);
         return res.status(500).json({ success: false, message: 'Error al obtener producto' });
     }
 });
@@ -128,7 +128,7 @@ router.patch('/products/:id/publicado', async (req, res) => {
     const { publicado } = req.body;
 
     if (isNaN(id) || publicado === undefined) {
-        return res.status(400).json({ success: false, message: 'Par√°metros inv√°lidos' });
+        return res.status(400).json({ success: false, message: 'Par+Ìmetros inv+Ìlidos' });
     }
 
     try {
@@ -138,7 +138,7 @@ router.patch('/products/:id/publicado', async (req, res) => {
         );
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error en PATCH publicado:', error);
+        console.error('‘ÿÓ Error en PATCH publicado:', error);
         return res.status(500).json({ success: false, message: 'Error al actualizar' });
     }
 });
@@ -153,7 +153,7 @@ router.patch('/products/:id/a-pedido', async (req, res) => {
     const { es_a_pedido } = req.body;
 
     if (isNaN(id) || es_a_pedido === undefined) {
-        return res.status(400).json({ success: false, message: 'Par√°metros inv√°lidos' });
+        return res.status(400).json({ success: false, message: 'Par+Ìmetros inv+Ìlidos' });
     }
 
     try {
@@ -163,7 +163,7 @@ router.patch('/products/:id/a-pedido', async (req, res) => {
         );
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error en PATCH a-pedido:', error);
+        console.error('‘ÿÓ Error en PATCH a-pedido:', error);
         return res.status(500).json({ success: false, message: 'Error al actualizar' });
     }
 });
@@ -176,7 +176,7 @@ router.patch('/products/:id/a-pedido', async (req, res) => {
 // -----------------------------------------------
 router.put('/products/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inv√°lido' });
+    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inv+Ìlido' });
 
     const {
         nombre, tipo_id, precio, temporada_id,
@@ -216,7 +216,7 @@ router.put('/products/:id', async (req, res) => {
         );
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error en PUT /api/admin/products/:id:', error);
+        console.error('‘ÿÓ Error en PUT /api/admin/products/:id:', error);
         return res.status(500).json({ success: false, message: 'Error al actualizar producto' });
     }
 });
@@ -230,13 +230,13 @@ router.put('/products/:id', async (req, res) => {
 // -----------------------------------------------
 router.delete('/products/:id/imagenes/:imgId', async (req, res) => {
     const imgId = parseInt(req.params.imgId);
-    if (isNaN(imgId)) return res.status(400).json({ success: false, message: 'ID inv√°lido' });
+    if (isNaN(imgId)) return res.status(400).json({ success: false, message: 'ID inv+Ìlido' });
 
     try {
         await db.query('DELETE FROM zapato_imagenes WHERE id = $1', [imgId]);
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error en DELETE imagen:', error);
+        console.error('‘ÿÓ Error en DELETE imagen:', error);
         return res.status(500).json({ success: false, message: 'Error al eliminar imagen' });
     }
 });
@@ -251,11 +251,11 @@ router.patch('/products/:id/imagenes/:imgId/principal', async (req, res) => {
     const imgId    = parseInt(req.params.imgId);
 
     if (isNaN(zapatoId) || isNaN(imgId)) {
-        return res.status(400).json({ success: false, message: 'IDs inv√°lidos' });
+        return res.status(400).json({ success: false, message: 'IDs inv+Ìlidos' });
     }
 
     try {
-        // Desmarcar todas las im√°genes del zapato
+        // Desmarcar todas las im+Ìgenes del zapato
         await db.query(
             'UPDATE zapato_imagenes SET es_principal = FALSE WHERE zapato_id = $1',
             [zapatoId]
@@ -267,7 +267,7 @@ router.patch('/products/:id/imagenes/:imgId/principal', async (req, res) => {
         );
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error en PATCH principal:', error);
+        console.error('‘ÿÓ Error en PATCH principal:', error);
         return res.status(500).json({ success: false, message: 'Error al actualizar imagen principal' });
     }
 });
@@ -279,13 +279,13 @@ router.patch('/products/:id/imagenes/:imgId/principal', async (req, res) => {
 // -----------------------------------------------
 router.delete('/imagenes/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inv√°lido' });
+    if (isNaN(id)) return res.status(400).json({ success: false, message: 'ID inv+Ìlido' });
 
     try {
         await db.query('DELETE FROM zapato_imagenes WHERE id = $1', [id]);
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error en DELETE /api/admin/imagenes/:id:', error);
+        console.error('‘ÿÓ Error en DELETE /api/admin/imagenes/:id:', error);
         return res.status(500).json({ success: false, message: 'Error al eliminar imagen' });
     }
 });
@@ -293,7 +293,7 @@ router.delete('/imagenes/:id', async (req, res) => {
 
 // -----------------------------------------------
 // PATCH /api/admin/products/:id/imagen-principal
-// Cambia qu√© imagen es la principal del zapato
+// Cambia qu+Æ imagen es la principal del zapato
 // -----------------------------------------------
 // PATCH /api/admin/products/:id/imagenes/principal
 router.patch('/products/:id/imagenes/principal', async (req, res) => {
@@ -301,7 +301,7 @@ router.patch('/products/:id/imagenes/principal', async (req, res) => {
     const { imagen_id } = req.body;
 
     if (isNaN(zapatoId) || !imagen_id) {
-        return res.status(400).json({ success: false, message: 'Par√°metros inv√°lidos' });
+        return res.status(400).json({ success: false, message: 'Par+Ìmetros inv+Ìlidos' });
     }
 
     try {
@@ -315,7 +315,7 @@ router.patch('/products/:id/imagenes/principal', async (req, res) => {
         );
         return res.json({ success: true });
     } catch (error) {
-        console.error('‚ùå Error actualizando imagen principal:', error);
+        console.error('‘ÿÓ Error actualizando imagen principal:', error);
         return res.status(500).json({ success: false, message: 'Error al actualizar' });
     }
 });

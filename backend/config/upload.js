@@ -1,7 +1,6 @@
 // =============================================
 // backend/config/upload.js
-// Configuración de multer para recibir
-// imágenes en memoria (sin guardar en disco)
+// Multer configurado para subir a memoria (buffer)
 // =============================================
 
 const multer = require('multer');
@@ -10,15 +9,12 @@ const storage = multer.memoryStorage();
 
 const upload = multer({
     storage,
-    limits: {
-        fileSize: 5 * 1024 * 1024 // 5 MB máximo por imagen
-    },
+    limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB máximo
     fileFilter: (req, file, cb) => {
-        const allowed = ['image/jpeg', 'image/png', 'image/webp'];
-        if (allowed.includes(file.mimetype)) {
+        if (file.mimetype.startsWith('image/')) {
             cb(null, true);
         } else {
-            cb(new Error('Solo se permiten imágenes JPG, PNG o WEBP'));
+            cb(new Error('Solo se permiten imágenes'), false);
         }
     }
 });
