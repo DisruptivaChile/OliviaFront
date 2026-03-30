@@ -30,7 +30,7 @@ function renderTarjetaCarrusel(producto) {
         : `producto-coyan.html?id=${producto.id}`;
 
     return `
-        <div class="product-panel-wrapper" data-product-url="${productoUrl}">
+        <div class="product-panel-wrapper" data-product-url="${productoUrl}" data-product-id="${producto.id}">
             <div class="product-panel">
                 ${producto.es_a_pedido ? '<span class="sale-badge">A PEDIDO</span>' : ''}
                 <div class="product-panel-image"

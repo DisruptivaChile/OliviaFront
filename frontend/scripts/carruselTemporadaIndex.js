@@ -110,7 +110,7 @@ function iniciarCarrusel() {
         e.stopPropagation();
 
         const panelWrapper = btn.closest('.product-panel-wrapper');
-        const productName  = panelWrapper.querySelector('.product-name-panel').innerText;
+        const productId = panelWrapper.getAttribute('data-product-id');
         const imgDiv       = panelWrapper.querySelector('.product-panel-image');
 
         const images   = imgDiv.getAttribute('data-images').split(',');
@@ -124,7 +124,7 @@ function iniciarCarrusel() {
 
         // Sincronizar clones
         track.querySelectorAll('.product-panel-wrapper').forEach(wrapper => {
-            if (wrapper.querySelector('.product-name-panel').innerText === productName) {
+            if (wrapper.getAttribute('data-product-id') === productId) {
                 const targetImg = wrapper.querySelector('.product-panel-image');
                 targetImg.classList.remove('fade-in');
                 void targetImg.offsetWidth;
