@@ -30,7 +30,16 @@ const MANUAL_TRANSLATIONS = {
         'campo-obligatorio': '*Campos obligatorios',
         'iniciar-sesion': 'Iniciar Sesión',
         'inicio': 'Inicio',
-        'catalogo': 'Catálogo'
+        'catalogo': 'Catálogo',
+        'todos': 'Todos',
+        'botines': 'Botines',
+        'zapatos': 'Zapatos',
+        'sandalias': 'Sandalias',
+        'zapatos-unicos': 'ZAPATOS ÚNICOS',
+        'statement_destacado': 'a tu medida con la dedicación que tus pies merecen.',
+        'talla-chile': 'Talla Chile',
+        'talla-us': 'Talla US',
+        'talla-eu': 'Talla EU'
     },
     'en': {
         'preordenar': 'PRE-ORDER',
@@ -56,7 +65,16 @@ const MANUAL_TRANSLATIONS = {
         'campo-obligatorio': '*Required fields',
         'iniciar-sesion': 'Log In',
         'inicio': 'Home',
-        'catalogo': 'Catalog'
+        'catalogo': 'Catalog',
+        'todos': 'All',
+        'botines': 'Boots',
+        'zapatos': 'Shoes',
+        'sandalias': 'Sandals',
+        'zapatos-unicos': 'UNIQUE SHOES',
+        'statement_destacado': 'tailored to you with the dedication your feet deserve.',
+        'talla-chile': 'Chile Size',
+        'talla-us': 'US Size',
+        'talla-eu': 'EU Size'
     }
 };
 

@@ -47,16 +47,16 @@
                         <i class="fas fa-times"></i>
                     </button>
                     <ul class="nav-list">
-                        <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
-                        <li><a href="productos.html" class="nav-link active" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas">Preordenar</a></li>
-                        <li><a href="tallas.html" class="nav-link" data-i18n="nav_tallas">Tallas</a></li>
+                        <li><a href="../../index.html" class="nav-link" data-i18n="inicio">Inicio</a></li>
+                        <li><a href="productos.html" class="nav-link active" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="ofertas.html" class="nav-link" >Preordenar</a></li>
+                        <li><a href="tallas.html" class="nav-link">Tallas</a></li>
                     </ul>
                 </nav>
 
                 <!-- Logo Center -->
                 <div class="logo">
-                    <h1>
+                    <h1 data-no-translate>
                         <span>OLIVIA</span> 
                         <span>MERINO</span>
                     </h1>
@@ -91,17 +91,17 @@
     <section class="products-section" id="products" style="padding-top: 120px;">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-i18n="productos_titulo">Mundo Olivia</h2>
-                <p class="section-subtitle" data-i18n="productos_subtitulo">Encuentra el par perfecto para ti</p>
+                <h2 class="section-title" data-no-translate="">Mundo Olivia</h2>
+                <p class="section-subtitle">Encuentra el par perfecto para ti</p>
             </div>
 
             <!-- Filters -->
             <div class="filters">
 
                 <div class="filter-group">
-                    <label for="typeFilter" data-i18n="filtro_tipo">Tipo:</label>
+                    <label for="typeFilter">Tipo:</label>
                     <select id="typeFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
+                        <option value="all" data-i18n="todos">Todos</option>
                         <option value="botines" data-i18n="botines">Botines</option>
                         <option value="zapatos" data-i18n="zapatos">Zapatos</option>
                         <option value="sandalias" data-i18n="sandalias">Sandalias</option>
@@ -109,9 +109,9 @@
                 </div>
 
                 <div class="filter-group">
-                    <label for="priceFilter" data-i18n="filtro_precio">Precio:</label>
+                    <label for="priceFilter">Precio:</label>
                     <select id="priceFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
+                        <option value="all">Todos</option>
                         <option value="0-50">€0 - €50</option>
                         <option value="50-100">€50 - €100</option>
                         <option value="100-150">€100 - €150</option>
@@ -122,7 +122,7 @@
                 <div class="filter-group">
                     <label for="categoryFilter">Talla:</label>
                     <select id="categoryFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
+                        <option value="all">Todos</option>
                         <option value="34">34</option>
                         <option value="35">35</option>
                         <option value="36">36</option>
@@ -135,17 +135,17 @@
                 </div>
 
                 <div class="filter-group">
-                    <label for="seasonFilter" data-i18n="filtro_temporada">Temporada:</label>
+                    <label for="seasonFilter">Temporada:</label>
                     <select id="seasonFilter" class="filter-select">
-                        <option value="all" data-i18n="filtro_todos">Todos</option>
-                        <option value="primavera" data-i18n="temporada_primavera">Primavera</option>
-                        <option value="verano" data-i18n="temporada_verano">Verano</option>
-                        <option value="otoño" data-i18n="temporada_otoño">Otoño</option>
-                        <option value="invierno" data-i18n="temporada_invierno">Invierno</option>
+                        <option value="all" >Todos</option>
+                        <option value="primavera">Primavera</option>
+                        <option value="verano" >Verano</option>
+                        <option value="otoño">Otoño</option>
+                        <option value="invierno" >Invierno</option>
                     </select>
                 </div>
 
-                <button class="btn btn-secondary" id="clearFilters" data-i18n="filtro_limpiar">Limpiar Filtros</button>
+                <button class="btn btn-secondary" id="clearFilters">Limpiar Filtros</button>
             </div>
 
             <!-- Products Grid -->
@@ -160,41 +160,41 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section section-newsletter">
-                    <h4 data-i18n="footer_newsletter">Newsletter</h4>
-                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
+                    <h4 >Newsletter</h4>
+                    <p >Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
+                        <button class="btn btn-primary">Suscribirse</button>
                     </div>
                 </div>
 
                 <div class="footer-section accordion-section">
                     <div class="accordion-header">
-                        <h4 data-i18n="comprar_footer">Comprar</h4>
+                        <h4 >Comprar</h4>
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="productos.html" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="ofertas.html" data-i18n="nav_ofertas">Preordenar</a></li>
+                        <li><a href="productos.html" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="ofertas.html">Preordenar</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section accordion-section">
                     <div class="accordion-header">
-                        <h4 data-i18n="footer_ayuda">Ayuda</h4>
+                        <h4>Ayuda</h4>
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="#" id="enviosBtn" data-i18n="footer_envios">Envíos</a></li>
-                        <li><a href="#" id="devolucionesBtn" data-i18n="footer_devoluciones">Devoluciones</a></li>
-                        <li><a href="tallas.html" data-i18n="footer_guia">Guía de Tallas</a></li>
-                        <li><a href="https://wa.me/1234567890" target="_blank" data-i18n="footer_contacto">Contacto</a></li>
+                        <li><a href="#" id="enviosBtn" >Envíos</a></li>
+                        <li><a href="#" id="devolucionesBtn" >Devoluciones</a></li>
+                        <li><a href="tallas.html" >Guía de Tallas</a></li>
+                        <li><a href="https://wa.me/1234567890" target="_blank" >Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section section-brand">
-                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
-                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <h3 >OLIVIA MERINO</h3>
+                    <p >Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/oliviamerinozapateria#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -204,7 +204,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-bottom-text" data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+                <p class="footer-bottom-text">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -309,14 +309,14 @@
             </button>
             
             <div class="login-header">
-                <h2 data-i18n="login_header" style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
-                <p style="color: var(--text-light); font-size: 0.95rem;" data-i18n="login_header_p">Inicia sesión para continuar</p>
+                <h2  style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
+                <p style="color: var(--text-light); font-size: 0.95rem;" >Inicia sesión para continuar</p>
             </div>
 
             <div class="login-tabs">
                 <button class="login-tab active" data-tab="user">
                     <i class="fas fa-user"></i>
-                    <span data-i18n="login_usuario">Usuario</span>
+                    <span >Usuario</span>
                 </button>
                 <button class="login-tab" data-tab="admin">
                     <i class="fas fa-crown"></i>
@@ -326,7 +326,7 @@
 
             <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail" data-i18n="login_email">
+                    <label for="loginEmail">
                         <i class="fas fa-envelope"></i>
                         Email
                     </label>
@@ -334,7 +334,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="loginPassword" data-i18n="login_password">
+                    <label for="loginPassword" >
                         <i class="fas fa-lock"></i>
                         Contraseña
                     </label>
@@ -349,12 +349,12 @@
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="rememberMe">
-                        <span data-i18n="login_recordarme">Recordarme</span>
+                        <span >Recordarme</span>
                     </label>
-                    <a href="#" class="forgot-link" data-i18n="login_olvidaste">¿Olvidaste tu contraseña?</a>
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="login_iniciar">
+                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="iniciar-sesion">
                     Iniciar Sesión
                 </button>
 
@@ -362,7 +362,7 @@
                     <span>o</span>
                 </div>
 
-                <div class="social-login">
+                <div class="social-login" data-no-translate>
                     <button type="button" class="btn-social btn-google">
                         <i class="fab fa-google"></i>
                         Google
@@ -374,10 +374,10 @@
                 </div>
 
                 <p class="login-footer">
-                    <span data-i18n="login_footer">
+                    <span>
                         ¿No tienes cuenta?
                     </span>
-                    <a href="../pages/registro.html" class="register-link" data-i18n="login_footer_registro"> Regístrate aquí</a>
+                    <a href="../pages/registro.html" class="register-link" > Regístrate aquí</a>
                 </p>
             </form>
         </div>
@@ -429,10 +429,10 @@
                         <input type="email" class="subscription-input subscription-input-full" placeholder="Correo electrónico" required>
                         
                         <select class="subscription-select" required>
-                            <option value="" disabled selected>Género</option>
-                            <option value="mujer">Mujer</option>
-                            <option value="hombre">Hombre</option>
-                            <option value="otro">Otro</option>
+                            <option value="" disabled selected data-i18n="genero">Género</option>
+                            <option value="mujer" data-i18n="mujer">Mujer</option>
+                            <option value="hombre" data-i18n="hombre">Hombre</option>
+                            <option value="otro" data-i18n="otro">Otro</option>
                         </select>
                         
                         <label class="subscription-checkbox">
@@ -440,9 +440,9 @@
                             <span>Acepto las políticas de privacidad y tratamiento de datos personales del sitio y del Programa de Fidelización QUIERO. <a href="#" class="subscription-link">Conoce más aquí</a>.</span>
                         </label>
                         
-                        <button type="submit" class="subscription-submit-btn">ENVIAR</button>
+                        <button type="submit" class="subscription-submit-btn" data-i18n="enviar">ENVIAR</button>
                         
-                        <a href="#" class="subscription-terms">VER TÉRMINOS Y CONDICIONES</a>
+                        <a href="#" class="subscription-terms" data-i18n="ver_terminos">VER TÉRMINOS Y CONDICIONES</a>
                     </form>
                 </div>
             </div>
@@ -636,7 +636,7 @@
         </div>
     </div>
 
-    <script src="../scripts/translations.js"></script>
+    
     <script src="../scripts/main.js"></script>
     <script src="../scripts/oauth.js"></script>
     <script src="../scripts/forgot-password.js"></script>
@@ -648,6 +648,7 @@
     <script src="../scripts/season-link.js"></script>
     <script src="../scripts/see-password.js"></script>
     <script src="../scripts/checkout.js"></script>
+    <script src="../scripts/translations.js"></script>
 </body>
 </html>
 
