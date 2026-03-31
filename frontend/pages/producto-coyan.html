@@ -306,7 +306,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 data-i18n="carrito_titulo">Carrito de Compras</h2>
+                <h2>Carrito de Compras</h2>
                 <button class="close-btn" id="closeCart">
                     <i class="fas fa-times"></i>
                 </button>
@@ -317,9 +317,78 @@
             <div class="cart-footer">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span class="total-amount" id="totalAmount">€0.00</span>
+                    <span class="total-amount" id="totalAmount">$0</span>
                 </div>
-                <button class="btn btn-primary btn-block" data-i18n="carrito_finalizar">Proceder al Pago</button>
+                <button class="btn btn-primary btn-block" id="checkoutBtn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content" style="max-width:550px;">
+            <div class="modal-header">
+                <h2 style="font-family:'Cormorant Garamond',serif;" data-i18n="finalizar-compra">Finalizar Compra</h2>
+                <button class="close-btn" id="closeCheckout"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="checkout-body" style="padding:1.5rem;">
+                <!-- Resumen -->
+                <div class="checkout-summary" id="checkoutSummary" style="margin-bottom:1.5rem;background:#f9f9f9;padding:1rem;border:1px solid var(--border-color);"></div>
+
+                <form id="checkoutForm" novalidate>
+                    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;" data-i18n="campo-obligatorio">* Campos obligatorios</p>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="nombres">Nombre completo *</label>
+                            <input type="text" id="chk_nombre" class="form-input" placeholder="Juan Pérez" required maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="correo_electronico">Email *</label>
+                            <input type="email" id="chk_email" class="form-input" placeholder="tu@email.com" required maxlength="150">
+                            <span id="chk_autocompletar_hint" style="display:none;font-size:0.78rem;color:#2e7d32;margin-top:0.3rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="telefono">Teléfono</label>
+                            <input type="tel" id="chk_telefono" class="form-input" placeholder="+56 9 1234 5678" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="ciudad">Ciudad *</label>
+                            <input type="text" id="chk_ciudad" class="form-input" placeholder="Santiago" required maxlength="80">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:0.5rem;">
+                        <label class="form-label" data-i18n="direccion-envio">Dirección de envío *</label>
+                        <input type="text" id="chk_direccion" class="form-input" placeholder="Av. Principal 123, Depto 4B" required maxlength="200">
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="region">Región</label>
+                            <input type="text" id="chk_region" class="form-input" placeholder="Región Metropolitana" maxlength="80">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="pais">País</label>
+                            <input type="text" id="chk_pais" class="form-input" value="Chile" maxlength="60">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:0.5rem;">
+                        <label class="form-label" data-i18n="notas-adicionales">Notas adicionales</label>
+                        <textarea id="chk_notas" class="form-input" rows="2" placeholder="Instrucciones especiales..." style="resize:vertical;" maxlength="500"></textarea>
+                    </div>
+
+                    <div id="checkoutError" style="display:none;color:#c0392b;background:#fdecea;padding:0.75rem;border-radius:4px;margin-top:1rem;font-size:0.9rem;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitCheckout" style="margin-top:1.5rem;" data-i18n="pagar-mercadopago">
+                        <i class="fas fa-lock" style="margin-right:0.5rem;"></i>
+                        Pagar con MercadoPago
+                    </button>
+                    <p style="text-align:center;font-size:0.78rem;color:var(--text-light);margin-top:0.75rem;" data-i18n="pago-seguro">
+                        <i class="fas fa-shield-alt"></i> Pago 100% seguro — tarjetas, débito, transferencia y más
+                    </p>
+                </form>
             </div>
         </div>
     </div>
@@ -672,5 +741,6 @@
     <script src="../scriptsDatabase/carruselTemporadaDatabase.js"></script>
     <script src="../scripts/carruselTemporadaIndex.js"></script>
     <script src="../scripts/see-password.js"></script>
+    <script src="../scripts/checkout.js"></script>
 </body>
 </html>

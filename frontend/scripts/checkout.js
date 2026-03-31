@@ -3,7 +3,10 @@
 // Lógica del flujo de checkout y pago
 // =============================================
 
-const API_URL = 'http://localhost:3000';
+// En lugar de una constante directa, usa esta lógica:
+if (typeof API_URL === 'undefined') {
+    window.API_URL = 'http://localhost:3000';
+}
 
 // ---- Referencias DOM ----
 const checkoutBtn    = document.getElementById('checkoutBtn');
