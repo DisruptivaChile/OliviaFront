@@ -43,7 +43,9 @@ const MANUAL_TRANSLATIONS = {
         'about-olivia': 'Sobre Olivia Merino',
         'detras-cada-diseno': 'Detrás de cada diseño de Olivia Merino existe una melodía. No es una coincidencia, es una filosofía. Creemos que la música y el diseño hablan el mismo lenguaje: el de las emociones.',
         'lo-que-comenzo': 'Lo que comenzó como un sueño se convirtió en realidad. La visión de crear calzado que fusionara tradición artesanal con diseño contemporáneo dio vida a Olivia Merino. No fue una decisión impulsiva, fue una consecuencia natural de años de observación, exploración y pasión por la excelencia.',
-
+        'crear-cuenta': 'Crear Cuenta',
+        'ya_tienes_cuenta': '¿Ya tienes cuenta?',
+        'prefiero-no-decir': 'Prefiero no decir',
     },
     'en': {
         'preordenar': 'PRE-ORDER',
@@ -82,6 +84,9 @@ const MANUAL_TRANSLATIONS = {
         'about-olivia': 'About Olivia Merino',
         'detras-cada-diseno': 'Behind every design of Olivia Merino there is a melody. It is not a coincidence, it is a philosophy. We believe that music and design speak the same language: that of emotions.',
         'lo-que-comenzo': 'What started as a dream became reality. The vision of creating footwear that fused artisanal tradition with contemporary design gave life to Olivia Merino. It was not an impulsive decision, it was a natural consequence of years of observation, exploration and passion for excellence.',
+        'crear-cuenta': 'Create Account',
+        'ya_tienes_cuenta': 'Already have an account?',
+        'prefiero-no-decir': 'Prefer not to say'
     }
 };
 

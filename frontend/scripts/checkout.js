@@ -52,13 +52,19 @@ function renderCheckoutSummary(cart) {
         <p style="font-weight:600;margin-bottom:0.75rem;font-size:0.9rem;">Resumen de tu pedido</p>
         ${cart.map(i => `
             <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid #eee;">
-                <span>${i.nombre} — T.${i.talla} × ${i.quantity}</span>
+                <span data-no-translate>${i.nombre}</span> — T.${i.talla} × ${i.quantity}
                 <span>$${(i.precio * i.quantity).toLocaleString('es-CL')}</span>
             </div>`).join('')}
         <div style="display:flex;justify-content:space-between;font-weight:700;margin-top:0.75rem;font-size:1rem;">
             <span>Total</span>
             <span>$${total.toLocaleString('es-CL')}</span>
         </div>`;
+    
+    if (typeof translatePage === 'function' &&
+        typeof currentLanguage !== 'undefined' &&
+        currentLanguage === 'en') {
+        translatePage('en');
+    }
 }
 
 // ---- Autocompletar por email (clientes históricos) ----

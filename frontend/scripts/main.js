@@ -30,6 +30,17 @@ const cartItems   = document.getElementById('cartItems');
 const cartCount   = document.getElementById('cartCount');
 const totalAmount = document.getElementById('totalAmount');
 
+// Traducciones locales del carrito
+// Se leen en tiempo de ejecución para respetar el idioma activo
+function getCartLabel(key) {
+    const lang = localStorage.getItem('oliviaLanguage') || 'es';
+    const labels = {
+        es: { talla: 'Talla', vacio: 'Tu carrito está vacío' },
+        en: { talla: 'Size',  vacio: 'Your cart is empty'    }
+    };
+    return (labels[lang] && labels[lang][key]) || labels['es'][key];
+}
+
 
 // Exponer globalmente para que catalogoDatabase.js pueda llamar addToCart
 window.addToCart = function(productId, nombre, precio, talla) {
@@ -82,7 +93,7 @@ function updateCartUI() {
         cartItems.innerHTML = `
             <div class="cart-empty">
                 <i class="fas fa-shopping-cart" style="font-size:3rem;margin-bottom:1rem;opacity:0.3;"></i>
-                <p>Tu carrito está vacío</p>
+                <p>${getCartLabel('vacio')}</p>
             </div>`;
         if (totalAmount) totalAmount.textContent = '€0.00';
         return;
@@ -93,7 +104,7 @@ function updateCartUI() {
             <div class="cart-item-details">
                 <div class="cart-item-name">${item.nombre}</div>
                 <div class="cart-item-price">$${parseFloat(item.precio).toLocaleString('es-CL')}</div>
-                <div class="cart-item-meta">Talla: ${item.talla}</div>
+                <div class="cart-item-meta">${getCartLabel('talla')}: ${item.talla}</div>
                 <div class="cart-item-quantity">
                     <button class="quantity-btn" onclick="updateQuantity(${item.id}, '${item.talla}', -1)">−</button>
                     <span>${item.quantity}</span>
@@ -269,7 +280,6 @@ function initScrollAnimations() {
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
 
-    // Delay para que catalogoDatabase.js tenga tiempo de renderizar tarjetas
     setTimeout(() => {
         document.querySelectorAll('.product-card, .category-card, .feature-card').forEach(el => {
             observer.observe(el);

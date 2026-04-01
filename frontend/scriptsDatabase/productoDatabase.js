@@ -46,14 +46,17 @@ async function cargarProducto() {
 // -----------------------------------------------
 // 3. RENDERIZAR PRODUCTO EN EL HTML
 // -----------------------------------------------
-function renderizarProducto(p) {
+async function renderizarProducto(p) {
 
     // --- Título de la pestaña del navegador ---
     document.title = `${p.nombre} - Olivia Merino`;
 
     // --- Título del producto ---
     const titulo = document.querySelector('.product-title');
-    if (titulo) titulo.textContent = p.nombre;
+    if (titulo) {
+        titulo.textContent = p.nombre;
+        titulo.setAttribute('data-no-translate', '');
+    }
 
     // --- Precio ---
     const precio = document.querySelector('.price-sale');
@@ -93,6 +96,13 @@ function renderizarProducto(p) {
         badge.textContent = 'A PEDIDO';
         const titulo = document.querySelector('.product-title');
         if (titulo) titulo.insertAdjacentElement('beforebegin', badge);
+    }
+
+    // --- Traducir contenido dinámico si el idioma activo es inglés ---
+    if (typeof translatePage === 'function' &&
+        typeof currentLanguage !== 'undefined' &&
+        currentLanguage === 'en') {
+        await translatePage('en');
     }
 }
 
