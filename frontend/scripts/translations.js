@@ -39,7 +39,11 @@ const MANUAL_TRANSLATIONS = {
         'statement_destacado': 'a tu medida con la dedicación que tus pies merecen.',
         'talla-chile': 'Talla Chile',
         'talla-us': 'Talla US',
-        'talla-eu': 'Talla EU'
+        'talla-eu': 'Talla EU',
+        'about-olivia': 'Sobre Olivia Merino',
+        'detras-cada-diseno': 'Detrás de cada diseño de Olivia Merino existe una melodía. No es una coincidencia, es una filosofía. Creemos que la música y el diseño hablan el mismo lenguaje: el de las emociones.',
+        'lo-que-comenzo': 'Lo que comenzó como un sueño se convirtió en realidad. La visión de crear calzado que fusionara tradición artesanal con diseño contemporáneo dio vida a Olivia Merino. No fue una decisión impulsiva, fue una consecuencia natural de años de observación, exploración y pasión por la excelencia.',
+
     },
     'en': {
         'preordenar': 'PRE-ORDER',
@@ -74,7 +78,10 @@ const MANUAL_TRANSLATIONS = {
         'statement_destacado': 'tailored to you with the dedication your feet deserve.',
         'talla-chile': 'Chile Size',
         'talla-us': 'US Size',
-        'talla-eu': 'EU Size'
+        'talla-eu': 'EU Size',
+        'about-olivia': 'About Olivia Merino',
+        'detras-cada-diseno': 'Behind every design of Olivia Merino there is a melody. It is not a coincidence, it is a philosophy. We believe that music and design speak the same language: that of emotions.',
+        'lo-que-comenzo': 'What started as a dream became reality. The vision of creating footwear that fused artisanal tradition with contemporary design gave life to Olivia Merino. It was not an impulsive decision, it was a natural consequence of years of observation, exploration and passion for excellence.',
     }
 };
 
