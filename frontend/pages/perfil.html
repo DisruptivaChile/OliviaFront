@@ -9,22 +9,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/perfil.css">
+    <link rel="stylesheet" href="../styles/pop-ups.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="perfil-navbar">
-        <a href="../../index.html" class="navbar-logo">
-            Olivia <em>Merino</em>
-        </a>
-        <nav class="navbar-links">
-            <a href="../../index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="ofertas.html">Ofertas</a>
-        </nav>
-        <button class="btn-cerrar-sesion-nav" id="btnCerrarSesionNav">
-            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-        </button>
+    <header class="header scrolled header-white" id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <!-- Navigation Left -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav" id="mainNav">
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="../../index.html" class="nav-link" data-i18n="inicio">Inicio</a></li>
+                        <li><a href="productos.html" class="nav-link" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="ofertas.html" class="nav-link">Preordenar</a></li>
+                        <li><a href="tallas.html" class="nav-link active">Tallas</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Logo Center -->
+                <div class="logo">
+                    <h1 data-no-translate>
+                        <span>OLIVIA</span> 
+                        <span>MERINO</span>
+                    </h1>
+                </div>
+                
+                <!-- Header Actions Right -->
+                <div class="header-actions">
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <div class="language-selector">
+                        <div class="lang-current" id="currentLangDisplay">
+                            <img src="" id="currentFlagImg" alt="Idioma">
+                        </div>
+                        <div class="lang-dropdown">
+                            <button class="lang-option" id="langOptionBtn">
+                                <img src="" id="optionFlagImg" alt="Option">
+                                <span id="optionText"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- CONTENIDO PRINCIPAL -->
@@ -214,6 +249,354 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section section-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Suscríbete para recibir ofertas exclusivas</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu email" class="newsletter-input">
+                        <button class="btn btn-primary">Suscribirse</button>
+                    </div>
+                </div>
+
+                <div class="footer-section accordion-section">
+                    <div class="accordion-header">
+                        <h4>Comprar</h4>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <ul class="accordion-content">
+                        <li><a href="productos.html" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="ofertas.html">Preordenar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section accordion-section">
+                    <div class="accordion-header">
+                        <h4>Ayuda</h4>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <ul class="accordion-content">
+                        <li><a href="#" id="enviosBtn">Envíos</a></li>
+                        <li><a href="#" id="devolucionesBtn">Devoluciones</a></li>
+                        <li><a href="tallas.html">Guía de Tallas</a></li>
+                        <li><a href="https://wa.me/1234567890" target="_blank">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section section-brand">
+                    <h3>OLIVIA MERINO</h3>
+                    <p>Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/oliviamerinozapateria#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-bottom-text">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Carrito de Compras</h2>
+                <button class="close-btn" id="closeCart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="total-amount" id="totalAmount">$0</span>
+                </div>
+                <button class="btn btn-primary btn-block" id="checkoutBtn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content" style="max-width:550px;">
+            <div class="modal-header">
+                <h2 style="font-family:'Cormorant Garamond',serif;" data-i18n="finalizar-compra">Finalizar Compra</h2>
+                <button class="close-btn" id="closeCheckout"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="checkout-body" style="padding:1.5rem;">
+                <!-- Resumen -->
+                <div class="checkout-summary" id="checkoutSummary" style="margin-bottom:1.5rem;background:#f9f9f9;padding:1rem;border:1px solid var(--border-color);"></div>
+
+                <form id="checkoutForm" novalidate>
+                    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;" data-i18n="campo-obligatorio">* Campos obligatorios</p>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="nombres">Nombre completo *</label>
+                            <input type="text" id="chk_nombre" class="form-input" placeholder="Juan Pérez" required maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="correo_electronico">Email *</label>
+                            <input type="email" id="chk_email" class="form-input" placeholder="tu@email.com" required maxlength="150">
+                            <span id="chk_autocompletar_hint" style="display:none;font-size:0.78rem;color:#2e7d32;margin-top:0.3rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="telefono">Teléfono</label>
+                            <input type="tel" id="chk_telefono" class="form-input" placeholder="+56 9 1234 5678" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="ciudad">Ciudad *</label>
+                            <input type="text" id="chk_ciudad" class="form-input" placeholder="Santiago" required maxlength="80">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:0.5rem;">
+                        <label class="form-label" data-i18n="direccion-envio">Dirección de envío *</label>
+                        <input type="text" id="chk_direccion" class="form-input" placeholder="Av. Principal 123, Depto 4B" required maxlength="200">
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="region">Región</label>
+                            <input type="text" id="chk_region" class="form-input" placeholder="Región Metropolitana" maxlength="80">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="pais">País</label>
+                            <input type="text" id="chk_pais" class="form-input" value="Chile" maxlength="60">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:0.5rem;">
+                        <label class="form-label" data-i18n="notas-adicionales">Notas adicionales</label>
+                        <textarea id="chk_notas" class="form-input" rows="2" placeholder="Instrucciones especiales..." style="resize:vertical;" maxlength="500"></textarea>
+                    </div>
+
+                    <div id="checkoutError" style="display:none;color:#c0392b;background:#fdecea;padding:0.75rem;border-radius:4px;margin-top:1rem;font-size:0.9rem;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitCheckout" style="margin-top:1.5rem;" data-i18n="pagar-mercadopago">
+                        <i class="fas fa-lock" style="margin-right:0.5rem;"></i>
+                        Pagar con MercadoPago
+                    </button>
+                    <p style="text-align:center;font-size:0.78rem;color:var(--text-light);margin-top:0.75rem;" data-i18n="pago-seguro">
+                        <i class="fas fa-shield-alt"></i> Pago 100% seguro — tarjetas, débito, transferencia y más
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Flotante de Contacto -->
+    <button class="contact-float-btn" id="contactFloatBtn">
+        <i class="fas fa-comments"></i>
+        <span>Contáctanos</span>
+    </button>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float-btn" id="whatsappFloatBtn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal de Feedback -->
+    <div class="feedback-modal" id="feedbackModal">
+        <div class="feedback-modal-content">
+            <button class="feedback-close-btn" id="feedbackCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="feedback-logo">
+                <h1>OLIVIA MERINO</h1>
+            </div>
+            
+            <h3 class="feedback-title">Cuéntanos más detalles acerca de tu experiencia.</h3>
+            
+            <div class="feedback-question">
+                <span class="required-mark">*</span>
+                <p>¿Qué tan probable es que recomiendes a Olivia Merino de acuerdo a la experiencia que viviste en nuestra tienda online?</p>
+            </div>
+            
+            <div class="rating-scale">
+                <div class="rating-buttons">
+                    <button class="rating-btn" data-value="0">0</button>
+                    <button class="rating-btn" data-value="1">1</button>
+                    <button class="rating-btn" data-value="2">2</button>
+                    <button class="rating-btn" data-value="3">3</button>
+                    <button class="rating-btn" data-value="4">4</button>
+                    <button class="rating-btn" data-value="5">5</button>
+                    <button class="rating-btn" data-value="6">6</button>
+                    <button class="rating-btn" data-value="7">7</button>
+                    <button class="rating-btn" data-value="8">8</button>
+                    <button class="rating-btn" data-value="9">9</button>
+                    <button class="rating-btn" data-value="10">10</button>
+                </div>
+                <div class="rating-labels">
+                    <span>Definitivamente no</span>
+                    <span>Definitivamente sí</span>
+                </div>
+            </div>
+            
+            <div class="feedback-specifications">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Claridad en especificaciones de productos</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="claras">
+                        <span>Las especificaciones de los productos fueron claras (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-claras">
+                        <span>No fueron claras las especificaciones de los productos (material, tamaños, elementos que contiene)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-sabia">
+                        <span>No sabía cómo ver las especificaciones de los productos</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="specifications" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-store-info">
+                <div class="feedback-question">
+                    <span class="required-mark">*</span>
+                    <p>Facilidad para encontrar información de las tiendas de Olivia Merino</p>
+                </div>
+                
+                <div class="specifications-options">
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="facil">
+                        <span>Encontré fácilmente información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="dificil">
+                        <span>Fue muy difícil encontrar información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-encontre">
+                        <span>No encontré información sobre las tiendas de Olivia Merino en el ecommerce (dirección, horario, teléfono)</span>
+                    </label>
+                    
+                    <label class="specification-option">
+                        <input type="radio" name="store-info" value="no-aplica">
+                        <span>No aplica</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="feedback-textarea-container">
+                <textarea class="feedback-textarea" placeholder="Déjanos tus comentarios adicionales..."></textarea>
+            </div>
+            
+            <button class="btn btn-primary feedback-submit-btn">Enviar Feedback</button>
+        </div>
+    </div>
+
+    <!-- Modal de Envíos -->
+    <div class="info-modal" id="enviosModal">
+        <div class="info-modal-overlay"></div>
+        <div class="info-modal-content">
+            <button class="info-close-btn" id="closeEnviosModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="info-modal-logo">
+                <h1>
+                    <span>OLIVIA</span>
+                    <span>MERINO</span>
+                </h1>
+            </div>
+            
+            <div class="info-modal-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/newMainImg_qwfobd.jpg" alt="Envíos">
+            </div>
+            
+            <div class="info-modal-body">
+                <h2 class="info-modal-title">Información de Envíos</h2>
+                <div class="info-modal-text">
+                    <p><strong>Envío Gratis</strong> en compras superiores a €50</p>
+                    <p>Nuestros tiempos de entrega son:</p>
+                    <ul>
+                        <li><strong>Envío Estándar:</strong> 3-5 días hábiles</li>
+                        <li><strong>Envío Express:</strong> 1-2 días hábiles</li>
+                    </ul>
+                    <p>Realizamos envíos a toda España y Portugal. Una vez realizada tu compra, recibirás un correo con el código de seguimiento para que puedas rastrear tu pedido en todo momento.</p>
+                    <p>En Olivia Merino nos comprometemos a que tus zapatos lleguen en perfectas condiciones, cuidadosamente empaquetados para garantizar su seguridad durante el transporte.</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary info-accept-btn" id="acceptEnviosBtn">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Devoluciones -->
+    <div class="info-modal" id="devolucionesModal">
+        <div class="info-modal-overlay"></div>
+        <div class="info-modal-content">
+            <button class="info-close-btn" id="closeDevolucionesModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="info-modal-logo">
+                <h1>
+                    <span>OLIVIA</span>
+                    <span>MERINO</span>
+                </h1>
+            </div>
+            
+            <div class="info-modal-image">
+                <img src="https://res.cloudinary.com/dzi3s9oof/image/upload/v1770062312/hero_mujer_ijpjgo.png" alt="Devoluciones">
+            </div>
+            
+            <div class="info-modal-body">
+                <h2 class="info-modal-title">Información de Devoluciones</h2>
+                <div class="info-modal-text">
+                    <p><strong>Devoluciones Gratuitas</strong> dentro de 30 días</p>
+                    <p>En Olivia Merino queremos que estés completamente satisfecho con tu compra. Si por alguna razón no es así, puedes devolver tus zapatos de forma gratuita.</p>
+                    
+                    <p><strong>Condiciones para devoluciones:</strong></p>
+                    <ul>
+                        <li>Tienes hasta 30 días desde la recepción de tu pedido</li>
+                        <li>Los zapatos deben estar sin usar y en su empaque original</li>
+                        <li>Incluye la etiqueta original y todos los accesorios</li>
+                    </ul>
+                    
+                    <p><strong>Proceso de devolución:</strong></p>
+                    <ol>
+                        <li>Solicita tu devolución a través de nuestro formulario online</li>
+                        <li>Imprime la etiqueta de devolución que te enviaremos por correo</li>
+                        <li>Empaqueta el producto y pégala etiqueta</li>
+                        <li>Tu reembolso será procesado en 5-7 días hábiles</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary info-accept-btn" id="acceptDevolucionesBtn">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="../scripts/translations.js"></script>
     <script src="../scripts/perfil.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/feedback.js"></script>
+    <script src="../scripts/checkout.js"></script>
+    <script src="../scripts/subscription.js"></script>
 </body>
 </html>

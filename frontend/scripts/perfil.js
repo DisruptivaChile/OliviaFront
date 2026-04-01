@@ -160,8 +160,8 @@ function cerrarSesion() {
     window.location.href = '../../index.html';
 }
 
-document.getElementById('btnCerrarSesion').addEventListener('click', cerrarSesion);
-document.getElementById('btnCerrarSesionNav').addEventListener('click', cerrarSesion);
+document.getElementById('btnCerrarSesion')?.addEventListener('click', cerrarSesion);
+document.getElementById('btnCerrarSesionNav')?.addEventListener('click', cerrarSesion);
 
 // ── ELIMINAR CUENTA ──
 const confirmModal        = document.getElementById('confirmEliminar');
