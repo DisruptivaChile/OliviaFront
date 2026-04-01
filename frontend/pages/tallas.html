@@ -50,16 +50,16 @@
                         <i class="fas fa-times"></i>
                     </button>
                     <ul class="nav-list">
-                        <li><a href="../../index.html" class="nav-link" data-i18n="nav_inicio">Inicio</a></li>
-                        <li><a href="productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="ofertas.html" class="nav-link" data-i18n="nav_ofertas">Preordenar</a></li>
-                        <li><a href="tallas.html" class="nav-link active" data-i18n="nav_tallas">Tallas</a></li>
+                        <li><a href="../../index.html" class="nav-link" data-i18n="inicio">Inicio</a></li>
+                        <li><a href="productos.html" class="nav-link" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="ofertas.html" class="nav-link">Preordenar</a></li>
+                        <li><a href="tallas.html" class="nav-link active">Tallas</a></li>
                     </ul>
                 </nav>
 
                 <!-- Logo Center -->
                 <div class="logo">
-                    <h1>
+                    <h1 data-no-translate>
                         <span>OLIVIA</span> 
                         <span>MERINO</span>
                     </h1>
@@ -265,9 +265,9 @@
                     <thead>
                         <tr>
                             <th>CM</th>
-                            <th>Talla Chile</th>
-                            <th>Talla US</th>
-                            <th>Talla EU</th>
+                            <th data-i18n="talla-chile">Talla Chile</th>
+                            <th data-i18n="talla-us">Talla US</th>
+                            <th data-i18n="talla-eu">Talla EU</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -426,41 +426,41 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section section-newsletter">
-                    <h4 data-i18n="footer_newsletter">Newsletter</h4>
-                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
+                    <h4>Newsletter</h4>
+                    <p>Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
+                        <button class="btn btn-primary">Suscribirse</button>
                     </div>
                 </div>
 
                 <div class="footer-section accordion-section">
                     <div class="accordion-header">
-                        <h4 data-i18n="comprar_footer">Comprar</h4>
+                        <h4>Comprar</h4>
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="productos.html" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="ofertas.html" data-i18n="nav_ofertas">Preordenar</a></li>
+                        <li><a href="productos.html" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="ofertas.html">Preordenar</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section accordion-section">
                     <div class="accordion-header">
-                        <h4 data-i18n="footer_ayuda">Ayuda</h4>
+                        <h4>Ayuda</h4>
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="#" id="enviosBtn" data-i18n="footer_envios">Envíos</a></li>
-                        <li><a href="#" id="devolucionesBtn" data-i18n="footer_devoluciones">Devoluciones</a></li>
-                        <li><a href="tallas.html" data-i18n="footer_guia">Guía de Tallas</a></li>
-                        <li><a href="https://wa.me/56940096993" target="_blank" data-i18n="footer_contacto">Contacto</a></li>
+                        <li><a href="#" id="enviosBtn">Envíos</a></li>
+                        <li><a href="#" id="devolucionesBtn">Devoluciones</a></li>
+                        <li><a href="tallas.html">Guía de Tallas</a></li>
+                        <li><a href="https://wa.me/56940096993" target="_blank">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section section-brand">
-                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
-                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <h3>OLIVIA MERINO</h3>
+                    <p>Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/oliviamerinozapateria#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -470,7 +470,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-bottom-text" data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+                <p class="footer-bottom-text">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -479,7 +479,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 data-i18n="carrito_titulo">Carrito de Compras</h2>
+                <h2>Carrito de Compras</h2>
                 <button class="close-btn" id="closeCart">
                     <i class="fas fa-times"></i>
                 </button>
@@ -490,9 +490,78 @@
             <div class="cart-footer">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span class="total-amount" id="totalAmount">€0.00</span>
+                    <span class="total-amount" id="totalAmount">$0</span>
                 </div>
-                <button class="btn btn-primary btn-block" data-i18n="carrito_finalizar">Proceder al Pago</button>
+                <button class="btn btn-primary btn-block" id="checkoutBtn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content" style="max-width:550px;">
+            <div class="modal-header">
+                <h2 style="font-family:'Cormorant Garamond',serif;" data-i18n="finalizar-compra">Finalizar Compra</h2>
+                <button class="close-btn" id="closeCheckout"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="checkout-body" style="padding:1.5rem;">
+                <!-- Resumen -->
+                <div class="checkout-summary" id="checkoutSummary" style="margin-bottom:1.5rem;background:#f9f9f9;padding:1rem;border:1px solid var(--border-color);"></div>
+
+                <form id="checkoutForm" novalidate>
+                    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;" data-i18n="campo-obligatorio">* Campos obligatorios</p>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="nombres">Nombre completo *</label>
+                            <input type="text" id="chk_nombre" class="form-input" placeholder="Juan Pérez" required maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="correo_electronico">Email *</label>
+                            <input type="email" id="chk_email" class="form-input" placeholder="tu@email.com" required maxlength="150">
+                            <span id="chk_autocompletar_hint" style="display:none;font-size:0.78rem;color:#2e7d32;margin-top:0.3rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="telefono">Teléfono</label>
+                            <input type="tel" id="chk_telefono" class="form-input" placeholder="+56 9 1234 5678" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="ciudad">Ciudad *</label>
+                            <input type="text" id="chk_ciudad" class="form-input" placeholder="Santiago" required maxlength="80">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:0.5rem;">
+                        <label class="form-label" data-i18n="direccion-envio">Dirección de envío *</label>
+                        <input type="text" id="chk_direccion" class="form-input" placeholder="Av. Principal 123, Depto 4B" required maxlength="200">
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="region">Región</label>
+                            <input type="text" id="chk_region" class="form-input" placeholder="Región Metropolitana" maxlength="80">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="pais">País</label>
+                            <input type="text" id="chk_pais" class="form-input" value="Chile" maxlength="60">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:0.5rem;">
+                        <label class="form-label" data-i18n="notas-adicionales">Notas adicionales</label>
+                        <textarea id="chk_notas" class="form-input" rows="2" placeholder="Instrucciones especiales..." style="resize:vertical;" maxlength="500"></textarea>
+                    </div>
+
+                    <div id="checkoutError" style="display:none;color:#c0392b;background:#fdecea;padding:0.75rem;border-radius:4px;margin-top:1rem;font-size:0.9rem;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitCheckout" style="margin-top:1.5rem;" data-i18n="pagar-mercadopago">
+                        <i class="fas fa-lock" style="margin-right:0.5rem;"></i>
+                        Pagar con MercadoPago
+                    </button>
+                    <p style="text-align:center;font-size:0.78rem;color:var(--text-light);margin-top:0.75rem;" data-i18n="pago-seguro">
+                        <i class="fas fa-shield-alt"></i> Pago 100% seguro — tarjetas, débito, transferencia y más
+                    </p>
+                </form>
             </div>
         </div>
     </div>
@@ -506,14 +575,14 @@
             </button>
             
             <div class="login-header">
-                <h2 data-i18n="login_header" style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
-                <p style="color: var(--text-light); font-size: 0.95rem;" data-i18n="login_header_p">Inicia sesión para continuar</p>
+                <h2 style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
+                <p style="color: var(--text-light); font-size: 0.95rem;">Inicia sesión para continuar</p>
             </div>
 
             <div class="login-tabs">
                 <button class="login-tab active" data-tab="user">
                     <i class="fas fa-user"></i>
-                    <span data-i18n="login_usuario">Usuario</span>
+                    <span>Usuario</span>
                 </button>
                 <button class="login-tab" data-tab="admin">
                     <i class="fas fa-crown"></i>
@@ -523,7 +592,7 @@
 
             <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail" data-i18n="login_email">
+                    <label for="loginEmail">
                         <i class="fas fa-envelope"></i>
                         Email
                     </label>
@@ -531,7 +600,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="loginPassword" data-i18n="login_password">
+                    <label for="loginPassword">
                         <i class="fas fa-lock"></i>
                         Contraseña
                     </label>
@@ -546,12 +615,12 @@
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="rememberMe">
-                        <span data-i18n="login_recordarme">Recordarme</span>
+                        <span >Recordarme</span>
                     </label>
-                    <a href="#" class="forgot-link" data-i18n="login_olvidaste">¿Olvidaste tu contraseña?</a>
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="login_iniciar">
+                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="iniciar-sesion">
                     Iniciar Sesión
                 </button>
 
@@ -559,7 +628,7 @@
                     <span>o</span>
                 </div>
 
-                <div class="social-login">
+                <div class="social-login" data-no-translate>
                     <button type="button" class="btn-social btn-google">
                         <i class="fab fa-google"></i>
                         Google
@@ -571,10 +640,10 @@
                 </div>
 
                 <p class="login-footer">
-                    <span data-i18n="login_footer">
+                    <span>
                         ¿No tienes cuenta?
                     </span>
-                    <a href="../pages/registro.html" class="register-link" data-i18n="login_footer_registro"> Regístrate aquí</a>
+                    <a href="../pages/registro.html" class="register-link"> Regístrate aquí</a>
                 </p>
             </form>
         </div>
@@ -619,11 +688,11 @@
                     
                     <form class="subscription-form" id="subscriptionForm">
                         <div class="subscription-form-row">
-                            <input type="text" class="subscription-input" placeholder="Nombres" required>
-                            <input type="text" class="subscription-input" placeholder="Apellidos" required>
+                            <input type="text" class="subscription-input" placeholder="Nombre" required>
+                            <input type="text" class="subscription-input" placeholder="Apellido" required>
                         </div>
                         
-                        <input type="email" class="subscription-input subscription-input-full" placeholder="Correo electrónico" required>
+                        <input type="email" class="subscription-input subscription-input-full" placeholder="Email" required>
                         
                         <select class="subscription-select" required>
                             <option value="" disabled selected>Género</option>
@@ -844,5 +913,6 @@
     <script src="../scripts/timeline.js"></script>
     <script src="../scripts/x-scroll.js"></script>
     <script src="../scripts/see-password.js"></script>
+    <script src="../scripts/checkout.js"></script>
 </body>
 </html>

@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const userBtn = document.getElementById('userBtn');
         if (!userBtn) return;
  
-        userBtn.innerHTML = `<i class="fas fa-user-check"></i> ${nombre.split(' ')[0]}`;
+        userBtn.innerHTML = `<i class="fas fa-user-check"></i>`;
         userBtn.title = 'Ver perfil';
  
         // Al hacer click redirige al perfil en lugar de abrir el modal

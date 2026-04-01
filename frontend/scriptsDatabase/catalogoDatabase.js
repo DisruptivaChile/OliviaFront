@@ -214,6 +214,13 @@ async function cargarProductos() {
 
         grid.innerHTML = data.data.map(renderTarjeta).join('');
 
+        // Traducir contenido dinámico si el idioma activo es inglés
+        if (typeof translatePage === 'function' && 
+            typeof currentLanguage !== 'undefined' && 
+            currentLanguage === 'en') {
+            await translatePage('en');
+        }
+
     } catch (err) {
         console.error('❌ Error al cargar productos:', err);
         mostrarError();

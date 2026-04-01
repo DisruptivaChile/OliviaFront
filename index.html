@@ -47,16 +47,16 @@
                         <i class="fas fa-times"></i>
                     </button>
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link active" data-i18n="nav_inicio">Inicio</a></li>
-                        <li><a href="frontend/pages/productos.html" class="nav-link" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="frontend/pages/ofertas.html" class="nav-link" data-i18n="nav_ofertas">Preordenar</a></li>
-                        <li><a href="frontend/pages/tallas.html" class="nav-link" data-i18n="nav_tallas">Tallas</a></li>
+                        <li><a href="index.html" class="nav-link active" data-i18n="inicio">Inicio</a></li>
+                        <li><a href="frontend/pages/productos.html" class="nav-link" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="frontend/pages/ofertas.html" class="nav-link">Preordenar</a></li>
+                        <li><a href="frontend/pages/tallas.html" class="nav-link">Tallas</a></li>
                     </ul>
                 </nav>
 
                 <!-- Logo Center -->
                 <div class="logo">
-                    <h1>
+                    <h1 data-no-translate>
                         <span>OLIVIA</span> 
                         <span>MERINO</span>
                     </h1>
@@ -75,7 +75,7 @@
                         <div class="lang-current" id="currentLangDisplay">
                             <img src="" id="currentFlagImg" alt="Idioma">
                         </div>
-                        <div class="lang-dropdown">
+                        <div class="lang-dropdown" data-no-translate>
                             <button class="lang-option" id="langOptionBtn">
                                 <img src="" id="optionFlagImg" alt="Option">
                                 <span id="optionText"></span>
@@ -95,9 +95,9 @@
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
-                    <span class="hero-label" data-i18n="hero_nueva_coleccion">Nueva Colección</span>
-                    <h2 class="hero-title" data-i18n="hero_primavera_verano">Primavera/Verano</h2>
-                    <a href="frontend/pages/productos.html?temporada=primavera" class="btn btn-hero" data-i18n="hero_btn_explorar">Explorar Colección</a>
+                    <span class="hero-label">Nueva Colección</span>
+                    <h2 class="hero-title">Primavera/Verano</h2>
+                    <a href="frontend/pages/productos.html?temporada=primavera" class="btn btn-hero">Explorar Colección</a>
                 </div>
             </div>
             
@@ -106,9 +106,9 @@
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
-                    <span class="hero-label" data-i18n="hero_edicion_limitada">Edición Limitada</span>
-                    <h2 class="hero-title" data-i18n="hero_diseno_exclusivo">Diseño Exclusivo</h2>
-                    <a href="frontend/pages/productos.html" class="btn btn-hero" data-i18n="hero_btn_ver">Ver Ahora</a>
+                    <span class="hero-label">Edición Limitada</span>
+                    <h2 class="hero-title">Diseño Exclusivo</h2>
+                    <a href="frontend/pages/productos.html" class="btn btn-hero">Ver Ahora</a>
                 </div>
             </div>
         </div>
@@ -146,7 +146,10 @@
                 <div class="editorial-overlay"></div>
             </div>
             <div class="editorial-content editorial-content-stacked">
-                <h3 class="panel-title">PREORDENAR <span class="arrow-icon">→</span></h3>
+                <h3 class="panel-title">
+                    <span data-i18n="preordenar">PREORDENAR</span> 
+                    <span class="arrow-icon">→</span>
+                </h3>
                 <a href="frontend/pages/ofertas.html" class="btn btn-hero">VER COLECCIÓN</a>
             </div>
         </div>
@@ -190,7 +193,7 @@
     <!-- Our Services Section -->
     <section class="services-section">
         <div class="container">
-            <h2 class="services-title" data-i18n="historia_titulo">NUESTRA HISTORIA</h2>
+            <h2 class="services-title">NUESTRA HISTORIA</h2>
             
             <div class="services-grid">
                 <article class="service-card">
@@ -198,9 +201,9 @@
                         <div class="service-image-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/ideas_njfwdm.jpg'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-name" data-i18n="historia_origen">EL ORIGEN DE LAS IDEAS</h3>
-                        <p class="service-description" data-i18n="historia_origen_desc">Cada diseño nace de la inspiración cotidiana, viajes y momentos que capturan la esencia de la elegancia atemporal.</p>
-                        <a href="frontend/pages/historia.html" class="service-link" data-i18n="historia_conoce">CONOCE MÁS</a>
+                        <h3 class="service-name">EL ORIGEN DE LAS IDEAS</h3>
+                        <p class="service-description" >Cada diseño nace de la inspiración cotidiana, viajes y momentos que capturan la esencia de la elegancia atemporal.</p>
+                        <a href="frontend/pages/historia.html" class="service-link">CONOCE MÁS</a>
                     </div>
                 </article>
                 
@@ -209,9 +212,9 @@
                         <div class="service-image-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/historia_w8wj9p.png'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-name" data-i18n="historia_cancion">UNA CANCIÓN, UNA HISTORIA</h3>
-                        <p class="service-description" data-i18n="historia_cancion_desc">Detrás de cada zapato hay una melodía que inspiró su creación, convirtiendo cada par en una obra de arte única.</p>
-                        <a href="frontend/pages/historia.html" class="service-link" data-i18n="historia_conoce">CONOCE MÁS</a>
+                        <h3 class="service-name">UNA CANCIÓN, UNA HISTORIA</h3>
+                        <p class="service-description" >Detrás de cada zapato hay una melodía que inspiró su creación, convirtiendo cada par en una obra de arte única.</p>
+                        <a href="frontend/pages/historia.html" class="service-link" >CONOCE MÁS</a>
                     </div>
                 </article>
                 
@@ -220,9 +223,9 @@
                         <div class="service-image-bg" style="background-image: url('https://res.cloudinary.com/dzi3s9oof/image/upload/v1770004162/marca_v3azkx.png'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-name" data-i18n="historia_nace">NACE OLIVIA MERINO</h3>
-                        <p class="service-description" data-i18n="historia_nace_desc">La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.</p>
-                        <a href="frontend/pages/historia.html" class="service-link" data-i18n="historia_conoce">CONOCE MÁS</a>
+                        <h3 class="service-name">NACE OLIVIA MERINO</h3>
+                        <p class="service-description" >La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.</p>
+                        <a href="frontend/pages/historia.html" class="service-link" >CONOCE MÁS</a>
                     </div>
                 </article>
             </div>
@@ -283,7 +286,7 @@
         <div class="container">
             <h2 class="mundo-olivia-title">mundo olivia</h2>
             <p class="mundo-olivia-text">Los zapatos que cuentan historias, eso intentamos hacer aquí. Son relatos a través de las canciones que a mí y quizá muchas de ustedes han acompañado en distintos momentos de su vida, año o día. La confección manual, el diseño nacional, y la materia prima local cuenta una historia, la de nuestro país, sus raíces y cultura, la más profunda y la más pop. Nos gusta lo bello que tiene alma. Y en cada zapato que hacemos se va un pedacito de la nuestra para ustedes.</p>
-            <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="btn btn-hero mundo-olivia-btn">CONÓCENOS</a>
+            <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="btn btn-hero mundo-olivia-btn" data-i18n="conocenos">CONÓCENOS</a>
             
             <div class="mundo-olivia-social">
                 <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank" class="social-icon">
@@ -304,41 +307,41 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section section-newsletter">
-                    <h4 data-i18n="footer_newsletter">Newsletter</h4>
-                    <p data-i18n="footer_newsletter">Suscríbete para recibir ofertas exclusivas</p>
+                    <h4 >Newsletter</h4>
+                    <p >Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Tu email" class="newsletter-input">
-                        <button class="btn btn-primary" data-i18n="footer_subscribe">Suscribirse</button>
+                        <button class="btn btn-primary" >Suscribirse</button>
                     </div>
                 </div>
 
                 <div class="footer-section accordion-section">
                     <div class="accordion-header">
-                        <h4 data-i18n="comprar_footer">Comprar</h4>
+                        <h4>Comprar</h4>
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="frontend/pages/productos.html" data-i18n="nav_productos">Catálogo</a></li>
-                        <li><a href="frontend/pages/ofertas.html" data-i18n="nav_ofertas">Preordenar</a></li>
+                        <li><a href="frontend/pages/productos.html" data-i18n="catalogo">Catálogo</a></li>
+                        <li><a href="frontend/pages/ofertas.html">Preordenar</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section accordion-section">
                     <div class="accordion-header">
-                        <h4 data-i18n="footer_ayuda">Ayuda</h4>
+                        <h4>Ayuda</h4>
                         <span class="accordion-icon">+</span>
                     </div>
                     <ul class="accordion-content">
-                        <li><a href="#" id="enviosBtn" data-i18n="footer_envios">Envíos</a></li>
-                        <li><a href="#" id="devolucionesBtn" data-i18n="footer_devoluciones">Devoluciones</a></li>
-                        <li><a href="frontend/pages/tallas.html" data-i18n="footer_guia">Guía de Tallas</a></li>
-                        <li><a href="https://wa.me/56940096993" target="_blank" data-i18n="footer_contacto">Contacto</a></li>
+                        <li><a href="#" id="enviosBtn">Envíos</a></li>
+                        <li><a href="#" id="devolucionesBtn">Devoluciones</a></li>
+                        <li><a href="frontend/pages/tallas.html">Guía de Tallas</a></li>
+                        <li><a href="https://wa.me/56940096993" target="_blank">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section section-brand">
-                    <h3 data-i18n="footer_titulo">OLIVIA MERINO</h3>
-                    <p data-i18n="footer_descripcion">Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
+                    <h3>OLIVIA MERINO</h3>
+                    <p>Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/oliviamerinozapateria#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/olivia_merino_/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -348,7 +351,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-bottom-text" data-i18n="footer_derechos">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
+                <p class="footer-bottom-text">&copy; 2025 Olivia Merino. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -357,7 +360,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 data-i18n="carrito_titulo">Carrito de Compras</h2>
+                <h2>Carrito de Compras</h2>
                 <button class="close-btn" id="closeCart">
                     <i class="fas fa-times"></i>
                 </button>
@@ -370,7 +373,7 @@
                     <span>Total:</span>
                     <span class="total-amount" id="totalAmount">$0</span>
                 </div>
-                <button class="btn btn-primary btn-block" id="checkoutBtn" data-i18n="carrito_finalizar">Proceder al Pago</button>
+                <button class="btn btn-primary btn-block" id="checkoutBtn">Proceder al Pago</button>
             </div>
         </div>
     </div>
@@ -379,7 +382,7 @@
     <div class="modal" id="checkoutModal">
         <div class="modal-content" style="max-width:550px;">
             <div class="modal-header">
-                <h2 style="font-family:'Cormorant Garamond',serif;">Finalizar Compra</h2>
+                <h2 style="font-family:'Cormorant Garamond',serif;" data-i18n="finalizar-compra">Finalizar Compra</h2>
                 <button class="close-btn" id="closeCheckout"><i class="fas fa-times"></i></button>
             </div>
             <div class="checkout-body" style="padding:1.5rem;">
@@ -387,56 +390,56 @@
                 <div class="checkout-summary" id="checkoutSummary" style="margin-bottom:1.5rem;background:#f9f9f9;padding:1rem;border:1px solid var(--border-color);"></div>
 
                 <form id="checkoutForm" novalidate>
-                    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;">* Campos obligatorios</p>
+                    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;" data-i18n="campo-obligatorio">* Campos obligatorios</p>
 
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                         <div class="form-group">
-                            <label class="form-label">Nombre completo *</label>
+                            <label class="form-label" data-i18n="nombres">Nombre completo *</label>
                             <input type="text" id="chk_nombre" class="form-input" placeholder="Juan Pérez" required maxlength="100">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Email *</label>
+                            <label class="form-label" data-i18n="correo_electronico">Email *</label>
                             <input type="email" id="chk_email" class="form-input" placeholder="tu@email.com" required maxlength="150">
                             <span id="chk_autocompletar_hint" style="display:none;font-size:0.78rem;color:#2e7d32;margin-top:0.3rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Teléfono</label>
+                            <label class="form-label" data-i18n="telefono">Teléfono</label>
                             <input type="tel" id="chk_telefono" class="form-input" placeholder="+56 9 1234 5678" maxlength="30">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Ciudad *</label>
+                            <label class="form-label" data-i18n="ciudad">Ciudad *</label>
                             <input type="text" id="chk_ciudad" class="form-input" placeholder="Santiago" required maxlength="80">
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-top:0.5rem;">
-                        <label class="form-label">Dirección de envío *</label>
+                        <label class="form-label" data-i18n="direccion-envio">Dirección de envío *</label>
                         <input type="text" id="chk_direccion" class="form-input" placeholder="Av. Principal 123, Depto 4B" required maxlength="200">
                     </div>
 
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
                         <div class="form-group">
-                            <label class="form-label">Región</label>
+                            <label class="form-label" data-i18n="region">Región</label>
                             <input type="text" id="chk_region" class="form-input" placeholder="Región Metropolitana" maxlength="80">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">País</label>
+                            <label class="form-label" data-i18n="pais">País</label>
                             <input type="text" id="chk_pais" class="form-input" value="Chile" maxlength="60">
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-top:0.5rem;">
-                        <label class="form-label">Notas adicionales</label>
+                        <label class="form-label" data-i18n="notas-adicionales">Notas adicionales</label>
                         <textarea id="chk_notas" class="form-input" rows="2" placeholder="Instrucciones especiales..." style="resize:vertical;" maxlength="500"></textarea>
                     </div>
 
                     <div id="checkoutError" style="display:none;color:#c0392b;background:#fdecea;padding:0.75rem;border-radius:4px;margin-top:1rem;font-size:0.9rem;"></div>
 
-                    <button type="submit" class="btn btn-primary btn-block" id="submitCheckout" style="margin-top:1.5rem;">
+                    <button type="submit" class="btn btn-primary btn-block" id="submitCheckout" style="margin-top:1.5rem;" data-i18n="pagar-mercadopago">
                         <i class="fas fa-lock" style="margin-right:0.5rem;"></i>
                         Pagar con Flow
                     </button>
-                    <p style="text-align:center;font-size:0.78rem;color:var(--text-light);margin-top:0.75rem;">
+                    <p style="text-align:center;font-size:0.78rem;color:var(--text-light);margin-top:0.75rem;" data-i18n="pago-seguro">
                         <i class="fas fa-shield-alt"></i> Pago 100% seguro — tarjetas, débito, transferencia y más
                     </p>
                 </form>
@@ -453,14 +456,14 @@
             </button>
             
             <div class="login-header">
-                <h2 data-i18n="login_header" style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
-                <p style="color: var(--text-light); font-size: 0.95rem;" data-i18n="login_header_p">Inicia sesión para continuar</p>
+                <h2 style="font-family: 'Cormorant Garamond', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 0.5rem;">Bienvenido</h2>
+                <p style="color: var(--text-light); font-size: 0.95rem;" >Inicia sesión para continuar</p>
             </div>
 
             <div class="login-tabs">
                 <button class="login-tab active" data-tab="user">
                     <i class="fas fa-user"></i>
-                    <span data-i18n="login_usuario">Usuario</span>
+                    <span>Usuario</span>
                 </button>
                 <button class="login-tab" data-tab="admin">
                     <i class="fas fa-crown"></i>
@@ -470,7 +473,7 @@
 
             <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail" data-i18n="login_email">
+                    <label for="loginEmail">
                         <i class="fas fa-envelope"></i>
                         Email
                     </label>
@@ -478,7 +481,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="loginPassword" data-i18n="login_password">
+                    <label for="loginPassword">
                         <i class="fas fa-lock"></i>
                         Contraseña
                     </label>
@@ -493,12 +496,12 @@
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="rememberMe">
-                        <span data-i18n="login_recordarme">Recordarme</span>
+                        <span>Recordarme</span>
                     </label>
-                    <a href="#" class="forgot-link" data-i18n="login_olvidaste">¿Olvidaste tu contraseña?</a>
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="login_iniciar">
+                <button type="submit" class="btn btn-primary btn-block login-submit" data-i18n="iniciar-sesion">
                     Iniciar Sesión
                 </button>
 
@@ -507,21 +510,21 @@
                 </div>
 
                 <div class="social-login">
-                    <button type="button" class="btn-social btn-google">
+                    <button type="button" class="btn-social btn-google" data-no-translate="">
                         <i class="fab fa-google"></i>
                         Google
                     </button>
-                    <button type="button" class="btn-social btn-facebook">
+                    <button type="button" class="btn-social btn-facebook" data-no-translate="">
                         <i class="fab fa-facebook-f"></i>
                         Facebook
                     </button>
                 </div>
 
                 <p class="login-footer">
-                    <span data-i18n="login_footer">
+                    <span>
                         ¿No tienes cuenta?
                     </span>
-                    <a href="frontend/pages/registro.html" class="register-link" data-i18n="login_footer_registro"> Regístrate aquí</a>
+                    <a href="frontend/pages/registro.html" class="register-link"> Regístrate aquí</a>
                 </p>
             </form>
         </div>
@@ -565,17 +568,17 @@
                     
                     <form class="subscription-form" id="subscriptionForm">
                         <div class="subscription-form-row">
-                            <input type="text" class="subscription-input" placeholder="Nombres" required>
-                            <input type="text" class="subscription-input" placeholder="Apellidos" required>
+                            <input type="text" class="subscription-input" placeholder="Nombre" required>
+                            <input type="text" class="subscription-input" placeholder="Apellido" required>
                         </div>
                         
                         <input type="email" class="subscription-input subscription-input-full" placeholder="Correo electrónico" required>
                         
                         <select class="subscription-select" required>
-                            <option value="" disabled selected>Género</option>
-                            <option value="mujer">Mujer</option>
-                            <option value="hombre">Hombre</option>
-                            <option value="otro">Otro</option>
+                            <option value="" disabled selected data-i18n="genero">Género</option>
+                            <option value="mujer" data-i18n="mujer">Mujer</option>
+                            <option value="hombre" data-i18n="hombre">Hombre</option>
+                            <option value="otro" data-i18n="otro">Otro</option>
                         </select>
                         
                         <label class="subscription-checkbox">
@@ -583,9 +586,9 @@
                             <span>Acepto las políticas de privacidad y tratamiento de datos personales del sitio y del Programa de Fidelización QUIERO. <a href="#" class="subscription-link">Conoce más aquí</a>.</span>
                         </label>
                         
-                        <button type="submit" class="subscription-submit-btn">ENVIAR</button>
+                        <button type="submit" class="subscription-submit-btn" data-i18n="enviar">ENVIAR</button>
                         
-                        <a href="#" class="subscription-terms">VER TÉRMINOS Y CONDICIONES</a>
+                        <a href="#" class="subscription-terms" data-i18n="ver-terminos">VER TÉRMINOS Y CONDICIONES</a>
                     </form>
                 </div>
             </div>

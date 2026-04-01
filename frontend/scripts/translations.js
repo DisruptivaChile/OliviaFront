@@ -1,314 +1,367 @@
-// ========================================
-// SISTEMA DE TRADUCCIÓN - OLIVIA MERINO
-// ========================================
+// =============================================
+// frontend/scripts/translations.js
+// Traducción automática con MyMemory API
+// Gratuita sin registro (1000 palabras/día)
+// Con email: 10,000 palabras/día
+// =============================================
 
-const translations = {
-    es: {
-        nav_inicio: "Inicio",
-        nav_productos: "Catálogo",
-        nav_mujer: "Mujer",
-        nav_hombre: "Hombre",
-        nav_ofertas: "Preordenar",
-        comprar_footer: "Comprar",
-        hero_nueva_coleccion: "Nueva Colección",
-        hero_primavera_verano: "Primavera/Verano",
-        hero_edicion_limitada: "Edición Limitada",
-        hero_diseno_exclusivo: "Diseño Exclusivo",
-        hero_btn_explorar: "Explorar Colección",
-        hero_btn_ver: "Ver Ahora",
-        slide_coleccion: "Colección",
-        slide_mujer: "Mujer",
-        slide_hombre: "Hombre",
-        slide_productos: "Catálogo",
-        slide_ofertas: "Preordenar",
-        slide_elegancia_mujer: "Elegancia atemporal para cada ocasión",
-        slide_estilo_hombre: "Estilo refinado y sofisticado",
-        slide_instagram_descubre: "Descubre nuestra colección y estilo de vida",
-        slide_instagram_siguenos: "Siguenos en Instagram",
-        facebook_une: "Únete a",
-        facebook_comunidad: "Conecta con nuestra comunidad",
-        productos_titulo: "Mundo Olivia",
-        productos_subtitulo: "Encuentra el par perfecto para ti",
-        filtro_categoria: "Categoría:",
-        filtro_todas: "Todas",
-        filtro_tipo: "Tipo:",
-        filtro_todos: "Todos",
-        botines: "Botines",
-        zapatos: "Zapatos",
-        sandalias: "Sandalias",
-        filtro_tacones: "Tacones",
-        filtro_botas: "Botas",
-        filtro_sandalias: "Sandalias",
-        filtro_deportivos: "Deportivos",
-        filtro_planos: "Planos",
-        filtro_precio: "Precio:",
-        filtro_limpiar: "Limpiar Filtros",
-        filtro_20: "20% o más",
-        filtro_30: "30% o más",
-        filtro_50: "50% o más",
-        historia_titulo: "NUESTRA HISTORIA",
-        historia_origen: "EL ORIGEN DE LAS IDEAS",
-        historia_origen_desc: "Cada diseño nace de la inspiración cotidiana, viajes y momentos que capturan la esencia de la elegancia atemporal.",
-        historia_cancion: "UNA CANCIÓN, UNA HISTORIA",
-        historia_cancion_desc: "Detrás de cada zapato hay una melodía que inspiró su creación, convirtiendo cada par en una obra de arte única.",
-        historia_nace: "NACE OLIVIA MERINO",
-        historia_nace_desc: "La visión de crear calzado que fusiona tradición artesanal con diseño contemporáneo dio vida a nuestra marca.",
-        historia_conoce: "CONOCE MÁS",
-        marca_descripcion: "Los zapatos que cuentan historias, eso intentamos hacer aquí. Son relatos a través de las canciones que a mí y quizá muchas de ustedes han acompañado en distintos momentos de su vida, año o día.",
-        marca_diseno: "Cada pieza es cuidadosamente diseñada para reflejar la pasión por la perfección y el detalle,",
-        marca_experiencia: "creando experiencias que trascienden el tiempo.",
-        //oferta_descripcion: "Aprovecha nuestras ofertas exclusivas sin comprometer",
-        //oferta_resaltado: "la calidad y elegancia que nos caracteriza.",
-        //oferta_garantia: "Cada artículo en oferta mantiene nuestro estándar de excelencia.",
-        mujer_coleccion: "Colección",
-        mujer_explorar: "Explorar Colección",
-        mujer_categorias: "Categorías",
-        mujer_zapatos: "Zapatos",
-        mujer_sandalias: "Sandalias",
-        mujer_botines: "Botines",
-        mujer_destacados: "Artículos Destacados",
-        mujer_destacados_desc: "Lo mejor de nuestra colección femenina",
-        mujer_statement_titulo: "Elegancia redefinida",
-        mujer_statement_desc: "Cada zapato de nuestra colección femenina está diseñado para realzar tu estilo único, combinando comodidad excepcional con diseños sofisticados que te acompañan en cada momento especial de tu vida.",
-        see_collection: "Ver Colección",
-        mujer_elegancia: "Elegancia en cada paso",
-        frescura: "Frescura y sofisticación",
-        estilo: "Estilo y versatilidad",
-        // ofertas_titulo: "Ofertas Especiales",
-        //section_subtitle_desc: "Descuentos exclusivos en artículos seleccionados",
-        //hero_ofertas_label: "DESCUENTOS ESPECIALES",
-        //hero_ofertas_title: "Mundo Olivia",
-        //hero_ofertas_subtitle: "Encuentra las mejores ofertas en nuestra colección premium",
-        //hero_ofertas_btn: "Ver Ofertas",
-        carrito_titulo: "Mi Carrito",
-        carrito_vacio: "Tu carrito está vacío",
-        carrito_total: "Total:",
-        carrito_finalizar: "Finalizar Compra",
-        carrito_eliminar: "Eliminar",
-        carrito_añadir: "Añadir al Carrito",
-        producto_nuevo: "NUEVO",
-        login_header: "Iniciar Sesión",
-        login_header_p: "Inicia sesión para continuar",
-        login_usuario: "Usuario",
-        login_email: "Correo Electrónico",
-        login_password: "Contraseña",
-        login_recordarme: "Recordarme",
-        login_olvidaste: "¿Olvidaste tu contraseña?",
-        login_iniciar: "Iniciar Sesión",
-        login_divider: "o",
-        login_footer: "¿No tienes cuenta?",
-        login_footer_registro: "Regístrate aquí",
-        footer_titulo: "OLIVIA MERINO",
-        footer_descripcion: "Tu destino para zapatos de calidad premium. Estilo, comodidad y elegancia en cada paso.",
-        footer_cuenta: "Mi Cuenta",
-        footer_pedidos: "Mis Pedidos",
-        footer_lista_deseos: "Lista de Deseos",
-        footer_perfil: "Mi Perfil",
-        footer_ayuda: "Ayuda",
-        footer_contacto: "Contacto",
-        footer_envios: "Envíos",
-        footer_devoluciones: "Devoluciones",
-        footer_faq: "Preguntas Frecuentes",
-        footer_politica: "Política de Privacidad",
-        footer_legal: "Legal",
-        footer_terminos: "Términos y Condiciones",
-        footer_cookies: "Política de Cookies",
-        footer_derechos: "© 2025 Olivia Merino. Todos los derechos reservados.",
-        footer_newsletter: "Suscríbete para recibir ofertas exclusivas",
-        footer_subscribe: "Suscribirse",
-        footer_guia: "Guía de Tallas"
+const MANUAL_TRANSLATIONS = {
+    'es': {
+        'preordenar': 'PREORDENAR ',
+        'conocenos': 'CONÓCENOS',
+        'nombres': 'Nombres',
+        'apellidos': 'Apellidos',
+        'correo_electronico': 'Correo electrónico',
+        'genero': 'Género',
+        'mujer': 'Mujer',
+        'hombre': 'Hombre',
+        'otro': 'Otro',
+        'enviar': 'ENVIAR',
+        'ver-terminos': 'VER TÉRMINOS Y CONDICIONES',
+        'telefono': 'Teléfono',
+        'ciudad': 'Ciudad',
+        'direccion-envio': 'Dirección de envío',
+        'region': 'Región',
+        'pais': 'País',
+        'notas-adicionales': 'Notas adicionales',
+        'pagar-mercadopago': 'PAGAR CON MERCADOPAGO',
+        'pago-seguro': 'Pago 100% seguro — tarjetas, débito, transferencia y más',
+        'finalizar-compra': 'Finalizar compra',
+        'campo-obligatorio': '*Campos obligatorios',
+        'iniciar-sesion': 'Iniciar Sesión',
+        'inicio': 'Inicio',
+        'catalogo': 'Catálogo',
+        'todos': 'Todos',
+        'botines': 'Botines',
+        'zapatos': 'Zapatos',
+        'sandalias': 'Sandalias',
+        'zapatos-unicos': 'ZAPATOS ÚNICOS',
+        'statement_destacado': 'a tu medida con la dedicación que tus pies merecen.',
+        'talla-chile': 'Talla Chile',
+        'talla-us': 'Talla US',
+        'talla-eu': 'Talla EU',
+        'about-olivia': 'Sobre Olivia Merino',
+        'detras-cada-diseno': 'Detrás de cada diseño de Olivia Merino existe una melodía. No es una coincidencia, es una filosofía. Creemos que la música y el diseño hablan el mismo lenguaje: el de las emociones.',
+        'lo-que-comenzo': 'Lo que comenzó como un sueño se convirtió en realidad. La visión de crear calzado que fusionara tradición artesanal con diseño contemporáneo dio vida a Olivia Merino. No fue una decisión impulsiva, fue una consecuencia natural de años de observación, exploración y pasión por la excelencia.',
+        'crear-cuenta': 'Crear Cuenta',
+        'ya_tienes_cuenta': '¿Ya tienes cuenta?',
+        'prefiero-no-decir': 'Prefiero no decir',
     },
-    en: {
-        nav_inicio: "Home",
-        nav_productos: "Catalog",
-        nav_mujer: "Women",
-        nav_hombre: "Men",
-        nav_ofertas: "Offers",
-        comprar_footer: "Shop",
-        hero_nueva_coleccion: "New Collection",
-        hero_primavera_verano: "Spring/Summer",
-        hero_edicion_limitada: "Limited Edition",
-        hero_diseno_exclusivo: "Exclusive Design",
-        hero_btn_explorar: "Explore Collection",
-        hero_btn_ver: "View Now",
-        slide_coleccion: "Collection",
-        slide_mujer: "Women",
-        slide_hombre: "Men",
-        slide_productos: "Catalog",
-        slide_ofertas: "Offers",
-        slide_elegancia_mujer: "Timeless elegance for every occasion",
-        slide_estilo_hombre: "Refined and sophisticated style",
-        slide_instagram_descubre: "Discover our collection and lifestyle",
-        slide_instagram_siguenos: "Follow us on Instagram",
-        facebook_une: "Join",
-        facebook_comunidad: "Connect with our community",
-        productos_titulo: "Olivia's World",
-        productos_subtitulo: "Find your perfect pair",
-        filtro_categoria: "Category:",
-        filtro_todas: "All",
-        filtro_tipo: "Type:",
-        filtro_todos: "All",
-        botines: "Boots",
-        zapatos: "Shoes",
-        sandalias: "Sandals",
-        filtro_tacones: "Heels",
-        filtro_botas: "Boots",
-        filtro_sandalias: "Sandals",
-        filtro_deportivos: "Sneakers",
-        filtro_planos: "Flats",
-        filtro_precio: "Price:",
-        filtro_limpiar: "Clear Filters",
-        filtro_20: "20% or more",
-        filtro_30: "30% or more",
-        filtro_50: "50% or more",
-        historia_titulo: "OUR STORY",
-        historia_origen: "THE ORIGIN OF IDEAS",
-        historia_origen_desc: "Each design is born from everyday inspiration, travels and moments that capture the essence of timeless elegance.",
-        historia_cancion: "A SONG, A STORY",
-        historia_cancion_desc: "Behind each shoe there is a melody that inspired its creation, turning each pair into a unique work of art.",
-        historia_nace: "OLIVIA MERINO IS BORN",
-        historia_nace_desc: "The vision of creating footwear that fuses artisan tradition with contemporary design gave life to our brand.",
-        historia_conoce: "LEARN MORE",
-        marca_descripcion: "Olivia Merino represents quality, elegance, and unique style in every product.",
-        marca_diseno: "Each piece is carefully designed to reflect the passion for perfection and detail,",
-        marca_experiencia: "creating experiences that transcend time.",
-        oferta_descripcion: "Take advantage of our exclusive offers without compromising",
-        oferta_resaltado: "the quality and elegance that define us.",
-        oferta_garantia: "Every product on sale maintains our standard of excellence.",
-        mujer_coleccion: "Collection",
-        mujer_explorar: "Explore Collection",
-        mujer_categorias: "Categories",
-        mujer_zapatos: "Shoes",
-        mujer_sandalias: "Sandals",
-        mujer_botines: "Booties",
-        mujer_destacados: "Featured Products",
-        mujer_destacados_desc: "The best of our women's collection",
-        mujer_statement_titulo: "Redefined elegance",
-        mujer_statement_desc: "Each shoe in our women's collection is designed to enhance your unique style, combining exceptional comfort with sophisticated designs that accompany you in every special moment of your life.",
-        see_collection: "View Collection",
-        mujer_elegancia: "Elegance in every step",
-        frescura: "Freshness and sophistication",
-        estilo: "Style and versatility",
-        ofertas_titulo: "Special Offers",
-        section_subtitle_desc: "Exclusive offers on selected products",
-        hero_ofertas_label: "SPECIAL OFFERS",
-        hero_ofertas_title: "Olivia's World",
-        hero_ofertas_subtitle: "Find the best offers in our premium collection",
-        hero_ofertas_btn: "View Offers",
-        carrito_titulo: "My Cart",
-        carrito_vacio: "Your cart is empty",
-        carrito_total: "Total:",
-        carrito_finalizar: "Checkout",
-        carrito_eliminar: "Remove",
-        carrito_añadir: "Add to Cart",
-        producto_nuevo: "NEW",
-        login_header: "Login",
-        login_header_p: "Log in to continue",
-        login_usuario: "User",
-        login_email: "Email",
-        login_password: "Password",
-        login_recordarme: "Remember me",
-        login_olvidaste: "Forgot your password?",
-        login_iniciar: "Login",
-        login_divider: "or",
-        login_footer: "Don't have an account?",
-        login_footer_registro: "Register here",
-        footer_titulo: "OLIVIA MERINO",
-        footer_descripcion: "Your destination for premium quality shoes. Style, comfort and elegance in every step.",
-        footer_cuenta: "My Account",
-        footer_pedidos: "My Orders",
-        footer_lista_deseos: "Wishlist",
-        footer_perfil: "My Profile",
-        footer_ayuda: "Help",
-        footer_contacto: "Contact",
-        footer_envios: "Shipping",
-        footer_devoluciones: "Returns",
-        footer_faq: "FAQ",
-        footer_politica: "Privacy Policy",
-        footer_legal: "Legal",
-        footer_terminos: "Terms & Conditions",
-        footer_cookies: "Cookie Policy",
-        footer_derechos: "© 2025 Olivia Merino. All rights reserved.",
-        footer_newsletter: "Subscribe for exclusive offers",
-        footer_subscribe: "Subscribe",
-        footer_guia: "Size Guide"
+    'en': {
+        'preordenar': 'PRE-ORDER',
+        'conocenos': 'ABOUT US',
+        'nombres': 'Names',
+        'apellidos': 'Last Names',
+        'correo_electronico': 'Email Address',
+        'genero': 'Gender',
+        'mujer': 'Woman',
+        'hombre': 'Man',
+        'otro': 'Other',
+        'enviar': 'SUBMIT',
+        'ver-terminos': 'VIEW TERMS AND CONDITIONS',
+        'telefono': 'Phone',
+        'ciudad': 'City',
+        'direccion-envio': 'Shipping Address',
+        'region': 'Region',
+        'pais': 'Country',
+        'notas-adicionales': 'Additional Notes',
+        'pagar-mercadopago': 'PAY WITH MERCADOPAGO',
+        'pago-seguro': '100% secure payment — credit cards, debit, transfer and more',
+        'finalizar-compra': 'End purchase',
+        'campo-obligatorio': '*Required fields',
+        'iniciar-sesion': 'Log In',
+        'inicio': 'Home',
+        'catalogo': 'Catalog',
+        'todos': 'All',
+        'botines': 'Boots',
+        'zapatos': 'Shoes',
+        'sandalias': 'Sandals',
+        'zapatos-unicos': 'UNIQUE SHOES',
+        'statement_destacado': 'tailored to you with the dedication your feet deserve.',
+        'talla-chile': 'Chile Size',
+        'talla-us': 'US Size',
+        'talla-eu': 'EU Size',
+        'about-olivia': 'About Olivia Merino',
+        'detras-cada-diseno': 'Behind every design of Olivia Merino there is a melody. It is not a coincidence, it is a philosophy. We believe that music and design speak the same language: that of emotions.',
+        'lo-que-comenzo': 'What started as a dream became reality. The vision of creating footwear that fused artisanal tradition with contemporary design gave life to Olivia Merino. It was not an impulsive decision, it was a natural consequence of years of observation, exploration and passion for excellence.',
+        'crear-cuenta': 'Create Account',
+        'ya_tienes_cuenta': 'Already have an account?',
+        'prefiero-no-decir': 'Prefer not to say'
     }
 };
 
-// --- LÓGICA DE CONTROL ---
+// ── Configuración ─────────────────────────────────────────────────────
+// Opcional: agrega tu email para mayor límite diario
+const MYMEMORY_EMAIL = 'disruptiva.testings@gmail.com'; // Ej: 'tu@email.com'
 
-// 1. Estado inicial
-let currentLanguage = localStorage.getItem('oliviaLanguage') || 'es';
+// Términos que nunca deben traducirse
+const PROTECTED_TERMS = ['Olivia Merino', 'Olivia', 'Merino'];
 
-const flagData = {
-    es: { src: "https://res.cloudinary.com/dzi3s9oof/image/upload/v1770054456/cl_mmwm5r.svg", label: "Español" },
-    en: { src: "https://res.cloudinary.com/dzi3s9oof/image/upload/v1770054456/us_ieog1r.svg", label: "English" }
-};
-
-// 2. Función para actualizar todos los textos con [data-i18n]
-function updatePageContent() {
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[currentLanguage] && translations[currentLanguage][key]) {
-            element.textContent = translations[currentLanguage][key];
-        }
+function protegerTerminos(text) {
+    let result = text;
+    PROTECTED_TERMS.forEach((term, i) => {
+        result = result.replace(new RegExp(term, 'gi'), `##${i}##`);
     });
+    return result;
 }
 
-// 3. Función para actualizar el selector de banderas (UI)
+function restaurarTerminos(text) {
+    let result = text;
+    PROTECTED_TERMS.forEach((term, i) => {
+        result = result.replace(new RegExp(`##${i}##`, 'g'), term);
+    });
+    return result;
+}
+
+const CACHE_PREFIX  = 'olivia_translate_';
+const CACHE_VERSION = 'v2_';
+
+// ── Estado ────────────────────────────────────────────────────────────
+let currentLanguage = localStorage.getItem('oliviaLanguage') || 'es';
+let isTranslating   = false;
+
+// ── Datos de banderas ─────────────────────────────────────────────────
+const flagData = {
+    es: { src: 'https://res.cloudinary.com/dzi3s9oof/image/upload/v1770054456/cl_mmwm5r.svg', label: 'Español' },
+    en: { src: 'https://res.cloudinary.com/dzi3s9oof/image/upload/v1770054456/us_ieog1r.svg', label: 'English' }
+};
+
+
+// ── Cache helpers ─────────────────────────────────────────────────────
+function getCacheKey(text, targetLang) {
+    const shortText = text.trim().substring(0, 60).replace(/\s+/g, '_');
+    try {
+        return CACHE_PREFIX + CACHE_VERSION + targetLang + '_' + btoa(unescape(encodeURIComponent(shortText))).substring(0, 30);
+    } catch {
+        return CACHE_PREFIX + CACHE_VERSION + targetLang + '_' + shortText.substring(0, 20);
+    }
+}
+
+function getFromCache(text, targetLang) {
+    try { return localStorage.getItem(getCacheKey(text, targetLang)); }
+    catch { return null; }
+}
+
+function saveToCache(text, targetLang, translation) {
+    try { localStorage.setItem(getCacheKey(text, targetLang), translation); }
+    catch { clearOldCache(); }
+}
+
+function clearOldCache() {
+    const keysToDelete = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(CACHE_PREFIX) && !key.startsWith(CACHE_PREFIX + CACHE_VERSION)) {
+            keysToDelete.push(key);
+        }
+    }
+    keysToDelete.forEach(k => localStorage.removeItem(k));
+}
+
+
+// ── Traducir un texto via MyMemory API ───────────────────────────────
+async function translateText(text, targetLang) {
+    if (!text || !text.trim()) return text;
+    if (targetLang === 'es') return text;
+
+    const cached = getFromCache(text, targetLang);
+    if (cached) return cached;
+
+    try {
+        const langPair = `es|${targetLang}`;
+        const textoProtegido = protegerTerminos(text);
+        let url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(textoProtegido)}&langpair=${langPair}`;
+        if (MYMEMORY_EMAIL) url += `&de=${encodeURIComponent(MYMEMORY_EMAIL)}`;
+
+        const res  = await fetch(url);
+        if (!res.ok) throw new Error('MyMemory error: ' + res.status);
+
+        const data = await res.json();
+
+        // MyMemory devuelve 200 pero con código de error interno
+        if (data.responseStatus !== 200) {
+            throw new Error('MyMemory: ' + data.responseDetails);
+        }
+
+        const translated = restaurarTerminos(data.responseData.translatedText || text);
+        saveToCache(text, targetLang, translated);
+        return translated;
+
+    } catch (err) {
+        console.warn('⚠️ Error traduciendo:', err.message);
+        return text;
+    }
+}
+
+
+// ── Traducir todos los elementos [data-i18n] ──────────────────────────
+async function translatePage(targetLang) {
+    // === NUEVO: TRADUCCIÓN MANUAL PRIMERO ===
+    const manualElements = document.querySelectorAll('[data-i18n]');
+    manualElements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (MANUAL_TRANSLATIONS[targetLang] && MANUAL_TRANSLATIONS[targetLang][key]) {
+            // Guardamos el original si no existe para poder volver a 'es'
+            if (!el.getAttribute('data-i18n-original')) {
+                el.setAttribute('data-i18n-original', el.textContent.trim());
+            }
+            el.textContent = MANUAL_TRANSLATIONS[targetLang][key];
+        }
+    });
+
+    // Si el idioma es español, restauramos originales y salimos
+    if (targetLang === 'es') {
+        document.querySelectorAll('[data-i18n-original]').forEach(el => {
+            el.textContent = el.getAttribute('data-i18n-original');
+        });
+        document.querySelectorAll('[data-placeholder-original]').forEach(el => {
+            el.placeholder = el.getAttribute('data-placeholder-original');
+        });
+        return;
+    }
+
+    // === EL RESTO DE TU LÓGICA DE API (MyMemory) ===
+    const elements = Array.from(document.querySelectorAll(
+        'h1, h2, h3, h4, h5, p, span, button, label, a, li, th, td'
+    )).filter(el => {
+        // Evitamos volver a procesar los que ya tradujimos manualmente
+        if (el.hasAttribute('data-i18n')) return false; 
+        
+        const text = el.childNodes;
+        const hasDirectText = Array.from(text).some(n => 
+            n.nodeType === 3 && n.textContent.trim().length > 2
+        );
+        return hasDirectText && !el.closest('script, style, .fa, [data-no-translate]');
+    });
+
+    if (elements.length === 0) {
+        // Aún si no hay elementos de texto largo, traducimos los placeholders
+        await traducirPlaceholders(targetLang);
+        return;
+    }
+
+    // ... (aquí sigue el resto de tu código de lotes/batch de MyMemory)
+    mostrarIndicadorTraduccion(true);
+    isTranslating = true;
+    try {
+        const BATCH_SIZE = 5;
+        for (let i = 0; i < elements.length; i += BATCH_SIZE) {
+            const batch = elements.slice(i, i + BATCH_SIZE);
+            await Promise.all(batch.map(async (el) => {
+                // ... (tu código actual de translateText)
+                if (!el.getAttribute('data-i18n-original')) {
+                     el.setAttribute('data-i18n-original', el.textContent.trim());
+                }
+                const originalText = el.getAttribute('data-i18n-original');
+                const translated = await translateText(originalText, targetLang);
+                if (translated) el.textContent = translated;
+            }));
+        }
+        await traducirPlaceholders(targetLang);
+    } finally {
+        isTranslating = false;
+        mostrarIndicadorTraduccion(false);
+    }
+}
+
+// Función auxiliar para no repetir código
+async function traducirPlaceholders(targetLang) {
+    const inputs = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+    for (const el of inputs) {
+        const original = el.getAttribute('data-placeholder-original') || el.placeholder;
+        if (!el.getAttribute('data-placeholder-original')) {
+            el.setAttribute('data-placeholder-original', original);
+        }
+        const translated = await translateText(original, targetLang);
+        if (translated) el.placeholder = translated;
+    }
+}
+
+
+// ── Indicador visual ──────────────────────────────────────────────────
+function mostrarIndicadorTraduccion(mostrar) {
+    let indicator = document.getElementById('translateIndicator');
+    if (mostrar) {
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.id = 'translateIndicator';
+            indicator.style.cssText =
+                'position:fixed;bottom:1rem;right:1rem;z-index:9999;' +
+                'background:#1a1a1a;color:#fff;padding:0.5rem 1rem;' +
+                'border-radius:20px;font-size:0.78rem;font-family:Poppins,sans-serif;' +
+                'display:flex;align-items:center;gap:0.5rem;' +
+                'box-shadow:0 4px 15px rgba(0,0,0,0.2);';
+            indicator.innerHTML =
+                '<span style="width:10px;height:10px;border:2px solid #fff;' +
+                'border-top-color:transparent;border-radius:50%;' +
+                'animation:oliviaSpin 0.8s linear infinite;display:inline-block;"></span>' +
+                ' Translating...';
+            if (!document.getElementById('translateSpinStyle')) {
+                const style = document.createElement('style');
+                style.id = 'translateSpinStyle';
+                style.textContent = '@keyframes oliviaSpin { to { transform: rotate(360deg); } }';
+                document.head.appendChild(style);
+            }
+            document.body.appendChild(indicator);
+        }
+        indicator.style.display = 'flex';
+    } else {
+        if (indicator) indicator.style.display = 'none';
+    }
+}
+
+
+// ── Actualizar UI del selector de banderas ────────────────────────────
 function updateSelectorUI() {
-    const mainImg = document.getElementById('currentFlagImg');
-    const optionImg = document.getElementById('optionFlagImg');
-    const optionBtn = document.getElementById('langOptionBtn');
+    const mainImg    = document.getElementById('currentFlagImg');
+    const optionImg  = document.getElementById('optionFlagImg');
+    const optionBtn  = document.getElementById('langOptionBtn');
     const optionText = document.getElementById('optionText');
 
     if (!mainImg || !optionImg || !optionBtn) return;
 
-    // El idioma opuesto al actual
     const otherLang = currentLanguage === 'es' ? 'en' : 'es';
 
-    // Setear bandera principal
-    mainImg.src = flagData[currentLanguage].src;
-    mainImg.alt = flagData[currentLanguage].label;
+    mainImg.src    = flagData[currentLanguage].src;
+    mainImg.alt    = flagData[currentLanguage].label;
 
-    // Setear la opción del dropdown
-    optionImg.src = flagData[otherLang].src;
+    optionImg.src          = flagData[otherLang].src;
     optionText.textContent = flagData[otherLang].label;
     optionBtn.setAttribute('data-lang', otherLang);
 }
 
-// 4. Función central para cambiar el idioma
-function changeLanguage(lang) {
+
+// ── Cambiar idioma ────────────────────────────────────────────────────
+async function changeLanguage(lang) {
+    if (isTranslating) return;
     currentLanguage = lang;
     localStorage.setItem('oliviaLanguage', lang);
-    
-    updatePageContent();
     updateSelectorUI();
-    
-    // Si tienes una función para refrescar la lista de productos, llámala aquí
-    if (typeof displayProducts === 'function' && typeof filteredProducts !== 'undefined') {
-        displayProducts(filteredProducts);
-    }
+    await translatePage(lang);
 }
 
-// 5. Inicialización al cargar el DOM
-document.addEventListener('DOMContentLoaded', () => {
-    // Ejecutar actualizaciones iniciales
-    updatePageContent();
+
+// ── Helper t() para compatibilidad ───────────────────────────────────
+function t(key) {
+    const el = document.querySelector(`[data-i18n="${key}"]`);
+    return el ? (el.getAttribute('data-i18n-original') || el.textContent) : key;
+}
+
+
+// ── Inicialización ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
     updateSelectorUI();
-    
-    // Configurar el evento de click en el botón de la bandera oculta
+
+    if (currentLanguage === 'en') {
+        await translatePage('en');
+    }
+
     const optionBtn = document.getElementById('langOptionBtn');
     if (optionBtn) {
-        optionBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Evitar comportamientos extraños
+        optionBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
             const nextLang = optionBtn.getAttribute('data-lang');
-            changeLanguage(nextLang);
+            await changeLanguage(nextLang);
         });
     }
 });
-
-// Helper opcional para usar en otros scripts JS
-function t(key) {
-    return translations[currentLanguage][key] || key;
-}

@@ -32,12 +32,12 @@
         <div class="registro-brand">
             <div class="brand-content">
                 <p class="brand-eyebrow">Bienvenid@ a</p>
-                <h1 class="brand-title">Olivia<br><em>Merino</em></h1>
+                <h1 class="brand-title" data-no-translate>Olivia<br><em>Merino</em></h1>
                 <p class="brand-subtitle">Crea tu cuenta y descubre nuestra colección de zapatos artesanales.</p>
                 <div class="brand-divider"></div>
-                <p class="brand-login-prompt">
-                    ¿Ya tienes cuenta?
-                    <a href="login.html">Inicia sesión</a>
+                <p class="brand-login-prompt" data-no-translate>
+                    <span data-i18n="ya_tienes_cuenta">¿Ya tienes cuenta?</span>
+                    <a href="../../index.html" data-i18n="iniciar-sesion">Inicia sesión</a>
                 </p>
             </div>
         </div>
@@ -47,7 +47,7 @@
             <div class="form-card">
 
                 <div class="form-header">
-                    <h2>Crear Cuenta</h2>
+                    <h2 data-i18n="crear-cuenta">Crear Cuenta</h2>
                     <p>Completa tus datos para registrarte</p>
                 </div>
 
@@ -89,10 +89,10 @@
                         <div class="input-wrap input-wrap-select">
                             <i class="fas fa-venus-mars"></i>
                             <select id="genero">
-                                <option value="">Prefiero no decir</option>
-                                <option value="femenino">Femenino</option>
-                                <option value="masculino">Masculino</option>
-                                <option value="otro">Otro</option>
+                                <option value="" data-i18n="prefiero-no-decir">Prefiero no decir</option>
+                                <option value="femenino" data-i18n="mujer">Femenino</option>
+                                <option value="masculino" data-i18n="hombre">Masculino</option>
+                                <option value="otro" data-i18n="otro">Otro</option>
                             </select>
                             <i class="fas fa-chevron-down select-arrow"></i>
                         </div>
@@ -142,8 +142,9 @@
                         <i class="fas fa-arrow-right btn-icon"></i>
                     </button>
 
-                    <p class="form-login-link">
-                        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+                    <p class="form-login-link" data-no-translate>
+                        <span data-i18n="ya_tienes_cuenta">¿Ya tienes cuenta?</span>
+                        <a href="../../index.html" data-i18n="iniciar-sesion">Inicia sesión</a>
                     </p>
 
                 </form>
@@ -153,5 +154,6 @@
     </main>
 
     <script src="../scripts/registro.js"></script>
+    <script src="../scripts/translations.js"></script>
 </body>
 </html>

@@ -19,76 +19,12 @@
     --error:      #c0392b;
     --success:    #2e7d32;
     --blue:       #1a5276;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body:    'Jost', sans-serif;
+    --font-display: 'Poppins', sans-serif;
+    --font-body:    'Poppins', sans-serif;
 }
 
-html, body {
-    font-family: var(--font-body);
-    background: var(--bg);
-    color: var(--text-dark);
-    min-height: 100vh;
-}
-
-/* ── NAVBAR ── */
-.perfil-navbar {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(74,14,46,0.06);
-}
-
-.navbar-logo {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--vino);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-}
-
-.navbar-logo em { font-style: italic; color: var(--gold); }
-
-.navbar-links { display: flex; gap: 2rem; }
-
-.navbar-links a {
-    text-decoration: none;
-    color: var(--text-mid);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-}
-
-.navbar-links a:hover { color: var(--vino); }
-
-.btn-cerrar-sesion-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.45rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 20px;
-    background: white;
-    color: var(--text-mid);
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.btn-cerrar-sesion-nav:hover {
-    border-color: var(--vino);
-    color: var(--vino);
+body {
+    margin-top: 50px !important;
 }
 
 /* ── MAIN ── */
@@ -193,11 +129,6 @@ html, body {
     padding: 1.75rem;
     box-shadow: 0 2px 12px rgba(74,14,46,0.06);
     border: 1px solid rgba(232,221,227,0.6);
-}
-
-.perfil-card-pedidos,
-.perfil-card-historial {
-    /* ocupan una columna cada una */
 }
 
 .card-header {
@@ -565,6 +496,5 @@ html, body {
     .perfil-grid { grid-template-columns: 1fr; }
     .perfil-hero-content { flex-direction: column; text-align: center; gap: 1rem; }
     .perfil-fecha { justify-content: center; }
-    .navbar-links { display: none; }
     .edit-row { grid-template-columns: 1fr; }
 }
